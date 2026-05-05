@@ -4742,6 +4742,25 @@
     color: var(--ink-soft);
   }
 
+  /* Variant: due-diligence advice (teal accent instead of navy) */
+  .verified-qa-badge.is-advice {
+    border-left-color: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-mark {
+    background: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-eyebrow {
+    color: var(--uoft-teal);
+  }
+  .verified-qa-badge .verified-qa-badge-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
   /* ── Academy cards (Handbook) ── */
   .academy-card {
     background: white;
@@ -5818,21 +5837,23 @@
 
     // Feedback
     { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
+    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
   // Map page key → URL
   const PAGE_URLS = {
-  homepage: 'index.html',
-  'post-acceptance': 'post-acceptance.html',
-  oweek: 'oweek.html',
-  housing: 'housing.html',
-  finances: 'finances.html',
-  academics: 'academics.html',
-  handbook: 'handbook.html',
-  mentorship: 'mentorship.html',
-  about: 'about.html',
-  feedback: 'feedback.html',
-};
+    homepage: 'index.html',
+    'post-acceptance': 'post-acceptance.html',
+    oweek: 'oweek.html',
+    housing: 'housing.html',
+    finances: 'finances.html',
+    academics: 'academics.html',
+    handbook: 'handbook.html',
+    mentorship: 'mentorship.html',
+    about: 'about.html',
+    feedback: 'feedback.html',
+    quicklinks: 'quicklinks.html',
+  };
   const PAGE_LABELS = {
     homepage: 'Home',
     'post-acceptance': 'Post-Acceptance',
@@ -5844,6 +5865,7 @@
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
+    quicklinks: 'Quick Links',
   };
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -6028,6 +6050,10 @@
           <a href="mentorship.html" data-page="mentorship" role="menuitem">
             <span class="nav-dropdown-label">Mentorship</span>
             <span class="nav-dropdown-desc">People you can reach out to</span>
+          </a>
+          <a href="quicklinks.html" data-page="quicklinks" role="menuitem">
+            <span class="nav-dropdown-label">Quick Links</span>
+            <span class="nav-dropdown-desc">Every link on the guide, grouped</span>
           </a>
         </div>
       </div>

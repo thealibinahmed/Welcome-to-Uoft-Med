@@ -4742,6 +4742,25 @@
     color: var(--ink-soft);
   }
 
+  /* Variant: due-diligence advice (teal accent instead of navy) */
+  .verified-qa-badge.is-advice {
+    border-left-color: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-mark {
+    background: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-eyebrow {
+    color: var(--uoft-teal);
+  }
+  .verified-qa-badge .verified-qa-badge-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
   /* ── Academy cards (Handbook) ── */
   .academy-card {
     background: white;
@@ -5818,6 +5837,7 @@
 
     // Feedback
     { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
+    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
   // Map page key → URL
@@ -5832,6 +5852,7 @@
     mentorship: 'mentorship.html',
     about: 'about.html',
     feedback: 'feedback.html',
+    quicklinks: 'quicklinks.html',
   };
   const PAGE_LABELS = {
     homepage: 'Home',
@@ -5844,6 +5865,7 @@
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
+    quicklinks: 'Quick Links',
   };
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -6029,6 +6051,10 @@
             <span class="nav-dropdown-label">Mentorship</span>
             <span class="nav-dropdown-desc">People you can reach out to</span>
           </a>
+          <a href="quicklinks.html" data-page="quicklinks" role="menuitem">
+            <span class="nav-dropdown-label">Quick Links</span>
+            <span class="nav-dropdown-desc">Every link on the guide, grouped</span>
+          </a>
         </div>
       </div>
       <a href="feedback.html" data-page="feedback">Feedback</a>
@@ -6081,7 +6107,7 @@
         </div>
         <div class="page-hero-meta">
           <strong>Last verified</strong>
-          Faculty Year 1 fee schedule, Scotia, CIBC, and TD LOC terms · April 2026. Prime rate confirmed 4.45%. RBC partial; BMO pending Q&amp;A.
+          Faculty Year 1 fee schedule, Scotia, CIBC, TD, and BMO LOC terms · April 2026. Prime rate confirmed 4.45%. RBC partially populated.
         </div>
       </div>
     </div>
@@ -6344,28 +6370,27 @@
       </div>
 
       <!-- BMO -->
-      <div class="bank-card unverified">
+      <div class="bank-card">
         <p class="bank-card-name">BMO</p>
-        <p class="bank-card-tagline">Professional Student Loan</p>
+        <p class="bank-card-tagline">Medical Student LOC</p>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Limit</span>
-          <span class="bank-card-stat-value" style="font-size: 12px; color: var(--ink-muted);">~$350K</span>
+          <span class="bank-card-stat-value">$400K</span>
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Rate</span>
-          <span class="bank-card-stat-value" style="font-size: 12px; color: var(--ink-muted);">Prime</span>
+          <span class="bank-card-stat-value">P − 0.25%</span>
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Grace</span>
-          <span class="bank-card-stat-value" style="font-size: 12px; color: var(--ink-muted);">Confirm</span>
+          <span class="bank-card-stat-value">2 yrs</span>
         </div>
-        <p class="bank-card-unverified">Pending interview</p>
-        <!-- TODO: verify BMO Professional Student Loan URL -->
-        <a class="bank-card-link bank-card-link-muted" href="https://www.bmo.com/main/personal/loans/lines-of-credit/professional-student-line-of-credit/" target="_blank" rel="noopener">Apply with BMO <span class="bank-card-link-arrow">↗</span></a>
+        <p class="bank-card-verified">✓ Per BMO rep · 2026</p>
+        <a class="bank-card-link" href="https://www.bmo.com/main/personal/loans/lines-of-credit/professional-student-line-of-credit/" target="_blank" rel="noopener">Apply with BMO <span class="bank-card-link-arrow">↗</span></a>
       </div>
     </div>
 
-    <p style="font-size: 12px; color: var(--ink-muted); margin-top: 24px; max-width: 60ch;">Rates and bonuses change frequently. Always confirm current offers directly with each bank before signing. CIBC, TD, and BMO data will be filled in following upcoming cohort Q&amp;A sessions with each bank's healthcare specialist.</p>
+    <p style="font-size: 12px; color: var(--ink-muted); margin-top: 24px; max-width: 60ch;">Rates and bonuses change frequently. Always confirm current offers directly with each bank before signing.</p>
   </div>
 </section>
 
@@ -6378,14 +6403,23 @@
         <span class="eyebrow-text">Side-by-Side</span>
       </div>
       <h2>Six categories, eighteen questions.</h2>
-      <p>Reorganized from the original cohort question set. Scotiabank and CIBC fully populated. TD populated from official product page. RBC partial; BMO pending cohort interview.</p>
+      <p>Reorganized from the original cohort question set. Scotiabank, CIBC, and BMO fully populated from rep interviews. TD populated from official product page. RBC partial.</p>
     </div>
 
     <div class="verified-qa-badge">
       <div class="verified-qa-badge-mark" aria-hidden="true">✓</div>
       <div>
         <p class="verified-qa-badge-eyebrow">Verified — direct from a Scotia rep</p>
-        <p class="verified-qa-badge-text">The Scotiabank and CIBC columns reflect answers received from each bank&rsquo;s healthcare specialist in 2026. TD is sourced from the official TD product page. RBC is partially populated from the cohort Q&amp;A; BMO is pending an equivalent rep interview — flagged inline as <em>To be confirmed</em>.</p>
+        <p class="verified-qa-badge-text">The Scotiabank, CIBC, and BMO columns reflect answers received from each bank&rsquo;s healthcare specialist in 2026. TD is sourced from the official TD product page. RBC is partially populated from the cohort Q&amp;A — flagged inline as <em>To be confirmed</em>.</p>
+      </div>
+    </div>
+
+    <div class="verified-qa-badge is-advice">
+      <div class="verified-qa-badge-mark" aria-hidden="true">!</div>
+      <div>
+        <p class="verified-qa-badge-eyebrow">Cohort advice</p>
+        <p class="verified-qa-badge-title">Don't be afraid to challenge the bank.</p>
+        <p class="verified-qa-badge-text">Multiple cohort members have had reps confidently quote incorrect terms — only backing down once the student pulled up the bank's own website or pointed to a competitor's published rate. Doing your due diligence and double-checking does not hurt; the table above exists for exactly this reason. <strong>Bring this comparison to your appointment</strong>, and if a rep tells you something that contradicts what you've read, ask them to walk through the source with you.</p>
       </div>
     </div>
 
@@ -6411,7 +6445,7 @@
             <td><span class="compare-cell-strong">Up to $400K</span> ($100K/year). Additional funding available on request.</td>
             <td><span class="compare-cell-strong">$400,000 max</span><br/>Increases incrementally each year (you don't get full access in Y1). Re-approval not needed in subsequent years.</td>
             <td><span class="compare-cell-strong">Up to $400K</span><br/>Up to $100K available in Y1; total limit depends on program of study.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><span class="compare-cell-strong">Up to $400K</span><br/>Released incrementally: $115K (Y1), $95K/yr (Y2-4). Continues through residency for up to 7 years total. Outside student loans may reduce the limit.</td>
           </tr>
           <tr>
             <th>Rate structure</th>
@@ -6419,7 +6453,7 @@
             <td><span class="compare-cell-strong">Prime − 0.25% = 4.20%</span> today (variable).</td>
             <td><span class="compare-cell-strong">Prime − 0.25% = 4.20%</span> today (variable).</td>
             <td><span class="compare-cell-strong">Prime = 4.45%</span> today (variable). Verify exact rate at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><span class="compare-cell-strong">Prime − 0.25% = 4.20%</span> today (variable). Calculated only on what you draw.</td>
           </tr>
           <tr>
             <th>When interest accrues</th>
@@ -6427,7 +6461,7 @@
             <td>Begins immediately. Calculated daily, charged monthly.</td>
             <td>Interest begins to accrue <strong>24 months after residency graduation</strong>. Until then, only interest from active borrowing applies.</td>
             <td>Interest accrues on borrowed amount. <strong>No principal payments until 24 months after leaving school or residency.</strong></td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><strong>Interest cannot be capitalized.</strong> Monthly interest must be paid as charged — it does not compound into the principal balance.</td>
           </tr>
           <tr>
             <th>In-school payments</th>
@@ -6435,7 +6469,7 @@
             <td>Monthly interest is mandatory and auto-debited. Compounds onto principal if not paid in cash.</td>
             <td>Only interest on borrowed amount is required, until <strong>24 months after residency graduation</strong>. LOC structure continues through residency.</td>
             <td><strong>Interest-only payments during school and residency.</strong> No principal payments required during this period.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><strong>Interest-only payments required</strong> while in med school. Cannot defer or roll into principal — must be paid in cash each month.</td>
           </tr>
         </tbody>
       </table>
@@ -6463,7 +6497,7 @@
             <td>LOC is maintained. No fixed timeline for principal payments.</td>
             <td><span class="compare-cell-strong">24 months post-residency</span> before full interest accrual on the LOC begins.</td>
             <td><span class="compare-cell-strong">24 months after leaving school or residency</span> before principal payments are due.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><strong>Years 1–2 post-grad: interest-only continues.</strong> Year 3: minimum payment becomes 1% of outstanding balance, then escalates each year (see official BMO repayment schedule).</td>
           </tr>
           <tr>
             <th>Residency / fellowship terms</th>
@@ -6471,7 +6505,7 @@
             <td><span class="compare-cell-strong">Yes, indefinitely.</span> Interest-only payments through residency / fellowship.</td>
             <td>LOC continues through residency. Interest-only on borrowed amount; full repayment timeline begins 24 months post-residency.</td>
             <td>Same interest-only treatment continues through residency. Principal not due until 24 months after residency ends.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>LOC continues through residency. <strong>Interest-only payments throughout</strong> the full financing period (up to 7 years total, including school + residency).</td>
           </tr>
           <tr>
             <th>After conversion to Personal LOC</th>
@@ -6479,7 +6513,7 @@
             <td>Not applicable — LOC remains lifelong without a forced conversion event.</td>
             <td>Post-residency, the LOC remains as a Personal LOC at the same terms.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Per BMO standard repayment schedule: 1% (Y3), 1.5% (Y4), 2% (Y5), 2.5% (Y6), 4% (Y7), 7% (Y8+) of outstanding balance, or $100/month minimum — whichever is greater.</td>
           </tr>
           <tr>
             <th>If you don't convert in time</th>
@@ -6487,7 +6521,7 @@
             <td>n/a</td>
             <td>n/a — no forced conversion event.</td>
             <td>Principal payments begin 24 months after leaving school or residency, regardless.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>n/a — repayment schedule auto-applies after Year 2 post-grad.</td>
           </tr>
           <tr>
             <th>Early repayment penalties</th>
@@ -6495,7 +6529,7 @@
             <td>None.</td>
             <td>To be confirmed.</td>
             <td>To be confirmed.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>None.</td>
           </tr>
         </tbody>
       </table>
@@ -6523,7 +6557,7 @@
             <td>Not for Canadian medical students.</td>
             <td><strong>Possibly.</strong> Co-signer or guarantor may be required depending on credit profile. <strong>Minimum 650 credit score</strong>; otherwise a guarantor is needed. Approval considers credit score and income capacity. <em>Must be a PR or Canadian Citizen — not available to temporary students.</em></td>
             <td><strong>No co-signer needed</strong> for Canadian medical/dental/veterinary students at Canadian schools.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td><strong>Typically not required</strong> if you can demonstrate full-time or part-time employment, OR an existing income source (investment income, rental income).</td>
           </tr>
           <tr>
             <th>Documents needed</th>
@@ -6531,7 +6565,7 @@
             <td>Signed enrollment letter confirming program, length, full name, and school.</td>
             <td><strong>Proof of enrolment</strong> and <strong>tuition deposit</strong> required.</td>
             <td>Standard proof of enrolment and ID. Confirm exact list at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Proof of enrolment + standard ID. Confirm full list at appointment.</td>
           </tr>
           <tr>
             <th>Approval timeline</th>
@@ -6539,7 +6573,7 @@
             <td><span class="compare-cell-strong">3–4 days for approval.</span> Funds not immediately available.</td>
             <td>To be confirmed.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Standard LOC lending and approval criteria apply. Confirm exact timeline at appointment.</td>
           </tr>
           <tr>
             <th>Mid-program adjustments</th>
@@ -6547,7 +6581,7 @@
             <td>Yes. $400K → $425K at residency entry.</td>
             <td>Limit increases incrementally each year up to $400K. No re-approval required in subsequent years.</td>
             <td><strong>Apply just once</strong> for credit and have it for as long as you're in school. Limit scales with program of study up to $400K.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Annual ceilings step up automatically: $115K (Y1) → $210K (Y2) → $305K (Y3) → $400K (Y4).</td>
           </tr>
         </tbody>
       </table>
@@ -6575,7 +6609,7 @@
             <td>Same LOC continues; limit increases. Plan/rate preserved.</td>
             <td>LOC structure continues through residency at Prime − 0.25%. Same payment treatment.</td>
             <td>LOC continues through residency. Interest-only payments throughout; principal deferred 24 months past residency end.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Continued LOC access through residency at Prime − 0.25%. Same interest-only treatment continues for the duration of the 7-year financing window.</td>
           </tr>
           <tr>
             <th>Post-residency conversion</th>
@@ -6583,7 +6617,7 @@
             <td>Professional Student LOC continues post-graduation as a physician credit product.</td>
             <td><strong>Post-residency, the LOC remains as a Personal LOC</strong> with the same terms. No forced conversion event. Full interest accrual begins 24 months after residency graduation.</td>
             <td>Principal repayment begins 24 months after leaving school or residency. Conversion to physician credit product to be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>Per the BMO Medical Student repayment schedule, principal repayment begins Year 3 post-grad and escalates annually.</td>
           </tr>
           <tr>
             <th>Physician transition</th>
@@ -6591,7 +6625,7 @@
             <td>Professional Student LOC continues post-graduation as a physician credit product.</td>
             <td>LOC continues as a Personal LOC after residency at the same rate.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>To be confirmed at appointment — ask about BMO's physician credit products.</td>
           </tr>
         </tbody>
       </table>
@@ -6617,28 +6651,28 @@
             <td><strong>Life insurance and critical illness only.</strong> Disability insurance generally requires you to have a job to be disabled from — most students don't work enough hours during med school to make a claim, so it's typically not useful until residency.</td>
             <td>Insurance options are available, but typically <strong>require income</strong> to be eligible — limited utility during med school.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>RBC: Insurance available — confirm at appointment.<br/><strong>BMO:</strong> Optional Balance Protection (Life + Critical Illness) and Payment Protection (Disability + Job Loss) available.</td>
           </tr>
           <tr>
             <th>Life insurance</th>
             <td>Not required. Available optionally via MD Financial.</td>
             <td>To be confirmed.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>RBC: Available — confirm at appointment.<br/><strong>BMO:</strong> Available via Balance Protection insurance (life coverage on the LOC balance).</td>
           </tr>
           <tr>
             <th>Disability insurance (residency+)</th>
             <td>Becomes useful once you have residency income to insure. Available via MD Financial Management (Scotiabank's healthcare partner).</td>
             <td>Available with income — relevant once you start residency.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>RBC: Available — confirm at appointment.<br/><strong>BMO:</strong> Available via Payment Protection (covers disability and job loss).</td>
           </tr>
           <tr>
             <th>Hardship protections</th>
             <td>Not standardized — borrowers in difficulty are directed to a Healthcare Advisor.</td>
             <td>Income-based eligibility — talk directly to a CIBC healthcare advisor about specific scenarios.</td>
             <td>To be confirmed at appointment.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>To be confirmed at appointment.</td>
           </tr>
         </tbody>
       </table>
@@ -6664,14 +6698,14 @@
             <td><strong>$500 chequing bonus</strong> for new Scotiabank customers who set up a $50+ pre-authorized deposit for 6 straight months and pay a $50+ bill from the chequing account within 60 days. <strong>Plus 40,000 points (~$400)</strong> on the Passport Visa Infinite or Amex Gold (pick one) after $2,000 in spending in the first 90 days.</td>
             <td>Not specifically advertised through the LOC product — confirm with the rep.</td>
             <td>Not specifically advertised through the LOC product — confirm with the rep.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>RBC: Confirm at appointment.<br/><strong>BMO Spring 2026:</strong> Up to $900 in stacked offers — $175 chequing + up to $500 LOC bonus + up to $125 CashBack Mastercard + investing/savings promos. Promo runs Mar 3 – Jun 1, 2026.</td>
           </tr>
           <tr>
             <th>Bundled benefits</th>
             <td><span class="compare-cell-strong">Ultimate Package chequing — monthly fee waived for life.</span> Plus the Passport Visa Infinite and Gold American Express, both with annual fees waived on an ongoing basis.</td>
             <td>Standard CIBC chequing/credit options — bundled benefits not specifically tied to the LOC product. Confirm with rep.</td>
             <td>Standard TD chequing/credit options — confirm bundled benefits with rep.</td>
-            <td class="compare-cell-tbd">To be confirmed</td>
+            <td>RBC: Confirm at appointment.<br/><strong>BMO:</strong> Free student banking. Optional Savings Amplifier Account (4.50% promo rate on first $4,300 for 120 days during Spring 2026 promo).</td>
           </tr>
         </tbody>
       </table>
@@ -6685,6 +6719,7 @@
         <div class="rep-contact-card">
           <p class="rep-contact-name">Rod McFadden</p>
           <p class="rep-contact-role">Scotia Healthcare+ Specialist</p>
+          <a class="rep-contact-link" href="mailto:rod.mcfadden@scotiabank.com">rod.mcfadden@scotiabank.com</a>
         </div>
         <div class="rep-contact-card">
           <p class="rep-contact-name">Lynne Owen</p>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Housing · UofT MD Guide</title>
+<title>Quick Links · UofT MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -6008,7 +6008,7 @@
   });
 </script>
 </head>
-<body data-page="housing">
+<body data-page="quicklinks">
 
 <!-- ============ Utility ribbon ============ -->
 <div class="ribbon">
@@ -6034,7 +6034,7 @@
     <nav class="nav">
       <a href="post-acceptance.html" data-page="post-acceptance">Post-Acceptance</a>
       <a href="oweek.html" data-page="oweek">O-Week</a>
-      <a href="housing.html" data-page="housing" class="is-active">Housing</a>
+      <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
       <a href="handbook.html" data-page="handbook">Handbook</a>
@@ -6088,173 +6088,6 @@
   </div>
 </div>
 
-<!-- Leaflet CSS for the interactive map -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<style>
-  /* Map-specific overrides */
-  #housing-map {
-    width: 100%;
-    height: 600px;
-    border: 1px solid var(--hairline);
-    background: var(--paper-soft);
-  }
-  @media (max-width: 767px) {
-    #housing-map { height: 420px; }
-  }
-  /* Override Leaflet's default font */
-  .leaflet-container {
-    font-family: 'Public Sans', sans-serif !important;
-  }
-  /* Custom Leaflet popup styling — squared, navy */
-  .leaflet-popup-content-wrapper {
-    border-radius: 0 !important;
-    border: 1px solid var(--uoft-navy) !important;
-    box-shadow: 0 2px 8px rgba(0,26,112,0.15) !important;
-    padding: 4px !important;
-  }
-  .leaflet-popup-content {
-    margin: 12px 14px !important;
-    line-height: 1.5 !important;
-    font-size: 13px !important;
-  }
-  .leaflet-popup-tip {
-    background: var(--uoft-navy) !important;
-  }
-  .popup-title {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 800;
-    font-size: 15px;
-    color: var(--uoft-navy);
-    margin-bottom: 4px;
-  }
-  .popup-meta {
-    font-size: 11px;
-    color: var(--ink-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 6px;
-  }
-  .popup-stat {
-    font-size: 13px;
-    color: var(--ink);
-  }
-  .popup-link {
-    margin-top: 8px;
-    display: inline-block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-weight: 700;
-    color: var(--uoft-teal);
-    border-bottom: 1px solid var(--uoft-teal);
-    padding-bottom: 1px;
-    cursor: pointer;
-  }
-  .popup-link:hover {
-    color: var(--uoft-navy);
-    border-color: var(--uoft-navy);
-  }
-
-  /* Building list (left rail) */
-  .map-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  @media (min-width: 1024px) {
-    .map-layout {
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-  }
-  .building-list {
-    background: white;
-    border: 1px solid var(--hairline);
-    max-height: 600px;
-    overflow-y: auto;
-  }
-  @media (max-width: 1023px) {
-    .building-list {
-      max-height: 280px;
-    }
-  }
-  .building-list-header {
-    padding: 16px 20px;
-    background: var(--uoft-navy);
-    color: white;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 700;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-  .building-list-item {
-    padding: 14px 20px;
-    border-top: 1px solid var(--hairline-soft);
-    cursor: pointer;
-    transition: background 180ms, padding 180ms;
-  }
-  .building-list-item:first-of-type { border-top: none; }
-  .building-list-item:hover {
-    background: var(--paper-soft);
-    padding-left: 26px;
-  }
-  .building-list-item.active {
-    background: var(--paper-soft);
-    border-left: 3px solid var(--uoft-teal);
-    padding-left: 17px;
-  }
-  .building-list-item-name {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--uoft-navy);
-    line-height: 1.2;
-    margin-bottom: 4px;
-  }
-  .building-list-item-meta {
-    font-size: 11px;
-    color: var(--ink-muted);
-    line-height: 1.4;
-  }
-  .building-list-item-rent {
-    font-size: 12px;
-    color: var(--ink);
-    font-weight: 600;
-    margin-top: 4px;
-  }
-
-  /* Selected building detail (below map on mobile, side on desktop) */
-  #building-detail {
-    background: white;
-    border: 1px solid var(--hairline);
-    padding: 28px;
-    margin-top: 24px;
-  }
-  #building-detail.empty {
-    text-align: center;
-    color: var(--ink-muted);
-    font-size: 14px;
-    font-style: italic;
-    padding: 60px 28px;
-  }
-
-  .neighborhood-pill {
-    display: inline-block;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 700;
-    color: var(--uoft-teal);
-    background: rgba(0,127,163,0.08);
-    padding: 4px 10px;
-    margin-bottom: 12px;
-  }
-</style>
-
 <!-- ============ Page hero ============ -->
 <section class="page-hero">
   <div class="container">
@@ -6262,2084 +6095,240 @@
       <div>
         <div class="eyebrow">
           <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">Section 02 · Housing</span>
+          <span class="eyebrow-text">Navigate the Guide</span>
         </div>
-        <h1>Where to live,<br/>decided properly.</h1>
-        <p class="page-hero-lede">An interactive map of student buildings near campus. Click any pin to see real commute times to MSB, current rent ranges, neighborhood notes, and reviews from upper-year students.</p>
+        <h1>Quick links.</h1>
+        <p class="page-hero-lede">Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic. Useful when you remember <em>what</em> you needed but not <em>where</em> on the site it lives.</p>
       </div>
       <div>
         <div class="page-hero-meta">
-          <strong>Anchor point</strong>
-          All commute times measured from the Medical Sciences Building (MSB), 1 King's College Circle.
+          <strong>↗ opens an external site</strong>
+          External resources open in a new tab and are flagged with this arrow.
         </div>
         <div class="page-hero-meta">
-          <strong>MAM students</strong>
-          If you've been placed at the Mississauga Academy of Medicine, your housing math is different. Confirm your placement before signing downtown.
+          <strong>No marker = on the guide</strong>
+          Links without an arrow point to a page or section within this guide.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Decision framework ============ -->
-<section class="section section-soft">
+<!-- ============ Quick Links ============ -->
+<section class="section section-soft" id="quick-links">
   <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Before You Tour Anything</span>
-      </div>
-      <h2>Three questions to answer first.</h2>
-      <p>The right neighborhood depends almost entirely on these three things. Decide them before you start scrolling listings.</p>
+    <div class="quick-links-intro">
+      <span class="quick-links-intro-key"><span>↗</span><span>opens an external site in a new tab</span></span>
+      <span class="quick-links-intro-key"><span>#</span><span>jumps to a section on a guide page</span></span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid var(--hairline); background: white;">
-      <div style="display: grid; grid-template-columns: 1fr;" class="decision-grid">
-        <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
-          <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">01</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Which academy?</h4>
-          <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">St. George academies cluster around downtown campus; MAM is at UTM. Where you'll spend most of your week shapes the math, but plenty of students commute in either direction — what matters is that you've done the math honestly before signing.</p>
-        </div>
-        <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
-          <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">02</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Walk, transit, or drive?</h4>
-          <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">8am sessions are common. A 45-minute commute in February feels different than it does in September — but plenty of students live with parents or partners further out and make it work. Be realistic about what you'll actually tolerate.</p>
-        </div>
-        <div style="padding: 32px 28px;">
-          <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">03</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Solo or roommates?</h4>
-          <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">A 2-bedroom split two ways is often $400–600/month cheaper per person than a comparable 1-bed. Worth considering even if you'd prefer to live alone.</p>
-        </div>
-      </div>
-    </div>
-    <style>@media (min-width: 768px) { .decision-grid { grid-template-columns: 1fr 1fr 1fr !important; } .decision-grid > div { border-bottom: none !important; border-right: 1px solid var(--hairline); } .decision-grid > div:last-child { border-right: none; } }</style>
-  </div>
-</section>
+    <div class="quick-links-grid">
 
-<!-- ============ UofT Residences ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">UofT Residences</span>
-      </div>
-      <h2>Three on-campus options.</h2>
-      <p>UofT operates several residences open to graduate and professional students — including MD students. They tend to be the simplest option for first year: predictable lease terms, no broker fees, walkable to MSB, and built-in community. All three of these are also pinned on the map below.</p>
-    </div>
-
-    <div class="residences-grid">
-      <article class="residence-card">
-        <p class="residence-card-eyebrow">UofT Housing — central application</p>
-        <h3 class="residence-card-name">Graduate House</h3>
-        <p class="residence-card-address">60 Harbord Street · 6 min walk to MSB</p>
-        <p class="residence-card-body">A modern UofT-owned residence at Harbord and Spadina. Most units are <strong>self-contained studios or one-bedrooms with private kitchen and bath</strong> — closer to a small apartment than a traditional dorm. Open to graduate and professional students, including MD.</p>
-        <ul class="residence-card-points">
-          <li><strong>Best for:</strong> students who want their own space, quiet study environment, and don't want to deal with roommates or rental search</li>
-          <li><strong>Watch out:</strong> oversubscribed every year — apply the moment you accept your offer</li>
-          <li><strong>How to apply:</strong> through UofT Student Housing Services, separate from MD admissions</li>
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Pages on this guide</p>
+        <ul class="quick-links-list">
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="post-acceptance.html">Post-Acceptance</a></li>
+          <li><a href="oweek.html">O-Week</a></li>
+          <li><a href="housing.html">Housing</a></li>
+          <li><a href="finances.html">Finances</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="mentorship.html">Mentorship</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
         </ul>
-        <a class="residence-card-link" href="https://studenthousing.utoronto.ca/" target="_blank" rel="noopener">UofT Student Housing <span class="footer-ext">↗</span></a>
-      </article>
+      </div>
 
-      <article class="residence-card">
-        <p class="residence-card-eyebrow">UofT-affiliated college — apply directly</p>
-        <h3 class="residence-card-name">Knox College Residence</h3>
-        <p class="residence-card-address">59 St. George Street · 4 min walk to MSB</p>
-        <p class="residence-card-body">A traditional college-style residence on St. George Street, the closest residence to MSB. Knox accepts graduate and professional students into its residence. Single rooms with shared washrooms or kitchens depending on placement, plus library and study lounges.</p>
-        <ul class="residence-card-points">
-          <li><strong>Best for:</strong> students who want the shortest possible commute and don't mind shared facilities</li>
-          <li><strong>Watch out:</strong> less self-contained than Graduate House — confirm the room configuration before committing</li>
-          <li><strong>How to apply:</strong> directly through Knox College, not central UofT Housing</li>
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Just accepted</p>
+        <ul class="quick-links-list">
+          <li><a href="index.html#homepage-faqs">Homepage FAQs</a></li>
+          <li><a href="index.html#waitlist-r">Waitlist &amp; refused note</a></li>
+          <li><a href="post-acceptance.html">Post-Acceptance phased timeline</a></li>
+          <li><a href="https://applymd.utoronto.ca/" target="_blank" rel="noopener">UofT MD admissions site<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/incoming-students" target="_blank" rel="noopener">Incoming Students Hub<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Accepting Your Offer<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements &amp; Requests<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/why-u-t" target="_blank" rel="noopener">Why UofT MD<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/life-toronto" target="_blank" rel="noopener">Life in Toronto · St. George<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/life-mississauga" target="_blank" rel="noopener">Life in Mississauga · MAM<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://uthrprod.service-now.com/enrolment?id=sc_cat_item&amp;sys_id=048ea6cc1b994a50590c98ec0a4bcbe5&amp;sysparm_category=0f78695ddba2a45054c02cdcd396194b" target="_blank" rel="noopener">Bank-transfer deposit notification form<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://survey.ca1.qualtrics.com/jfe/form/SV_8Dt7x3cB6vMXvtH" target="_blank" rel="noopener">Letter of Confirmation request form<span class="ql-ext">↗</span></a></li>
         </ul>
-        <a class="residence-card-link" href="https://www.knox.utoronto.ca/residence/" target="_blank" rel="noopener">Knox College Residence <span class="footer-ext">↗</span></a>
-      </article>
+      </div>
 
-      <article class="residence-card">
-        <p class="residence-card-eyebrow">Graduate residential college — competitive fellowship</p>
-        <h3 class="residence-card-name">Massey College</h3>
-        <p class="residence-card-address">4 Devonshire Place · 5 min walk to MSB</p>
-        <p class="residence-card-body">A graduate residential college within UofT — closer to a small Oxbridge-style community than a residence. Members ("Junior Fellows") are admitted via competitive application based on academic record and contribution to community life. Strong intellectual culture: weekly High Table dinners, lecture series, mentorship from Senior Fellows. Costs vary by fellowship status.</p>
-        <ul class="residence-card-points">
-          <li><strong>Best for:</strong> students who want intellectual community, formal dinners, and engagement beyond medicine</li>
-          <li><strong>Watch out:</strong> separate, competitive application — not a fallback for "I missed Graduate House"; apply early if interested</li>
-          <li><strong>How to apply:</strong> through Massey College's Junior Fellows admissions, separate from UofT Housing</li>
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Cohort &amp; community</p>
+        <ul class="quick-links-list">
+          <li><a href="mentorship.html">Find a mentor</a></li>
+          <li><a href="handbook.html#community-groups">Community groups directory</a></li>
+          <li><a href="https://www.facebook.com/share/g/1B6gCLcQ1J/" target="_blank" rel="noopener">UofT Med 3T0 Congrats (FB)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.facebook.com/share/g/1AdyqkzNK8/" target="_blank" rel="noopener">UofT Med Opportunities Common (FB)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.facebook.com/share/g/1CgtNe9oFh/" target="_blank" rel="noopener">Opportunities (FB)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.facebook.com/share/g/18TDQksWMn/" target="_blank" rel="noopener">Med Opportunities Canada (FB)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://uoftmedsoweek.ca/the-team" target="_blank" rel="noopener">Official O-Week site &amp; team<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=JsByhQnwZIg" target="_blank" rel="noopener">Class of 2T9 O-Week recap<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=-dqFftJtdpg" target="_blank" rel="noopener">Class of 2T8 O-Week recap<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=fAa-PzlURMY" target="_blank" rel="noopener">Faculty welcome video<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://omsa.ca" target="_blank" rel="noopener">Ontario Medical Students Association (OMSA)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.oma.org/membership/medical-students/" target="_blank" rel="noopener">Ontario Medical Association (OMA) student membership<span class="ql-ext">↗</span></a></li>
         </ul>
-        <a class="residence-card-link" href="https://www.masseycollege.ca/membership/junior-fellows/" target="_blank" rel="noopener">Massey College Junior Fellows <span class="footer-ext">↗</span></a>
-      </article>
-    </div>
+      </div>
 
-    <div class="callout-soft">
-      <strong>Where to verify:</strong> the Faculty maintains an <a href="https://applymd.utoronto.ca/housing-residence" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">official housing &amp; residence page</a> with current application timelines, costs, and additional options. Always cross-check rates and deadlines there before deciding.
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Money — fees, aid, OSAP</p>
+        <ul class="quick-links-list">
+          <li><a href="finances.html#costs">Year-1 fee table</a></li>
+          <li><a href="finances.html#osap">OSAP guidance</a></li>
+          <li><a href="finances.html#tuition-deferral">Tuition deferral</a></li>
+          <li><a href="finances.html#monthly-budget">Monthly budget worksheet</a></li>
+          <li><a href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">Faculty Current Fees<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/finances-awards" target="_blank" rel="noopener">Finances &amp; Awards<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">MD Program Financial Aid (Temerty Grant)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/debt-management" target="_blank" rel="noopener">Debt Management<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://emodules.med.utoronto.ca/DCemodules/FinancialResourcesExplorer1/story.html" target="_blank" rel="noopener">Financial Resources Explorer<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studentaccount.utoronto.ca/tuition-fees/payment-options/" target="_blank" rel="noopener">UofT payment options<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studentaccount.utoronto.ca/tuition-fee-deferral/" target="_blank" rel="noopener">Tuition fee deferral details<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studentaccount.utoronto.ca/important-dates/" target="_blank" rel="noopener">Important Dates &amp; Deadlines<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.ontario.ca/page/osap-ontario-student-assistance-program" target="_blank" rel="noopener">OSAP — Ontario portal<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://governingcouncil.utoronto.ca/secretariat/policies/student-financial-support-policy-april-30-1998" target="_blank" rel="noopener">UofT Student Financial Support Policy<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Money — lines of credit</p>
+        <ul class="quick-links-list">
+          <li><a href="finances.html#loc">LOC overview</a></li>
+          <li><a href="finances.html#bank-comparison">Bank comparison tables</a></li>
+          <li><a href="finances.html#bank-questions">Questions to ask the bank</a></li>
+          <li><a href="finances.html#verify">How to verify the rate at the appointment</a></li>
+          <li><a href="https://www.scotiabank.com/ca/en/healthcare-plus/physician-banking/medical-students.html" target="_blank" rel="noopener">Scotiabank — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.rbcroyalbank.com/student/medical-students.html" target="_blank" rel="noopener">RBC — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.cibc.com/en/personal-banking/borrowing/lines-of-credit/professional-edge-program.html" target="_blank" rel="noopener">CIBC Professional Edge — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.td.com/ca/en/personal-banking/products/borrowing/lines-of-credit/medical-dental-veterinary-student-line-of-credit" target="_blank" rel="noopener">TD — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.bmo.com/main/personal/loans/lines-of-credit/professional-student-line-of-credit/" target="_blank" rel="noopener">BMO — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="mailto:rod.mcfadden@scotiabank.com">Email Scotia rep (Rod McFadden)</a></li>
+          <li><a href="mailto:Lynne.Owen@scotiabank.com">Email Scotia rep (Lynne Owen)</a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Housing</p>
+        <ul class="quick-links-list">
+          <li><a href="housing.html#housing-map">Interactive neighbourhood map</a></li>
+          <li><a href="housing.html#building-list-items">Full building database</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1bL-3Fm9UtOUQtX77br0Bw6VBWw3eaFckHUrJLXYNJlU/edit?gid=2128080834" target="_blank" rel="noopener">3T0 Roommate Finder spreadsheet<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://applymd.utoronto.ca/housing-residence" target="_blank" rel="noopener">UofT MD official housing page<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studenthousing.utoronto.ca/" target="_blank" rel="noopener">UofT Student Housing<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.knox.utoronto.ca/residence/" target="_blank" rel="noopener">Knox College Residence<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.masseycollege.ca/membership/junior-fellows/" target="_blank" rel="noopener">Massey College Junior Fellows<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.padmapper.com/apartments/toronto-on" target="_blank" rel="noopener">PadMapper<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://condos.ca/toronto/condos-for-rent" target="_blank" rel="noopener">Condos.ca<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.realtor.ca/" target="_blank" rel="noopener">Realtor.ca<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.kijiji.ca/b-apartments-condos/toronto/c37l1700273" target="_blank" rel="noopener">Kijiji apartments — Toronto<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.facebook.com/groups/" target="_blank" rel="noopener">Facebook Marketplace + UofT housing groups<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://tribunalsontario.ca/ltb/" target="_blank" rel="noopener">Landlord and Tenant Board (LTB)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://stepstojustice.ca/legal-topic/housing-law/" target="_blank" rel="noopener">Steps to Justice — Housing Law<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.ontario.ca/laws/statute/06r17" target="_blank" rel="noopener">Residential Tenancies Act, 2006<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Academics &amp; study resources</p>
+        <ul class="quick-links-list">
+          <li><a href="academics.html#study-styles">Study styles</a></li>
+          <li><a href="academics.html#weekly-schedule">A typical week</a></li>
+          <li><a href="academics.html#calendar">Year-1 calendar</a></li>
+          <li><a href="academics.html#anki">Anki guide</a></li>
+          <li><a href="academics.html#study-notes">Upper-year study notes</a></li>
+          <li><a href="academics.html#study-guides">Course guides</a></li>
+          <li><a href="academics.html#osce-resources">OSCE resources</a></li>
+          <li><a href="academics.html#shadowing">Shadowing — the 5 Ws</a></li>
+          <li><a href="academics.html#testimonials">Testimonials</a></li>
+          <li><a href="https://docs.google.com/document/d/1o5SYDGSpNdz2NhE4ExZD5m40hfWWZE0ff-8Wc7pa6DQ/edit?usp=sharing" target="_blank" rel="noopener">ICE Guide<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://sites.google.com/view/lau-ice/home" target="_blank" rel="noopener">Lau's ICE site<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://seriously-quiet-med-student.notion.site/OSCE-Prep-9a199edc2dba4252acda32812f8e7708" target="_blank" rel="noopener">OSCE Prep (Notion)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://docs.google.com/document/d/1HYCXAM1eANXvuInuyt6IPhU1AFFmX0-cP8YQrB6mz3g/edit" target="_blank" rel="noopener">Study guide (Google Doc)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/file/d/1rCouV2Ic3WZZWTVJ22M9RUHOSXIXUa2l/view" target="_blank" rel="noopener">Study PDF<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/drive/folders/1APNLUCTrNj5GQLHhiUGGDx5UoPSYaOYn" target="_blank" rel="noopener">Drive folder — study materials<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/drive/folders/1vl5EFV8YGTO827YGXkNFusaV3qfSvJAy" target="_blank" rel="noopener">Drive folder — additional notes<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/drive/folders/14EOEb6fhpFtkJasGdKSDedGaCA3_7sVB" target="_blank" rel="noopener">Drive folder — course materials<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/drive/folders/1T3V4tYF-mNL5MWayr9zKDOKMs5UK-Zgv" target="_blank" rel="noopener">Drive folder — OSCE materials<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/drive/folders/1k2PeZi-Mz0DkIaporLTVFJjh7Q1s35Ti" target="_blank" rel="noopener">Drive folder — Anki decks<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://drive.google.com/file/d/1kGyIWe-k820z6W_D1nIyKw6qDCEJk-mm/view" target="_blank" rel="noopener">Anki .apkg download<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/101XiXkusHjrfg1WpJ3E2LJ0TZawPispSXbNfIT-PI6Q/edit" target="_blank" rel="noopener">Resources spreadsheet<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Career &amp; research</p>
+        <ul class="quick-links-list">
+          <li><a href="academics.html#faculty-resources">Faculty career &amp; research resources</a></li>
+          <li><a href="https://applymd.utoronto.ca/career-planning" target="_blank" rel="noopener">Career Planning<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://meded.temertymedicine.utoronto.ca/undergraduate-medicine-career-services" target="_blank" rel="noopener">Career Services — Temerty<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://meded.temertymedicine.utoronto.ca/career-resources" target="_blank" rel="noopener">Career Resources + Summer Research<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1bVo5vL6Z1DSqXf9c-aM86qAitxmrFMCF9ExkUXKwkQU/edit" target="_blank" rel="noopener">Summer Research Opportunities tracker<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/research-opportunities" target="_blank" rel="noopener">Research Opportunities (Faculty)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Additional Educational Opportunities<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://ipecurriculum.utoronto.ca/" target="_blank" rel="noopener">IPE Curriculum<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Faculty platforms &amp; program info</p>
+        <ul class="quick-links-list">
+          <li><a href="handbook.html#getting-set-up">Getting set up — JOINid, UTORid, TCard</a></li>
+          <li><a href="handbook.html#vocabulary">Curriculum vocabulary glossary</a></li>
+          <li><a href="handbook.html#program-structure">Program structure</a></li>
+          <li><a href="handbook.html#academies">The four academies</a></li>
+          <li><a href="handbook.html#academy-transfers">Academy transfers</a></li>
+          <li><a href="handbook.html#platforms">Faculty platforms</a></li>
+          <li><a href="handbook.html#omsa-oma">OMSA &amp; OMA</a></li>
+          <li><a href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener">Official TCard / UTORid walkthrough<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/" target="_blank" rel="noopener">MD Program Home<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/academic-calendar" target="_blank" rel="noopener">Academic Calendar<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">OASES (course platform)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://medit.med.utoronto.ca/learner-chart" target="_blank" rel="noopener">Learner Chart<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://ei.examsoft.com/GKWeb/login/utorontomed" target="_blank" rel="noopener">ExamSoft (UofT Med)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://meded.temertymedicine.utoronto.ca/transfers" target="_blank" rel="noopener">Transfer process &amp; eligibility<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://md.calendar.utoronto.ca/academies-and-training-sites" target="_blank" rel="noopener">Calendar — academies &amp; training sites<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://temertymedicine.utoronto.ca" target="_blank" rel="noopener">Temerty Faculty of Medicine<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">Wellness &amp; support</p>
+        <ul class="quick-links-list">
+          <li><a href="handbook.html#wellness">Wellness section in handbook</a></li>
+          <li><a href="handbook.html#prayer-spaces">Prayer &amp; quiet spaces on campus</a></li>
+          <li><a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs (OLA)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://meded.temertymedicine.utoronto.ca/personal-supports" target="_blank" rel="noopener">Personal Supports Directory<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studentlife.utoronto.ca/department/health-wellness" target="_blank" rel="noopener">UofT Health &amp; Wellness<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://studentlife.utoronto.ca/service/myssp" target="_blank" rel="noopener">My SSP — 24/7 student support<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html" target="_blank" rel="noopener">Canada-wide mental health resources<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">UofT Land Acknowledgement<span class="ql-ext">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="quick-links-group">
+        <p class="quick-links-eyebrow">About &amp; feedback</p>
+        <ul class="quick-links-list">
+          <li><a href="about.html">About this guide</a></li>
+          <li><a href="about.html#changelog">Recent updates (changelog)</a></li>
+          <li><a href="feedback.html">Feedback form</a></li>
+          <li><a href="feedback.html#form-content-correction">Submit a content correction</a></li>
+          <li><a href="feedback.html#form-housing-review">Submit a housing review</a></li>
+          <li><a href="feedback.html#form-community-content">Submit community content</a></li>
+          <li><a href="feedback.html#form-general-feedback">Submit general feedback</a></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
-
-<!-- ============ THE MAP ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">The Interactive Map</span>
-      </div>
-      <h2>Buildings near MSB.</h2>
-      <p>Click any pin (or any item in the list) to see details, rent, commute, and reviews. The gold pin is MSB — your reference point. UofT residences (Graduate House, Knox, Massey) are pinned alongside private rentals.</p>
-    </div>
-
-    <div class="map-toggles">
-      <span class="map-toggles-label">Show on map</span>
-      <button class="map-toggle is-active" data-cat="housing" type="button"><span class="map-toggle-dot housing"></span>Housing</button>
-      <button class="map-toggle" data-cat="campus" type="button"><span class="map-toggle-dot campus"></span>Study Spaces</button>
-      <button class="map-toggle" data-cat="hospitals" type="button"><span class="map-toggle-dot hospitals"></span>Hospitals</button>
-      <button class="map-toggle" data-cat="amenities" type="button"><span class="map-toggle-dot amenities"></span>Amenities</button>
-      <button class="map-toggle" data-cat="grocery" type="button"><span class="map-toggle-dot grocery"></span>Groceries</button>
-    </div>
-    <div class="map-toggles map-toggles-neighborhood">
-      <span class="map-toggles-label">Filter by neighborhood</span>
-      <button class="map-toggle map-toggle-nbhd is-active" data-nbhd="all" type="button">All</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Harbord Village &amp; The Annex" type="button">Harbord &amp; Annex</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="St. George Campus" type="button">St. George</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Kensington &amp; Chinatown" type="button">Kensington</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Yorkville" type="button">Yorkville</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Bay St Corridor" type="button">Bay St Corridor</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Yonge Corridor" type="button">Yonge Corridor</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Little Italy &amp; Trinity" type="button">Little Italy</button>
-      <button class="map-toggle map-toggle-nbhd" data-nbhd="Mississauga (MAM)" type="button">Mississauga (MAM)</button>
-    </div>
-    <div class="map-layout">
-      <!-- Left rail: building list -->
-      <div class="building-list">
-        <div class="building-list-header">8 Buildings</div>
-        <div id="building-list-items"></div>
-      </div>
-
-      <!-- Right: map + selected building -->
-      <div>
-        <div id="housing-map"></div>
-        <div id="building-detail" class="empty">
-          Select a building from the list or click a pin on the map.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Neighborhood overview ============ -->
-<section class="section section-soft">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">By Neighborhood</span>
-      </div>
-      <h2>Five areas, ranked by commute.</h2>
-      <p>The map shows individual buildings; this section gives the big picture by neighborhood.</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--hairline);">
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 5–15 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Harbord Village & The Annex</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">The classic med student choice. Walk to MSB in under 15 minutes.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,650–1,950<br/><strong>1-bed</strong> $2,100–2,650<br/><strong>2-bed</strong> $2,900–3,800</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">First-years who want zero commute and the social density of living among other students.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 8–12 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">St. George Campus</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">Buildings on University Ave and McCaul, west of the cohort hub but with the shortest walk to MSB through Queen's Park. Mix of newer condos and converted lofts near OCAD.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,950–2,300<br/><strong>1-bed</strong> $2,400–3,100<br/><strong>2-bed</strong> $3,200–4,300</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">Students who want a short MSB walk on the west side of campus, with subway access via St. Patrick or Queen's Park.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 15–20 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Kensington & Chinatown</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">Lower rent, incredible food, more character. 15-min walk to MSB.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,500–1,800<br/><strong>1-bed</strong> $1,900–2,400<br/><strong>2-bed</strong> $2,600–3,400</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">Students saving $400+/month vs the Annex who don't mind a 15-minute walk.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 12–18 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Yorkville</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">High-end retail district north of Bloor — pricier rents, established condo stock, walking distance to Bay subway and Whole Foods.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $2,100–2,500<br/><strong>1-bed</strong> $2,700–3,400<br/><strong>2-bed</strong> $3,600–5,000</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">Students who want amenity-heavy, newer construction and don't mind paying for the postcode.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 8–15 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Bay St Corridor</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">Bay Street between College and Bloor — high-rise condos, straight walk down Bay to MSB. Heavy med/law student footprint.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $2,000–2,400<br/><strong>1-bed</strong> $2,500–3,200<br/><strong>2-bed</strong> $3,400–4,500</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">The shortest walk to MSB outside of UofT residences — and a strong cohort presence.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 8–15 min</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Yonge Corridor</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">The streets between Bay and Yonge — Carlton, Grenville, Grosvenor, Wellesley, Wood, Elm, Victoria. Mix of older walk-ups, newer condos, and student-friendly mid-rises. Eaton Centre and the Yonge subway line are right there.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,800–2,200<br/><strong>1-bed</strong> $2,300–2,900<br/><strong>2-bed</strong> $3,000–4,000</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">A solid middle ground — close to MSB, more variety than Bay St, slightly cheaper than Yorkville, and right on the subway line.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">Walking · 25–30 min · or transit</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Little Italy & Trinity-Bellwoods</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">Slightly further out for meaningful savings. Best for upper-years who know the city.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,400–1,700<br/><strong>1-bed</strong> $1,800–2,300<br/><strong>2-bed</strong> $2,500–3,200</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">Upper-years comfortable with a commute, biking, and prioritizing nightlife.</p>
-        </div>
-      </div>
-
-      <div style="padding: 32px 0; display: grid; grid-template-columns: 1fr; gap: 16px;" class="hood-row">
-        <div>
-          <div class="neighborhood-pill">MAM students only</div>
-          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 24px; color: var(--uoft-navy); line-height: 1.2;">Mississauga (MAM)</h3>
-          <p style="font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.55;">Different city, different math. For students placed at the Mississauga Academy of Medicine.</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent range (CAD/mo)</p>
-          <p style="font-size: 14px; color: var(--ink); line-height: 1.7;"><strong>Bachelor</strong> $1,400–1,700<br/><strong>1-bed</strong> $1,700–2,200<br/><strong>2-bed</strong> $2,200–2,900</p>
-        </div>
-        <div>
-          <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Best for</p>
-          <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.55;">MAM-placed students. Confirm placement before signing anything downtown.</p>
-        </div>
-      </div>
-
-    </div>
-    <style>@media (min-width: 768px) { .hood-row { grid-template-columns: 5fr 4fr 4fr !important; gap: 32px !important; } }</style>
-  </div>
-</section>
-
-<!-- ============ Commuter testimonials ============ -->
-<section class="section section-soft">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Commuter Voices</span>
-      </div>
-      <h2>Not everyone moves downtown.</h2>
-      <p>Living downtown isn't the only path. Plenty of MD students commute from home, the suburbs, or further — for financial, family, or personal reasons. A few representative stories.</p>
-    </div>
-
-    <div class="testimonial-grid">
-      <article class="testimonial-card">
-        <div class="testimonial-eyebrow">Living with parents · Markham</div>
-        <p>"I save roughly $2,400/month staying home. The GO train + subway is about 65 minutes door-to-MSB, which I use to read or pre-CBL. The trade-off is a quieter social life mid-week — I make it up on weekends. For me, graduating with $80K less debt is worth it."</p>
-        <div class="testimonial-meta">— 2T7 student</div>
-      </article>
-      <article class="testimonial-card">
-        <div class="testimonial-eyebrow">GO commute · Oakville</div>
-        <p>"Lakeshore West to Union, then subway. About 70 minutes. I split a 2-bedroom near campus with two classmates as a study/crash space — costs me ~$400/month and I sleep there 1–2 nights a week before early mornings or post-call. Best of both worlds for my family situation."</p>
-        <div class="testimonial-meta">— 2T6 student</div>
-      </article>
-      <article class="testimonial-card">
-        <div class="testimonial-eyebrow">Driving in · Ajax</div>
-        <p>"I drive about 50 minutes off-peak to a Bloor-Yonge area lot ($16/day in advance). Living at home is non-negotiable for me — I'm helping with my mom's care. Clerkship's harder to commute through, but pre-clerkship is very doable if you're flexible about parking."</p>
-        <div class="testimonial-meta">— 2T7 student</div>
-      </article>
-      <article class="testimonial-card">
-        <div class="testimonial-eyebrow">Mississauga → MAM</div>
-        <p>"I grew up in Mississauga and got placed at MAM, so I never had to move. My commute to UTM is 15 minutes by car. The downside is I drive into St. George maybe once a week for cohort-wide things and that part is genuinely a slog."</p>
-        <div class="testimonial-meta">— 2T6 student</div>
-      </article>
-    </div>
-    <p class="testimonial-note">Have a commuter story to share? <a href="feedback.html">Submit it through Feedback</a> and we'll add it here.</p>
-  </div>
-</section>
-
-<!-- ============ Where to search ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Where to Search</span>
-      </div>
-      <h2>The listing sites that actually work in Toronto.</h2>
-      <p>Toronto's rental market moves fast. These are the platforms upper-year students actually use, ranked by signal quality.</p>
-    </div>
-
-    <a class="roommate-finder" href="https://docs.google.com/spreadsheets/d/1bL-3Fm9UtOUQtX77br0Bw6VBWw3eaFckHUrJLXYNJlU/edit?gid=2128080834#gid=2128080834" target="_blank" rel="noopener">
-      <div class="roommate-finder-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="9" cy="8" r="3"/>
-          <circle cx="17" cy="9" r="2.5"/>
-          <path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/>
-          <path d="M14.5 18c.3-2 2.3-3.5 4.5-3.5S22.7 16 23 18"/>
-        </svg>
-      </div>
-      <div class="roommate-finder-text">
-        <p class="roommate-finder-eyebrow">Looking for a roommate?</p>
-        <h3 class="roommate-finder-title">3T0 Roommate Finder spreadsheet</h3>
-        <p class="roommate-finder-desc">A class-wide Google Sheet where students post what they're looking for — neighborhood preferences, budget, lifestyle, and contact info. The fastest way to find a med-school roommate before you start your housing search. Add yourself or browse what's already there.</p>
-      </div>
-      <div class="roommate-finder-arrow" aria-hidden="true">↗</div>
-    </a>
-
-    <div class="search-sites-grid">
-      <a class="search-site" href="https://www.facebook.com/groups/" target="_blank" rel="noopener">
-        <div class="search-site-rank">01</div>
-        <div>
-          <h4 class="search-site-name">Facebook Marketplace + UofT housing groups</h4>
-          <p class="search-site-note">Where most off-market deals from upper-years happen. Search "UofT housing", "UofT MD housing", and graduate housing groups. Listings hit here before PadMapper. Always tour in person.</p>
-        </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
-      <a class="search-site" href="https://www.padmapper.com/apartments/toronto-on" target="_blank" rel="noopener">
-        <div class="search-site-rank">02</div>
-        <div>
-          <h4 class="search-site-name">PadMapper</h4>
-          <p class="search-site-note">Cleanest map-based search for downtown Toronto. Filter by exact rent and bed count. Listings refresh daily. Set up email alerts for your shortlist neighborhoods.</p>
-        </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
-      <a class="search-site" href="https://condos.ca/toronto/condos-for-rent" target="_blank" rel="noopener">
-        <div class="search-site-rank">03</div>
-        <div>
-          <h4 class="search-site-name">Condos.ca</h4>
-          <p class="search-site-note">Best for newer condo stock — Yorkville, Bay Corridor, King West. Shows building details and historical rent ranges. Strong signal that the listing is from a licensed realtor.</p>
-        </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
-      <a class="search-site" href="https://www.realtor.ca/" target="_blank" rel="noopener">
-        <div class="search-site-rank">04</div>
-        <div>
-          <h4 class="search-site-name">Realtor.ca</h4>
-          <p class="search-site-note">MLS-listed rentals — always come through a licensed realtor, lower scam risk. Slightly slower to update than Condos.ca but covers houses and walk-ups, not just condos.</p>
-        </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
-      <a class="search-site" href="https://www.kijiji.ca/b-apartments-condos/toronto/c37l1700273" target="_blank" rel="noopener">
-        <div class="search-site-rank">05</div>
-        <div>
-          <h4 class="search-site-name">Kijiji</h4>
-          <p class="search-site-note">Higher noise, but Annex/Kensington walk-ups often appear here first. Be skeptical — Kijiji has the highest scam rate. Never wire money before touring and signing.</p>
-        </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Housing law + tenant insurance ============ -->
-<section class="section section-soft">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Tenant Rights &amp; Insurance</span>
-      </div>
-      <h2>What Ontario law actually protects.</h2>
-      <p>Toronto rentals are governed by Ontario's <em>Residential Tenancies Act</em>. Knowing the basics protects you from landlords who count on tenants not knowing the rules.</p>
-    </div>
-
-    <div class="law-grid">
-      <div class="law-card">
-        <h3>Rent increases are capped</h3>
-        <p>For most units (built before Nov 15, 2018), Ontario sets an annual rent-increase guideline — usually ~2.5% or less. A landlord can raise rent only once every 12 months, and must give 90 days' written notice using Form N1.</p>
-        <p class="law-card-flag">Newer units (built or first occupied after Nov 15, 2018) are exempt from the guideline — landlords can raise rent by any amount on lease renewal. Confirm building age before signing.</p>
-      </div>
-      <div class="law-card">
-        <h3>"Last month's rent" is the legal maximum</h3>
-        <p>A landlord can ask for first and last month's rent — that's it. They cannot demand a separate damage deposit, key deposit beyond replacement cost, or any other upfront fee. The last month's rent earns interest at the same rate as the rent-increase guideline.</p>
-        <p class="law-card-flag">Anyone asking for "first, last, and damage deposit" is breaking the law. Walk away.</p>
-      </div>
-      <div class="law-card">
-        <h3>You cannot be evicted without cause</h3>
-        <p>Ontario landlords must serve a formal notice (N4 for non-payment, N12 for own-use, etc.) and apply to the Landlord and Tenant Board (LTB) — they can't change locks, shut off utilities, or pressure you to leave. If a landlord tries any of that, contact the LTB immediately.</p>
-        <p class="law-card-flag">N12 ("landlord's own use") evictions require one month's compensation. Bad-faith N12s are common — document everything.</p>
-      </div>
-      <div class="law-card">
-        <h3>Roommates and "rooming house" units</h3>
-        <p>If your name is on the lease, you're a tenant with full RTA protections. If you're subletting from another tenant, your protections come from <em>them</em>, not the landlord — get a written subletting agreement. Rooming houses (shared kitchens/bathrooms) have looser rules.</p>
-        <p class="law-card-flag">Avoid handshake sublets. Get the lease assignment in writing before paying anything.</p>
-      </div>
-    </div>
-
-    <div class="law-resources">
-      <a class="resource-link-mini" href="https://tribunalsontario.ca/ltb/" target="_blank" rel="noopener">Landlord and Tenant Board <span class="footer-ext">↗</span></a>
-      <a class="resource-link-mini" href="https://stepstojustice.ca/legal-topic/housing-law/" target="_blank" rel="noopener">Steps to Justice — Housing Law <span class="footer-ext">↗</span></a>
-      <a class="resource-link-mini" href="https://www.ontario.ca/laws/statute/06r17" target="_blank" rel="noopener">Residential Tenancies Act, 2006 <span class="footer-ext">↗</span></a>
-    </div>
-
-    <div class="callout-soft" style="margin-top: 32px;">
-      <strong>Tenant insurance — get it.</strong> Around $20–25/month covers your belongings, personal liability (e.g. you flood the unit below), and temporary housing if your place becomes uninhabitable. Many landlords now require it; even when they don't, a single kitchen fire pays for itself for life. Major options: Square One, APOLLO, BCAA, and your existing auto insurer if you have one. The OMA student membership also includes some coverage worth checking against any standalone policy.
-    </div>
-  </div>
-</section>
-
-<!-- ============ Warnings ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Before You Sign</span>
-      </div>
-      <h2>Things students wish they'd known.</h2>
-    </div>
-
-    <dl class="data-list">
-      <div>
-        <dt>Toronto's lease cycle is brutal in summer.</dt>
-        <dd>Most quality units list in May–June for a Sept 1 start and are gone within a week. If you wait until July, you'll choose from leftovers. Set up daily PadMapper and Facebook group alerts the day you accept your offer.</dd>
-      </div>
-      <div>
-        <dt>Don't pay rent in cash to a stranger you met online.</dt>
-        <dd>Toronto rental scams target students. Always tour in person, verify the landlord owns the unit (check MPAC), and never pay anything before signing a lease. If a deal feels rushed, it's a scam.</dd>
-      </div>
-      <div>
-        <dt>All-inclusive rent is rarely a deal.</dt>
-        <dd>"Utilities included" usually means the landlord has built a margin into the price. For a single occupant, hydro and internet typically run $80–120/month combined — much less than the markup on inclusive listings.</dd>
-      </div>
-      <div>
-        <dt>Tenant insurance is worth it.</dt>
-        <dd>Around $20/month covers your contents, liability, and temporary housing if your unit becomes uninhabitable. Many landlords now require it. Don't skip.</dd>
-      </div>
-      <div>
-        <dt>Realtors will ask you to do illegal things. Know what's legal before you decide.</dt>
-        <dd>Toronto's rental market is competitive enough that two specific tactics — <strong>offering several months of rent up front</strong> and <strong>bidding above the listed rent</strong> — have become normalized in how listings are won, even though both violate Ontario's Residential Tenancies Act (RTA). Landlords can only legally collect first and last month's rent. Post-listing rent escalation is prohibited. <strong>This is the gap between what the law says and what the market does.</strong> Plenty of medical students, professionals, and longtime Torontonians have done one or both to land a unit, and you'll hear it framed by realtors as standard practice ("everyone's doing it," "the landlord prefers it," "if you don't, someone else will"). It often is — the enforcement against landlords or agents who solicit these tactics is weak, and tenants who participate are functionally complicit. <strong>What this means for you:</strong> the trade-off is real and it's yours to make. Going along with it gets you the unit faster in a tight market. Refusing to participate may cost you a few listings but gives you stronger legal footing if anything goes wrong later — for example, you can recover any rent paid above what's enforceable. Walk in eyes-open, and if you do choose to play along, document everything in writing.</dd>
-      </div>
-    </dl>
-  </div>
-</section>
-
-<!-- ============ Map JS ============ -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script>
-  // Fallback CDN if unpkg is blocked
-  if (typeof L === 'undefined') {
-    document.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"><\/script>');
-  }
-</script>
-<script>
-  // If Leaflet still failed to load, show a graceful fallback and stop here
-  if (typeof L === 'undefined') {
-    var mapEl = document.getElementById('housing-map');
-    if (mapEl) {
-      mapEl.innerHTML = '<div style="padding: 32px; text-align: center; color: #6E7480; font-size: 14px;">The interactive map couldn\'t load (it may be blocked by an extension or network filter). The building list below still works — scroll down to browse.</div>';
-      mapEl.style.height = 'auto';
-      mapEl.style.minHeight = '0';
-      mapEl.style.background = '#F4F4F2';
-    }
-    // Also hide the map toggles since they won't do anything without the map
-    document.querySelectorAll('.map-toggles').forEach(function(el) { el.style.display = 'none'; });
-    // Render a static building list as a graceful degradation
-    // The buildings array is defined in the next script block, so we wait for that
-  }
-</script>
-<script>
-(function() {
-  // Building data — keep in sync with src/data/housing.ts
-  const MSB = { lat: 43.6606, lng: -79.3941, name: "Medical Sciences Building" };
-
-  const buildings = [
-    {
-      id: "campus-one",
-      name: "Campus One",
-      address: "253 College St",
-      coords: [43.6585, -79.4014],
-      type: "Private rental",
-      walk: 8,
-      bike: 4,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { studio: "$1,950–2,200", oneBed: "$2,400–2,800" },
-      features: ["Purpose-built student", "All-inclusive", "Fitness centre", "Furnished available"],
-      desc: "Purpose-built student housing on College Street, owned by Knightstone. Lease cycles align with the academic year. Popular with first-year MD students for the proximity and built-in community.",
-      notes: "Pricey for what you get, but the convenience is real. Has a study lounge, gym, and rooftop patio.",
-      amenities: ["In-building gym + study lounge", "Rooftop patio", "24/7 front desk"],
-      grocery: ["Sobeys (10 min walk, College & Spadina)", "T&T Supermarket (15 min, Cherry St beats this)", "Farm Boy at Bay & College"],
-      activities: ["Hart House gym (5 min)", "Robarts Library", "Kensington Market (12 min)"],
-      health: ["MSB Student Health (8 min)", "Walk-in at Bay/College", "Shoppers at Bay & College"],
-      reviews: [
-        { author: "2T7 student", cohort: "2T7", rating: 4, body: "Loved being a 5-minute walk from MSB. Worth the price for first year — you can roll out of bed for 8am. Building is well-managed but the gym is small.", date: "Sep 2024" },
-      ],
-    },
-    {
-      id: "graduate-house",
-      name: "Graduate House",
-      address: "60 Harbord St",
-      coords: [43.6620, -79.4014],
-      type: "UofT residence",
-      walk: 6,
-      bike: 3,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { studio: "$1,400–1,700", oneBed: "$1,900–2,200" },
-      features: ["UofT-owned", "Self-contained units", "Quiet study env", "Open to MD students"],
-      desc: "UofT-managed residence at the corner of Harbord and Spadina. Primarily for graduate students but professional students including MD are eligible. Most units are self-contained studios or one-bedrooms with private kitchen and bathroom — unusual for a residence and a major draw vs. shared traditional residences.",
-      notes: "Hard to get into — apply the moment you accept your offer. Strong study culture, less social than Campus One.",
-      amenities: ["Self-contained units (private kitchen + bath)", "On-site laundry", "Bike storage", "Common lounges"],
-      grocery: ["Loblaws (Maple Leaf Gardens, 18 min)", "Whole Foods (Yorkville, 15 min)", "Harbord St specialty shops"],
-      activities: ["Hart House (4 min)", "Robarts (3 min)", "Trinity Bellwoods (15 min)"],
-      health: ["MSB Student Health (6 min)", "Bay/College walk-in", "Health Sciences Pharmacy"],
-      reviews: [
-        { author: "2T6 student", cohort: "2T6", rating: 5, body: "Got a spot here in second year and it's been great. Quiet, surrounded by other grad/professional students who actually study. Better value than Campus One.", date: "Aug 2024" },
-      ],
-    },
-    {
-      id: "massey-college",
-      name: "Massey College",
-      address: "4 Devonshire Place",
-      coords: [43.6669, -79.3995],
-      type: "UofT residence",
-      walk: 5,
-      bike: 2,
-      neighborhood: "St. George Campus",
-      rent: { studio: "Variable — fellowship-based" },
-      features: ["UofT-affiliated college", "Junior Fellow program", "Distinct community culture", "Highly competitive"],
-      desc: "A graduate residential college within UofT, just north of MSB. Massey admits 'Junior Fellows' through a separate, application-based process — academic record, contribution to community, and fit. Strong intellectual culture: weekly High Table dinners, lectures, mentorship from Senior Fellows. Not a typical residence — closer to a small graduate college experience attached to your medical school.",
-      notes: "Application is competitive and on a different timeline than UofT housing. Worth investigating early if you value community/intellectual life over independence. Costs vary depending on fellowship status.",
-      amenities: ["Dining hall + common rooms", "Library", "Chapel + quiet spaces", "Dedicated study spaces"],
-      grocery: ["Bay & Bloor area", "Yorkville Whole Foods (10 min)"],
-      activities: ["Hart House (3 min)", "ROM (5 min)", "Yorkville (10 min)"],
-      health: ["MSB Student Health (5 min)", "Bay/College walk-in"],
-      reviews: [],
-    },
-    {
-      id: "knox-college",
-      name: "Knox College Residence",
-      address: "59 St. George St",
-      coords: [43.6638, -79.3963],
-      type: "UofT residence",
-      walk: 4,
-      bike: 2,
-      neighborhood: "St. George Campus",
-      rent: { studio: "Contact Knox for current rates" },
-      features: ["UofT-affiliated", "Open to grad / professional students", "Closest to MSB"],
-      desc: "Knox College, on St. George Street, offers residence accommodation to graduate and professional students — including MD. Closer to MSB than Graduate House, traditional college-style architecture, with single rooms and shared common areas. Application is through Knox directly, not central UofT housing.",
-      notes: "Less self-contained than Graduate House (rooms typically share washrooms or have shared kitchens depending on placement). Closer commute and often easier to get into.",
-      amenities: ["Common dining options", "Library + study lounges", "Chapel"],
-      grocery: ["Bay & Bloor area", "Loblaws (15 min)"],
-      activities: ["Hart House (2 min)", "Queen's Park (4 min)", "ROM (5 min)"],
-      health: ["MSB Student Health (4 min)"],
-      reviews: [],
-    },
-    {
-      id: "annex-walkups",
-      name: "Annex Victorian walk-ups",
-      address: "Various — Madison, Brunswick, Howland",
-      coords: [43.6685, -79.4045],
-      type: "Shared house",
-      walk: 12,
-      bike: 5,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { oneBed: "$1,800–2,300", twoBed: "$2,800–3,500" },
-      features: ["Older buildings", "Often shared", "Character"],
-      desc: "Three- and four-bedroom shared Victorian houses scattered throughout the Annex. Common find via Facebook groups or Kijiji.",
-      notes: "Great for splitting rent with roommates. Quality varies wildly by landlord — tour in person.",
-      amenities: ["Backyards (sometimes)", "Old appliances — verify before signing", "Street parking permits"],
-      grocery: ["Loblaws Bathurst & Bloor", "Hot Bread Kitchen + Annex bakeries", "Rabba 24/7"],
-      activities: ["Bata Shoe Museum + ROM", "Bloor cinemas", "Christie Pits"],
-      health: ["Bathurst/Bloor walk-in", "Shoppers at Bloor & Spadina", "Christie subway pharmacy"],
-      reviews: [
-        { author: "2T7 student", cohort: "2T7", rating: 4, body: "Three-bedroom house split with two classmates. $2,000 each, including utilities. Old appliances but the space is amazing. Backyard is a win in summer.", date: "Sep 2024" },
-      ],
-    },
-    {
-      id: "kensington-walkups",
-      name: "Kensington walk-ups",
-      address: "Augusta, Baldwin, Bellevue",
-      coords: [43.6543, -79.4007],
-      type: "Private rental",
-      walk: 16,
-      bike: 7,
-      neighborhood: "Kensington & Chinatown",
-      rent: { bachelor: "$1,500–1,800", oneBed: "$1,900–2,400" },
-      features: ["Older buildings", "Rich food scene", "Variable landlord quality"],
-      desc: "Privately-owned walk-ups throughout Kensington. Listings often appear in Facebook groups before hitting PadMapper.",
-      notes: "Tour in person — listings online don't reflect quality. Use FB groups for leads.",
-      amenities: ["Walk to everything", "No in-unit laundry typical", "Older windows = noise"],
-      grocery: ["Kensington Market produce stands", "Sanko Asian (Spadina)", "Loblaws (Bay & College, 14 min)"],
-      activities: ["AGO (10 min)", "Queen West shopping", "Trinity Bellwoods (12 min)"],
-      health: ["Bay/College walk-in (15 min)", "Multiple Spadina pharmacies", "Mount Sinai ER (20 min walk)"],
-      reviews: [],
-    },
-    /* ─────── Yorkville ─────── */
-    {
-      id: "one-bedford",
-      name: "One Bedford at Bloor",
-      address: "1 Bedford Rd",
-      coords: [43.6705, -79.3968],
-      type: "Condo",
-      walk: 12,
-      bike: 5,
-      neighborhood: "Yorkville",
-      rent: { studio: "$2,100–2,400", oneBed: "$2,600–3,200" },
-      features: ["Steps from St. George subway", "In-unit laundry", "Newer condo stock"],
-      desc: "Newer Lanterra condo at Bedford & Bloor, directly across from St. George subway.",
-      notes: null,
-      amenities: ["Concierge", "Gym + party room"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Pusateri's (8 min)", "Rabba 24/7"],
-      activities: ["Yorkville", "ROM (5 min)", "Bay subway corridor"],
-      health: ["Yorkville Health Centre", "Multiple Bay St pharmacies"],
-      reviews: [],
-    },
-
-    /* ─────── Bay St Corridor ─────── */
-    {
-      id: "horizon-on-bay",
-      name: "Horizon on Bay",
-      address: "633 Bay St",
-      coords: [43.6552, -79.3838],
-      type: "Condo",
-      walk: 5,
-      bike: 2,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
-      features: ["Closest to MSB", "Atrium / Eaton Centre side", "Older but central"],
-      desc: "South end of the Bay corridor near Dundas. The shortest walk to MSB on this list. Older building but the location is unbeatable for med students.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Pool"],
-      grocery: ["Atrium Loblaws (4 min)", "Eaton Centre (5 min)"],
-      activities: ["Dundas subway (3 min)", "Eaton Centre"],
-      health: ["MSB Student Health (5 min)", "Walk-ins on Dundas"],
-      reviews: [],
-    },
-    {
-      id: "the-liberties",
-      name: "The Liberties",
-      address: "711 / 717 Bay St · 44 Gerrard St W",
-      coords: [43.6573, -79.3848],
-      type: "Condo",
-      walk: 7,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,300–4,100" },
-      features: ["Three-tower complex", "Direct walk to MSB", "Heavy med/law presence"],
-      desc: "Three-tower complex straddling Bay & Gerrard. Very popular with UofT grad and professional students. Easy walk north to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym + indoor pool", "Party room"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (5 min)", "Eaton Centre (8 min)"],
-      health: ["MSB Student Health (7 min)", "Walk-ins on Bay"],
-      reviews: [],
-    },
-    {
-      id: "chelsea-green",
-      name: "Chelsea Green",
-      address: "33 Gerrard St W",
-      coords: [43.6573, -79.3855],
-      type: "Condo",
-      walk: 7,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,300–2,800", twoBed: "$3,100–3,900" },
-      features: ["Bay & Gerrard", "Newer build", "Step to MSB"],
-      desc: "Newer condo at Bay & Gerrard, kitty-corner to The Liberties. Same advantage — direct walk north on Bay to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Rooftop terrace"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (4 min)", "Eaton Centre (8 min)"],
-      health: ["MSB Student Health (6 min)", "Walk-ins on Bay"],
-      reviews: [],
-    },
-    {
-      id: "the-livmore",
-      name: "The Livmore",
-      address: "55 Gerrard St W",
-      coords: [43.6575, -79.3848],
-      type: "Rental",
-      walk: 7,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,100–2,450", oneBed: "$2,650–3,200", twoBed: "$3,600–4,500" },
-      features: ["Newer purpose-built rental", "Premium amenities", "Direct MSB walk"],
-      desc: "Newer purpose-built rental at Bay & Gerrard — no condo board, professional management. One of the more amenity-heavy buildings on the corridor (rooftop pool, co-working space). Premium pricing reflects the build quality.",
-      notes: "Purpose-built rentals like this don't have the unit-quality variance you get with investor-owned condos.",
-      amenities: ["Concierge", "Rooftop pool", "Gym + sauna", "Co-working lounge"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (5 min)", "Eaton Centre (8 min)"],
-      health: ["MSB Student Health (7 min)", "Walk-ins on Bay"],
-      reviews: [],
-    },
-
-    {
-      id: "conservatory",
-      name: "Conservatory",
-      address: "736 Bay St",
-      coords: [43.6582, -79.3849],
-      type: "Condo",
-      walk: 6,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
-      features: ["Bay & Gerrard area", "Older mid-rise", "Direct MSB walk"],
-      desc: "Older but well-maintained condo on Bay just north of Gerrard. One of the longer-tenured cohort buildings on the corridor.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (5 min)", "Eaton Centre (10 min)"],
-      health: ["MSB Student Health (5 min)"],
-      reviews: [],
-    },
-    {
-      id: "college-park-towers",
-      name: "College Park North &amp; South Towers",
-      address: "761–763 Bay St",
-      coords: [43.6605, -79.3839],
-      type: "Condo",
-      walk: 7,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–3,000", twoBed: "$3,300–4,100" },
-      features: ["Above College subway", "College Park retail concourse", "Massive complex"],
-      desc: "Two towers (North and South) above College subway and the College Park retail mall (Metro grocery, food court, GoodLife). One of the most convenient buildings on the corridor — subway, groceries, gym, all in the building.",
-      notes: null,
-      amenities: ["Concierge", "Pool + gym", "Retail concourse"],
-      grocery: ["Metro in building", "Rabba on Bay"],
-      activities: ["College subway (1 min)", "Eaton Centre (8 min walk)"],
-      health: ["Walk-in at College & Bay", "MSB Student Health (7 min)"],
-      reviews: [],
-    },
-    {
-      id: "lumiere",
-      name: "Lumiere",
-      address: "770 Bay St",
-      coords: [43.6610, -79.3842],
-      type: "Condo",
-      walk: 7,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Bay & College", "Newer build", "College subway"],
-      desc: "Newer Menkes condo at Bay & College, directly across from College Park. Modern finishes; popular with cohort members who want newer construction.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Indoor pool"],
-      grocery: ["Metro at College Park (1 min)", "Rabba on Bay"],
-      activities: ["College subway (1 min)", "Queen's Park (5 min)"],
-      health: ["MSB Student Health (7 min)", "Walk-in at College & Bay"],
-      reviews: [],
-    },
-    {
-      id: "royalton",
-      name: "The Royalton",
-      address: "801 Bay St",
-      coords: [43.6614, -79.3855],
-      type: "Condo",
-      walk: 8,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,950", twoBed: "$3,200–4,000" },
-      features: ["Bay & College", "Established condo", "Heavy student presence"],
-      desc: "Established condo at Bay & College, just north of College subway. Long history of housing UofT students.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool"],
-      grocery: ["Metro at College Park (2 min)", "Rabba on Bay"],
-      activities: ["College subway (2 min)", "Queen's Park (5 min)"],
-      health: ["MSB Student Health (8 min)"],
-      reviews: [],
-    },
-    {
-      id: "burano",
-      name: "Burano on Bay",
-      address: "832 Bay St",
-      coords: [43.6622, -79.3863],
-      type: "Condo",
-      walk: 6,
-      bike: 3,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,500–4,400" },
-      features: ["Steps to MSB", "Newer build", "Above grocery"],
-      desc: "Newer Lanterra condo at Bay & College. College subway literally outside the door; Rabba in the building.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Party room"],
-      grocery: ["Rabba (in building)", "Metro at College Park (2 min)"],
-      activities: ["College subway (1 min)", "Queen's Park (4 min)"],
-      health: ["Walk-in at Bay & College", "MSB Student Health (5 min)"],
-      reviews: [],
-    },
-    {
-      id: "opera-place",
-      name: "Opera Place",
-      address: "889 Bay St",
-      coords: [43.6633, -79.3863],
-      type: "Condo",
-      walk: 8,
-      bike: 4,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
-      features: ["Older mid-rise", "Bay near Wellesley", "Subway nearby"],
-      desc: "Older condo on Bay between College and Wellesley. Mature building with established maintenance — good track record with med students.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Rabba on Bay", "Metro at College Park (3 min)"],
-      activities: ["Wellesley subway (3 min)", "Queen's Park (5 min)"],
-      health: ["Multiple Bay St walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "allegro",
-      name: "Allegro",
-      address: "909 Bay St",
-      coords: [43.6638, -79.3864],
-      type: "Condo",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–3,000", twoBed: "$3,300–4,200" },
-      features: ["Bay near Wellesley", "Mid-tier finishes", "Subway 3 min"],
-      desc: "Mid-rise condo on Bay between College and Wellesley. Smaller building, quieter than the bigger towers.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Rabba on Bay", "Metro at College Park (4 min)"],
-      activities: ["Wellesley subway (3 min)", "Queen's Park (6 min)"],
-      health: ["Multiple Bay St walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "britt",
-      name: "The Britt",
-      address: "955 Bay St",
-      coords: [43.6650, -79.3870],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,200", twoBed: "$3,500–4,500" },
-      features: ["Newer build", "Bay & St Joseph", "Heritage façade"],
-      desc: "Newer condo on Bay between Wellesley and St Joseph, with heritage façade preserved on the lower floors.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Party room"],
-      grocery: ["Rabba on Bay", "Whole Foods Yorkville (8 min)"],
-      activities: ["Wellesley subway (3 min)", "Yorkville (8 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "1000-bay",
-      name: "1 Thousand Bay",
-      address: "1000 Bay St",
-      coords: [43.6671, -79.3873],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,200", twoBed: "$3,400–4,400" },
-      features: ["Bay & St Joseph", "Building gym", "Cohort hub"],
-      desc: "Established mid-rise condo on Bay between Wellesley and St Joseph. One of the most popular cohort buildings — direct walk south to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Indoor pool"],
-      grocery: ["Rabba on Bay", "Whole Foods Yorkville (7 min)"],
-      activities: ["Wellesley subway (4 min)", "Queen's Park (8 min)"],
-      health: ["MSB Student Health (10 min)", "Bay St medical clinics"],
-      reviews: [],
-    },
-    {
-      id: "polo-club",
-      name: "Polo Club I",
-      address: "1055 Bay St",
-      coords: [43.6680, -79.3872],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Bay near Bloor", "Yorkville-adjacent", "Older mid-rise"],
-      desc: "Older but well-tended condo near the north end of the Bay corridor. Yorkville is a 5-minute walk; Wellesley subway is also right there.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Pool"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Yorkville (5 min)", "Wellesley subway (4 min)"],
-      health: ["Yorkville Health Centre"],
-      reviews: [],
-    },
-    {
-      id: "u-condos",
-      name: "U Condos",
-      address: "1080 Bay St",
-      coords: [43.6691, -79.3865],
-      type: "Condo",
-      walk: 12,
-      bike: 5,
-      neighborhood: "Bay St Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,100" },
-      features: ["Walk to campus", "Walk to Yorkville", "Popular with med + law"],
-      desc: "Two-tower condo at Bay & Bloor area, popular with UofT graduate and professional students.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool", "Co-working lounge"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bloor-Yonge subway (3 min)", "Yorkville", "Wellesley Park"],
-      health: ["Bloor-Yonge medical centre", "Shoppers Bay & Bloor"],
-      reviews: [],
-    },
-
-    /* ─────── Yonge Corridor — Carlton / Grenville / Grosvenor / St Joseph / St Nicholas / Wellesley / Wood / Elm / Dundonald / Edward / Gerrard / Yonge / Church ─────── */
-    {
-      id: "77-carlton",
-      name: "77 Carlton",
-      address: "77 Carlton St",
-      coords: [43.6620, -79.3805],
-      type: "Apartment",
-      walk: 13,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,750–2,000", oneBed: "$2,200–2,700", twoBed: "$2,900–3,600" },
-      features: ["Older rental mid-rise", "Steps from College subway", "Heat often included"],
-      desc: "Older rental building on Carlton between Yonge and Church. College subway is a few minutes west.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Loblaws Maple Leaf Gardens (3 min)", "Rabba on Yonge"],
-      activities: ["Allan Gardens (5 min)", "College subway"],
-      health: ["Walk-in at College & Yonge"],
-      reviews: [],
-    },
-    {
-      id: "365-church",
-      name: "365 Church",
-      address: "365 Church St",
-      coords: [43.6620, -79.3786],
-      type: "Condo",
-      walk: 14,
-      bike: 6,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,200–2,700", twoBed: "$3,000–3,800" },
-      features: ["Newer build", "Carlton & Church", "Cheaper than Bay corridor"],
-      desc: "Newer condo at Church & Carlton, east of Yonge. More affordable than Bay-side equivalents; College subway is a longer walk.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Loblaws Maple Leaf Gardens (3 min)", "Rabba on Yonge"],
-      activities: ["Allan Gardens (3 min)", "Church-Wellesley Village"],
-      health: ["Walk-ins on Carlton"],
-      reviews: [],
-    },
-    {
-      id: "karma-yc",
-      name: "Karma / YC Condos",
-      address: "7–21 Grenville St",
-      coords: [43.6635, -79.3845],
-      type: "Condo",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,500–3,000", twoBed: "$3,400–4,200" },
-      features: ["Newer build", "Direct MSB walk", "Wellesley subway"],
-      desc: "Pair of newer Lanterra/Cresford towers at Grenville & Bay, just north of College subway. Heavy student footprint.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool", "Party room"],
-      grocery: ["Rabba on Bay", "Metro at College Park (3 min)"],
-      activities: ["Wellesley subway (3 min)", "Queen's Park (5 min)"],
-      health: ["MSB Student Health (8 min)", "Walk-ins on Bay"],
-      reviews: [],
-    },
-    {
-      id: "15-grenville",
-      name: "15 Grenville",
-      address: "15 Grenville St",
-      coords: [43.6635, -79.3849],
-      type: "Apartment",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,200–2,700", twoBed: "$2,900–3,700" },
-      features: ["Older rental", "Quiet block", "Subway 3 min"],
-      desc: "Older rental mid-rise on the quieter section of Grenville. More affordable than the newer Karma/YC towers next door.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Bay", "Metro at College Park (4 min)"],
-      activities: ["Wellesley subway (3 min)", "Queen's Park (6 min)"],
-      health: ["Multiple Bay St walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "25-grenville",
-      name: "25 Grenville",
-      address: "25 Grenville St",
-      coords: [43.6636, -79.3851],
-      type: "Apartment",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,700" },
-      features: ["Older rental mid-rise", "Quiet block", "Heat included common"],
-      desc: "Older rental building between Bay and Yonge on Grenville. Heat often included; a budget-friendly central option.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Bay", "Metro at College Park (4 min)"],
-      activities: ["Wellesley subway (3 min)"],
-      health: ["Multiple Bay St walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "murano",
-      name: "Murano",
-      address: "38 Grenville St / 877 Bay St",
-      coords: [43.6638, -79.3856],
-      type: "Condo",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Twin-tower Lanterra build", "Direct walk to MSB", "Subway 2 min"],
-      desc: "Twin-tower Lanterra development at Grenville & Bay. One of the most popular cohort buildings on the corridor — direct walk south to MSB and Wellesley subway is right there.",
-      notes: null,
-      amenities: ["Concierge", "Gym + indoor pool", "Party room"],
-      grocery: ["Rabba on Bay", "Metro at College Park (5 min)"],
-      activities: ["Wellesley subway (2 min)", "Queen's Park (5 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "1-grosvenor",
-      name: "1 Grosvenor",
-      address: "1 Grosvenor St",
-      coords: [43.6643, -79.3863],
-      type: "Apartment",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,800" },
-      features: ["Quiet residential block", "Subway 2 min", "Mature building"],
-      desc: "Older mid-rise rental at Grosvenor & Bay. Quiet street; easy walk to MSB.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Bay", "Whole Foods Yorkville (10 min)"],
-      activities: ["Wellesley subway (2 min)", "Queen's Park (6 min)"],
-      health: ["Multiple Bay St walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "7-grosvenor",
-      name: "Immix",
-      address: "7 Grosvenor St",
-      coords: [43.6644, -79.3861],
-      type: "Condo",
-      walk: 9,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–3,000", twoBed: "$3,300–4,200" },
-      features: ["Mid-rise condo", "Quiet block", "Subway 2 min"],
-      desc: "Mid-rise condo on Grosvenor between Bay and Yonge. Quieter than the bigger Bay corridor towers; direct walk to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Rabba on Bay", "Whole Foods Yorkville (10 min)"],
-      activities: ["Wellesley subway (2 min)", "Queen's Park (6 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "21-grosvenor",
-      name: "Gallery (21 Grosvenor)",
-      address: "21 Grosvenor St",
-      coords: [43.6645, -79.3858],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–3,000", twoBed: "$3,300–4,200" },
-      features: ["Mid-rise condo", "Quiet street", "Wellesley subway"],
-      desc: "Mid-rise condo on Grosvenor between Bay and Yonge. Newer than the older walk-ups; quieter than the Bay tower stock.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Rabba on Bay", "Loblaws Maple Leaf Gardens (8 min)"],
-      activities: ["Wellesley subway (2 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "37-grosvenor",
-      name: "37 Grosvenor",
-      address: "37 Grosvenor St",
-      coords: [43.6647, -79.3854],
-      type: "Apartment",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,750–2,050", oneBed: "$2,200–2,700", twoBed: "$2,900–3,700" },
-      features: ["Older rental", "Heat often included", "Quiet block"],
-      desc: "Older rental on Grosvenor near Yonge. Heat often included; affordable alternative to the Bay condos.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Yonge", "Loblaws Maple Leaf Gardens (8 min)"],
-      activities: ["Wellesley subway (2 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "5-st-joseph",
-      name: "Five Condos",
-      address: "5 St Joseph St",
-      coords: [43.6679, -79.3855],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Newer build", "Heritage façade", "Bay subway"],
-      desc: "Newer MOD Developments condo at St Joseph between Bay and Yonge — heritage façade preserved on the lower floors.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Rooftop terrace"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bay subway (1 min)", "Yorkville (5 min)"],
-      health: ["Multiple Yorkville clinics"],
-      reviews: [],
-    },
-    {
-      id: "11-st-joseph",
-      name: "Eleven Residences",
-      address: "11 St Joseph St",
-      coords: [43.6680, -79.3852],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Newer build", "Bay subway nearby", "Yorkville-adjacent"],
-      desc: "Newer condo on St Joseph just east of Bay. Walking distance to both Yorkville and the Bay corridor.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bay subway (1 min)", "Yorkville"],
-      health: ["Multiple Yorkville clinics"],
-      reviews: [],
-    },
-    {
-      id: "44-st-joseph",
-      name: "Polo Club II",
-      address: "44 St Joseph St",
-      coords: [43.6683, -79.3860],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,500–3,000", twoBed: "$3,300–4,200" },
-      features: ["Companion to Polo Club I", "Quiet street", "Yorkville-adjacent"],
-      desc: "Sister building to Polo Club on Bay, on St Joseph between Bay and Yonge.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bay subway (3 min)", "Yorkville (5 min)"],
-      health: ["Yorkville Health Centre"],
-      reviews: [],
-    },
-    {
-      id: "57-st-joseph",
-      name: "57 St Joseph",
-      address: "57 St Joseph St",
-      coords: [43.6686, -79.3855],
-      type: "Apartment",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,700" },
-      features: ["Older rental", "Quiet street", "Bay subway 3 min"],
-      desc: "Older rental on St Joseph. Affordable for the area; heat often included.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Yonge"],
-      activities: ["Bay subway (3 min)"],
-      health: ["Walk-ins on Yonge"],
-      reviews: [],
-    },
-    {
-      id: "75-st-nicholas",
-      name: "Nicholas Residences",
-      address: "75 St Nicholas St",
-      coords: [43.6677, -79.3858],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,500–3,000", twoBed: "$3,300–4,200" },
-      features: ["Newer build", "Quiet side street", "Bay subway 3 min"],
-      desc: "Newer condo on the quiet residential block of St Nicholas, just east of Bay between Wellesley and Charles.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bay subway (3 min)", "Yorkville (5 min)"],
-      health: ["Multiple Yorkville clinics"],
-      reviews: [],
-    },
-    {
-      id: "65-st-mary",
-      name: "65 St Mary",
-      address: "65 St Mary St",
-      coords: [43.6688, -79.3853],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,500–3,050", twoBed: "$3,400–4,300" },
-      features: ["Quiet residential block", "Bay subway 3 min", "Yorkville-adjacent"],
-      desc: "Mid-rise condo on St Mary just east of Bay, between Wellesley and Charles. Quiet street; walking distance to both Yorkville and the Bay corridor.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
-      activities: ["Bay subway (3 min)", "Yorkville (5 min)"],
-      health: ["Multiple Yorkville clinics"],
-      reviews: [],
-    },
-    {
-      id: "77-charles-w",
-      name: "77 Charles West",
-      address: "77 Charles St W",
-      coords: [43.6692, -79.3873],
-      type: "Condo",
-      walk: 12,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,150", twoBed: "$3,400–4,400" },
-      features: ["Newer build", "Steps from Bay subway", "Yorkville-adjacent"],
-      desc: "Newer condo at Charles & Bay, directly south of Bay subway. Walking distance to Yorkville and the U of T graduate buildings on Charles.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool", "Rooftop"],
-      grocery: ["Whole Foods Yorkville (4 min)", "Rabba on Bay"],
-      activities: ["Bay subway (1 min)", "Yorkville (3 min)"],
-      health: ["Yorkville Health Centre", "Multiple specialists in Yorkville"],
-      reviews: [],
-    },
-    {
-      id: "8-wellesley-w",
-      name: "8 Wellesley West",
-      address: "8 Wellesley St W",
-      coords: [43.6655, -79.3855],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,200" },
-      features: ["Newer build", "Wellesley subway", "Premium finishes"],
-      desc: "Newer Centrecourt condo at Yonge & Wellesley, directly above the Wellesley subway station.",
-      notes: null,
-      amenities: ["Concierge", "Gym + sauna", "Rooftop"],
-      grocery: ["Rabba on Yonge", "Loblaws Maple Leaf Gardens (5 min)"],
-      activities: ["Wellesley subway (1 min)", "Yorkville (5 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "11-wellesley-w",
-      name: "11 Wellesley West",
-      address: "11 Wellesley St W",
-      coords: [43.6654, -79.3858],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Newer build", "Wellesley subway", "Yorkville-adjacent"],
-      desc: "Newer Lanterra condo at Yonge & Wellesley, kitty-corner to 8 Wellesley. Direct subway access.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool"],
-      grocery: ["Rabba on Yonge", "Loblaws Maple Leaf Gardens (5 min)"],
-      activities: ["Wellesley subway (1 min)", "Yorkville (5 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "62-wellesley-w",
-      name: "62 Wellesley West",
-      address: "62 Wellesley St W",
-      coords: [43.6656, -79.3868],
-      type: "Apartment",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,700" },
-      features: ["Older rental", "Wellesley & Bay area", "Subway 2 min"],
-      desc: "Older rental mid-rise on Wellesley between Bay and St Vincent. More affordable; heat often included.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Bay", "Whole Foods Yorkville (8 min)"],
-      activities: ["Wellesley subway (2 min)", "Yorkville (8 min)"],
-      health: ["Walk-ins on Yonge & Wellesley"],
-      reviews: [],
-    },
-    {
-      id: "85-wood",
-      name: "Axis Condos (85 Wood)",
-      address: "85 Wood St",
-      coords: [43.6630, -79.3833],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
-      features: ["Newer build", "Wood & Yonge", "College subway 3 min"],
-      desc: "Newer Greenpark condo at Wood & Yonge, between College and Wellesley subways. Streetcar and subway both close.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Outdoor terrace"],
-      grocery: ["Loblaws Maple Leaf Gardens (3 min)", "Rabba on Yonge"],
-      activities: ["College subway (3 min)", "Wellesley subway (3 min)"],
-      health: ["Walk-in at College & Yonge"],
-      reviews: [],
-    },
-    {
-      id: "159-dundonald",
-      name: "159 Dundonald",
-      address: "159 Dundonald St",
-      coords: [43.6657, -79.3825],
-      type: "Apartment",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,750–2,000", oneBed: "$2,200–2,700", twoBed: "$2,900–3,600" },
-      features: ["Older rental", "Quiet east-side block", "Wellesley subway 3 min"],
-      desc: "Older rental on Dundonald just east of Yonge — quiet residential street near Wellesley subway. Heat often included.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Rabba on Yonge", "Loblaws Maple Leaf Gardens (5 min)"],
-      activities: ["Wellesley subway (3 min)", "Church-Wellesley Village"],
-      health: ["Multiple Yonge walk-ins"],
-      reviews: [],
-    },
-    {
-      id: "38-elm",
-      name: "38 Elm",
-      address: "38 Elm St",
-      coords: [43.6612, -79.3839],
-      type: "Apartment",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,750–2,000", oneBed: "$2,200–2,700", twoBed: "$2,900–3,600" },
-      features: ["Older rental", "Heart of downtown", "College subway 4 min"],
-      desc: "Older rental on Elm between Yonge and Bay. Older finishes but great central location.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Loblaws Maple Leaf Gardens (4 min)", "Rabba on Yonge"],
-      activities: ["College subway (4 min)", "Eaton Centre (8 min)"],
-      health: ["Walk-in at College & Yonge"],
-      reviews: [],
-    },
-    {
-      id: "200-elm",
-      name: "Elm Place (200 Elm)",
-      address: "200 Elm St",
-      coords: [43.6611, -79.3849],
-      type: "Apartment",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,700" },
-      features: ["Mid-rise rental", "Mature building", "Walk to MSB"],
-      desc: "Mid-rise rental on Elm closer to Bay. Established cohort presence — many med students over the years.",
-      notes: null,
-      amenities: ["Concierge", "Laundry on-site"],
-      grocery: ["Loblaws Maple Leaf Gardens (5 min)", "Rabba on Bay"],
-      activities: ["College subway (5 min)", "Queen's Park (7 min)"],
-      health: ["MSB Student Health (10 min)"],
-      reviews: [],
-    },
-    {
-      id: "20-edward",
-      name: "Panda Condos",
-      address: "20 Edward St",
-      coords: [43.6566, -79.3825],
-      type: "Condo",
-      walk: 13,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
-      features: ["Newer build", "Eaton Centre area", "Dundas subway"],
-      desc: "Newer Lifetime condo at Yonge & Edward, behind the Eaton Centre. Dundas subway is a 2-minute walk.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Rooftop"],
-      grocery: ["Eaton Centre Loblaws (3 min)", "Rabba on Yonge"],
-      activities: ["Dundas subway (2 min)", "Eaton Centre"],
-      health: ["TMU Health Centre", "Multiple Shoppers"],
-      reviews: [],
-    },
-    {
-      id: "100-edward",
-      name: "100 Edward",
-      address: "100 Edward St",
-      coords: [43.6571, -79.3836],
-      type: "Condo",
-      walk: 13,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
-      features: ["Newer build", "Eaton Centre adjacent", "Dundas subway"],
-      desc: "Newer condo on Edward closer to Bay. Same Eaton Centre / Dundas subway proximity as Panda.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Eaton Centre Loblaws (3 min)", "Rabba on Bay"],
-      activities: ["Dundas subway (3 min)", "Eaton Centre"],
-      health: ["TMU Health Centre"],
-      reviews: [],
-    },
-    {
-      id: "44-gerrard",
-      name: "44 Gerrard West",
-      address: "44 Gerrard St W",
-      coords: [43.6573, -79.3847],
-      type: "Apartment",
-      walk: 8,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,300–2,800", twoBed: "$3,000–3,800" },
-      features: ["Part of Liberties complex", "Direct MSB walk", "Established"],
-      desc: "Tower attached to The Liberties complex — same direct walk to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (5 min)", "Eaton Centre (8 min)"],
-      health: ["MSB Student Health (8 min)"],
-      reviews: [],
-    },
-    {
-      id: "33-gerrard",
-      name: "33 Gerrard West (Bond)",
-      address: "33 Gerrard St W",
-      coords: [43.6573, -79.3855],
-      type: "Condo",
-      walk: 8,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,900–2,200", oneBed: "$2,300–2,850", twoBed: "$3,100–3,900" },
-      features: ["Newer build", "Bay & Gerrard", "Direct walk to MSB"],
-      desc: "Newer condo at Bay & Gerrard. Same advantages as Chelsea Green and the Liberties complex.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Rooftop"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
-      activities: ["Queen's Park (5 min)", "Eaton Centre (8 min)"],
-      health: ["MSB Student Health (7 min)"],
-      reviews: [],
-    },
-    {
-      id: "aura",
-      name: "Aura at College Park",
-      address: "386–388 Yonge St",
-      coords: [43.6605, -79.3829],
-      type: "Condo",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,900–2,300", oneBed: "$2,400–3,000", twoBed: "$3,200–4,200" },
-      features: ["Tallest residential in Toronto", "Above College subway", "Retail in building"],
-      desc: "Massive Canderel tower at Yonge & College — sits directly above College subway, with the College Park retail concourse below. Walking distance west to MSB. High investor-owner ratio means lots of rental stock.",
-      notes: "Building has had elevator and maintenance complaints historically — read recent reviews before signing.",
-      amenities: ["Concierge", "Massive gym + pool", "Retail in building"],
-      grocery: ["Metro at College Park (in building)", "Rabba on Yonge"],
-      activities: ["College subway (1 min)", "Eaton Centre (8 min walk)"],
-      health: ["Walk-in at College & Yonge", "Shoppers in building"],
-      reviews: [],
-    },
-    {
-      id: "501-yonge",
-      name: "501 Yonge",
-      address: "501 Yonge St",
-      coords: [43.6648, -79.3833],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Yonge Corridor",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
-      features: ["Newer build", "Yonge & Wellesley", "Direct subway access"],
-      desc: "Newer condo on Yonge near Wellesley. Subway right outside; Church-Wellesley Village a block east.",
-      notes: null,
-      amenities: ["Concierge", "Gym", "Rooftop"],
-      grocery: ["Rabba on Yonge", "Loblaws Maple Leaf Gardens (5 min)"],
-      activities: ["Wellesley subway (1 min)", "Church-Wellesley Village"],
-      health: ["Multiple Yonge walk-ins"],
-      reviews: [],
-    },
-
-    /* ─────── St. George Campus — west of campus / McCaul / University ─────── */
-    {
-      id: "426-university",
-      name: "Residences at RCMI",
-      address: "426 University Ave",
-      coords: [43.6557, -79.3879],
-      type: "Condo",
-      walk: 8,
-      bike: 3,
-      neighborhood: "St. George Campus",
-      rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
-      features: ["Heritage tower", "On University Ave", "Direct MSB walk"],
-      desc: "Heritage redevelopment on University Ave — Royal Canadian Military Institute façade preserved. Direct walk north to MSB.",
-      notes: null,
-      amenities: ["Concierge", "Gym"],
-      grocery: ["Rabba on Bay", "Atrium Loblaws (8 min)"],
-      activities: ["Queen's Park (5 min)", "St. Patrick subway (3 min)"],
-      health: ["MSB Student Health (8 min)"],
-      reviews: [],
-    },
-    {
-      id: "481-university",
-      name: "United BLDG",
-      address: "481 University Ave",
-      coords: [43.6566, -79.3882],
-      type: "Condo",
-      walk: 8,
-      bike: 3,
-      neighborhood: "St. George Campus",
-      rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,200", twoBed: "$3,400–4,400" },
-      features: ["Newer build", "Heritage façade", "On University Ave"],
-      desc: "Newer Davpart condo with the United Building heritage façade preserved. Direct walk to MSB and Queen's Park.",
-      notes: null,
-      amenities: ["Concierge", "Gym + pool", "Co-working lounge"],
-      grocery: ["Atrium Loblaws (5 min)", "Rabba on Bay"],
-      activities: ["Queen's Park (5 min)", "St. Patrick subway (3 min)"],
-      health: ["MSB Student Health (8 min)"],
-      reviews: [],
-    },
-    {
-      id: "195-mccaul",
-      name: "Bread Company Lofts",
-      address: "195 McCaul St",
-      coords: [43.6575, -79.3915],
-      type: "Loft",
-      walk: 10,
-      bike: 4,
-      neighborhood: "St. George Campus",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
-      features: ["Hard loft conversion", "Brick + beam", "OCAD adjacent"],
-      desc: "Hard loft conversion of an old bakery on McCaul. Limited stock, character finishes; popular with creative-leaning students.",
-      notes: null,
-      amenities: ["Older infrastructure", "Some units have original beams"],
-      grocery: ["Atrium Loblaws (8 min)"],
-      activities: ["AGO (3 min)", "OCAD", "Queen West"],
-      health: ["Walk-ins on Queen West"],
-      reviews: [],
-    },
-    {
-      id: "193-mccaul",
-      name: "Bread Factory Lofts",
-      address: "193 McCaul St",
-      coords: [43.6574, -79.3915],
-      type: "Loft",
-      walk: 10,
-      bike: 4,
-      neighborhood: "St. George Campus",
-      rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
-      features: ["Sister loft conversion", "Brick + beam", "OCAD adjacent"],
-      desc: "Sister conversion to Bread Company Lofts at 195. Same character; same neighbourhood.",
-      notes: null,
-      amenities: ["Older infrastructure"],
-      grocery: ["Atrium Loblaws (8 min)"],
-      activities: ["AGO (3 min)", "OCAD"],
-      health: ["Walk-ins on Queen West"],
-      reviews: [],
-    },
-
-    /* ─────── Harbord Village & Annex / Kensington edge ─────── */
-    {
-      id: "720-spadina",
-      name: "UofT Co-ops (720 Spadina)",
-      address: "720 Spadina Ave",
-      coords: [43.6651, -79.4030],
-      type: "Co-op",
-      walk: 10,
-      bike: 4,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { bachelor: "$1,200–1,500", oneBed: "$1,500–1,800", twoBed: "$2,000–2,500" },
-      features: ["Co-op governance", "Below-market rent", "Long waitlist"],
-      desc: "UofT-affiliated student housing co-op. Significantly below market rent, but limited stock and a real waitlist. Apply early — and as a member, you participate in building governance.",
-      notes: "Apply through Campus Co-op Residence directly. Waitlists are long; start before May.",
-      amenities: ["Shared kitchens / lounges", "Bike storage"],
-      grocery: ["Sobeys Spadina (3 min)", "Kensington Market (8 min)"],
-      activities: ["Robarts (3 min)", "Hart House (5 min)"],
-      health: ["UofT Health & Wellness (8 min)"],
-      reviews: [],
-    },
-    {
-      id: "456-college",
-      name: "Channel Club",
-      address: "456 College St",
-      coords: [43.6570, -79.4051],
-      type: "Apartment",
-      walk: 13,
-      bike: 5,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { bachelor: "$1,800–2,100", oneBed: "$2,200–2,700", twoBed: "$3,000–3,700" },
-      features: ["College & Bathurst", "Streetcar to MSB", "Heart of Little Italy edge"],
-      desc: "Mid-rise rental at College & Bathurst — at the edge of Little Italy and Kensington. College streetcar direct to MSB.",
-      notes: null,
-      amenities: ["Laundry on-site"],
-      grocery: ["Sobeys (10 min)", "Kensington Market (8 min)"],
-      activities: ["Kensington (8 min)", "Trinity Bellwoods (12 min)"],
-      health: ["Walk-ins on College"],
-      reviews: [],
-    },
-    {
-      id: "spadina-college-cluster",
-      name: "Spadina / College condo cluster",
-      address: "Spadina Ave around College",
-      coords: [43.6584, -79.4000],
-      type: "Condo",
-      walk: 11,
-      bike: 5,
-      neighborhood: "Harbord Village & The Annex",
-      rent: { bachelor: "$1,850–2,150", oneBed: "$2,300–2,800", twoBed: "$3,100–3,900" },
-      features: ["Multiple newer mid-rises", "Streetcar to MSB", "Student-heavy"],
-      desc: "Cluster of newer mid-rise condos and student-heavy buildings around Spadina and College. Direct streetcar to MSB; Kensington Market and Chinatown right there.",
-      notes: "Walk through the area before signing — quality varies block to block.",
-      amenities: ["Varies"],
-      grocery: ["Sobeys Spadina (3 min)", "Kensington Market"],
-      activities: ["Chinatown", "Kensington Market", "AGO (10 min)"],
-      health: ["Walk-ins on College", "Mount Sinai (15 min)"],
-      reviews: [],
-    },
-    {
-      id: "little-italy-walkups",
-      name: "Little Italy walk-ups",
-      address: "College, Ossington, Manning, Grace",
-      coords: [43.6537, -79.4179],
-      type: "Private rental",
-      walk: 28,
-      bike: 11,
-      neighborhood: "Little Italy & Trinity",
-      rent: { bachelor: "$1,400–1,700", oneBed: "$1,800–2,300", twoBed: "$2,500–3,200" },
-      features: ["Older Victorian conversions", "Heat often included", "Bike-friendly"],
-      desc: "Walk-ups along College and Dundas — older conversions with character. Heat is often included; check the lease.",
-      notes: null,
-      amenities: ["Backyards common", "Bike-friendly streets", "Older finishes"],
-      grocery: ["Fiesta Farms (10 min)", "Metro College & Bathurst", "Multiple Italian markets"],
-      activities: ["Trinity Bellwoods (5 min)", "Ossington nightlife", "Christie Pits"],
-      health: ["Trinity Bellwoods medical centre", "Ossington pharmacies", "Bathurst clinic"],
-      reviews: [],
-    },
-    {
-      id: "erin-mills-condos",
-      name: "Erin Mills / Square One condos",
-      address: "Mississauga (for MAM students)",
-      coords: [43.5478, -79.6635],
-      type: "Condo",
-      walk: 0,
-      bike: 12,
-      neighborhood: "Mississauga (MAM)",
-      rent: { studio: "$1,650–2,000", oneBed: "$1,900–2,300", twoBed: "$2,400–2,900" },
-      features: ["Newer construction", "Parking often included", "MiWay transit"],
-      desc: "Condo stock near Square One. Most MAM students live here. Look for buildings near MiWay 110/109 routes for direct UTM access.",
-      notes: "Parking spots are negotiable. Ask if internet is included — some buildings include it.",
-      amenities: ["Concierge", "Parking + gym standard", "Indoor pool common"],
-      grocery: ["Walmart Square One (5 min)", "Longo's Erin Mills", "Loblaws Burnhamthorpe"],
-      activities: ["Square One mall", "Celebration Square", "UTM trails (15 min)"],
-      health: ["Trillium Mississauga ER", "Erin Mills Town Centre walk-in", "Multiple Shoppers"],
-      reviews: [],
-    },
-  ];
-
-  // If Leaflet failed to load, render a static fallback building list and exit
-  if (typeof L === 'undefined') {
-    var listFallback = document.getElementById('building-list-items');
-    if (listFallback) {
-      listFallback.innerHTML = buildings.map(function(b) {
-        return '<div class="building-list-item" style="cursor: default;">' +
-               '<p class="building-list-item-name">' + b.name + '</p>' +
-               '<p class="building-list-item-meta">' + b.neighborhood + ' · ' + (b.walk > 0 ? b.walk + ' min walk' : 'MAM') + '</p>' +
-               '<p class="building-list-item-rent">' + Object.values(b.rent)[0] + '</p>' +
-               '</div>';
-      }).join('');
-    }
-    var headerFallback = document.querySelector('.building-list-header');
-    if (headerFallback) headerFallback.textContent = buildings.length + ' Buildings';
-    return;
-  }
-
-  // Initialize the map — centered roughly between MSB and the buildings
-  const map = L.map('housing-map', {
-    center: [43.665, -79.40],
-    zoom: 13,
-    scrollWheelZoom: false,
-  });
-
-  // Add a clean tile layer
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap contributors © CARTO',
-    maxZoom: 19,
-  }).addTo(map);
-
-  // Custom navy pin
-  const navyIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 14px; height: 14px; background: #001A70; border: 2.5px solid white; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.4); transform: translate(-50%, -50%);"></div>',
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
-  });
-
-  const tealIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 18px; height: 18px; background: #007FA3; border: 2.5px solid white; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,127,163,0.5); transform: translate(-50%, -50%);"></div>',
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
-  });
-
-  const msbIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 22px; height: 22px; background: #FFB81C; border: 3px solid #001A70; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.3); transform: translate(-50%, -50%);"></div>',
-    iconSize: [22, 22],
-    iconAnchor: [11, 11],
-  });
-
-  // MSB marker (gold)
-  L.marker([MSB.lat, MSB.lng], { icon: msbIcon })
-    .addTo(map)
-    .bindPopup(`<div class="popup-title">${MSB.name}</div><div class="popup-meta">Reference point</div><div class="popup-stat">All commutes are measured from here.</div>`);
-
-  // Track all markers
-  const markers = {};
-  let activeBuildingId = null;
-
-  window.selectBuilding = function(id) {
-    activeBuildingId = id;
-    const b = buildings.find(x => x.id === id);
-    if (!b) return;
-
-    // Update list active state
-    document.querySelectorAll('.building-list-item').forEach(el => el.classList.remove('active'));
-    const listEl = document.querySelector(`[data-id="${id}"]`);
-    if (listEl) listEl.classList.add('active');
-
-    // Update marker active state
-    Object.entries(markers).forEach(([mid, marker]) => {
-      marker.setIcon(mid === id ? tealIcon : navyIcon);
-    });
-
-    // Pan to building
-    map.setView(b.coords, 14, { animate: true });
-    markers[id].openPopup();
-
-    // Update detail panel
-    renderDetailPanel(b);
-  }
-
-  function renderDetailPanel(b) {
-    const detail = document.getElementById('building-detail');
-    detail.classList.remove('empty');
-
-    const rentRows = [
-      b.rent.bachelor ? `<div class="bank-card-stat"><span class="bank-card-stat-label">Bachelor</span><span class="bank-card-stat-value">${b.rent.bachelor}</span></div>` : '',
-      b.rent.studio ? `<div class="bank-card-stat"><span class="bank-card-stat-label">Studio</span><span class="bank-card-stat-value">${b.rent.studio}</span></div>` : '',
-      b.rent.oneBed ? `<div class="bank-card-stat"><span class="bank-card-stat-label">1-bed</span><span class="bank-card-stat-value">${b.rent.oneBed}</span></div>` : '',
-      b.rent.twoBed ? `<div class="bank-card-stat"><span class="bank-card-stat-label">2-bed</span><span class="bank-card-stat-value">${b.rent.twoBed}</span></div>` : '',
-    ].filter(Boolean).join('');
-
-    const reviewsHTML = b.reviews && b.reviews.length > 0
-      ? b.reviews.map(r => `
-          <div class="review">
-            <div class="review-meta">
-              <span class="review-author">${r.author}</span>
-              <span class="review-rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
-            </div>
-            <p class="review-body">${r.body}</p>
-            <p style="font-size: 11px; color: var(--ink-muted); margin-top: 6px;">${r.date}</p>
-          </div>
-        `).join('')
-      : '<p class="review-empty">No approved reviews yet. <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline;">Submit one →</a></p>';
-
-    detail.innerHTML = `
-      <div class="neighborhood-pill">${b.neighborhood}</div>
-      <h4>${b.name}</h4>
-      <p class="building-panel-address">${b.address} · ${b.type}</p>
-
-      <div class="building-stats">
-        <div>
-          <p class="building-stat-label">Walk to MSB</p>
-          <p class="building-stat-value">${b.walk > 0 ? b.walk + ' min' : 'N/A (MAM)'}</p>
-        </div>
-        <div>
-          <p class="building-stat-label">Bike to MSB</p>
-          <p class="building-stat-value">${b.bike} min</p>
-        </div>
-      </div>
-
-      <div style="margin-top: 16px;">
-        <p style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; margin-bottom: 8px;">Rent (CAD/mo)</p>
-        ${rentRows}
-      </div>
-
-      <div class="building-features">
-        ${b.features.map(f => `<span class="building-feature">${f}</span>`).join('')}
-      </div>
-
-      <p class="building-desc">${b.desc}</p>
-
-      ${b.notes ? `<p class="building-notes">${b.notes}</p>` : ''}
-
-      <div class="nearby-grid">
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Building amenities</p>
-          <ul class="nearby-list">${(b.amenities || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Groceries nearby</p>
-          <ul class="nearby-list">${(b.grocery || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Activities nearby</p>
-          <ul class="nearby-list">${(b.activities || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Health services</p>
-          <ul class="nearby-list">${(b.health || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-      </div>
-
-      <div class="reviews-section">
-        <div class="reviews-header">
-          <span class="reviews-header-title">Upper-year reviews · ${b.reviews.length}</span>
-        </div>
-        ${reviewsHTML}
-      </div>
-    `;
-  };
-
-  // Add markers
-  buildings.forEach(b => {
-    const m = L.marker(b.coords, { icon: navyIcon }).addTo(map);
-    m.bindPopup(`
-      <div class="popup-title">${b.name}</div>
-      <div class="popup-meta">${b.type} · ${b.walk > 0 ? b.walk + ' min walk' : 'MAM'}</div>
-      <div class="popup-stat">Rent from ${Object.values(b.rent)[0]}</div>
-      <span class="popup-link" onclick="selectBuilding('${b.id}')">View details →</span>
-    `);
-    m.on('click', () => selectBuilding(b.id));
-    markers[b.id] = m;
-  });
-
-  // ── Amenity / grocery overlay layers ──────────────────────────────
-  const campusSpaces = [
-    {
-      name: "MSB Student Lounge",
-      coords: [43.6606, -79.3941],
-      note: "Ruth Kurdyak Medical Alumni Lounge · Room 2171B · Fob access, any time · Med students only"
-    },
-    {
-      name: "McCaul Study Space",
-      coords: [43.6589, -79.3964],
-      note: "263 McCaul St, 5th floor · Fob access, 24/7 · Study carrels, group rooms, clinical skills rooms · Cross College St from MSB through Health Sciences Building (155 College) via 2nd floor walkway"
-    },
-    {
-      name: "Gerstein Science Library",
-      coords: [43.6640, -79.3996],
-      note: "UofT student card required · First-come seating · gerstein.library.utoronto.ca for hours"
-    },
-    {
-      name: "TDHSC (MAM)",
-      coords: [43.5489, -79.6625],
-      note: "Terrence Donnelly Health Science Complex, UTM · MAM students only · Fob access, 24/7 · Small-group and clinical skills rooms on first-come basis; additional classrooms available on request"
-    },
-  ];
-
-  const hospitals = [
-    { name: "Toronto General Hospital (TGH)", coords: [43.6596, -79.3883], note: "UHN · 200 Elizabeth St · Wightman-Berris Academy (Y1–2)" },
-    { name: "Toronto Western Hospital (TWH)", coords: [43.6536, -79.4128], note: "UHN · 399 Bathurst St · Wightman-Berris Academy (Y1–2)" },
-    { name: "Mount Sinai Hospital (MSH)", coords: [43.6579, -79.3901], note: "600 University Ave · Wightman-Berris Academy (Y1–2)" },
-    { name: "Princess Margaret Cancer Centre", coords: [43.6590, -79.3890], note: "UHN · 700 University Ave · Wightman-Berris Academy (Y3+)" },
-    { name: "Toronto Rehab (Rumsey)", coords: [43.6981, -79.3728], note: "UHN · 347 Rumsey Rd · Wightman-Berris Academy (Y3+)" },
-    { name: "West Park Healthcare Centre", coords: [43.7065, -79.5238], note: "82 Buttonwood Ave · Wightman-Berris Academy (Y3+)" },
-    { name: "St. Michael's Hospital (SMH)", coords: [43.6527, -79.3771], note: "Unity Health · 30 Bond St · FitzGerald Academy" },
-    { name: "St. Joseph's Health Centre", coords: [43.6448, -79.4523], note: "Unity Health · 30 The Queensway · FitzGerald Academy" },
-    { name: "Sunnybrook Health Sciences Centre", coords: [43.7226, -79.3756], note: "2075 Bayview Ave · Peters-Boyd Academy" },
-    { name: "Women's College Hospital (WCH)", coords: [43.6636, -79.3912], note: "76 Grenville St · Peters-Boyd Academy" },
-    { name: "North York General (NYGH)", coords: [43.7681, -79.4053], note: "4001 Leslie St · Peters-Boyd Academy" },
-    { name: "Michael Garron Hospital (MGH)", coords: [43.6939, -79.3186], note: "Toronto East Health Network · 825 Coxwell Ave · Peters-Boyd Academy" },
-    { name: "Bridgepoint Active Healthcare", coords: [43.6604, -79.3473], note: "Sinai Health · 1 Bridgepoint Dr · Wightman-Berris Academy" },
-    { name: "Humber River Hospital", coords: [43.7517, -79.5421], note: "1235 Wilson Ave · Wightman-Berris Academy" },
-    { name: "Mississauga Hospital", coords: [43.5473, -79.6582], note: "Trillium Health Partners · 100 Queensway West · MAM Academy" },
-    { name: "Credit Valley Hospital", coords: [43.5440, -79.6882], note: "Trillium Health Partners · 2200 Eglinton Ave W · MAM Academy" },
-    { name: "SickKids", coords: [43.6566, -79.3903], note: "Hospital for Sick Children · 555 University Ave · Elective / selective" },
-  ];
-
-  const amenities = [
-    { name: "Hart House Gym", coords: [43.6644, -79.3949] },
-    { name: "Robarts Library", coords: [43.6644, -79.3996] },
-    { name: "Athletic Centre", coords: [43.6604, -79.3974] },
-    { name: "Kensington Market", coords: [43.6543, -79.4007] },
-    { name: "Trinity Bellwoods", coords: [43.6471, -79.4136] },
-    { name: "ROM", coords: [43.6677, -79.3948] },
-    { name: "Christie Pits", coords: [43.6637, -79.4198] },
-  ];
-  const groceries = [
-    { name: "Sobeys (Bay & College)", coords: [43.6602, -79.3866] },
-    { name: "Loblaws (Maple Leaf Gardens)", coords: [43.6614, -79.3789] },
-    { name: "Whole Foods (Yorkville)", coords: [43.6705, -79.3924] },
-    { name: "Farm Boy (Bay & College)", coords: [43.6601, -79.3863] },
-    { name: "Loblaws (Bathurst & Bloor)", coords: [43.6649, -79.4115] },
-    { name: "Fiesta Farms", coords: [43.6646, -79.4202] },
-    { name: "Metro (College & Bathurst)", coords: [43.6573, -79.4106] },
-  ];
-
-  const campusIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 12px; height: 12px; background: #2D8653; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.35); transform: translate(-50%, -50%);"></div>',
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-  });
-  const hospitalIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 12px; height: 12px; background: #C0392B; border: 2px solid white; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.35); transform: translate(-50%, -50%);"></div>',
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-  });
-  const amenityIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 11px; height: 11px; background: #007FA3; border: 2px solid white; box-shadow: 0 1px 2px rgba(0,0,0,0.3); transform: translate(-50%, -50%) rotate(45deg);"></div>',
-    iconSize: [11, 11],
-    iconAnchor: [5.5, 5.5],
-  });
-  const groceryIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div style="width: 11px; height: 11px; background: #FFB81C; border: 2px solid #001A70; box-shadow: 0 1px 2px rgba(0,0,0,0.3); transform: translate(-50%, -50%) rotate(45deg);"></div>',
-    iconSize: [11, 11],
-    iconAnchor: [5.5, 5.5],
-  });
-
-  const campusLayer = L.layerGroup(
-    campusSpaces.map(c => L.marker(c.coords, { icon: campusIcon }).bindPopup(`<div class="popup-title">${c.name}</div><div class="popup-meta" style="font-size:12px;line-height:1.45;margin-top:6px;">${c.note}</div>`))
-  );
-  const hospitalLayer = L.layerGroup(
-    hospitals.map(h => L.marker(h.coords, { icon: hospitalIcon }).bindPopup(`<div class="popup-title">${h.name}</div><div class="popup-meta" style="font-size:12px;line-height:1.45;margin-top:6px;">${h.note}</div>`))
-  );
-  const amenityLayer = L.layerGroup(
-    amenities.map(a => L.marker(a.coords, { icon: amenityIcon }).bindPopup(`<div class="popup-title">${a.name}</div><div class="popup-meta">Amenity</div>`))
-  );
-  const groceryLayer = L.layerGroup(
-    groceries.map(g => L.marker(g.coords, { icon: groceryIcon }).bindPopup(`<div class="popup-title">${g.name}</div><div class="popup-meta">Grocery</div>`))
-  );
-
-  // ── Filter state ──────────────────────────────────────────────────
-  const filterState = {
-    housing: true,
-    campus: false,
-    hospitals: false,
-    amenities: false,
-    grocery: false,
-    neighborhood: 'all',
-  };
-
-  function applyFilters() {
-    // Determine which buildings pass the neighborhood filter
-    const visibleBuildings = buildings.filter(b =>
-      filterState.neighborhood === 'all' || b.neighborhood === filterState.neighborhood
-    );
-    const visibleIds = new Set(visibleBuildings.map(b => b.id));
-
-    // Housing markers — neighborhood-filtered
-    Object.entries(markers).forEach(([id, marker]) => {
-      const shouldShow = filterState.housing && visibleIds.has(id);
-      if (shouldShow) { marker.addTo(map); } else { map.removeLayer(marker); }
-    });
-
-    // Overlay layers — independent of neighborhood filter
-    if (filterState.campus)    { campusLayer.addTo(map);   } else { map.removeLayer(campusLayer);   }
-    if (filterState.hospitals) { hospitalLayer.addTo(map); } else { map.removeLayer(hospitalLayer); }
-    if (filterState.amenities) { amenityLayer.addTo(map);  } else { map.removeLayer(amenityLayer);  }
-    if (filterState.grocery)   { groceryLayer.addTo(map);  } else { map.removeLayer(groceryLayer);  }
-
-    // Update building list
-    const listContainer = document.getElementById('building-list-items');
-    listContainer.innerHTML = visibleBuildings.map(b => `
-      <div class="building-list-item" data-id="${b.id}" onclick="selectBuilding('${b.id}')">
-        <p class="building-list-item-name">${b.name}</p>
-        <p class="building-list-item-meta">${b.neighborhood} · ${b.walk > 0 ? b.walk + ' min walk' : 'MAM'}</p>
-        <p class="building-list-item-rent">${Object.values(b.rent)[0]}</p>
-      </div>
-    `).join('');
-
-    // Update header count
-    const header = document.querySelector('.building-list-header');
-    if (header) {
-      const count = visibleBuildings.length;
-      const label = filterState.neighborhood === 'all'
-        ? `${count} Building${count !== 1 ? 's' : ''}`
-        : `${count} in ${filterState.neighborhood}`;
-      header.textContent = label;
-    }
-  }
-
-  // Category toggles (housing / amenities / grocery)
-  document.querySelectorAll('.map-toggle[data-cat]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('is-active');
-      const cat = btn.getAttribute('data-cat');
-      filterState[cat] = btn.classList.contains('is-active');
-      applyFilters();
-    });
-  });
-
-  // Neighborhood toggles — single-select
-  document.querySelectorAll('.map-toggle-nbhd').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Set the active state — only one neighborhood at a time
-      document.querySelectorAll('.map-toggle-nbhd').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      filterState.neighborhood = btn.getAttribute('data-nbhd');
-      applyFilters();
-
-      // If a specific neighborhood is selected, fly the map to fit those pins
-      if (filterState.neighborhood !== 'all') {
-        const matching = buildings.filter(b => b.neighborhood === filterState.neighborhood);
-        if (matching.length > 0) {
-          const group = L.featureGroup(matching.map(b => L.marker(b.coords)));
-          map.flyToBounds(group.getBounds().pad(0.3), { duration: 0.6, maxZoom: 15 });
-        }
-      } else {
-        // Reset to default view
-        map.flyTo([43.6606, -79.3941], 13.5, { duration: 0.6 });
-      }
-    });
-  });
-
-  // Initial render
-  applyFilters();
-})();
-</script>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">

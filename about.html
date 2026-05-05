@@ -4742,6 +4742,25 @@
     color: var(--ink-soft);
   }
 
+  /* Variant: due-diligence advice (teal accent instead of navy) */
+  .verified-qa-badge.is-advice {
+    border-left-color: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-mark {
+    background: var(--uoft-teal);
+  }
+  .verified-qa-badge.is-advice .verified-qa-badge-eyebrow {
+    color: var(--uoft-teal);
+  }
+  .verified-qa-badge .verified-qa-badge-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
   /* ── Academy cards (Handbook) ── */
   .academy-card {
     background: white;
@@ -5818,11 +5837,12 @@
 
     // Feedback
     { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
+    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
   // Map page key → URL
   const PAGE_URLS = {
-   homepage: 'index.html',
+    homepage: 'index.html',
     'post-acceptance': 'post-acceptance.html',
     oweek: 'oweek.html',
     housing: 'housing.html',
@@ -5832,6 +5852,7 @@
     mentorship: 'mentorship.html',
     about: 'about.html',
     feedback: 'feedback.html',
+    quicklinks: 'quicklinks.html',
   };
   const PAGE_LABELS = {
     homepage: 'Home',
@@ -5844,6 +5865,7 @@
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
+    quicklinks: 'Quick Links',
   };
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -6029,6 +6051,10 @@
             <span class="nav-dropdown-label">Mentorship</span>
             <span class="nav-dropdown-desc">People you can reach out to</span>
           </a>
+          <a href="quicklinks.html" data-page="quicklinks" role="menuitem">
+            <span class="nav-dropdown-label">Quick Links</span>
+            <span class="nav-dropdown-desc">Every link on the guide, grouped</span>
+          </a>
         </div>
       </div>
       <a href="feedback.html" data-page="feedback">Feedback</a>
@@ -6178,230 +6204,6 @@
       </div>
       <button class="carousel-btn carousel-btn-next" aria-label="Next photo" data-carousel-next>›</button>
       <div class="carousel-dots" data-carousel-dots></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Quick Links ============ -->
-<section class="section section-soft" id="quick-links">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Navigate the Guide</span>
-      </div>
-      <h2>Quick links.</h2>
-      <p>Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic. Useful when you remember <em>what</em> you needed but not <em>where</em> on the site it lives.</p>
-    </div>
-
-    <div class="quick-links-intro">
-      <span class="quick-links-intro-key"><span>↗</span><span>opens an external site in a new tab</span></span>
-      <span class="quick-links-intro-key"><span>#</span><span>jumps to a section on a guide page</span></span>
-    </div>
-
-    <div class="quick-links-grid">
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Pages on this guide</p>
-        <ul class="quick-links-list">
-          <li><a href="index.html">Homepage</a></li>
-          <li><a href="post-acceptance.html">Post-Acceptance</a></li>
-          <li><a href="oweek.html">O-Week</a></li>
-          <li><a href="housing.html">Housing</a></li>
-          <li><a href="finances.html">Finances</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
-          <li><a href="mentorship.html">Mentorship</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Just accepted</p>
-        <ul class="quick-links-list">
-          <li><a href="index.html#homepage-faqs">Homepage FAQs</a></li>
-          <li><a href="index.html#waitlist-r">Waitlist &amp; refused note</a></li>
-          <li><a href="post-acceptance.html">Post-Acceptance phased timeline</a></li>
-          <li><a href="https://applymd.utoronto.ca/" target="_blank" rel="noopener">UofT MD admissions site<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/incoming-students" target="_blank" rel="noopener">Incoming Students Hub<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Accepting Your Offer<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements &amp; Requests<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/why-u-t" target="_blank" rel="noopener">Why UofT MD<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/life-toronto" target="_blank" rel="noopener">Life in Toronto · St. George<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/life-mississauga" target="_blank" rel="noopener">Life in Mississauga · MAM<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://uthrprod.service-now.com/enrolment?id=sc_cat_item&amp;sys_id=048ea6cc1b994a50590c98ec0a4bcbe5&amp;sysparm_category=0f78695ddba2a45054c02cdcd396194b" target="_blank" rel="noopener">Bank-transfer deposit notification form<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://survey.ca1.qualtrics.com/jfe/form/SV_8Dt7x3cB6vMXvtH" target="_blank" rel="noopener">Letter of Confirmation request form<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Cohort &amp; community</p>
-        <ul class="quick-links-list">
-          <li><a href="mentorship.html">Find a mentor</a></li>
-          <li><a href="handbook.html#community-groups">Community groups directory</a></li>
-          <li><a href="https://www.facebook.com/share/g/1B6gCLcQ1J/" target="_blank" rel="noopener">UofT Med 3T0 Congrats (FB)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.facebook.com/share/g/1AdyqkzNK8/" target="_blank" rel="noopener">UofT Med Opportunities Common (FB)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.facebook.com/share/g/1CgtNe9oFh/" target="_blank" rel="noopener">Opportunities (FB)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.facebook.com/share/g/18TDQksWMn/" target="_blank" rel="noopener">Med Opportunities Canada (FB)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://uoftmedsoweek.ca/the-team" target="_blank" rel="noopener">Official O-Week site &amp; team<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.youtube.com/watch?v=JsByhQnwZIg" target="_blank" rel="noopener">Class of 2T9 O-Week recap<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.youtube.com/watch?v=-dqFftJtdpg" target="_blank" rel="noopener">Class of 2T8 O-Week recap<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.youtube.com/watch?v=fAa-PzlURMY" target="_blank" rel="noopener">Faculty welcome video<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://omsa.ca" target="_blank" rel="noopener">Ontario Medical Students Association (OMSA)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.oma.org/membership/medical-students/" target="_blank" rel="noopener">Ontario Medical Association (OMA) student membership<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Money — fees, aid, OSAP</p>
-        <ul class="quick-links-list">
-          <li><a href="finances.html#costs">Year-1 fee table</a></li>
-          <li><a href="finances.html#osap">OSAP guidance</a></li>
-          <li><a href="finances.html#tuition-deferral">Tuition deferral</a></li>
-          <li><a href="finances.html#monthly-budget">Monthly budget worksheet</a></li>
-          <li><a href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">Faculty Current Fees<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/finances-awards" target="_blank" rel="noopener">Finances &amp; Awards<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">MD Program Financial Aid (Temerty Grant)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/debt-management" target="_blank" rel="noopener">Debt Management<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://emodules.med.utoronto.ca/DCemodules/FinancialResourcesExplorer1/story.html" target="_blank" rel="noopener">Financial Resources Explorer<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studentaccount.utoronto.ca/tuition-fees/payment-options/" target="_blank" rel="noopener">UofT payment options<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studentaccount.utoronto.ca/tuition-fee-deferral/" target="_blank" rel="noopener">Tuition fee deferral details<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studentaccount.utoronto.ca/important-dates/" target="_blank" rel="noopener">Important Dates &amp; Deadlines<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.ontario.ca/page/osap-ontario-student-assistance-program" target="_blank" rel="noopener">OSAP — Ontario portal<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://governingcouncil.utoronto.ca/secretariat/policies/student-financial-support-policy-april-30-1998" target="_blank" rel="noopener">UofT Student Financial Support Policy<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Money — lines of credit</p>
-        <ul class="quick-links-list">
-          <li><a href="finances.html#loc">LOC overview</a></li>
-          <li><a href="finances.html#bank-comparison">Bank comparison tables</a></li>
-          <li><a href="finances.html#bank-questions">Questions to ask the bank</a></li>
-          <li><a href="finances.html#verify">How to verify the rate at the appointment</a></li>
-          <li><a href="https://www.scotiabank.com/ca/en/healthcare-plus/physician-banking/medical-students.html" target="_blank" rel="noopener">Scotiabank — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.rbcroyalbank.com/student/medical-students.html" target="_blank" rel="noopener">RBC — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.cibc.com/en/personal-banking/borrowing/lines-of-credit/professional-edge-program.html" target="_blank" rel="noopener">CIBC Professional Edge — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.td.com/ca/en/personal-banking/products/borrowing/lines-of-credit/medical-dental-veterinary-student-line-of-credit" target="_blank" rel="noopener">TD — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.bmo.com/main/personal/loans/lines-of-credit/professional-student-line-of-credit/" target="_blank" rel="noopener">BMO — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="mailto:Lynne.Owen@scotiabank.com">Email Scotia rep (Lynne Owen)</a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Housing</p>
-        <ul class="quick-links-list">
-          <li><a href="housing.html#housing-map">Interactive neighbourhood map</a></li>
-          <li><a href="housing.html#building-list-items">Full building database</a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1bL-3Fm9UtOUQtX77br0Bw6VBWw3eaFckHUrJLXYNJlU/edit?gid=2128080834" target="_blank" rel="noopener">3T0 Roommate Finder spreadsheet<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://applymd.utoronto.ca/housing-residence" target="_blank" rel="noopener">UofT MD official housing page<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studenthousing.utoronto.ca/" target="_blank" rel="noopener">UofT Student Housing<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.knox.utoronto.ca/residence/" target="_blank" rel="noopener">Knox College Residence<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.masseycollege.ca/membership/junior-fellows/" target="_blank" rel="noopener">Massey College Junior Fellows<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.padmapper.com/apartments/toronto-on" target="_blank" rel="noopener">PadMapper<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://condos.ca/toronto/condos-for-rent" target="_blank" rel="noopener">Condos.ca<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.realtor.ca/" target="_blank" rel="noopener">Realtor.ca<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.kijiji.ca/b-apartments-condos/toronto/c37l1700273" target="_blank" rel="noopener">Kijiji apartments — Toronto<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.facebook.com/groups/" target="_blank" rel="noopener">Facebook Marketplace + UofT housing groups<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://tribunalsontario.ca/ltb/" target="_blank" rel="noopener">Landlord and Tenant Board (LTB)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://stepstojustice.ca/legal-topic/housing-law/" target="_blank" rel="noopener">Steps to Justice — Housing Law<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.ontario.ca/laws/statute/06r17" target="_blank" rel="noopener">Residential Tenancies Act, 2006<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Academics &amp; study resources</p>
-        <ul class="quick-links-list">
-          <li><a href="academics.html#study-styles">Study styles</a></li>
-          <li><a href="academics.html#weekly-schedule">A typical week</a></li>
-          <li><a href="academics.html#calendar">Year-1 calendar</a></li>
-          <li><a href="academics.html#anki">Anki guide</a></li>
-          <li><a href="academics.html#study-notes">Upper-year study notes</a></li>
-          <li><a href="academics.html#study-guides">Course guides</a></li>
-          <li><a href="academics.html#osce-resources">OSCE resources</a></li>
-          <li><a href="academics.html#shadowing">Shadowing — the 5 Ws</a></li>
-          <li><a href="academics.html#testimonials">Testimonials</a></li>
-          <li><a href="https://docs.google.com/document/d/1o5SYDGSpNdz2NhE4ExZD5m40hfWWZE0ff-8Wc7pa6DQ/edit?usp=sharing" target="_blank" rel="noopener">ICE Guide<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://sites.google.com/view/lau-ice/home" target="_blank" rel="noopener">Lau's ICE site<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://seriously-quiet-med-student.notion.site/OSCE-Prep-9a199edc2dba4252acda32812f8e7708" target="_blank" rel="noopener">OSCE Prep (Notion)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://docs.google.com/document/d/1HYCXAM1eANXvuInuyt6IPhU1AFFmX0-cP8YQrB6mz3g/edit" target="_blank" rel="noopener">Study guide (Google Doc)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1rCouV2Ic3WZZWTVJ22M9RUHOSXIXUa2l/view" target="_blank" rel="noopener">Study PDF<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1APNLUCTrNj5GQLHhiUGGDx5UoPSYaOYn" target="_blank" rel="noopener">Drive folder — study materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1vl5EFV8YGTO827YGXkNFusaV3qfSvJAy" target="_blank" rel="noopener">Drive folder — additional notes<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/14EOEb6fhpFtkJasGdKSDedGaCA3_7sVB" target="_blank" rel="noopener">Drive folder — course materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1T3V4tYF-mNL5MWayr9zKDOKMs5UK-Zgv" target="_blank" rel="noopener">Drive folder — OSCE materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1k2PeZi-Mz0DkIaporLTVFJjh7Q1s35Ti" target="_blank" rel="noopener">Drive folder — Anki decks<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1kGyIWe-k820z6W_D1nIyKw6qDCEJk-mm/view" target="_blank" rel="noopener">Anki .apkg download<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/101XiXkusHjrfg1WpJ3E2LJ0TZawPispSXbNfIT-PI6Q/edit" target="_blank" rel="noopener">Resources spreadsheet<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Career &amp; research</p>
-        <ul class="quick-links-list">
-          <li><a href="academics.html#faculty-resources">Faculty career &amp; research resources</a></li>
-          <li><a href="https://applymd.utoronto.ca/career-planning" target="_blank" rel="noopener">Career Planning<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://meded.temertymedicine.utoronto.ca/undergraduate-medicine-career-services" target="_blank" rel="noopener">Career Services — Temerty<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://meded.temertymedicine.utoronto.ca/career-resources" target="_blank" rel="noopener">Career Resources + Summer Research<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1bVo5vL6Z1DSqXf9c-aM86qAitxmrFMCF9ExkUXKwkQU/edit" target="_blank" rel="noopener">Summer Research Opportunities tracker<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/research-opportunities" target="_blank" rel="noopener">Research Opportunities (Faculty)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Additional Educational Opportunities<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://ipecurriculum.utoronto.ca/" target="_blank" rel="noopener">IPE Curriculum<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Faculty platforms &amp; program info</p>
-        <ul class="quick-links-list">
-          <li><a href="handbook.html#getting-set-up">Getting set up — JOINid, UTORid, TCard</a></li>
-          <li><a href="handbook.html#vocabulary">Curriculum vocabulary glossary</a></li>
-          <li><a href="handbook.html#program-structure">Program structure</a></li>
-          <li><a href="handbook.html#academies">The four academies</a></li>
-          <li><a href="handbook.html#academy-transfers">Academy transfers</a></li>
-          <li><a href="handbook.html#platforms">Faculty platforms</a></li>
-          <li><a href="handbook.html#omsa-oma">OMSA &amp; OMA</a></li>
-          <li><a href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener">Official TCard / UTORid walkthrough<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/" target="_blank" rel="noopener">MD Program Home<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/academic-calendar" target="_blank" rel="noopener">Academic Calendar<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">OASES (course platform)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://medit.med.utoronto.ca/learner-chart" target="_blank" rel="noopener">Learner Chart<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://ei.examsoft.com/GKWeb/login/utorontomed" target="_blank" rel="noopener">ExamSoft (UofT Med)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://meded.temertymedicine.utoronto.ca/transfers" target="_blank" rel="noopener">Transfer process &amp; eligibility<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.calendar.utoronto.ca/academies-and-training-sites" target="_blank" rel="noopener">Calendar — academies &amp; training sites<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://temertymedicine.utoronto.ca" target="_blank" rel="noopener">Temerty Faculty of Medicine<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">Wellness &amp; support</p>
-        <ul class="quick-links-list">
-          <li><a href="handbook.html#wellness">Wellness section in handbook</a></li>
-          <li><a href="handbook.html#prayer-spaces">Prayer &amp; quiet spaces on campus</a></li>
-          <li><a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs (OLA)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://meded.temertymedicine.utoronto.ca/personal-supports" target="_blank" rel="noopener">Personal Supports Directory<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studentlife.utoronto.ca/department/health-wellness" target="_blank" rel="noopener">UofT Health &amp; Wellness<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://studentlife.utoronto.ca/service/myssp" target="_blank" rel="noopener">My SSP — 24/7 student support<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html" target="_blank" rel="noopener">Canada-wide mental health resources<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">UofT Land Acknowledgement<span class="ql-ext">↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="quick-links-group">
-        <p class="quick-links-eyebrow">About &amp; feedback</p>
-        <ul class="quick-links-list">
-          <li><a href="about.html">About this guide</a></li>
-          <li><a href="about.html#changelog">Recent updates (changelog)</a></li>
-          <li><a href="feedback.html">Feedback form</a></li>
-          <li><a href="feedback.html#form-content-correction">Submit a content correction</a></li>
-          <li><a href="feedback.html#form-housing-review">Submit a housing review</a></li>
-          <li><a href="feedback.html#form-community-content">Submit community content</a></li>
-          <li><a href="feedback.html#form-general-feedback">Submit general feedback</a></li>
-        </ul>
-      </div>
-
     </div>
   </div>
 </section>
