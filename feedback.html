@@ -2350,24 +2350,30 @@
   .quick-links-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 36px 32px;
-    border-top: 1px solid var(--hairline);
-    padding-top: 40px;
+    gap: 40px 40px;
   }
   @media (min-width: 640px) {
-    .quick-links-grid { grid-template-columns: 1fr 1fr; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr; gap: 44px 40px; }
   }
   @media (min-width: 1024px) {
-    .quick-links-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr 1fr; gap: 48px 48px; }
   }
-  .quick-links-group { display: flex; flex-direction: column; gap: 14px; }
+  .quick-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-top: 2px solid var(--uoft-navy);
+    padding-top: 16px;
+  }
   .quick-links-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
+    font-size: 17px;
     font-weight: 700;
-    color: var(--uoft-teal);
-    line-height: 1;
+    letter-spacing: -0.005em;
+    color: var(--uoft-navy);
+    line-height: 1.25;
+    margin: 0;
+    text-transform: none;
   }
   .quick-links-list {
     list-style: none;
@@ -2401,30 +2407,24 @@
   .quick-links-list a:hover .ql-ext {
     color: var(--uoft-teal);
   }
-  .quick-links-intro {
-    border-top: 1px solid var(--hairline);
-    padding-top: 24px;
-    margin-bottom: 28px;
+
+  /* Inline legend on the Quick Links hero (replaces the old page-hero-meta cards) */
+  .quicklinks-key {
+    margin-top: 20px;
     font-size: 13px;
-    color: var(--ink-soft);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-  }
-  .quick-links-intro-key {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .quick-links-intro-key span:first-child {
-    font-size: 10px;
     color: var(--ink-muted);
-    letter-spacing: 0.04em;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
   }
-  /* When intro is present, drop the grid's own top border */
-  .quick-links-intro + .quick-links-grid {
-    border-top: none;
-    padding-top: 0;
+  .quicklinks-key-mark {
+    display: inline-block;
+    color: var(--uoft-teal);
+    font-weight: 700;
+  }
+  .quicklinks-key-sep {
+    color: var(--hairline);
   }
 
   /* ── Council roles (Handbook) ── */
@@ -6237,106 +6237,6 @@
     line-height: 1.55;
     color: var(--ink-soft);
   }
-
-  /* Admin preview */
-  .admin-shell {
-    background: var(--uoft-navy);
-    color: white;
-    padding: 32px;
-    margin-top: 32px;
-    position: relative;
-  }
-  @media (min-width: 768px) { .admin-shell { padding: 48px; } }
-  .admin-eyebrow {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-weight: 700;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 8px;
-  }
-  .admin-shell h3 {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 800;
-    font-size: 26px;
-    color: white;
-    margin-bottom: 24px;
-  }
-  .admin-queue-item {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 20px;
-    margin-bottom: 16px;
-  }
-  .admin-queue-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .admin-tag {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 700;
-    padding: 4px 8px;
-    background: var(--uoft-teal);
-    color: white;
-  }
-  .admin-tag.pending {
-    background: rgba(255,184,28,0.85);
-    color: #1A1A1A;
-  }
-  .admin-meta-info {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-  }
-  .admin-queue-content {
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.92);
-    margin-bottom: 16px;
-  }
-  .admin-queue-content strong {
-    color: white;
-    display: block;
-    margin-bottom: 4px;
-  }
-  .admin-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .admin-btn {
-    padding: 8px 16px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1.5px solid currentColor;
-    background: transparent;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 180ms;
-  }
-  .admin-btn-approve {
-    color: white;
-    background: var(--uoft-teal);
-    border-color: var(--uoft-teal);
-  }
-  .admin-btn-approve:hover {
-    background: white;
-    color: var(--uoft-navy);
-    border-color: white;
-  }
-  .admin-btn-reject {
-    color: rgba(255,255,255,0.85);
-  }
-  .admin-btn-reject:hover {
-    color: white;
-    background: rgba(255,255,255,0.1);
-  }
 </style>
 
 <!-- ============ Page hero ============ -->
@@ -6382,7 +6282,7 @@
           <div class="pipeline-num">1</div>
           <div>
             <p class="pipeline-title">You submit</p>
-            <p class="pipeline-desc">Fill out the form below. Your submission is saved with a "pending" status. You can include your email if you'd like a notification when it's approved.</p>
+            <p class="pipeline-desc">Fill out the form below. Submissions are sent to the maintainer for review. You can include your email if you'd like a notification when it's approved.</p>
           </div>
         </div>
         <div class="pipeline-step">
@@ -6622,77 +6522,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ============ Admin preview (visible to maintainers only in production) ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">For Maintainers</span>
-      </div>
-      <h2>The approval queue.</h2>
-      <p>This view is only visible to maintainers (password-gated in production). Each pending submission shows here with one-click approve / reject. Below is a preview of what the queue will look like with sample data.</p>
-    </div>
-
-    <div class="admin-shell">
-      <p class="admin-eyebrow">/feedback/admin · sample data</p>
-      <h3>Pending submissions · 3</h3>
-
-      <div class="admin-queue-item">
-        <div class="admin-queue-meta">
-          <span class="admin-tag pending">Housing review</span>
-          <span class="admin-meta-info">Submitted 2 days ago · 2T7 student · ★★★★☆</span>
-        </div>
-        <div class="admin-queue-content">
-          <strong>Building: Campus One</strong>
-          Lived here all of first year. Building staff are responsive. Gym is small but functional. The walk to MSB is genuinely 5 minutes — I'd time it before signing anywhere else. Downsides: thin walls and rent is non-trivial.
-        </div>
-        <div class="admin-actions">
-          <button class="admin-btn admin-btn-approve">✓ Approve</button>
-          <button class="admin-btn admin-btn-reject">Reject</button>
-          <button class="admin-btn admin-btn-reject">Edit & approve</button>
-        </div>
-      </div>
-
-      <div class="admin-queue-item">
-        <div class="admin-queue-meta">
-          <span class="admin-tag pending">Community content</span>
-          <span class="admin-meta-info">Submitted 5 days ago · MMAC co-president, 2T6</span>
-        </div>
-        <div class="admin-queue-content">
-          <strong>Group: Muslim Medical Association (MMAC)</strong>
-          MMAC organizes weekly Jummah on campus during the academic year, supports prayer space coordination at hospital sites, runs Ramadan iftars, and provides peer mentorship around being Muslim in clinical settings, including wearing hijab in the OR. New students can reach us at mmac.uoft.med@example.com or follow us on Instagram @uoftmmac for event announcements...
-        </div>
-        <div class="admin-actions">
-          <button class="admin-btn admin-btn-approve">✓ Approve</button>
-          <button class="admin-btn admin-btn-reject">Reject</button>
-          <button class="admin-btn admin-btn-reject">Edit & approve</button>
-        </div>
-      </div>
-
-      <div class="admin-queue-item">
-        <div class="admin-queue-meta">
-          <span class="admin-tag pending">Content correction</span>
-          <span class="admin-meta-info">Submitted 1 day ago · Source provided</span>
-        </div>
-        <div class="admin-queue-content">
-          <strong>Page: Finances → Toronto budget</strong>
-          The Presto monthly fare is now $174.55 for adults (effective 2026), not $156. Source: ttc.ca/fares.
-        </div>
-        <div class="admin-actions">
-          <button class="admin-btn admin-btn-approve">✓ Approve & apply</button>
-          <button class="admin-btn admin-btn-reject">Reject</button>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top: 32px; padding: 24px; border: 1px solid var(--hairline); background: var(--paper-soft); font-size: 13px; line-height: 1.6; color: var(--ink-soft);">
-      <p style="font-weight: 700; color: var(--uoft-navy); margin-bottom: 8px;">Implementation note · for the build phase</p>
-      <p>This UI is wired to a Supabase <code style="background: white; padding: 2px 6px; border: 1px solid var(--hairline); font-size: 12px;">submissions</code> table with <code style="background: white; padding: 2px 6px; border: 1px solid var(--hairline); font-size: 12px;">status: pending | approved | rejected</code>. Public pages query <code style="background: white; padding: 2px 6px; border: 1px solid var(--hairline); font-size: 12px;">WHERE status = 'approved'</code>. The admin route is gated by a maintainer login (Supabase Auth row-level policy on <code style="background: white; padding: 2px 6px; border: 1px solid var(--hairline); font-size: 12px;">role = 'maintainer'</code>). Approve/reject buttons update the row's status and trigger an optional email notification to the submitter via a Supabase edge function.</p>
-    </div>
   </div>
 </section>
 

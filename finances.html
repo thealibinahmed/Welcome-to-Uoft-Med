@@ -2350,24 +2350,30 @@
   .quick-links-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 36px 32px;
-    border-top: 1px solid var(--hairline);
-    padding-top: 40px;
+    gap: 40px 40px;
   }
   @media (min-width: 640px) {
-    .quick-links-grid { grid-template-columns: 1fr 1fr; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr; gap: 44px 40px; }
   }
   @media (min-width: 1024px) {
-    .quick-links-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr 1fr; gap: 48px 48px; }
   }
-  .quick-links-group { display: flex; flex-direction: column; gap: 14px; }
+  .quick-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-top: 2px solid var(--uoft-navy);
+    padding-top: 16px;
+  }
   .quick-links-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
+    font-size: 17px;
     font-weight: 700;
-    color: var(--uoft-teal);
-    line-height: 1;
+    letter-spacing: -0.005em;
+    color: var(--uoft-navy);
+    line-height: 1.25;
+    margin: 0;
+    text-transform: none;
   }
   .quick-links-list {
     list-style: none;
@@ -2401,30 +2407,24 @@
   .quick-links-list a:hover .ql-ext {
     color: var(--uoft-teal);
   }
-  .quick-links-intro {
-    border-top: 1px solid var(--hairline);
-    padding-top: 24px;
-    margin-bottom: 28px;
+
+  /* Inline legend on the Quick Links hero (replaces the old page-hero-meta cards) */
+  .quicklinks-key {
+    margin-top: 20px;
     font-size: 13px;
-    color: var(--ink-soft);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-  }
-  .quick-links-intro-key {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .quick-links-intro-key span:first-child {
-    font-size: 10px;
     color: var(--ink-muted);
-    letter-spacing: 0.04em;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
   }
-  /* When intro is present, drop the grid's own top border */
-  .quick-links-intro + .quick-links-grid {
-    border-top: none;
-    padding-top: 0;
+  .quicklinks-key-mark {
+    display: inline-block;
+    color: var(--uoft-teal);
+    font-weight: 700;
+  }
+  .quicklinks-key-sep {
+    color: var(--hairline);
   }
 
   /* ── Council roles (Handbook) ── */
@@ -6379,7 +6379,7 @@
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Rate</span>
-          <span class="bank-card-stat-value">P − 0.25%</span>
+          <span class="bank-card-stat-value">Prime − 0.25%</span>
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Grace</span>
