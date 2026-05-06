@@ -720,6 +720,21 @@
   @media (min-width: 768px) {
     .cohort-aspect-small { aspect-ratio: auto; height: 100%; }
   }
+  /* Full-bleed cohort photo (replaces .placeholder.hero-aspect) */
+  .image-break-photo {
+    margin: 0;
+    aspect-ratio: 21 / 9;
+    width: 100%;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .image-break-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+    display: block;
+  }
 
   /* ── CTA pair ── */
   .cta-section { padding: 80px 0; }
@@ -2900,6 +2915,138 @@
     font-size: 12px;
     color: var(--ink-muted);
     font-style: italic;
+  }
+
+  /* ── O-Week Backpack Mosaic ── */
+  .backpack-mosaic-wrap {
+    margin-top: 28px;
+  }
+  .backpack-mosaic {
+    display: grid;
+    /* Mobile: 4 cols. Tablet: 6. Desktop: 10. Large: 12. */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  @media (min-width: 480px) { .backpack-mosaic { grid-template-columns: repeat(5, 1fr); } }
+  @media (min-width: 720px) { .backpack-mosaic { grid-template-columns: repeat(8, 1fr); gap: 5px; } }
+  @media (min-width: 960px) { .backpack-mosaic { grid-template-columns: repeat(10, 1fr); } }
+  @media (min-width: 1200px) { .backpack-mosaic { grid-template-columns: repeat(12, 1fr); } }
+  .backpack-mosaic-tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--paper-soft);
+    border: none;
+    padding: 0;
+  }
+  .backpack-mosaic-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Navy duotone effect: desaturate + tint */
+    filter: grayscale(0.6) brightness(0.95);
+    transition: filter 220ms ease, opacity 220ms ease;
+  }
+  .backpack-mosaic-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 26, 112, 0.35);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+  }
+  .backpack-mosaic-tile:hover img,
+  .backpack-mosaic-tile:focus-visible img {
+    filter: grayscale(0) brightness(1);
+  }
+  .backpack-mosaic-tile:hover::after,
+  .backpack-mosaic-tile:focus-visible::after {
+    opacity: 0;
+  }
+  .backpack-mosaic-tile:focus-visible {
+    outline: 2px solid var(--uoft-teal);
+    outline-offset: 2px;
+  }
+  .backpack-mosaic-meta {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  /* Lightbox modal */
+  .bp-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .bp-lightbox.is-open { display: flex; }
+  .bp-lightbox-img {
+    max-width: 100%;
+    max-height: calc(100vh - 100px);
+    object-fit: contain;
+    display: block;
+  }
+  .bp-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.95);
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+  }
+  .bp-lightbox-close:hover { border-color: white; color: white; }
+  .bp-lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .bp-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85);
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+  }
+  .bp-lightbox-nav:hover { border-color: white; color: white; }
+  .bp-lightbox-prev { left: 20px; }
+  .bp-lightbox-next { right: 20px; }
+  @media (max-width: 600px) {
+    .bp-lightbox-nav { width: 36px; height: 36px; font-size: 18px; }
+    .bp-lightbox-prev { left: 8px; }
+    .bp-lightbox-next { right: 8px; }
   }
 
   /* ── Onboarding steps (Handbook · Getting set up) ── */
@@ -6387,6 +6534,120 @@
     <p class="oweek-schedule-source">Source: Class of 2T9 official O-Week schedule. Reproduced for reference; your cohort's schedule will be released by next year's O-Week team.</p>
   </div>
 </section>
+
+<!-- ============ Backpack Pickup Mosaic ============ -->
+<section class="section" id="backpack-mosaic" data-bp-count="170">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Backpack Day · Class of 2T9</span>
+      </div>
+      <h2>The first thing you'll hold.</h2>
+      <p>On the first morning of O-Week, every student picks up their Temerty backpack from the Medical Sciences Building. It's the first tangible thing you receive as a med student — and the first time you meet a wall of new classmates. Below: the Class of 2T9, one face at a time. Click any photo to expand.</p>
+    </div>
+
+    <div class="backpack-mosaic-wrap">
+      <div class="backpack-mosaic" data-bp-grid aria-label="Class of 2T9 backpack pickup photos. Click any photo to expand."></div>
+      <p class="backpack-mosaic-meta">170 photos from the Class of 2T9 · Backpack Pickup, August 18, 2025 · Order shuffles on each visit.</p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="bp-lightbox" data-bp-lightbox role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="bp-lightbox-close" data-bp-close aria-label="Close">×</button>
+    <button class="bp-lightbox-nav bp-lightbox-prev" data-bp-prev aria-label="Previous photo">‹</button>
+    <img class="bp-lightbox-img" data-bp-img alt="" />
+    <button class="bp-lightbox-nav bp-lightbox-next" data-bp-next aria-label="Next photo">›</button>
+    <div class="bp-lightbox-counter" data-bp-counter></div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var section = document.getElementById('backpack-mosaic');
+    if (!section) return;
+    var count = parseInt(section.dataset.bpCount, 10) || 0;
+    var grid = section.querySelector('[data-bp-grid]');
+    var lightbox = section.querySelector('[data-bp-lightbox]');
+    var lbImg = lightbox.querySelector('[data-bp-img]');
+    var lbCounter = lightbox.querySelector('[data-bp-counter]');
+    var btnClose = lightbox.querySelector('[data-bp-close]');
+    var btnPrev = lightbox.querySelector('[data-bp-prev]');
+    var btnNext = lightbox.querySelector('[data-bp-next]');
+
+    // Build a shuffled list of photo indices [1..count]
+    var indices = [];
+    for (var i = 1; i <= count; i++) indices.push(i);
+    for (var i = indices.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = indices[i]; indices[i] = indices[j]; indices[j] = tmp;
+    }
+
+    function pad(n) { return n < 10 ? '00' + n : n < 100 ? '0' + n : '' + n; }
+    function srcFor(n) { return 'assets/oweek/backpack/bp-' + pad(n) + '.jpg'; }
+
+    // Render mosaic tiles in shuffled order
+    var frag = document.createDocumentFragment();
+    indices.forEach(function (n, position) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'backpack-mosaic-tile';
+      btn.dataset.bpIndex = String(position);
+      btn.setAttribute('aria-label', 'Open photo ' + (position + 1) + ' of ' + count);
+      var img = document.createElement('img');
+      img.src = srcFor(n);
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      btn.appendChild(img);
+      frag.appendChild(btn);
+    });
+    grid.appendChild(frag);
+
+    // Lightbox state
+    var current = 0;
+    function openAt(pos) {
+      current = ((pos % count) + count) % count;
+      lbImg.src = srcFor(indices[current]);
+      lbImg.alt = 'Backpack pickup photo ' + (current + 1) + ' of ' + count;
+      lbCounter.textContent = (current + 1) + ' / ' + count;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lightbox.classList.remove('is-open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+    function next() { openAt(current + 1); }
+    function prev() { openAt(current - 1); }
+
+    // Tile clicks (event delegation)
+    grid.addEventListener('click', function (e) {
+      var tile = e.target.closest('[data-bp-index]');
+      if (!tile) return;
+      openAt(parseInt(tile.dataset.bpIndex, 10));
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    // Click backdrop (but not the image or buttons) closes
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) close();
+    });
+
+    // Keyboard: Esc closes, ← prev, → next
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'ArrowRight') next();
+    });
+  })();
+</script>
 
 <!-- ============ Daily carousel placeholder ============ -->
 <section class="section" id="daily-carousel">
