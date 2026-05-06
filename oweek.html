@@ -2917,6 +2917,174 @@
     font-style: italic;
   }
 
+  /* ── Day chapter header — Variant B (number + day + date) ── */
+  .day-chapter {
+    margin-top: 88px;
+    margin-bottom: 36px;
+  }
+  @media (min-width: 720px) {
+    .day-chapter { margin-top: 112px; }
+  }
+  .day-chapter:first-of-type { margin-top: 64px; }
+  .day-chapter-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  @media (min-width: 720px) {
+    .day-chapter-grid { gap: 32px; }
+  }
+  .day-chapter-num {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: clamp(64px, 9vw, 100px);
+    color: var(--uoft-navy);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .day-chapter-title-block {
+    padding-bottom: 6px;
+  }
+  .day-chapter-day {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.4vw, 38px);
+    color: var(--uoft-navy);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .day-chapter-date {
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin: 8px 0 0;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ── Event block (within a day chapter) ── */
+  .event-block {
+    margin-top: 48px;
+  }
+  .event-block:first-of-type { margin-top: 36px; }
+  .event-block-header {
+    margin-bottom: 24px;
+  }
+  .event-block-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--uoft-navy);
+    margin: 0 0 4px;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .event-block-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  .event-block-context {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+    max-width: 60ch;
+    line-height: 1.55;
+  }
+
+  /* ── Editorial photo spread — varied tile sizes ──
+     Uses CSS grid with 12 base columns; tiles span N columns.
+     Author marks tiles as data-span="3|4|6|8|12" to control width.
+     Mobile collapses to 6 columns; larger spans wrap naturally. */
+  .photo-spread {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 720px) {
+    .photo-spread {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+  }
+  .photo-spread-tile {
+    grid-column: span 6;
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .photo-spread-tile[data-span="3"]  { grid-column: span 3; }
+  .photo-spread-tile[data-span="4"]  { grid-column: span 4; }
+  .photo-spread-tile[data-span="6"]  { grid-column: span 6; }
+  .photo-spread-tile[data-span="8"]  { grid-column: span 8; }
+  .photo-spread-tile[data-span="12"] { grid-column: span 12; }
+  /* Mobile fallback: small tiles half-width, large tiles full-width */
+  @media (max-width: 719px) {
+    .photo-spread-tile { grid-column: span 3; }
+    .photo-spread-tile[data-span="6"],
+    .photo-spread-tile[data-span="8"],
+    .photo-spread-tile[data-span="12"] { grid-column: span 6; }
+  }
+  .photo-spread-tile-inner {
+    position: relative;
+    overflow: hidden;
+    background: var(--hairline-soft);
+  }
+  .photo-spread-tile-inner.is-portrait { aspect-ratio: 3 / 4; }
+  .photo-spread-tile-inner.is-landscape { aspect-ratio: 4 / 3; }
+  .photo-spread-tile-inner.is-square { aspect-ratio: 1 / 1; }
+  .photo-spread-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-spread-tile figcaption {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin: 8px 0 0;
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  /* Photo placeholder (for events awaiting upload) */
+  .photo-placeholder {
+    background:
+      repeating-linear-gradient(135deg, rgba(0,26,112,0.04) 0 8px, transparent 8px 16px),
+      var(--paper-soft);
+    border: 1px dashed var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Whole-event placeholder note (for events with no photos yet) */
+  .event-placeholder-note {
+    background: var(--paper-soft);
+    border-left: 2px solid var(--uoft-teal);
+    padding: 18px 22px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .event-placeholder-note strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
   /* ── O-Week Backpack Marquee — cinematic, two-row, cream ── */
   .backpack-gallery {
     background: var(--paper-soft);
@@ -6604,7 +6772,30 @@
   </div>
 </section>
 
-<!-- ============ Backpack Pickup Marquee ============ -->
+<!-- ============ Day-by-Day Photo Journey ============ -->
+<section class="section" id="day-by-day">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Day by Day · Class of 2T9</span>
+      </div>
+      <h2>O-Week in Pictures.</h2>
+      <p>The cohort's O-Week, event by event. New photos roll in as the cohort submits them. Click any photo to open it full-size.</p>
+    </div>
+
+    <!-- ───── Monday ───── -->
+    <div class="day-chapter">
+      <div class="day-chapter-grid">
+        <p class="day-chapter-num">01</p>
+        <div class="day-chapter-title-block">
+          <p class="day-chapter-day">Monday.</p>
+          <p class="day-chapter-date">Aug 18, 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Backpack Pickup Marquee ============ -->
 <section class="backpack-gallery" id="backpack-mosaic" data-bp-count="170">
   <div class="backpack-gallery-header">
     <p class="backpack-gallery-eyebrow">August 18, 2025 · Medical Sciences Building</p>
@@ -6734,222 +6925,265 @@
   })();
 </script>
 
-<!-- ============ Daily carousel placeholder ============ -->
-<section class="section" id="daily-carousel">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Day-by-Day · 3T0</span>
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Welcome Picnic at Christie Pits.</p>
+        <p class="event-block-meta">5:00 — 7:00 PM · Dinner provided</p>
+        <p class="event-block-context">The cohort heads west to Christie Pits Park as the official welcome wraps. Free dinner, sun on the lawn, the first time most of the class meets each other in casual clothes.</p>
       </div>
-      <h2>O-Week, in photos and videos.</h2>
-      <p>A growing carousel of the moments that defined each day of orientation week — academy meets, formal welcome, social events, and everything in between. <strong>This will be filled in as the cohort submits photos and clips.</strong></p>
-    </div>
-
-    <div class="oweek-submit-callout">
-      <div class="oweek-submit-callout-mark" aria-hidden="true">📷</div>
-      <div>
-        <p class="oweek-submit-callout-eyebrow">Cohort submission</p>
-        <p class="oweek-submit-callout-text">Have photos or short videos from O-Week? Submit them through the <a href="feedback.html">feedback form</a> — tag with the day and event. Anything submitted gets curated into the day cards below.</p>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Christie Pits</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
       </div>
     </div>
 
-    <div class="oweek-days-grid">
-      <!-- Day 01 -->
-      <article class="oweek-day-card">
-        <div class="oweek-day-card-header">
-          <p class="oweek-day-card-num">Day 01 · Mon</p>
-          <p class="oweek-day-card-title">Welcoming Ceremony, Academic Orientation #1, Welcome Picnic</p>
+    <!-- ───── Tuesday ───── -->
+    <div class="day-chapter">
+      <div class="day-chapter-grid">
+        <p class="day-chapter-num">02</p>
+        <div class="day-chapter-title-block">
+          <p class="day-chapter-day">Tuesday.</p>
+          <p class="day-chapter-date">Aug 19, 2025</p>
         </div>
-        <div class="oweek-carousel" data-oweek-carousel>
-          <button class="oweek-carousel-btn oweek-carousel-prev" data-oweek-prev aria-label="Previous photo for Day 01" type="button">‹</button>
-          <div class="oweek-carousel-track" data-oweek-track>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 1</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 2</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 3</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-video">
-                <span class="photo-placeholder-label">Video</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <!-- Add more <div class="oweek-carousel-slide">...</div> blocks here for additional photos/videos -->
-          </div>
-          <button class="oweek-carousel-btn oweek-carousel-next" data-oweek-next aria-label="Next photo for Day 01" type="button">›</button>
-        </div>
-      </article>
-
-      <!-- Day 02 -->
-      <article class="oweek-day-card">
-        <div class="oweek-day-card-header">
-          <p class="oweek-day-card-num">Day 02 · Tue</p>
-          <p class="oweek-day-card-title">Dean's Tea, MED Olympics, Club Night</p>
-        </div>
-        <div class="oweek-carousel" data-oweek-carousel>
-          <button class="oweek-carousel-btn oweek-carousel-prev" data-oweek-prev aria-label="Previous photo for Day 02" type="button">‹</button>
-          <div class="oweek-carousel-track" data-oweek-track>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 1</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 2</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 3</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-video">
-                <span class="photo-placeholder-label">Video</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <!-- Add more <div class="oweek-carousel-slide">...</div> blocks here for additional photos/videos -->
-          </div>
-          <button class="oweek-carousel-btn oweek-carousel-next" data-oweek-next aria-label="Next photo for Day 02" type="button">›</button>
-        </div>
-      </article>
-
-      <!-- Day 03 -->
-      <article class="oweek-day-card">
-        <div class="oweek-day-card-header">
-          <p class="oweek-day-card-num">Day 03 · Wed</p>
-          <p class="oweek-day-card-title">Academic Orientation #2, LOC Panel, Sponsorship Fair, Boat Formal</p>
-        </div>
-        <div class="oweek-carousel" data-oweek-carousel>
-          <button class="oweek-carousel-btn oweek-carousel-prev" data-oweek-prev aria-label="Previous photo for Day 03" type="button">‹</button>
-          <div class="oweek-carousel-track" data-oweek-track>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 1</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 2</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 3</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-video">
-                <span class="photo-placeholder-label">Video</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <!-- Add more <div class="oweek-carousel-slide">...</div> blocks here for additional photos/videos -->
-          </div>
-          <button class="oweek-carousel-btn oweek-carousel-next" data-oweek-next aria-label="Next photo for Day 03" type="button">›</button>
-        </div>
-      </article>
-
-      <!-- Day 04 -->
-      <article class="oweek-day-card">
-        <div class="oweek-day-card-header">
-          <p class="oweek-day-card-num">Day 04 · Thu</p>
-          <p class="oweek-day-card-title">Academic Orientation #3, BLAST Café, Team Blast</p>
-        </div>
-        <div class="oweek-carousel" data-oweek-carousel>
-          <button class="oweek-carousel-btn oweek-carousel-prev" data-oweek-prev aria-label="Previous photo for Day 04" type="button">‹</button>
-          <div class="oweek-carousel-track" data-oweek-track>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 1</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 2</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 3</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-video">
-                <span class="photo-placeholder-label">Video</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <!-- Add more <div class="oweek-carousel-slide">...</div> blocks here for additional photos/videos -->
-          </div>
-          <button class="oweek-carousel-btn oweek-carousel-next" data-oweek-next aria-label="Next photo for Day 04" type="button">›</button>
-        </div>
-      </article>
-
-      <!-- Day 05 -->
-      <article class="oweek-day-card">
-        <div class="oweek-day-card-header">
-          <p class="oweek-day-card-num">Day 05 · Fri</p>
-          <p class="oweek-day-card-title">Academy Day, Stethoscope Ceremony</p>
-        </div>
-        <div class="oweek-carousel" data-oweek-carousel>
-          <button class="oweek-carousel-btn oweek-carousel-prev" data-oweek-prev aria-label="Previous photo for Day 05" type="button">‹</button>
-          <div class="oweek-carousel-track" data-oweek-track>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 1</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 2</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-photo">
-                <span class="photo-placeholder-label">Photo 3</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <div class="oweek-carousel-slide">
-              <div class="photo-placeholder oweek-day-video">
-                <span class="photo-placeholder-label">Video</span>
-                <span class="photo-placeholder-hint">awaiting submission</span>
-              </div>
-            </div>
-            <!-- Add more <div class="oweek-carousel-slide">...</div> blocks here for additional photos/videos -->
-          </div>
-          <button class="oweek-carousel-btn oweek-carousel-next" data-oweek-next aria-label="Next photo for Day 05" type="button">›</button>
-        </div>
-      </article>
+      </div>
     </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Dean's Tea at Hart House.</p>
+        <p class="event-block-meta">10:00 AM — 12:00 PM · Refreshments</p>
+        <p class="event-block-context">A formal welcome from the Faculty inside Hart House. Tea, a few speeches, and the first chance to meet faculty in person.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Dean's Tea</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">MED Olympics on Front Campus.</p>
+        <p class="event-block-meta">1:30 — 4:00 PM · Front Campus Field</p>
+        <p class="event-block-context">Team-based outdoor games on the lawn between buildings. Egg-and-spoon, tug-of-war, the kind of organized chaos that gets people who haven't talked yet to talk.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>MED Olympics</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Club Night &amp; Rest &amp; Relax.</p>
+        <p class="event-block-meta">7:00 — 11:00 PM · Apt 200 + MSB Lounge</p>
+        <p class="event-block-context">Two parallel options to close Tuesday: a downtown club night for those who want it, a quieter lounge with games and snacks for those who don't.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Club Night / R&R</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
+    <!-- ───── Wednesday ───── -->
+    <div class="day-chapter">
+      <div class="day-chapter-grid">
+        <p class="day-chapter-num">03</p>
+        <div class="day-chapter-title-block">
+          <p class="day-chapter-day">Wednesday.</p>
+          <p class="day-chapter-date">Aug 20, 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Boat Formal on Lake Ontario.</p>
+        <p class="event-block-meta">6:30 — 9:30 PM · 207 Queens Quay W · Dinner provided</p>
+        <p class="event-block-context">A formal dinner cruise on the harbour as the sun goes down behind the city skyline. The first time the cohort dresses up for itself.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Boat Formal</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
+    <!-- ───── Thursday ───── -->
+    <div class="day-chapter">
+      <div class="day-chapter-grid">
+        <p class="day-chapter-num">04</p>
+        <div class="day-chapter-title-block">
+          <p class="day-chapter-day">Thursday.</p>
+          <p class="day-chapter-date">Aug 21, 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">BLAST Café in MSB 2158.</p>
+        <p class="event-block-meta">1:00 — 2:30 PM · Refreshments</p>
+        <p class="event-block-context">Mid-day Team Blast café in the same room where most of your classes will happen. Coffee, snacks, and conversation between sessions.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>BLAST Café</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
+    <!-- ───── Friday ───── -->
+    <div class="day-chapter">
+      <div class="day-chapter-grid">
+        <p class="day-chapter-num">05</p>
+        <div class="day-chapter-title-block">
+          <p class="day-chapter-day">Friday.</p>
+          <p class="day-chapter-date">Aug 22, 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Academy Day.</p>
+        <p class="event-block-meta">8:30 AM — 4:30 PM · At your assigned academy</p>
+        <p class="event-block-context">Each student spends Friday at their assigned academy meeting faculty, touring the home hospital, and getting a feel for the building they'll spend most of Foundations in. The cohort splits across the four academies — FitzGerald, Peters-Boyd, Mississauga, and Wightman-Berris.</p>
+      </div>
+      <div class="photo-spread" aria-label="Academy Day photos">
+        <figure class="photo-spread-tile" data-span="6">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Photo 1</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="6">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Photo 2</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos from all four academies.</strong> If you have shots from FitzGerald, Mississauga, or Wightman-Berris, send them through and they'll be added here alongside Peters-Boyd.
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-block-header">
+        <p class="event-block-title">Stethoscope Ceremony at Convocation Hall.</p>
+        <p class="event-block-meta">5:00 — 8:30 PM · Doors 4:45 PM, start 6:00 PM</p>
+        <p class="event-block-context">The closing ceremony of O-Week. Each student receives their first stethoscope under the dome of Convocation Hall — the formal start of medical school.</p>
+      </div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
+      <div class="event-placeholder-note">
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Stethoscope Ceremony</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -6977,30 +7211,6 @@
     <div class="callout-soft" style="margin-top: 32px;">
       <strong>Want to join next year's team?</strong> Applications typically open in late winter of M1, with the team selected by spring. Watch class-wide emails or ask current O-Week leads how to apply.
     </div>
-  </div>
-</section>
-
-<!-- ============ Schedule preview ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">What to Expect</span>
-      </div>
-      <h2>The shape of orientation.</h2>
-      <p>Specific events change year to year, but here's what last year's cohort (Class of 2T9) actually did across the five days. Use it as a sketch — the official schedule for your year lives on the O-Week site.</p>
-    </div>
-
-    <ul class="key-dates">
-      <li><span class="key-dates-month">Monday</span><span class="key-dates-event">Registration &amp; backpack pickup at MSB; Welcoming Ceremony in MSB 2158; Academic Orientation #1; Welcome Picnic at Christie Pits Park</span></li>
-      <li><span class="key-dates-month">Tuesday</span><span class="key-dates-event">Dean's Tea at Hart House; MED Olympics on Front Campus Field; Club Night and Rest &amp; Relax in the MSB Lounge</span></li>
-      <li><span class="key-dates-month">Wednesday</span><span class="key-dates-event">Academic Orientation #2; LOC Panel; Sponsorship Fair with lunch at Student Commons; Boat Formal at 207 Queens Quay W</span></li>
-      <li><span class="key-dates-month">Thursday</span><span class="key-dates-event">Academic Orientation #3; BLAST Café; Team Blast — Survival Guide and board games in the MSB Cafeteria</span></li>
-      <li><span class="key-dates-month">Friday</span><span class="key-dates-event">Academy Day at your assigned academy; Stethoscope Ceremony at Convocation Hall</span></li>
-      <li><span class="key-dates-month">Throughout</span><span class="key-dates-event">Refreshments and meals provided at most events; lunches and dinners flagged on the official schedule</span></li>
-    </ul>
-    <p class="key-dates-note">Order, venues, and event names vary year to year. Treat this as the texture of the week, not the schedule itself.</p>
   </div>
 </section>
 <footer class="footer">
