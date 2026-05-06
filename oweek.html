@@ -2976,20 +2976,20 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 80px;
+    width: 40px;
     z-index: 3;
     pointer-events: none;
   }
   .bp-marquee::before {
     left: 0;
-    background: linear-gradient(to right, var(--paper-soft), rgba(244,244,242,0));
+    background: linear-gradient(to right, var(--paper-soft) 0%, rgba(244,244,242,0.7) 40%, rgba(244,244,242,0) 100%);
   }
   .bp-marquee::after {
     right: 0;
-    background: linear-gradient(to left, var(--paper-soft), rgba(244,244,242,0));
+    background: linear-gradient(to left, var(--paper-soft) 0%, rgba(244,244,242,0.7) 40%, rgba(244,244,242,0) 100%);
   }
   @media (min-width: 720px) {
-    .bp-marquee::before, .bp-marquee::after { width: 140px; }
+    .bp-marquee::before, .bp-marquee::after { width: 60px; }
   }
 
   /* A single row */
