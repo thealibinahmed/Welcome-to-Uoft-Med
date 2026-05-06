@@ -2917,64 +2917,95 @@
     font-style: italic;
   }
 
-  /* ── O-Week Backpack Mosaic ── */
-  .backpack-mosaic-wrap {
-    margin-top: 28px;
+  /* ── O-Week Backpack Mosaic — Gallery wall ── */
+  .backpack-gallery {
+    background: var(--uoft-navy);
+    padding: 80px 0 96px;
+    margin: 0;
+    /* Full-bleed: break out of any parent container constraints */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    color: #fff;
   }
+  @media (min-width: 720px) {
+    .backpack-gallery { padding: 120px 0 140px; }
+  }
+  .backpack-gallery-header {
+    max-width: 1280px;
+    margin: 0 auto 56px;
+    padding: 0 32px;
+  }
+  @media (min-width: 720px) {
+    .backpack-gallery-header { margin-bottom: 80px; padding: 0 48px; }
+  }
+  .backpack-gallery-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    font-weight: 500;
+  }
+  .backpack-gallery h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 24px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    /* Big poster-display type — scales with viewport */
+    font-size: clamp(40px, 7vw, 88px);
+  }
+  .backpack-gallery-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0;
+  }
+  .backpack-gallery-meta strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+  /* Mosaic itself */
   .backpack-mosaic {
     display: grid;
-    /* Mobile: 4 cols. Tablet: 6. Desktop: 10. Large: 12. */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    /* Mobile: 3 cols. Tablet: 5. Desktop: 8. Wide: 10. */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0 32px;
+    max-width: 1600px;
+    margin: 0 auto;
   }
-  @media (min-width: 480px) { .backpack-mosaic { grid-template-columns: repeat(5, 1fr); } }
-  @media (min-width: 720px) { .backpack-mosaic { grid-template-columns: repeat(8, 1fr); gap: 5px; } }
-  @media (min-width: 960px) { .backpack-mosaic { grid-template-columns: repeat(10, 1fr); } }
-  @media (min-width: 1200px) { .backpack-mosaic { grid-template-columns: repeat(12, 1fr); } }
+  @media (min-width: 480px) { .backpack-mosaic { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 720px) { .backpack-mosaic { grid-template-columns: repeat(6, 1fr); padding: 0 48px; } }
+  @media (min-width: 1024px) { .backpack-mosaic { grid-template-columns: repeat(8, 1fr); } }
+  @media (min-width: 1400px) { .backpack-mosaic { grid-template-columns: repeat(10, 1fr); } }
   .backpack-mosaic-tile {
     position: relative;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     cursor: pointer;
-    background: var(--paper-soft);
+    background: rgba(255,255,255,0.04);
     border: none;
     padding: 0;
+    transition: transform 240ms ease;
   }
   .backpack-mosaic-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    /* Navy duotone effect: desaturate + tint */
-    filter: grayscale(0.6) brightness(0.95);
-    transition: filter 220ms ease, opacity 220ms ease;
+    transition: transform 240ms ease;
   }
-  .backpack-mosaic-tile::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 26, 112, 0.35);
-    mix-blend-mode: multiply;
-    pointer-events: none;
-    transition: opacity 220ms ease;
-  }
-  .backpack-mosaic-tile:hover img,
-  .backpack-mosaic-tile:focus-visible img {
-    filter: grayscale(0) brightness(1);
-  }
-  .backpack-mosaic-tile:hover::after,
-  .backpack-mosaic-tile:focus-visible::after {
-    opacity: 0;
+  .backpack-mosaic-tile:hover {
+    transform: scale(1.04);
+    z-index: 2;
   }
   .backpack-mosaic-tile:focus-visible {
     outline: 2px solid var(--uoft-teal);
-    outline-offset: 2px;
-  }
-  .backpack-mosaic-meta {
-    margin-top: 16px;
-    font-size: 12px;
-    color: var(--ink-muted);
-    font-style: italic;
+    outline-offset: 3px;
   }
 
   /* Lightbox modal */
@@ -6535,23 +6566,15 @@
   </div>
 </section>
 
-<!-- ============ Backpack Pickup Mosaic ============ -->
-<section class="section" id="backpack-mosaic" data-bp-count="170">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Backpack Day · Class of 2T9</span>
-      </div>
-      <h2>The first thing you'll hold.</h2>
-      <p>On the first morning of O-Week, every student picks up their Temerty backpack from the Medical Sciences Building. It's the first tangible thing you receive as a med student — and the first time you meet a wall of new classmates. Below: the Class of 2T9, one face at a time. Click any photo to expand.</p>
-    </div>
-
-    <div class="backpack-mosaic-wrap">
-      <div class="backpack-mosaic" data-bp-grid aria-label="Class of 2T9 backpack pickup photos. Click any photo to expand."></div>
-      <p class="backpack-mosaic-meta">170 photos from the Class of 2T9 · Backpack Pickup, August 18, 2025 · Order shuffles on each visit.</p>
-    </div>
+<!-- ============ Backpack Pickup Gallery ============ -->
+<section class="backpack-gallery" id="backpack-mosaic" data-bp-count="170">
+  <div class="backpack-gallery-header">
+    <p class="backpack-gallery-eyebrow">August 18, 2025 · Medical Sciences Building</p>
+    <h2>Class of 2T9 — backpack day.</h2>
+    <p class="backpack-gallery-meta"><strong>170 photos</strong>, taken on the first morning of O-Week as the incoming class picked up their Temerty backpacks. Click any photo to expand. Order shuffles on each visit.</p>
   </div>
+
+  <div class="backpack-mosaic" data-bp-grid aria-label="Class of 2T9 backpack pickup photos. Click any photo to expand."></div>
 
   <!-- Lightbox -->
   <div class="bp-lightbox" data-bp-lightbox role="dialog" aria-modal="true" aria-label="Photo viewer">
