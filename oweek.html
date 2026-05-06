@@ -2917,98 +2917,159 @@
     font-style: italic;
   }
 
-  /* ── O-Week Backpack Mosaic — Gallery wall ── */
+  /* ── O-Week Backpack Marquee — cinematic, two-row, cream ── */
   .backpack-gallery {
-    background: var(--uoft-navy);
-    padding: 80px 0 96px;
+    background: var(--paper-soft);
+    padding: 72px 0 88px;
     margin: 0;
     /* Full-bleed: break out of any parent container constraints */
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    color: #fff;
+    overflow: hidden;
   }
   @media (min-width: 720px) {
-    .backpack-gallery { padding: 120px 0 140px; }
+    .backpack-gallery { padding: 96px 0 112px; }
   }
   .backpack-gallery-header {
     max-width: 1280px;
-    margin: 0 auto 56px;
+    margin: 0 auto 48px;
     padding: 0 32px;
   }
   @media (min-width: 720px) {
-    .backpack-gallery-header { margin-bottom: 80px; padding: 0 48px; }
+    .backpack-gallery-header { padding: 0 48px; margin-bottom: 56px; }
   }
   .backpack-gallery-eyebrow {
     font-size: 11px;
     letter-spacing: 0.18em;
-    color: rgba(255,255,255,0.55);
+    color: var(--ink-muted);
     text-transform: uppercase;
-    margin: 0 0 20px;
+    margin: 0 0 12px;
     font-weight: 500;
   }
   .backpack-gallery h2 {
     font-family: 'Roboto Slab', serif;
-    font-weight: 800;
-    color: #fff;
-    margin: 0 0 24px;
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-    /* Big poster-display type — scales with viewport */
-    font-size: clamp(40px, 7vw, 88px);
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin: 0 0 16px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-size: clamp(24px, 3.4vw, 36px);
   }
   .backpack-gallery-meta {
     font-size: 13px;
-    color: rgba(255,255,255,0.6);
+    color: var(--ink-muted);
     line-height: 1.6;
-    max-width: 60ch;
+    max-width: 56ch;
     margin: 0;
   }
-  .backpack-gallery-meta strong {
-    color: rgba(255,255,255,0.85);
-    font-weight: 600;
-  }
-  /* Mosaic itself */
-  .backpack-mosaic {
-    display: grid;
-    /* Mobile: 3 cols. Tablet: 5. Desktop: 8. Wide: 10. */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    padding: 0 32px;
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-  @media (min-width: 480px) { .backpack-mosaic { grid-template-columns: repeat(4, 1fr); } }
-  @media (min-width: 720px) { .backpack-mosaic { grid-template-columns: repeat(6, 1fr); padding: 0 48px; } }
-  @media (min-width: 1024px) { .backpack-mosaic { grid-template-columns: repeat(8, 1fr); } }
-  @media (min-width: 1400px) { .backpack-mosaic { grid-template-columns: repeat(10, 1fr); } }
-  .backpack-mosaic-tile {
+
+  /* Marquee rows wrapper */
+  .bp-marquee {
     position: relative;
-    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+  /* Edge fades — photos emerge from and vanish into the cream background */
+  .bp-marquee::before,
+  .bp-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .bp-marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--paper-soft), rgba(244,244,242,0));
+  }
+  .bp-marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--paper-soft), rgba(244,244,242,0));
+  }
+  @media (min-width: 720px) {
+    .bp-marquee::before, .bp-marquee::after { width: 140px; }
+  }
+
+  /* A single row */
+  .bp-marquee-row {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: -24px;  /* slight overlap between rows */
+  }
+  .bp-marquee-row:last-child { margin-bottom: 0; }
+  .bp-marquee-track {
+    display: flex;
+    gap: 14px;
+    flex-shrink: 0;
+    will-change: transform;
+  }
+  .bp-marquee-row[data-dir="left"] .bp-marquee-track {
+    animation: bp-scroll-left 95s linear infinite;
+  }
+  .bp-marquee-row[data-dir="right"] .bp-marquee-track {
+    animation: bp-scroll-right 75s linear infinite;
+  }
+  /* Pause on hover so people can actually look */
+  .bp-marquee-row:hover .bp-marquee-track {
+    animation-play-state: paused;
+  }
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .bp-marquee-row .bp-marquee-track {
+      animation: none;
+    }
+    .bp-marquee-row { overflow-x: auto; }
+  }
+  @keyframes bp-scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes bp-scroll-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* Individual photo tile */
+  .bp-marquee-tile {
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     cursor: pointer;
-    background: rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.04);
     border: none;
     padding: 0;
-    transition: transform 240ms ease;
+    transition: transform 220ms ease;
   }
-  .backpack-mosaic-tile img {
+  @media (min-width: 720px) {
+    .bp-marquee-tile { width: 240px; }
+  }
+  @media (min-width: 1100px) {
+    .bp-marquee-tile { width: 280px; }
+  }
+  .bp-marquee-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 240ms ease;
+    transition: transform 220ms ease;
   }
-  .backpack-mosaic-tile:hover {
-    transform: scale(1.04);
+  .bp-marquee-tile:hover {
+    transform: translateY(-4px);
     z-index: 2;
   }
-  .backpack-mosaic-tile:focus-visible {
+  .bp-marquee-tile:hover img {
+    transform: scale(1.04);
+  }
+  .bp-marquee-tile:focus-visible {
     outline: 2px solid var(--uoft-teal);
     outline-offset: 3px;
   }
 
-  /* Lightbox modal */
+  /* Lightbox modal (same as before) */
   .bp-lightbox {
     position: fixed;
     inset: 0;
@@ -3027,48 +3088,25 @@
     display: block;
   }
   .bp-lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    color: rgba(255,255,255,0.95);
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; top: 20px; right: 20px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.95); width: 40px; height: 40px;
+    font-size: 20px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
     font-family: inherit;
   }
   .bp-lightbox-close:hover { border-color: white; color: white; }
   .bp-lightbox-counter {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255,255,255,0.75);
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.75); font-size: 12px;
+    letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
   }
   .bp-lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.4);
-    color: rgba(255,255,255,0.85);
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: transparent; border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85); width: 44px; height: 44px;
+    font-size: 22px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
     font-family: inherit;
   }
   .bp-lightbox-nav:hover { border-color: white; color: white; }
@@ -6566,15 +6604,22 @@
   </div>
 </section>
 
-<!-- ============ Backpack Pickup Gallery ============ -->
+<!-- ============ Backpack Pickup Marquee ============ -->
 <section class="backpack-gallery" id="backpack-mosaic" data-bp-count="170">
   <div class="backpack-gallery-header">
     <p class="backpack-gallery-eyebrow">August 18, 2025 · Medical Sciences Building</p>
-    <h2>Class of 2T9 — backpack day.</h2>
-    <p class="backpack-gallery-meta"><strong>170 photos</strong>, taken on the first morning of O-Week as the incoming class picked up their Temerty backpacks. Click any photo to expand. Order shuffles on each visit.</p>
+    <h2>Backpack day. The class of 2T9.</h2>
+    <p class="backpack-gallery-meta">170 photos from the first morning of O-Week — the first thing every incoming med student picks up. Hover over any row to pause it. Click a photo to expand.</p>
   </div>
 
-  <div class="backpack-mosaic" data-bp-grid aria-label="Class of 2T9 backpack pickup photos. Click any photo to expand."></div>
+  <div class="bp-marquee">
+    <div class="bp-marquee-row" data-dir="left">
+      <div class="bp-marquee-track" data-bp-track-1></div>
+    </div>
+    <div class="bp-marquee-row" data-dir="right">
+      <div class="bp-marquee-track" data-bp-track-2></div>
+    </div>
+  </div>
 
   <!-- Lightbox -->
   <div class="bp-lightbox" data-bp-lightbox role="dialog" aria-modal="true" aria-label="Photo viewer">
@@ -6591,7 +6636,8 @@
     var section = document.getElementById('backpack-mosaic');
     if (!section) return;
     var count = parseInt(section.dataset.bpCount, 10) || 0;
-    var grid = section.querySelector('[data-bp-grid]');
+    var track1 = section.querySelector('[data-bp-track-1]');
+    var track2 = section.querySelector('[data-bp-track-2]');
     var lightbox = section.querySelector('[data-bp-lightbox]');
     var lbImg = lightbox.querySelector('[data-bp-img]');
     var lbCounter = lightbox.querySelector('[data-bp-counter]');
@@ -6607,28 +6653,44 @@
       var tmp = indices[i]; indices[i] = indices[j]; indices[j] = tmp;
     }
 
+    // Split between two rows
+    var half = Math.ceil(indices.length / 2);
+    var row1 = indices.slice(0, half);
+    var row2 = indices.slice(half);
+
     function pad(n) { return n < 10 ? '00' + n : n < 100 ? '0' + n : '' + n; }
     function srcFor(n) { return 'assets/oweek/backpack/bp-' + pad(n) + '.jpg'; }
 
-    // Render mosaic tiles in shuffled order
-    var frag = document.createDocumentFragment();
-    indices.forEach(function (n, position) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'backpack-mosaic-tile';
-      btn.dataset.bpIndex = String(position);
-      btn.setAttribute('aria-label', 'Open photo ' + (position + 1) + ' of ' + count);
-      var img = document.createElement('img');
-      img.src = srcFor(n);
-      img.alt = '';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      btn.appendChild(img);
-      frag.appendChild(btn);
-    });
-    grid.appendChild(frag);
+    // Build a track. The trick: render all photos twice so the
+    // CSS animation can scroll from 0 to -50% seamlessly.
+    function buildTrack(track, indicesForRow, fullIndexInArray) {
+      var frag = document.createDocumentFragment();
+      // Render twice
+      for (var rep = 0; rep < 2; rep++) {
+        indicesForRow.forEach(function (n, i) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'bp-marquee-tile';
+          // global index in the master `indices` array (for lightbox navigation)
+          btn.dataset.bpIndex = String(fullIndexInArray + i);
+          btn.setAttribute('aria-label', 'Open photo ' + (n) + ' of ' + count);
+          btn.setAttribute('tabindex', rep === 0 ? '0' : '-1'); // only first copy is keyboard-focusable
+          var img = document.createElement('img');
+          img.src = srcFor(n);
+          img.alt = '';
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          btn.appendChild(img);
+          frag.appendChild(btn);
+        });
+      }
+      track.appendChild(frag);
+    }
 
-    // Lightbox state
+    buildTrack(track1, row1, 0);
+    buildTrack(track2, row2, row1.length);
+
+    // Lightbox state — operates on the master `indices` array
     var current = 0;
     function openAt(pos) {
       current = ((pos % count) + count) % count;
@@ -6646,8 +6708,8 @@
     function next() { openAt(current + 1); }
     function prev() { openAt(current - 1); }
 
-    // Tile clicks (event delegation)
-    grid.addEventListener('click', function (e) {
+    // Tile clicks (event delegation on whole marquee)
+    section.querySelector('.bp-marquee').addEventListener('click', function (e) {
       var tile = e.target.closest('[data-bp-index]');
       if (!tile) return;
       openAt(parseInt(tile.dataset.bpIndex, 10));
@@ -6657,12 +6719,12 @@
     btnPrev.addEventListener('click', prev);
     btnNext.addEventListener('click', next);
 
-    // Click backdrop (but not the image or buttons) closes
+    // Click backdrop closes
     lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox) close();
     });
 
-    // Keyboard: Esc closes, ← prev, → next
+    // Keyboard: Esc, ←, →
     document.addEventListener('keydown', function (e) {
       if (!lightbox.classList.contains('is-open')) return;
       if (e.key === 'Escape') close();
