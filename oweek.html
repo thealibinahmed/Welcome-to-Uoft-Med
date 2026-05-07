@@ -1316,6 +1316,198 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  /* ── Side-by-side comparator (banks + housing) ── */
+  .compare-tool {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 28px 24px;
+    margin-top: 32px;
+  }
+  @media (min-width: 720px) {
+    .compare-tool { padding: 36px; }
+  }
+  .compare-tool-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 16px 28px;
+    margin-bottom: 24px;
+  }
+  .compare-tool-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .compare-tool-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    user-select: none;
+    margin-left: auto;
+  }
+  .compare-tool-toggle input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--uoft-teal);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  /* Picker row */
+  .compare-tool-pickers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (min-width: 720px) {
+    .compare-tool-pickers { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  }
+  .compare-tool-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .compare-tool-picker-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .compare-tool-picker select {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper-soft);
+    border: 1px solid var(--hairline);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+  .compare-tool-picker select:focus {
+    outline: 2px solid var(--uoft-teal);
+    outline-offset: 1px;
+  }
+  .compare-tool-picker select:hover {
+    border-color: var(--ink-muted);
+  }
+
+  /* Empty state — when fewer than 2 picked */
+  .compare-tool-empty {
+    text-align: center;
+    padding: 32px 16px;
+    background: var(--paper-soft);
+    color: var(--ink-muted);
+    font-size: 13px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Comparison rows */
+  .compare-tool-table {
+    border-top: 1px solid var(--hairline);
+  }
+  .compare-tool-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) repeat(var(--cols, 2), 1fr);
+    gap: 12px 20px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--hairline-soft);
+    align-items: baseline;
+  }
+  @media (max-width: 719px) {
+    .compare-tool-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 12px 4px;
+    }
+  }
+  .compare-tool-row-label {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--uoft-navy);
+    font-weight: 600;
+  }
+  .compare-tool-row-value {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .compare-tool-row-value strong {
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  /* Highlight differences when toggle is on */
+  .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different strong {
+    color: var(--ink);
+  }
+  /* Mobile: prefix the value with a small column label */
+  @media (max-width: 719px) {
+    .compare-tool-row-value::before {
+      content: attr(data-col-label);
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+  }
+
+  /* Header row showing the 2-3 selected names */
+  .compare-tool-header-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) repeat(var(--cols, 2), 1fr);
+    gap: 12px 20px;
+    padding: 12px 4px 16px;
+    border-bottom: 2px solid var(--uoft-navy);
+    align-items: baseline;
+  }
+  @media (max-width: 719px) {
+    .compare-tool-header-row { display: none; }
+  }
+  .compare-tool-header-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .compare-tool-header-name {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+  }
+  .compare-tool-header-tag {
+    display: block;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+
   /* Bank quick-card row (for top of finances) */
   .bank-row {
     display: grid;
@@ -3039,7 +3231,6 @@
   .photo-spread-tile-inner.is-portrait { aspect-ratio: 3 / 4; }
   .photo-spread-tile-inner.is-landscape { aspect-ratio: 4 / 3; }
   .photo-spread-tile-inner.is-square { aspect-ratio: 1 / 1; }
-  .photo-spread-tile-inner.is-wide { aspect-ratio: 3 / 2; }
   .photo-spread-tile img {
     width: 100%;
     height: 100%;
@@ -3658,6 +3849,75 @@
     line-height: 1.55;
     color: var(--ink-soft);
   }
+
+  /* Faculty program cards (iLEAD, DMP, etc.) — formal Faculty-run mentorship */
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 800px) {
+    .program-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  }
+  .program-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  @media (min-width: 600px) {
+    .program-card { padding: 32px 32px 28px; }
+  }
+  .program-card-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--uoft-teal);
+  }
+  .program-card-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .program-card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+  .program-card-meta {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 12px 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .program-card-meta strong { color: var(--ink); font-weight: 600; }
+  .program-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .program-card-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--uoft-teal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    align-self: flex-start;
+    padding-bottom: 1px;
+    transition: color 160ms;
+  }
+  .program-card-link:hover { color: var(--uoft-navy); }
+  .program-card-link .footer-ext { font-size: 11px; margin-left: 2px; }
 
   /* Mentor tags — colour-coded chips */
   .mentor-tag {
@@ -6770,6 +7030,10 @@
     </div>
 
     <p class="oweek-schedule-source">Source: Class of 2T9 official O-Week schedule. Reproduced for reference; your cohort's schedule will be released by next year's O-Week team.</p>
+
+    <div class="callout-soft" style="margin-top: 28px;">
+      <strong>One thing nobody warns you about — O-Week merch comes later than you'd expect.</strong> Last year, merch pickup was on <strong>October 10</strong> — almost two months after the week itself. It's not a delay, it's just how the cycle works. Don't worry if you finish O-Week empty-handed.
+    </div>
   </div>
 </section>
 
@@ -6932,45 +7196,26 @@
         <p class="event-block-meta">5:00 — 7:00 PM · Dinner provided</p>
         <p class="event-block-context">The cohort heads west to Christie Pits Park as the official welcome wraps. Free dinner, sun on the lawn, the first time most of the class meets each other in casual clothes.</p>
       </div>
-      <div class="photo-spread">
-<figure class="photo-spread-tile" data-span="12">
-  <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-    <img src="assets/oweek/christie-pits/CP1.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-  </div>
-</figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP3.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP4.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP5.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP6.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP7.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-  <figure class="photo-spread-tile" data-span="6">
-    <div class="photo-spread-tile-inner is-wide" style="position:relative;">
-      <img src="assets/oweek/christie-pits/CP8.jpeg" alt="Christie Pits picnic" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-  </figure>
-</div>
+      <div class="photo-spread" aria-label="Photos coming soon">
+        <figure class="photo-spread-tile" data-span="8">
+          <div class="photo-spread-tile-inner is-landscape photo-placeholder">Hero photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-square photo-placeholder">Photo</div>
+        </figure>
+        <figure class="photo-spread-tile" data-span="4">
+          <div class="photo-spread-tile-inner is-portrait photo-placeholder">Photo</div>
+        </figure>
+      </div>
       <div class="event-placeholder-note">
-        
+        <strong>Awaiting photos · 10–15 expected.</strong> Send <code>Christie Pits</code> photos to wire into this spread. Layout will adjust to actual photo count and orientation.
+      </div>
     </div>
 
     <!-- ───── Tuesday ───── -->
