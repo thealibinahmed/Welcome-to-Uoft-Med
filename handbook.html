@@ -720,6 +720,21 @@
   @media (min-width: 768px) {
     .cohort-aspect-small { aspect-ratio: auto; height: 100%; }
   }
+  /* Full-bleed cohort photo (replaces .placeholder.hero-aspect) */
+  .image-break-photo {
+    margin: 0;
+    aspect-ratio: 21 / 9;
+    width: 100%;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .image-break-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+    display: block;
+  }
 
   /* ── CTA pair ── */
   .cta-section { padding: 80px 0; }
@@ -1299,6 +1314,198 @@
   .compare-scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Side-by-side comparator (banks + housing) ── */
+  .compare-tool {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 28px 24px;
+    margin-top: 32px;
+  }
+  @media (min-width: 720px) {
+    .compare-tool { padding: 36px; }
+  }
+  .compare-tool-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 16px 28px;
+    margin-bottom: 24px;
+  }
+  .compare-tool-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .compare-tool-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    user-select: none;
+    margin-left: auto;
+  }
+  .compare-tool-toggle input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--uoft-teal);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  /* Picker row */
+  .compare-tool-pickers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (min-width: 720px) {
+    .compare-tool-pickers { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  }
+  .compare-tool-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .compare-tool-picker-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .compare-tool-picker select {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper-soft);
+    border: 1px solid var(--hairline);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+  .compare-tool-picker select:focus {
+    outline: 2px solid var(--uoft-teal);
+    outline-offset: 1px;
+  }
+  .compare-tool-picker select:hover {
+    border-color: var(--ink-muted);
+  }
+
+  /* Empty state — when fewer than 2 picked */
+  .compare-tool-empty {
+    text-align: center;
+    padding: 32px 16px;
+    background: var(--paper-soft);
+    color: var(--ink-muted);
+    font-size: 13px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Comparison rows */
+  .compare-tool-table {
+    border-top: 1px solid var(--hairline);
+  }
+  .compare-tool-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) repeat(var(--cols, 2), 1fr);
+    gap: 12px 20px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--hairline-soft);
+    align-items: baseline;
+  }
+  @media (max-width: 719px) {
+    .compare-tool-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 12px 4px;
+    }
+  }
+  .compare-tool-row-label {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--uoft-navy);
+    font-weight: 600;
+  }
+  .compare-tool-row-value {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .compare-tool-row-value strong {
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  /* Highlight differences when toggle is on */
+  .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different strong {
+    color: var(--ink);
+  }
+  /* Mobile: prefix the value with a small column label */
+  @media (max-width: 719px) {
+    .compare-tool-row-value::before {
+      content: attr(data-col-label);
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+  }
+
+  /* Header row showing the 2-3 selected names */
+  .compare-tool-header-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) repeat(var(--cols, 2), 1fr);
+    gap: 12px 20px;
+    padding: 12px 4px 16px;
+    border-bottom: 2px solid var(--uoft-navy);
+    align-items: baseline;
+  }
+  @media (max-width: 719px) {
+    .compare-tool-header-row { display: none; }
+  }
+  .compare-tool-header-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .compare-tool-header-name {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+  }
+  .compare-tool-header-tag {
+    display: block;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    letter-spacing: 0;
   }
 
   /* Bank quick-card row (for top of finances) */
@@ -2902,6 +3109,375 @@
     font-style: italic;
   }
 
+  /* ── Day chapter header — Variant B (number + day + date) ── */
+  .day-chapter {
+    margin-top: 88px;
+    margin-bottom: 36px;
+  }
+  @media (min-width: 720px) {
+    .day-chapter { margin-top: 112px; }
+  }
+  .day-chapter:first-of-type { margin-top: 64px; }
+  .day-chapter-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  @media (min-width: 720px) {
+    .day-chapter-grid { gap: 32px; }
+  }
+  .day-chapter-num {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: clamp(64px, 9vw, 100px);
+    color: var(--uoft-navy);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .day-chapter-title-block {
+    padding-bottom: 6px;
+  }
+  .day-chapter-day {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.4vw, 38px);
+    color: var(--uoft-navy);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .day-chapter-date {
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin: 8px 0 0;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ── Event block (within a day chapter) ── */
+  .event-block {
+    margin-top: 48px;
+  }
+  .event-block:first-of-type { margin-top: 36px; }
+  .event-block-header {
+    margin-bottom: 24px;
+  }
+  .event-block-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--uoft-navy);
+    margin: 0 0 4px;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .event-block-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  .event-block-context {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+    max-width: 60ch;
+    line-height: 1.55;
+  }
+
+  /* ── Editorial photo spread — varied tile sizes ──
+     Uses CSS grid with 12 base columns; tiles span N columns.
+     Author marks tiles as data-span="3|4|6|8|12" to control width.
+     Mobile collapses to 6 columns; larger spans wrap naturally. */
+  .photo-spread {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 720px) {
+    .photo-spread {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+  }
+  .photo-spread-tile {
+    grid-column: span 6;
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .photo-spread-tile[data-span="3"]  { grid-column: span 3; }
+  .photo-spread-tile[data-span="4"]  { grid-column: span 4; }
+  .photo-spread-tile[data-span="6"]  { grid-column: span 6; }
+  .photo-spread-tile[data-span="8"]  { grid-column: span 8; }
+  .photo-spread-tile[data-span="12"] { grid-column: span 12; }
+  /* Mobile fallback: small tiles half-width, large tiles full-width */
+  @media (max-width: 719px) {
+    .photo-spread-tile { grid-column: span 3; }
+    .photo-spread-tile[data-span="6"],
+    .photo-spread-tile[data-span="8"],
+    .photo-spread-tile[data-span="12"] { grid-column: span 6; }
+  }
+  .photo-spread-tile-inner {
+    position: relative;
+    overflow: hidden;
+    background: var(--hairline-soft);
+  }
+  .photo-spread-tile-inner.is-portrait { aspect-ratio: 3 / 4; }
+  .photo-spread-tile-inner.is-landscape { aspect-ratio: 4 / 3; }
+  .photo-spread-tile-inner.is-square { aspect-ratio: 1 / 1; }
+  .photo-spread-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-spread-tile figcaption {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin: 8px 0 0;
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  /* Photo placeholder (for events awaiting upload) */
+  .photo-placeholder {
+    background:
+      repeating-linear-gradient(135deg, rgba(0,26,112,0.04) 0 8px, transparent 8px 16px),
+      var(--paper-soft);
+    border: 1px dashed var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Whole-event placeholder note (for events with no photos yet) */
+  .event-placeholder-note {
+    background: var(--paper-soft);
+    border-left: 2px solid var(--uoft-teal);
+    padding: 18px 22px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .event-placeholder-note strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* ── O-Week Backpack Marquee — cinematic, two-row, cream ── */
+  .backpack-gallery {
+    background: var(--paper-soft);
+    padding: 72px 0 88px;
+    margin: 0;
+    /* Full-bleed: break out of any parent container constraints */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .backpack-gallery { padding: 96px 0 112px; }
+  }
+  .backpack-gallery-header {
+    max-width: 1280px;
+    margin: 0 auto 48px;
+    padding: 0 32px;
+  }
+  @media (min-width: 720px) {
+    .backpack-gallery-header { padding: 0 48px; margin-bottom: 56px; }
+  }
+  .backpack-gallery-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+  .backpack-gallery h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin: 0 0 16px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-size: clamp(24px, 3.4vw, 36px);
+  }
+  .backpack-gallery-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* Marquee rows wrapper */
+  .bp-marquee {
+    position: relative;
+    width: 100%;
+  }
+  /* Edge fades — photos emerge from and vanish into the cream background */
+  .bp-marquee::before,
+  .bp-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .bp-marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--paper-soft) 0%, rgba(244,244,242,0.7) 40%, rgba(244,244,242,0) 100%);
+  }
+  .bp-marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--paper-soft) 0%, rgba(244,244,242,0.7) 40%, rgba(244,244,242,0) 100%);
+  }
+  @media (min-width: 720px) {
+    .bp-marquee::before, .bp-marquee::after { width: 60px; }
+  }
+
+  /* A single row */
+  .bp-marquee-row {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: -24px;  /* slight overlap between rows */
+  }
+  .bp-marquee-row:last-child { margin-bottom: 0; }
+  .bp-marquee-track {
+    display: flex;
+    gap: 14px;
+    flex-shrink: 0;
+    will-change: transform;
+  }
+  .bp-marquee-row[data-dir="left"] .bp-marquee-track {
+    animation: bp-scroll-left 95s linear infinite;
+  }
+  .bp-marquee-row[data-dir="right"] .bp-marquee-track {
+    animation: bp-scroll-right 75s linear infinite;
+  }
+  /* Pause on hover so people can actually look */
+  .bp-marquee-row:hover .bp-marquee-track {
+    animation-play-state: paused;
+  }
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .bp-marquee-row .bp-marquee-track {
+      animation: none;
+    }
+    .bp-marquee-row { overflow-x: auto; }
+  }
+  @keyframes bp-scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes bp-scroll-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* Individual photo tile */
+  .bp-marquee-tile {
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(0,0,0,0.04);
+    border: none;
+    padding: 0;
+    transition: transform 220ms ease;
+  }
+  @media (min-width: 720px) {
+    .bp-marquee-tile { width: 240px; }
+  }
+  @media (min-width: 1100px) {
+    .bp-marquee-tile { width: 280px; }
+  }
+  .bp-marquee-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 220ms ease;
+  }
+  .bp-marquee-tile:hover {
+    transform: translateY(-4px);
+    z-index: 2;
+  }
+  .bp-marquee-tile:hover img {
+    transform: scale(1.04);
+  }
+  .bp-marquee-tile:focus-visible {
+    outline: 2px solid var(--uoft-teal);
+    outline-offset: 3px;
+  }
+
+  /* Lightbox modal (same as before) */
+  .bp-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .bp-lightbox.is-open { display: flex; }
+  .bp-lightbox-img {
+    max-width: 100%;
+    max-height: calc(100vh - 100px);
+    object-fit: contain;
+    display: block;
+  }
+  .bp-lightbox-close {
+    position: absolute; top: 20px; right: 20px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.95); width: 40px; height: 40px;
+    font-size: 20px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: inherit;
+  }
+  .bp-lightbox-close:hover { border-color: white; color: white; }
+  .bp-lightbox-counter {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.75); font-size: 12px;
+    letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
+  }
+  .bp-lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: transparent; border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85); width: 44px; height: 44px;
+    font-size: 22px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: inherit;
+  }
+  .bp-lightbox-nav:hover { border-color: white; color: white; }
+  .bp-lightbox-prev { left: 20px; }
+  .bp-lightbox-next { right: 20px; }
+  @media (max-width: 600px) {
+    .bp-lightbox-nav { width: 36px; height: 36px; font-size: 18px; }
+    .bp-lightbox-prev { left: 8px; }
+    .bp-lightbox-next { right: 8px; }
+  }
+
   /* ── Onboarding steps (Handbook · Getting set up) ── */
   .onboarding-steps {
     display: flex;
@@ -3273,6 +3849,75 @@
     line-height: 1.55;
     color: var(--ink-soft);
   }
+
+  /* Faculty program cards (iLEAD, DMP, etc.) — formal Faculty-run mentorship */
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 800px) {
+    .program-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  }
+  .program-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  @media (min-width: 600px) {
+    .program-card { padding: 32px 32px 28px; }
+  }
+  .program-card-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--uoft-teal);
+  }
+  .program-card-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .program-card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+  .program-card-meta {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 12px 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .program-card-meta strong { color: var(--ink); font-weight: 600; }
+  .program-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .program-card-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--uoft-teal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    align-self: flex-start;
+    padding-bottom: 1px;
+    transition: color 160ms;
+  }
+  .program-card-link:hover { color: var(--uoft-navy); }
+  .program-card-link .footer-ext { font-size: 11px; margin-left: 2px; }
 
   /* Mentor tags — colour-coded chips */
   .mentor-tag {
@@ -6098,7 +6743,7 @@
           <span class="eyebrow-text">Section 04 · The Handbook</span>
         </div>
         <h1>The vocabulary,<br/>decoded.</h1>
-        <p class="page-hero-lede">By the end of orientation week you'll hear Foundations, CBL, CEEs, Portfolio, and academy a hundred times. Here's what each one actually means and why it matters.</p>
+        <p class="page-hero-lede">By the end of orientation week you'll hear Foundations, CBL, ICE, OSCE, Portfolio, and academy a hundred times. Here's what each one actually means and why it matters.</p>
       </div>
       <div>
         <div class="page-hero-meta">
@@ -6163,7 +6808,7 @@
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Typical week</dt>
           <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Mostly 9–5 with study time on top. CBLs, lectures, and one Portfolio half-day per week at your academy hospital.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Evaluation</dt>
-          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">CEEs are facilitated learning experiences at the end of each component — not exams. Year-end OSCE is the practical assessment. Pass/fail throughout.</dd>
+          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Mastery Exercises (MEs) at the end of each component test content; your cumulative average across the MEs determines pass/fail. Year-end OSCE is the practical clinical-skills assessment. ICE: HC and Portfolio are pass/fail throughout.</dd>
         </dl>
       </div>
       <div style="padding: 40px;">
@@ -6180,6 +6825,10 @@
       </div>
     </div>
     <style>@media (min-width: 768px) { .phase-grid { grid-template-columns: 1fr 1fr !important; } .phase-grid > div:first-child { border-bottom: none !important; border-right: 1px solid var(--hairline); } }</style>
+
+    <div class="callout-soft" style="margin-top: 32px;">
+      <strong>For exact term dates, exam windows, and holidays</strong> — the official <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT MD Academic Calendar</a> is the source of truth. It shows year-by-year schedules for Foundations and Clerkship, including Component start dates, OSCE timing, and break weeks.
+    </div>
   </div>
 </section>
 
@@ -6303,7 +6952,7 @@
         <span class="eyebrow-text">Glossary</span>
       </div>
       <h2>Terms you'll hear in week one.</h2>
-      <p>Foundations, CBL, ICE, EEE, OSCE, CaRMS, Elentra. The vocabulary you'll need by the second day of orientation.</p>
+      <p>Foundations, CBL, ICE (and its streams: Clinical Skills, HC, CAP, FMLE), CEE, EEE, OSCE, CaRMS, Elentra. The vocabulary you'll need by the second day of orientation.</p>
     </div>
 
     <div class="glossary">
@@ -6314,7 +6963,7 @@
         </div>
         <div>
           <p class="glossary-def">The first two years of the MD program — classroom + CBL phase before full-time hospital rotations.</p>
-          <p class="glossary-detail">Foundations integrates basic and clinical sciences with clinical reasoning. Lectures, CBLs, anatomy, simulation labs, ICE: HC (Health in Community), and Portfolio. Old name: "CPC" / "Clinical Pre-Clerkship."</p>
+          <p class="glossary-detail">Foundations integrates basic and clinical sciences with clinical reasoning. Lectures, CBLs, anatomy, simulation labs, ICE (Integrated Clinical Experience), and Portfolio. The four courses inside Foundations are ITM (Introduction to Medicine), CPC1, CPC2, and CPC3 — Concepts, Patients & Communities.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -6334,7 +6983,27 @@
         </div>
         <div>
           <p class="glossary-def">Small-group sessions structured around clinical cases.</p>
-          <p class="glossary-detail">You'll be in a CBL group of 6–8 students plus a tutor. Cases unfold across 2–3 sessions; you research questions between meetings. Attendance and preparation matter more than lecture attendance.</p>
+          <p class="glossary-detail">Groups of 8–10 students. Two sessions per week — the first is student-led (you work through the case together without a tutor), the second is led by a faculty tutor a few days later. Cases unfold across the two sessions, integrating that week's basic-science and clinical content. Attendance and preparation matter more than lecture attendance.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">ICE</p>
+          <p class="glossary-expansion">Integrated Clinical Experience</p>
+        </div>
+        <div>
+          <p class="glossary-def">The longitudinal clinical thread woven through all of Foundations.</p>
+          <p class="glossary-detail">Typically two half-days per week. ICE has multiple streams that run alongside lectures and CBL: <strong>Clinical Skills</strong> (history-taking and physical exam), <strong>Health in Community</strong> (HC), <strong>Career Advising &amp; Preparation</strong> (CAP, which houses the EEE shadowing program), and in Year 2 the <strong>Family Medicine Longitudinal Experience</strong> (FMLE). Each stream is described separately below.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">ICE: Clinical Skills</p>
+          <p class="glossary-expansion">History &amp; Physical Exam</p>
+        </div>
+        <div>
+          <p class="glossary-def">The half-day each week where you actually learn how to be a doctor with patients.</p>
+          <p class="glossary-detail">Groups of six. Instruction in taking patient histories and performing the physical exam, often paired with the week's CBL content (e.g. cardiac exam during the cardiology week). Standardized patient encounters and real patient encounters happen here. The dress code is business casual — no white coat. The clinical skills resource hub is at <a href="https://thehub.utoronto.ca/clinicalskills/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">thehub.utoronto.ca/clinicalskills</a>.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -6343,8 +7012,8 @@
           <p class="glossary-expansion">Health in Community</p>
         </div>
         <div>
-          <p class="glossary-def">Longitudinal community-based clinical exposure during Foundations.</p>
-          <p class="glossary-detail">Once-weekly engagement with a community organization or clinic. Builds competencies in social determinants of health, advocacy, and community health practice.</p>
+          <p class="glossary-def">Two-year community-engaged learning thread inside ICE.</p>
+          <p class="glossary-detail">Combines pre-departure training, in-person tutorials, and self-directed placements at community organizations. The placements themselves are called <strong>CEEs (Community Engaged Experiences)</strong> — see below. You'll complete a mix: long-term care (LTC), intellectual &amp; developmental disabilities (IDD), Flex placements (your choice), and a longitudinal site you visit several times. Builds competencies in social determinants of health, advocacy, and community health practice. Note: <strong>CEE here is not the same as exam-related CEE</strong> — this is the placements.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -6354,43 +7023,53 @@
         </div>
         <div>
           <p class="glossary-def">Longitudinal mentorship + career advising thread.</p>
-          <p class="glossary-detail">Helps you explore specialties, plan electives, and prepare your CaRMS application. Most contact is through your academy and the Career Advising team.</p>
+          <p class="glossary-detail">Helps you explore specialties, plan electives, and prepare your CaRMS application. Most contact is through your academy and the Career Advising team. <strong>Houses the EEE shadowing program</strong> (see below) — when you log a shadowing experience on MedSIS, it goes into the CAP dashboard.</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">Portfolio</p>
-          <p class="glossary-expansion">Clinical Exposure</p>
+          <p class="glossary-expansion">Reflective Practice</p>
         </div>
         <div>
-          <p class="glossary-def">Half-day per week shadowing or doing clinical activities at your academy hospital.</p>
-          <p class="glossary-detail">Activities range from shadowing your academy mentor, to standardized patients, to clinical skills sessions. Low-pressure way to start translating CBL learning into practice.</p>
+          <p class="glossary-def">Small-group reflective practice with an Academy Scholar — not shadowing.</p>
+          <p class="glossary-detail">Half-day every three to four weeks (not weekly), in a small group with an <strong>Academy Scholar</strong> as your tutor. Plus periodic one-on-one progress review meetings where the Scholar coaches you on your learning plan. Pass/fail. Less about content, more about making sense of what you're learning across all the other streams. The reflections, sign-offs, and progress meetings are tracked in Elentra.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">ICE: FMLE</p>
+          <p class="glossary-expansion">Family Medicine Longitudinal Experience</p>
+        </div>
+        <div>
+          <p class="glossary-def">Year 2 longitudinal placement in a family medicine practice.</p>
+          <p class="glossary-detail">Begins in second year. Pairs you with a family physician you visit periodically across the year, building continuity with a community-based practice. Different from EEE shadowing (which is shorter and self-initiated) and from ICE: HC placements (which are community-organization-based, not physician-based).</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">CEE</p>
-          <p class="glossary-expansion">Component Evaluation Exercise</p>
+          <p class="glossary-expansion">Community Engaged Experience</p>
         </div>
         <div>
-          <p class="glossary-def">A structured learning experience at the end of each Foundations component — not a test.</p>
-          <p class="glossary-detail">A facilitated session where you work through cases tied to the component's objectives. The goal is consolidation and feedback, not ranking. Pass/fail engagement; you're expected to participate, not perform. Students often confuse it with a written exam — it isn't one.</p>
+          <p class="glossary-def">The actual placement visits inside ICE: HC.</p>
+          <p class="glossary-detail">Four placement types across the two years: <strong>LTC</strong> (long-term care, ~1 visit), <strong>IDD</strong> (intellectual &amp; developmental disabilities, ~1 visit), <strong>Flex</strong> (self-directed placements at community organizations, ~3–4 visits), and a longitudinal <strong>CBSL</strong> site (Community-Based Service Learning — one agency you return to ~4–5 times). All logged on MedSIS. Geographic restrictions apply: St. George students place within Toronto; MAM students place within Mississauga / GTA outside the City of Toronto.</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">EEE</p>
-          <p class="glossary-expansion">Essential Educational Experience</p>
+          <p class="glossary-expansion">Enriching Educational Experience</p>
         </div>
         <div>
-          <p class="glossary-def">Mandatory educational activities you must complete and document.</p>
-          <p class="glossary-detail">Examples: certain procedural skills sign-offs, specific patient encounters, mandatory sessions. Tracked through Elentra; not completing them blocks progression.</p>
+          <p class="glossary-def">Self-initiated shadowing — short observerships you arrange yourself.</p>
+          <p class="glossary-detail">Lives under ICE: CAP. You email a physician (often via the MedSIS CAP catalogue or through tutors), arrange a half-day observership, and log it on MedSIS. <strong>Must be registered in advance</strong> — at least three weeks ahead for non-TAHSN sites, so the placement agreement can be put in place. <strong>You can't start shadowing until after the orientation seminar in October.</strong> Some EEE completion is required by the end of second year.</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">OSCE</p>
-          <p class="glossary-expansion">Clinical Examination</p>
+          <p class="glossary-expansion">Objective Structured Clinical Examination</p>
         </div>
         <div>
           <p class="glossary-def">Practical exam where you rotate through stations performing clinical tasks.</p>
