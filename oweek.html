@@ -6253,6 +6253,31 @@
     font-weight: 600;
     padding-left: 4px;
   }
+  .community-strip-section {
+    padding: 60px 0;
+  }
+  .community-strip-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0 40px;
+    margin-bottom: 24px;
+  }
+  .community-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 40px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .community-strip::-webkit-scrollbar { display: none; }
+  .community-strip-item {
+    flex: 0 0 280px;
+    height: 380px;
+    scroll-snap-align: start;
+    border-radius: 8px;
+    overflow: hidden;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -7511,6 +7536,21 @@
 
   </div>
 </section>
+  <section class="community-strip-section">
+      <h2 class="community-strip-title">From the Class of 2T9.</h2>
+      <div class="community-strip">
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+        <div class="community-strip-item photo-placeholder">Photo</div>
+      </div>
+    </section>
 
 <!-- ============ The team ============ -->
 <section class="section section-soft">
