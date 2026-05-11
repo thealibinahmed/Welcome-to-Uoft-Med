@@ -4407,6 +4407,7 @@
     text-align: center;
     line-height: 1.55;
   }
+  .carousel-caption:empty { display: none; }
   .carousel-btn {
     position: absolute;
     top: 50%;
@@ -5628,17 +5629,35 @@
     window.addEventListener('resize', update);
   });
 
-  // Photo carousel
+  // Photo carousel — shuffles slide order on each load, auto-advances every 3s,
+  // pauses on hover/focus, resumes 10s after manual interaction, respects prefers-reduced-motion.
   document.addEventListener('DOMContentLoaded', function() {
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
       var track = carousel.querySelector('[data-carousel-track]');
-      var slides = track ? track.querySelectorAll('.carousel-slide') : [];
+      if (!track) return;
+      var slides = Array.prototype.slice.call(track.querySelectorAll('.carousel-slide'));
+      if (!slides.length) return;
       var prev = carousel.querySelector('[data-carousel-prev]');
       var next = carousel.querySelector('[data-carousel-next]');
       var dotsWrap = carousel.querySelector('[data-carousel-dots]');
-      if (!track || !slides.length) return;
+
+      // Fisher–Yates shuffle so each visit shows a different sequence
+      for (var i = slides.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        if (i !== j) track.insertBefore(slides[j], slides[i].nextSibling);
+        var tmp = slides[i]; slides[i] = slides[j]; slides[j] = tmp;
+      }
+      // Re-query after DOM reorder to keep references in sync
+      slides = Array.prototype.slice.call(track.querySelectorAll('.carousel-slide'));
+
       var idx = 0;
       var dots = [];
+      var autoTimer = null;
+      var resumeTimer = null;
+      var AUTO_MS = 3000;
+      var RESUME_MS = 10000;
 
       function go(i) {
         idx = (i + slides.length) % slides.length;
@@ -5646,29 +5665,58 @@
         dots.forEach(function(d, di) { d.classList.toggle('is-active', di === idx); });
       }
 
+      function startAuto() {
+        if (prefersReducedMotion) return;
+        stopAuto();
+        autoTimer = setInterval(function() { go(idx + 1); }, AUTO_MS);
+      }
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+      function pauseThenResume() {
+        stopAuto();
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(startAuto, RESUME_MS);
+      }
+
       // Build dots
       if (dotsWrap) {
-        for (var i = 0; i < slides.length; i++) {
-          (function(i) {
+        dotsWrap.innerHTML = '';
+        for (var k = 0; k < slides.length; k++) {
+          (function(k) {
             var b = document.createElement('button');
-            b.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
-            b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-            b.addEventListener('click', function() { go(i); });
+            b.className = 'carousel-dot' + (k === 0 ? ' is-active' : '');
+            b.setAttribute('aria-label', 'Go to slide ' + (k + 1));
+            b.addEventListener('click', function() { go(k); pauseThenResume(); });
             dotsWrap.appendChild(b);
             dots.push(b);
-          })(i);
+          })(k);
         }
       }
 
-      if (prev) prev.addEventListener('click', function() { go(idx - 1); });
-      if (next) next.addEventListener('click', function() { go(idx + 1); });
+      if (prev) prev.addEventListener('click', function() { go(idx - 1); pauseThenResume(); });
+      if (next) next.addEventListener('click', function() { go(idx + 1); pauseThenResume(); });
 
       // Keyboard
       carousel.setAttribute('tabindex', '0');
       carousel.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); go(idx - 1); pauseThenResume(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); pauseThenResume(); }
       });
+
+      // Pause on hover/focus, resume on leave/blur
+      carousel.addEventListener('mouseenter', stopAuto);
+      carousel.addEventListener('mouseleave', startAuto);
+      carousel.addEventListener('focusin',    stopAuto);
+      carousel.addEventListener('focusout',   startAuto);
+
+      // Pause when tab is hidden, resume when visible
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) stopAuto(); else startAuto();
+      });
+
+      // Kick off
+      startAuto();
     });
   });
 
@@ -6167,39 +6215,136 @@
       <button class="carousel-btn carousel-btn-prev" aria-label="Previous photo" data-carousel-prev>‹</button>
       <div class="carousel-track" data-carousel-track>
         <div class="carousel-slide">
-          <div class="photo-placeholder photo-placeholder-landscape">
-            <span class="photo-placeholder-label">Photo 01</span>
-            <span class="photo-placeholder-hint">e.g. Orientation week</span>
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA1.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
           </div>
-          <p class="carousel-caption">Caption goes here — describe the moment.</p>
+          <p class="carousel-caption"></p>
         </div>
         <div class="carousel-slide">
-          <div class="photo-placeholder photo-placeholder-landscape">
-            <span class="photo-placeholder-label">Photo 02</span>
-            <span class="photo-placeholder-hint">e.g. First CBL</span>
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA2.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
           </div>
-          <p class="carousel-caption">Caption goes here — describe the moment.</p>
+          <p class="carousel-caption"></p>
         </div>
         <div class="carousel-slide">
-          <div class="photo-placeholder photo-placeholder-landscape">
-            <span class="photo-placeholder-label">Photo 03</span>
-            <span class="photo-placeholder-hint">e.g. Anatomy lab</span>
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA3.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
           </div>
-          <p class="carousel-caption">Caption goes here — describe the moment.</p>
+          <p class="carousel-caption"></p>
         </div>
         <div class="carousel-slide">
-          <div class="photo-placeholder photo-placeholder-landscape">
-            <span class="photo-placeholder-label">Photo 04</span>
-            <span class="photo-placeholder-hint">e.g. With cohort</span>
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA4.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
           </div>
-          <p class="carousel-caption">Caption goes here — describe the moment.</p>
+          <p class="carousel-caption"></p>
         </div>
         <div class="carousel-slide">
-          <div class="photo-placeholder photo-placeholder-landscape">
-            <span class="photo-placeholder-label">Photo 05</span>
-            <span class="photo-placeholder-hint">e.g. ICE preceptor day</span>
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA5.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
           </div>
-          <p class="carousel-caption">Caption goes here — describe the moment.</p>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA6.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA7.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA8.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA9.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA10.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA11.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA12.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA13.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA14.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA15.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA16.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA17.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA18.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA19.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA20.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA21.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
+        </div>
+        <div class="carousel-slide">
+          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
+            <img src="assets/about/AA22.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <p class="carousel-caption"></p>
         </div>
       </div>
       <button class="carousel-btn carousel-btn-next" aria-label="Next photo" data-carousel-next>›</button>
