@@ -3942,6 +3942,8 @@
   .mentor-tag.tag-financial { background: #E5DEF8; border-color: #6E5BC2; color: #2C2160; }
   .mentor-tag.tag-parent { background: #FEE3E8; border-color: #D45578; color: #692033; }
   .mentor-tag.tag-international { background: #D9EBE0; border-color: #4A8F62; color: #1B3F2A; }
+  .mentor-tag.tag-commuter { background: #FFF0D6; border-color: #D4920A; color: #5C3D00; }
+  .mentor-tag.tag-movedforschool { background: #E0F0FF; border-color: #3A87C8; color: #0D3558; }
 
   /* Mentor cards */
   .mentor-grid {
@@ -6853,8 +6855,16 @@
       <div class="tag-legend-group">
         <p class="tag-legend-eyebrow">Circumstance</p>
         <div class="tag-legend-row">
-          <span class="mentor-tag tag-financial">Bursaries &amp; loans</span>
+          <span class="mentor-tag tag-financial">Navigating Finances</span>
           <span class="tag-legend-desc">Students who've navigated OSAP, bursaries, the LOC, or supporting family while in medical school. Happy to talk through the financial side honestly.</span>
+        </div>
+        <div class="tag-legend-row">
+          <span class="mentor-tag tag-commuter">Commuter</span>
+          <span class="tag-legend-desc">Students who commute to campus rather than living close by. Can speak to the logistics, the trade-offs, and making it work.</span>
+        </div>
+        <div class="tag-legend-row">
+          <span class="mentor-tag tag-movedforschool">Moved for school</span>
+          <span class="tag-legend-desc">Students who relocated to Toronto specifically for medical school. Can speak to apartment hunting, settling in, and building a life in a new city.</span>
         </div>
         <div class="tag-legend-row">
           <span class="mentor-tag tag-parent">Student parent</span>
@@ -6877,11 +6887,33 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">The Mentors</span>
       </div>
-      <h2>People you can reach out to.</h2>
+      <h2>People you can reach out to. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
       <p>Each card lists who they are, what they've offered to talk about, and how to reach them. Read the full blurb before reaching out — it'll help you frame your message.</p>
     </div>
 
     <div class="mentor-grid">
+
+      <article class="mentor-card">
+        <div class="mentor-card-photo">
+          <div style="position:relative; aspect-ratio: 1 / 1; background: var(--paper-soft); overflow: hidden;">
+            <img src="assets/about/ABA1.jpeg" alt="Ali Ahmed" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
+          </div>
+        </div>
+        <div class="mentor-card-meta">
+          <p class="mentor-card-name">Ali Ahmed</p>
+          <p class="mentor-card-class">Class of 2T9 · Peters-Boyd</p>
+        </div>
+        <div class="mentor-card-tags">
+          <span class="mentor-tag tag-firstgen">First-gen</span>
+          <span class="mentor-tag tag-trad">Traditional path</span>
+          <span class="mentor-tag tag-bipoc">BIPOC</span>
+          <span class="mentor-tag tag-financial">Navigating Finances</span>
+          <span class="mentor-tag tag-movedforschool">Moved for school</span>
+        </div>
+        <p class="mentor-card-blurb">Happy to help out no matter what you're going through. Whether it's transitioning in, navigating medical school as a first-gen student, the financial side, or anything else on your mind — feel free to reach out.</p>
+        <a class="mentor-card-contact" href="mailto:ali.binahmed@mail.utoronto.ca">ali.binahmed@mail.utoronto.ca</a>
+      </article>
+
       <article class="mentor-card">
         <div class="mentor-card-photo">
           <div class="photo-placeholder photo-placeholder-mentor" aria-label="Photo placeholder">
@@ -6930,7 +6962,7 @@
         </div>
         <div class="mentor-card-tags">
           <span class="mentor-tag tag-bipoc">BIPOC</span>
-          <span class="mentor-tag tag-financial">Bursaries &amp; loans</span>
+          <span class="mentor-tag tag-financial">Navigating Finances</span>
         </div>
         <p class="mentor-card-blurb">Personal blurb — finding community as a racialized student, navigating bursaries and the Faculty's financial support.</p>
         <a class="mentor-card-contact" href="#">Contact via Feedback</a>
@@ -6983,7 +7015,7 @@
         </div>
         <div class="mentor-card-tags">
           <span class="mentor-tag tag-international">International</span>
-          <span class="mentor-tag tag-financial">Bursaries &amp; loans</span>
+          <span class="mentor-tag tag-financial">Navigating Finances</span>
         </div>
         <p class="mentor-card-blurb">Personal blurb — visa logistics, UHIP, finances as an international student.</p>
         <a class="mentor-card-contact" href="#">Contact via Feedback</a>
@@ -7020,7 +7052,7 @@
         <div class="mentor-card-tags">
           <span class="mentor-tag tag-firstgen">First-gen</span>
           <span class="mentor-tag tag-bipoc">BIPOC</span>
-          <span class="mentor-tag tag-financial">Bursaries &amp; loans</span>
+          <span class="mentor-tag tag-financial">Navigating Finances</span>
         </div>
         <p class="mentor-card-blurb">Personal blurb — what made the difference, who to reach out to, how to ask for help when you don't have a roadmap.</p>
         <a class="mentor-card-contact" href="#">Contact via Feedback</a>
