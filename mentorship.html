@@ -3938,6 +3938,73 @@
   .mentor-tag.tag-oop { background: #D8EEFB; border-color: #1F87C9; color: #0E3F60; }
   .mentor-tag.tag-bipoc { background: #FBDFF1; border-color: #C25BA2; color: #5C204A; }
   .mentor-tag.tag-queer { background: #DEF1D9; border-color: #4FA042; color: #1F4818; }
+  .mentor-tag.tag-pronouns-he { background: #EAF0FB; border-color: #5B82D4; color: #1A3670; }
+  .mentor-tag.tag-pronouns-she { background: #FDE8F4; border-color: #D45BA2; color: #6B1847; }
+  .mentor-tag.tag-pronouns-they { background: #F0EAF8; border-color: #8B5BD4; color: #3A1870; }
+
+  /* Mentor filter */
+  .mentor-filter {
+    margin-bottom: 40px;
+  }
+  .mentor-filter-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  .mentor-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .mentor-filter-pill {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 5px 12px;
+    border: 1px solid var(--hairline);
+    background: var(--paper-soft);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 140ms;
+    line-height: 1.3;
+  }
+  .mentor-filter-pill:hover {
+    border-color: var(--uoft-navy);
+    color: var(--uoft-navy);
+  }
+  .mentor-filter-pill.is-active {
+    background: var(--uoft-navy);
+    border-color: var(--uoft-navy);
+    color: #fff;
+  }
+  .mentor-filter-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--hairline);
+    display: inline-block;
+    margin: 0 2px;
+  }
+  .mentor-filter-clear {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--uoft-teal);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 4px;
+    letter-spacing: 0.03em;
+  }
+  .mentor-filter-clear:hover { color: var(--uoft-navy); }
+  .mentor-filter-count {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 12px 0 0;
+  }
+  .mentor-card.is-hidden { display: none; }
   .mentor-tag.tag-disabled { background: #FCE3D8; border-color: #D17040; color: #65351A; }
   .mentor-tag.tag-financial { background: #E5DEF8; border-color: #6E5BC2; color: #2C2160; }
   .mentor-tag.tag-parent { background: #FEE3E8; border-color: #D45578; color: #692033; }
@@ -6853,7 +6920,20 @@
       </div>
 
       <div class="tag-legend-group">
-        <p class="tag-legend-eyebrow">Circumstance</p>
+        <p class="tag-legend-eyebrow">Identity</p>
+        <div class="tag-legend-row">
+          <span class="mentor-tag tag-pronouns-he">He/Him</span>
+          <span class="tag-legend-desc">Optional — mentors can include their pronouns if they'd like.</span>
+        </div>
+        <div class="tag-legend-row">
+          <span class="mentor-tag tag-pronouns-she">She/Her</span>
+          <span class="tag-legend-desc"></span>
+        </div>
+        <div class="tag-legend-row">
+          <span class="mentor-tag tag-pronouns-they">They/Them</span>
+          <span class="tag-legend-desc"></span>
+        </div>
+      </div>
         <div class="tag-legend-row">
           <span class="mentor-tag tag-financial">Navigating Finances</span>
           <span class="tag-legend-desc">Students who've navigated OSAP, bursaries, the LOC, or supporting family while in medical school. Happy to talk through the financial side honestly.</span>
@@ -6891,12 +6971,38 @@
       <p>Each card lists who they are, what they've offered to talk about, and how to reach them. Read the full blurb before reaching out — it'll help you frame your message.</p>
     </div>
 
-    <div class="mentor-grid">
+    <div class="mentor-filter" id="mentor-filter">
+      <p class="mentor-filter-label">Filter by</p>
+      <div class="mentor-filter-pills">
+        <button class="mentor-filter-pill" data-filter="tag-pronouns-he">He/Him</button>
+        <button class="mentor-filter-pill" data-filter="tag-pronouns-she">She/Her</button>
+        <button class="mentor-filter-pill" data-filter="tag-pronouns-they">They/Them</button>
+        <span class="mentor-filter-divider"></span>
+        <button class="mentor-filter-pill" data-filter="tag-firstgen">First-gen</button>
+        <button class="mentor-filter-pill" data-filter="tag-bipoc">BIPOC</button>
+        <button class="mentor-filter-pill" data-filter="tag-queer">2SLGBTQ+</button>
+        <button class="mentor-filter-pill" data-filter="tag-trad">Traditional path</button>
+        <button class="mentor-filter-pill" data-filter="tag-nontrad">Non-traditional</button>
+        <button class="mentor-filter-pill" data-filter="tag-mature">Mature student</button>
+        <button class="mentor-filter-pill" data-filter="tag-oop">Out-of-province</button>
+        <span class="mentor-filter-divider"></span>
+        <button class="mentor-filter-pill" data-filter="tag-financial">Navigating Finances</button>
+        <button class="mentor-filter-pill" data-filter="tag-commuter">Commuter</button>
+        <button class="mentor-filter-pill" data-filter="tag-movedforschool">Moved for school</button>
+        <button class="mentor-filter-pill" data-filter="tag-parent">Student parent</button>
+        <button class="mentor-filter-pill" data-filter="tag-international">International</button>
+        <span class="mentor-filter-divider"></span>
+        <button class="mentor-filter-clear" id="mentor-filter-clear" style="display:none;">Clear filters ×</button>
+      </div>
+      <p class="mentor-filter-count" id="mentor-filter-count" style="display:none;"></p>
+    </div>
+
+    <div class="mentor-grid" id="mentor-grid">
 
       <article class="mentor-card">
         <div class="mentor-card-photo">
           <div style="position:relative; aspect-ratio: 1 / 1; background: var(--paper-soft); overflow: hidden;">
-            <img src="assets/about/ABA1.jpeg" alt="Ali Ahmed" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
+            <img src="assets/about/ABA1.jpeg" alt="Ali Ahmed" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 5%; display:block;">
           </div>
         </div>
         <div class="mentor-card-meta">
@@ -6904,6 +7010,7 @@
           <p class="mentor-card-class">Class of 2T9 · Peters-Boyd</p>
         </div>
         <div class="mentor-card-tags">
+          <span class="mentor-tag tag-pronouns-he">He/Him</span>
           <span class="mentor-tag tag-firstgen">First-gen</span>
           <span class="mentor-tag tag-trad">Traditional path</span>
           <span class="mentor-tag tag-bipoc">BIPOC</span>
@@ -7132,6 +7239,50 @@
     <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
+
+<script>
+  (function() {
+    const pills = document.querySelectorAll('.mentor-filter-pill');
+    const cards = document.querySelectorAll('#mentor-grid .mentor-card');
+    const clearBtn = document.getElementById('mentor-filter-clear');
+    const countEl = document.getElementById('mentor-filter-count');
+    const active = new Set();
+
+    function update() {
+      if (active.size === 0) {
+        cards.forEach(c => c.classList.remove('is-hidden'));
+        clearBtn.style.display = 'none';
+        countEl.style.display = 'none';
+        return;
+      }
+      let visible = 0;
+      cards.forEach(card => {
+        const tags = Array.from(card.querySelectorAll('.mentor-tag')).map(t => Array.from(t.classList)).flat();
+        const matches = [...active].every(f => tags.includes(f));
+        card.classList.toggle('is-hidden', !matches);
+        if (matches) visible++;
+      });
+      clearBtn.style.display = 'inline';
+      countEl.style.display = 'block';
+      countEl.textContent = visible === 1 ? '1 mentor matches' : `${visible} mentors match`;
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const f = pill.dataset.filter;
+        if (active.has(f)) { active.delete(f); pill.classList.remove('is-active'); }
+        else { active.add(f); pill.classList.add('is-active'); }
+        update();
+      });
+    });
+
+    clearBtn.addEventListener('click', () => {
+      active.clear();
+      pills.forEach(p => p.classList.remove('is-active'));
+      update();
+    });
+  })();
+</script>
 
 </body>
 </html>
