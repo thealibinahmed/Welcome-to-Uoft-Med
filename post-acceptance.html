@@ -5726,6 +5726,53 @@
     line-height: 1.55;
   }
   .event-placeholder-note strong { color: var(--ink); font-weight: 700; }
+
+  /* Boat Formal marquee */
+  .bf-marquee-wrap {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .bf-marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+  .bf-marquee-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    will-change: transform;
+  }
+  .bf-marquee-track img {
+    height: 220px;
+    width: auto;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  @media (min-width: 720px) {
+    .bf-marquee-track img { height: 280px; }
+  }
+  .bf-marquee-left .bf-marquee-track {
+    animation: marquee-left 40s linear infinite;
+  }
+  .bf-marquee-right .bf-marquee-track {
+    animation: marquee-right 40s linear infinite;
+  }
+  @keyframes marquee-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bf-marquee-track { animation: none !important; }
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6976,7 +7023,60 @@
         <p class="event-block-meta">6:30 — 9:30 PM · 207 Queens Quay W · Dinner provided</p>
         <p class="event-block-context">A formal dinner cruise on the harbour as the sun goes down behind the city skyline. The first time the cohort dresses up for itself.</p>
       </div>
-      <div class="event-placeholder-note"><strong>Photos coming soon.</strong></div>
+      <div class="bf-marquee-wrap">
+        <div class="bf-marquee bf-marquee-left">
+          <div class="bf-marquee-track">
+            <img src="assets/oweek/boat-formal/BF1.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF2.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF3.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF4.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF5.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF6.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF7.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF8.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF9.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF10.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF11.jpeg" alt="Boat Formal" loading="lazy">
+            <!-- duplicate for seamless loop -->
+            <img src="assets/oweek/boat-formal/BF1.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF2.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF3.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF4.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF5.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF6.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF7.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF8.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF9.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF10.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF11.jpeg" alt="Boat Formal" loading="lazy">
+          </div>
+        </div>
+        <div class="bf-marquee bf-marquee-right">
+          <div class="bf-marquee-track">
+            <img src="assets/oweek/boat-formal/BF12.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF13.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF14.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF15.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF16.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF17.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF18.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF19.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF20.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF21.jpeg" alt="Boat Formal" loading="lazy">
+            <!-- duplicate for seamless loop -->
+            <img src="assets/oweek/boat-formal/BF12.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF13.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF14.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF15.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF16.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF17.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF18.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF19.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF20.jpeg" alt="Boat Formal" loading="lazy">
+            <img src="assets/oweek/boat-formal/BF21.jpeg" alt="Boat Formal" loading="lazy">
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="day-chapter">
