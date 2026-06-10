@@ -7036,12 +7036,14 @@
       </div>
     </div>
 
-    <p style="font-size: 12px; color: var(--ink-muted); margin-top: 24px; max-width: 60ch;">Rates and bonuses change frequently. Always confirm current offers directly with each bank before signing.</p>
+   <div style="margin-top: 24px; padding: 14px 18px; background: #fff8e6; border-left: 4px solid #e6a817; font-size: 14px; color: var(--ink-soft); line-height: 1.55;">
+      <strong style="color: var(--ink);">Rates and bonuses change frequently.</strong> Always confirm current offers directly with each bank before signing anything.
+    </div>
   </div>
 </section>
 
 <!-- ============ LOC Calculator ============ -->
-<section class="section section-soft" id="loc-calculator">
+<section class="section" id="loc-calculator">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7211,7 +7213,7 @@ function toggleCustomize(id,btn,grid,isMonthly){
   grid.classList.remove('hidden');btn.textContent='customize by year ▾';grid.innerHTML='';
   const base=parseFloat(document.getElementById(id).value)||0;
   if(!customized[id])customized[id]={};
-  for(let y=1;y<=4;y++){
+  for(let y=1;y<=estYears;y++){
     if(customized[id][y]===undefined)customized[id][y]=base;
     const cell=document.createElement('div');cell.className='yr-cell';
     cell.innerHTML=`<label>Year ${y}${isMonthly?' /mo':' /yr'}</label><input type="number" data-yr="${y}" data-id="${id}" value="${customized[id][y]}" min="0">`;
