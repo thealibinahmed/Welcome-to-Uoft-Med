@@ -7040,6 +7040,297 @@
   </div>
 </section>
 
+<!-- ============ LOC Calculator ============ -->
+<section class="section section-soft" id="loc-calculator">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">LOC Estimator</span>
+      </div>
+      <h2>Estimate your line of credit.</h2>
+      <p>Plug in your situation to get a rough sense of how much you'll draw on your LOC and what it'll look like over time. These are estimates — verify current tuition and LOC terms with your bank and the Faculty.</p>
+    </div>
+    <style>
+  .cw{padding:1rem 0;font-size:15px;color:var(--ink);}
+  .cw .cs{background:white;border:1px solid var(--hairline);border-radius:8px;padding:1.25rem;margin-bottom:1rem;}
+  .cw .ct{font-size:12px;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:1rem;}
+  .cw .ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;}
+  .cw .ir{display:flex;flex-direction:column;gap:4px;}
+  .cw .ir label{font-size:13px;color:var(--ink-soft);}
+  .cw .ir input[type=number]{width:100%;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;}
+  .cw .ih{font-size:11px;color:var(--ink-muted);margin-top:2px;}
+  .cw .seg{display:inline-flex;border:1px solid var(--hairline);border-radius:4px;overflow:hidden;margin-bottom:1rem;}
+  .cw .seg button{background:var(--paper-soft);border:none;padding:7px 18px;font-size:13px;cursor:pointer;color:var(--ink-soft);font-family:inherit;}
+  .cw .seg button.active{background:var(--uoft-navy);color:white;font-weight:600;}
+  .cw .seg button:not(:last-child){border-right:1px solid var(--hairline);}
+  .cw .rate-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .cw .rate-row label{font-size:13px;color:var(--ink-soft);}
+  .cw .rate-row input[type=number]{width:80px;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;}
+  .cw .rf{font-size:12px;color:var(--ink-muted);line-height:1.6;}
+  .cw .stepper{display:inline-flex;align-items:center;border:1px solid var(--hairline);border-radius:4px;overflow:hidden;}
+  .cw .stepper button{background:var(--paper-soft);border:none;width:36px;height:36px;font-size:20px;cursor:pointer;color:var(--ink);line-height:1;font-family:inherit;}
+  .cw .stepper button:hover{background:var(--hairline-soft);}
+  .cw .stepper button:disabled{opacity:0.35;cursor:default;}
+  .cw .sv{font-size:15px;font-weight:600;min-width:80px;text-align:center;padding:0 8px;color:var(--ink);border-left:1px solid var(--hairline);border-right:1px solid var(--hairline);line-height:36px;}
+  .cw .toggle-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft);background:none;border:1px solid var(--hairline);border-radius:4px;padding:5px 12px;cursor:pointer;font-family:inherit;}
+  .cw .toggle-btn:hover{background:var(--paper-soft);}
+  .cw .rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1rem;}
+  .cw .metric{background:var(--paper-soft);border-radius:4px;padding:0.85rem 1rem;}
+  .cw .ml{font-size:12px;color:var(--ink-soft);margin-bottom:4px;}
+  .cw .mv{font-size:22px;font-weight:700;color:var(--uoft-navy);}
+  .cw .ms{font-size:11px;color:var(--ink-muted);margin-top:2px;}
+  .cw .bt{width:100%;border-collapse:collapse;font-size:13px;}
+  .cw .bt td{padding:5px 0;border-bottom:1px solid var(--hairline-soft);}
+  .cw .bt tr:last-child td{border-bottom:none;}
+  .cw .tl{color:var(--ink-soft);}
+  .cw .tv{text-align:right;font-weight:600;}
+  .cw .tr-row{color:var(--ink);font-size:14px;}
+  .cw .in{font-size:12px;color:var(--ink-soft);background:var(--paper-soft);padding:10px 14px;margin-top:10px;line-height:1.6;border-left:3px solid var(--uoft-teal);}
+  .cw .hidden{display:none;}
+  .cw .sd{border:none;border-top:1px solid var(--hairline);margin:0.75rem 0;}
+  .cw .suggest-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:#e8f4f8;color:var(--uoft-teal-deep);border:1px solid var(--uoft-teal);border-radius:4px;padding:4px 10px;cursor:pointer;margin:3px 3px 3px 0;font-family:inherit;}
+  .cw .suggest-chip:hover{opacity:0.85;}
+  .cw .cost-main{display:flex;flex-direction:column;gap:4px;min-width:160px;}
+  .cw .cost-main label{font-size:13px;color:var(--ink-soft);}
+  .cw .cost-main input[type=number]{width:150px;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;}
+  .cw .cust-btn{font-size:11px;color:var(--ink-muted);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;margin-top:2px;text-align:left;font-family:inherit;}
+  .cw .cust-btn:hover{color:var(--ink-soft);}
+  .cw .yr-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+  .cw .yr-cell{display:flex;flex-direction:column;gap:2px;}
+  .cw .yr-cell label{font-size:11px;color:var(--ink-muted);}
+  .cw .yr-cell input[type=number]{width:72px;padding:5px 8px;border:1px solid var(--hairline);border-radius:4px;font-size:13px;background:var(--paper-soft);color:var(--ink);font-family:inherit;}
+</style>
+<div class="cw">
+  <div class="cs">
+    <div class="ct">Interest rate</div>
+    <div class="rate-row">
+      <label>Prime rate</label>
+      <input type="number" id="lc-prime" value="4.45" min="1" max="12" step="0.25">
+      <span style="font-size:13px;color:var(--ink-soft);">%</span>
+    </div>
+    <div class="rf">Your LOC rate: Prime (<span id="lc-prime-disp">4.45</span>%) − 0.25% = <strong id="lc-eff-rate">4.20%</strong> &nbsp;·&nbsp; Variable — moves with each Bank of Canada decision. Change this to stress-test.</div>
+  </div>
+  <div class="cs">
+    <div class="ct">Years to estimate</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <div class="stepper">
+        <button id="lc-yr-minus" onclick="lcStepYears(-1)" disabled>−</button>
+        <span class="sv" id="lc-yr-val">Year 1</span>
+        <button id="lc-yr-plus" onclick="lcStepYears(1)">+</button>
+      </div>
+      <span style="font-size:13px;color:var(--ink-soft);" id="lc-yr-desc">Estimating your LOC balance after Year 1.</span>
+    </div>
+    <div id="lc-res-toggle-wrap" class="hidden" style="margin-top:14px;">
+      <button class="toggle-btn" id="lc-toggle-res" onclick="lcToggleRes()">+ Continue into residency</button>
+      <div class="hidden" id="lc-res-section">
+        <div style="margin-top:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span style="font-size:13px;color:var(--ink-soft);">Residency length</span>
+          <div class="stepper">
+            <button onclick="lcStepRes(-1)">−</button>
+            <span class="sv" id="lc-res-val">3 years</span>
+            <button onclick="lcStepRes(1)">+</button>
+          </div>
+        </div>
+        <div class="in" style="margin-top:10px;">Interest continues to accrue during residency. This assumes interest-only payments — your principal stays fixed.</div>
+      </div>
+    </div>
+  </div>
+  <div class="cs">
+    <div class="ct">Living situation</div>
+    <div class="seg">
+      <button class="active" id="lc-btn-downtown" onclick="lcSetLiving('downtown')">Renting downtown</button>
+      <button id="lc-btn-commuter" onclick="lcSetLiving('commuter')">Commuter</button>
+    </div>
+    <div id="lc-living-inputs"></div>
+  </div>
+  <div class="cs">
+    <div class="ct">Annual program costs</div>
+    <div id="lc-program-inputs"></div>
+  </div>
+  <div class="cs">
+    <div class="ct">Funding &amp; non-loan resources <span style="font-weight:400;text-transform:none;letter-spacing:0;">(reduces your draw)</span></div>
+    <div id="lc-funding-inputs"></div>
+  </div>
+  <div class="cs hidden" id="lc-one-time-section">
+    <div class="ct">One-time costs</div>
+    <div id="lc-suggest-wrap" style="margin-bottom:12px;"></div>
+    <div id="lc-one-time-list"></div>
+  </div>
+  <div class="cs">
+    <div class="ct">Results</div>
+    <div class="rg">
+      <div class="metric"><div class="ml" id="lc-draw-label">LOC balance after Year 1</div><div class="mv" id="lc-res-draw">—</div><div class="ms">total outstanding</div></div>
+      <div class="metric"><div class="ml">Avg. annual draw</div><div class="mv" id="lc-annual-draw">—</div><div class="ms">per year, net of funding</div></div>
+      <div class="metric"><div class="ml">Interest accrued</div><div class="mv" id="lc-res-int">—</div><div class="ms" id="lc-int-sub">over 1 year</div></div>
+      <div class="metric hidden" id="lc-metric-monthly"><div class="ml">Est. monthly repayment</div><div class="mv" id="lc-res-monthly">—</div><div class="ms">post-residency, 10-yr amort.</div></div>
+    </div>
+    <hr class="sd">
+    <div class="ct" style="margin-bottom:0.5rem;">How this is calculated</div>
+    <table class="bt" id="lc-breakdown-table"></table>
+    <div class="in" style="margin-top:14px;"><strong>How the numbers work:</strong> Each year's draw = (monthly costs × 12) + program costs − funding. If you've customized costs by year, each year uses its own values. Interest compounds at Prime − 0.25% annually. One-time costs are added in Year 3. During residency, interest accrues on the outstanding balance (interest-only payments assumed). Post-residency repayment uses standard amortization over 10 years. <strong>These are estimates</strong> — verify current tuition and LOC terms with your bank and the Faculty.</div>
+  </div>
+</div>
+<script>
+(function(){
+const LIVING_FIELDS=[
+  {id:'lc-rent',label:'Rent / month ($)',default:1800,hint:'downtown Toronto ~$1,500–$2,200',mode:'downtown'},
+  {id:'lc-commute',label:'Commute costs / month ($)',default:250,hint:'GO Transit, TTC, gas + parking',mode:'commuter'},
+  {id:'lc-transit',label:'Local transit / month ($)',default:150,hint:'TTC pass ~$143',mode:'downtown'},
+  {id:'lc-food',label:'Food / month ($)',default:500,hint:'',mode:'both'},
+  {id:'lc-bills',label:'Bills / utilities / month ($)',default:100,hint:'phone, internet, hydro…',mode:'both'},
+  {id:'lc-other',label:'Other living / month ($)',default:200,hint:'gym, subscriptions, personal',mode:'both'},
+];
+const PROGRAM_FIELDS=[
+  {id:'lc-tuition',label:'Tuition / year ($)',default:26000,hint:'UofT MD ~$26,000/yr (2025–26)'},
+  {id:'lc-books',label:'Books & equipment / year ($)',default:1500,hint:'stethoscope, supplies'},
+];
+const FUNDING_FIELDS=[
+  {id:'lc-osap',label:'OSAP / year ($)',default:0,hint:'estimated annual grant + loan'},
+  {id:'lc-bursary',label:'Bursaries & scholarships / year ($)',default:0,hint:'Temerty Grant, entrance awards…'},
+  {id:'lc-family',label:'Family support / year ($)',default:0,hint:''},
+  {id:'lc-savings',label:'Personal savings / year ($)',default:0,hint:''},
+];
+const ONE_TIME_OPTIONS=[
+  {id:'lc-mccqe1',label:'MCCQE Part 1',default:1485,hint:'~$1,485 (2025)',fromYear:3},
+  {id:'lc-mccqe2',label:'MCCQE Part 2 / NAC',default:2200,hint:'',fromYear:4},
+  {id:'lc-carms',label:'CaRMS application + travel',default:1800,hint:'fees + travel',fromYear:4},
+  {id:'lc-electives',label:'Elective / selective travel',default:2000,hint:'flights, accommodation',fromYear:3},
+  {id:'lc-cpso',label:'CPSO registration',default:800,hint:'',fromYear:4},
+  {id:'lc-other-one',label:'Other one-time cost',default:500,hint:'white coat, events, misc.',fromYear:1},
+];
+const customized={};
+const activeOneTime={};
+let resYears=3,showRes=false,living='downtown',estYears=1;
+function fmt(n){return'$'+Math.round(n).toLocaleString('en-CA');}
+function pct(n){return n.toFixed(2)+'%';}
+function getVal(id,year){if(customized[id]&&customized[id][year]!==undefined)return customized[id][year];const el=document.getElementById(id);return el?(parseFloat(el.value)||0):0;}
+function toggleCustomize(id,btn,grid,isMonthly){
+  const isOpen=!grid.classList.contains('hidden');
+  if(isOpen){grid.classList.add('hidden');btn.textContent='customize by year ▸';delete customized[id];lcCalc();return;}
+  grid.classList.remove('hidden');btn.textContent='customize by year ▾';grid.innerHTML='';
+  const base=parseFloat(document.getElementById(id).value)||0;
+  if(!customized[id])customized[id]={};
+  for(let y=1;y<=4;y++){
+    if(customized[id][y]===undefined)customized[id][y]=base;
+    const cell=document.createElement('div');cell.className='yr-cell';
+    cell.innerHTML=`<label>Year ${y}${isMonthly?' /mo':' /yr'}</label><input type="number" data-yr="${y}" data-id="${id}" value="${customized[id][y]}" min="0">`;
+    grid.appendChild(cell);
+    cell.querySelector('input').addEventListener('input',e=>{customized[id][parseInt(e.target.dataset.yr)]=parseFloat(e.target.value)||0;lcCalc();});
+  }
+  lcCalc();
+}
+function buildField(f,container,isMonthly){
+  const wrap=document.createElement('div');wrap.style.cssText='display:flex;flex-direction:column;gap:4px;';
+  wrap.innerHTML=`<label style="font-size:13px;color:var(--ink-soft);">${f.label}</label><input type="number" id="${f.id}" value="${f.default}" min="0" style="width:100%;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;">${f.hint?`<div class="ih">${f.hint}</div>`:''}`;
+  const custBtn=document.createElement('button');custBtn.className='cust-btn';custBtn.id='custbtn-'+f.id;custBtn.textContent='customize by year ▸';
+  const yrGrid=document.createElement('div');yrGrid.className='yr-grid hidden';yrGrid.id='yrgrid-'+f.id;
+  custBtn.onclick=()=>toggleCustomize(f.id,custBtn,yrGrid,isMonthly);
+  wrap.appendChild(custBtn);wrap.appendChild(yrGrid);
+  wrap.querySelector('input[type=number]').addEventListener('input',lcCalc);
+  container.appendChild(wrap);
+}
+function lcRenderLiving(){
+  const c=document.getElementById('lc-living-inputs');c.innerHTML='';
+  const grid=document.createElement('div');grid.className='ig';
+  LIVING_FIELDS.forEach(f=>{if(f.mode!=='both'&&f.mode!==living)return;buildField(f,grid,true);});
+  c.appendChild(grid);
+}
+function lcRenderProgram(){
+  const c=document.getElementById('lc-program-inputs');c.innerHTML='';
+  const grid=document.createElement('div');grid.className='ig';
+  PROGRAM_FIELDS.forEach(f=>buildField(f,grid,false));
+  c.appendChild(grid);
+}
+function lcRenderFunding(){
+  const c=document.getElementById('lc-funding-inputs');c.innerHTML='';
+  const grid=document.createElement('div');grid.className='ig';
+  FUNDING_FIELDS.forEach(f=>buildField(f,grid,false));
+  c.appendChild(grid);
+}
+function lcRenderOneTime(){
+  const relevant=ONE_TIME_OPTIONS.filter(o=>o.fromYear<=estYears);
+  const section=document.getElementById('lc-one-time-section');
+  section.classList.toggle('hidden',relevant.length===0);
+  const sw=document.getElementById('lc-suggest-wrap');const lw=document.getElementById('lc-one-time-list');
+  sw.innerHTML='';lw.innerHTML='';
+  const suggestions=relevant.filter(o=>activeOneTime[o.id]===undefined);
+  const active=relevant.filter(o=>activeOneTime[o.id]!==undefined);
+  if(suggestions.length>0){
+    const lbl=document.createElement('p');lbl.style.cssText='font-size:13px;color:var(--ink-soft);margin-bottom:8px;';
+    lbl.textContent='Costs that typically apply by Year '+estYears+' — add any relevant to you:';
+    sw.appendChild(lbl);
+    suggestions.forEach(opt=>{const chip=document.createElement('button');chip.className='suggest-chip';chip.innerHTML='+ '+opt.label+(opt.hint?' <span style="opacity:0.7;">('+opt.hint+')</span>':'');chip.onclick=()=>{activeOneTime[opt.id]=opt.default;lcRenderOneTime();lcCalc();};sw.appendChild(chip);});
+  }
+  active.forEach(opt=>{
+    const row=document.createElement('div');row.style.cssText='display:flex;align-items:flex-end;gap:8px;margin-bottom:8px;';
+    row.innerHTML=`<div style="display:flex;flex-direction:column;gap:3px;"><label style="font-size:13px;color:var(--ink-soft);">${opt.label}${opt.hint?' <span style="font-size:11px;color:var(--ink-muted);">('+opt.hint+')</span>':''}</label><input type="number" id="${opt.id}" value="${activeOneTime[opt.id]}" min="0" style="width:150px;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;"></div><button onclick="lcRemoveOneTime('${opt.id}')" style="background:none;border:1px solid var(--hairline);border-radius:4px;padding:4px 10px;font-size:17px;cursor:pointer;color:var(--ink-soft);line-height:1;height:34px;font-family:inherit;">×</button>`;
+    lw.appendChild(row);document.getElementById(opt.id).addEventListener('input',lcCalc);
+  });
+}
+window.lcRemoveOneTime=function(id){delete activeOneTime[id];lcRenderOneTime();lcCalc();}
+window.lcSetLiving=function(mode){living=mode;document.getElementById('lc-btn-downtown').classList.toggle('active',mode==='downtown');document.getElementById('lc-btn-commuter').classList.toggle('active',mode==='commuter');lcRenderLiving();lcCalc();}
+window.lcStepYears=function(d){
+  estYears=Math.max(1,Math.min(4,estYears+d));
+  document.getElementById('lc-yr-minus').disabled=estYears===1;
+  document.getElementById('lc-yr-plus').disabled=estYears===4;
+  document.getElementById('lc-yr-val').textContent=estYears===4?'Graduation':'Year '+estYears;
+  const descs=['after Year 1.','after Year 2.','after Year 3.','at graduation (end of Year 4).'];
+  document.getElementById('lc-yr-desc').textContent='Estimating your LOC balance '+descs[estYears-1];
+  document.getElementById('lc-res-toggle-wrap').classList.toggle('hidden',estYears<4);
+  if(estYears<4&&showRes){showRes=false;document.getElementById('lc-res-section').classList.add('hidden');document.getElementById('lc-toggle-res').textContent='+ Continue into residency';document.getElementById('lc-metric-monthly').classList.add('hidden');}
+  lcRenderOneTime();lcCalc();
+}
+window.lcToggleRes=function(){showRes=!showRes;document.getElementById('lc-res-section').classList.toggle('hidden',!showRes);document.getElementById('lc-toggle-res').textContent=showRes?'− Remove residency':'+ Continue into residency';document.getElementById('lc-metric-monthly').classList.toggle('hidden',!showRes);lcCalc();}
+window.lcStepRes=function(d){resYears=Math.max(2,Math.min(7,resYears+d));document.getElementById('lc-res-val').textContent=resYears+' year'+(resYears!==1?'s':'');lcCalc();}
+function lcCalc(){
+  const prime=parseFloat(document.getElementById('lc-prime').value)||4.45;
+  const effRate=Math.max(0,prime-0.25);const r=effRate/100;
+  document.getElementById('lc-prime-disp').textContent=prime.toFixed(2);
+  document.getElementById('lc-eff-rate').textContent=pct(effRate);
+  let balance=0,totalInterest=0,totalDraw=0;const yearRows=[];
+  for(let y=1;y<=estYears;y++){
+    const rent=living==='downtown'?getVal('lc-rent',y)*12:0;
+    const commute=living==='commuter'?getVal('lc-commute',y)*12:0;
+    const transit=living==='downtown'?getVal('lc-transit',y)*12:0;
+    const food=getVal('lc-food',y)*12;const bills=getVal('lc-bills',y)*12;const other=getVal('lc-other',y)*12;
+    const tuition=getVal('lc-tuition',y);const books=getVal('lc-books',y);
+    const osap=getVal('lc-osap',y);const bursary=getVal('lc-bursary',y);const fam=getVal('lc-family',y);const sav=getVal('lc-savings',y);
+    const living_total=rent+commute+transit+food+bills+other;
+    const resources=osap+bursary+fam+sav;
+    const draw=Math.max(0,living_total+tuition+books-resources);
+    totalDraw+=draw;
+    let oneTime=0;
+    if(y===3){ONE_TIME_OPTIONS.filter(o=>o.fromYear<=estYears&&activeOneTime[o.id]!==undefined).forEach(opt=>{const el=document.getElementById(opt.id);if(el)oneTime+=parseFloat(el.value)||0;});}
+    balance+=draw+oneTime;const intY=balance*r;totalInterest+=intY;balance+=intY;
+    yearRows.push({y,draw,oneTime,intY,balance});
+  }
+  let monthlyPayment=0;
+  if(showRes&&estYears===4){let rb=balance;for(let y=0;y<resYears;y++){const i=rb*r;totalInterest+=i;rb+=i;}const rM=r/12;if(rM>0&&rb>0)monthlyPayment=rb*rM/(1-Math.pow(1+rM,-120));}
+  const yearLabel=estYears===4?'at graduation':'after Year '+estYears;
+  document.getElementById('lc-draw-label').textContent='LOC balance '+yearLabel;
+  document.getElementById('lc-res-draw').textContent=fmt(balance);
+  document.getElementById('lc-annual-draw').textContent=fmt(totalDraw/estYears);
+  document.getElementById('lc-res-int').textContent=fmt(totalInterest);
+  document.getElementById('lc-int-sub').textContent=showRes&&estYears===4?'school + residency':'over '+estYears+' year'+(estYears!==1?'s':'');
+  document.getElementById('lc-res-monthly').textContent=fmt(monthlyPayment)+'/mo';
+  const rows=[];
+  yearRows.forEach(({y,draw,oneTime,intY,balance:bal})=>{
+    rows.push(['Year '+y+' draw',fmt(draw)+(oneTime>0?' + '+fmt(oneTime)+' one-time':'')]);
+    rows.push(['Year '+y+' interest ('+pct(effRate)+')',fmt(intY)]);
+    rows.push(['Year '+y+' balance',fmt(bal),true]);
+  });
+  if(showRes&&estYears===4)rows.push(['Est. monthly repayment post-residency',fmt(monthlyPayment)+'/mo over 10 yrs',true]);
+  document.getElementById('lc-breakdown-table').innerHTML=rows.map(([l,v,t])=>`<tr><td class="tl${t?' tr-row':''}">${l}</td><td class="tv${t?' tr-row':''}">${v}</td></tr>`).join('');
+}
+lcRenderLiving();lcRenderProgram();lcRenderFunding();lcRenderOneTime();
+document.getElementById('lc-prime').addEventListener('input',lcCalc);
+lcCalc();
+})();
+</script>
+  </div>
+</section>
+
 <!-- ============ Detailed comparison table ============ -->
 <section class="section" id="bank-questions">
   <div class="container">
