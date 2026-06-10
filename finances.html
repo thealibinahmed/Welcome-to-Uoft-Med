@@ -7281,7 +7281,25 @@ window.lcStepYears=function(d){
   document.getElementById('lc-yr-desc').textContent='Estimating your LOC balance '+descs[estYears-1];
   document.getElementById('lc-res-toggle-wrap').classList.toggle('hidden',estYears<4);
   if(estYears<4&&showRes){showRes=false;document.getElementById('lc-res-section').classList.add('hidden');document.getElementById('lc-toggle-res').textContent='+ Continue into residency';document.getElementById('lc-metric-monthly').classList.add('hidden');}
-  lcRenderOneTime();lcCalc();
+  lcRenderOneTime();
+  Object.keys(customized).forEach(id=>{
+    const grid=document.getElementById('yrgrid-'+id);
+    const btn=document.getElementById('custbtn-'+id);
+    if(grid&&!grid.classList.contains('hidden')){
+      const isMonthly=LIVING_FIELDS.some(f=>f.id===id);
+      const baseEl=document.getElementById(id);
+      const base=baseEl?(parseFloat(baseEl.value)||0):0;
+      grid.innerHTML='';
+      for(let y=1;y<=estYears;y++){
+        if(customized[id][y]===undefined)customized[id][y]=base;
+        const cell=document.createElement('div');cell.className='yr-cell';
+        cell.innerHTML=`<label>Year ${y}${isMonthly?' /mo':' /yr'}</label><input type="number" data-yr="${y}" data-id="${id}" value="${customized[id][y]}" min="0">`;
+        grid.appendChild(cell);
+        cell.querySelector('input').addEventListener('input',e=>{customized[id][parseInt(e.target.dataset.yr)]=parseFloat(e.target.value)||0;lcCalc();});
+      }
+    }
+  });
+  lcCalc();
 }
 window.lcToggleRes=function(){showRes=!showRes;document.getElementById('lc-res-section').classList.toggle('hidden',!showRes);document.getElementById('lc-toggle-res').textContent=showRes?'− Remove residency':'+ Continue into residency';document.getElementById('lc-metric-monthly').classList.toggle('hidden',!showRes);lcCalc();}
 window.lcStepRes=function(d){resYears=Math.max(2,Math.min(7,resYears+d));document.getElementById('lc-res-val').textContent=resYears+' year'+(resYears!==1?'s':'');lcCalc();}
