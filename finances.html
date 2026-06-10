@@ -7176,22 +7176,22 @@
 <script>
 (function(){
 const LIVING_FIELDS=[
-  {id:'lc-rent',label:'Rent / month ($)',default:1800,hint:'downtown Toronto ~$1,500–$2,200',mode:'downtown'},
-  {id:'lc-commute',label:'Commute costs / month ($)',default:250,hint:'GO Transit, TTC, gas + parking',mode:'commuter'},
-  {id:'lc-transit',label:'Local transit / month ($)',default:150,hint:'TTC pass ~$143',mode:'downtown'},
-  {id:'lc-food',label:'Food / month ($)',default:500,hint:'',mode:'both'},
-  {id:'lc-bills',label:'Bills / utilities / month ($)',default:100,hint:'phone, internet, hydro…',mode:'both'},
-  {id:'lc-other',label:'Other living / month ($)',default:200,hint:'gym, subscriptions, personal',mode:'both'},
+  {id:'lc-rent',label:'Rent / month ($)',default:1800,hint:'typical range $1,500–$2,400 near campus; less with roommates',mode:'downtown'},
+  {id:'lc-commute',label:'Commute costs / month ($)',default:250,hint:'GO Transit monthly ~$200–$350 depending on zone; gas + parking adds up fast',mode:'commuter'},
+  {id:'lc-transit',label:'Local transit / month ($)',default:150,hint:'Presto monthly pass ~$156; free with some bank packages',mode:'downtown'},
+  {id:'lc-food',label:'Food / month ($)',default:500,hint:'typical range $400–$700; groceries cheaper than eating out near campus',mode:'both'},
+  {id:'lc-bills',label:'Bills / utilities / month ($)',default:100,hint:'phone ~$50–$80, internet ~$60–$80, hydro included in most rentals',mode:'both'},
+  {id:'lc-other',label:'Other living / month ($)',default:200,hint:'gym ~$30–$60, subscriptions, clothing, personal care — easy to underestimate',mode:'both'},
 ];
 const PROGRAM_FIELDS=[
-  {id:'lc-tuition',label:'Tuition / year ($)',default:26000,hint:'UofT MD ~$26,000/yr (2025–26)'},
-  {id:'lc-books',label:'Books & equipment / year ($)',default:1500,hint:'stethoscope, supplies'},
+ {id:'lc-tuition',label:'Tuition / year ($)',default:26000,hint:'UofT MD ~$26,000/yr domestic (2025–26); confirm each year as fees increase'},
+  {id:'lc-books',label:'Books & equipment / year ($)',default:1500,hint:'Year 1 higher (~$1,000–$2,000 for stethoscope, supplies); drops significantly in later years'},
 ];
 const FUNDING_FIELDS=[
-  {id:'lc-osap',label:'OSAP / year ($)',default:0,hint:'estimated annual grant + loan'},
-  {id:'lc-bursary',label:'Bursaries & scholarships / year ($)',default:0,hint:'Temerty Grant, entrance awards…'},
-  {id:'lc-family',label:'Family support / year ($)',default:0,hint:''},
-  {id:'lc-savings',label:'Personal savings / year ($)',default:0,hint:''},
+ {id:'lc-osap',label:'OSAP / year ($)',default:0,hint:'apply by June 30; grant portion does not need to be repaid'},
+  {id:'lc-bursary',label:'Bursaries & scholarships / year ($)',default:0,hint:'Temerty Grant opens mid-August; check the Faculty financial aid page for others'},
+  {id:'lc-family',label:'Family support / year ($)',default:0,hint:'include any regular contributions from family'},
+  {id:'lc-savings',label:'Personal savings / year ($)',default:0,hint:'amount you plan to draw from savings each year'},
 ];
 const ONE_TIME_OPTIONS=[
   {id:'lc-mccqe1',label:'MCCQE Part 1',default:1485,hint:'~$1,485 (2025)',fromYear:3},
@@ -7688,7 +7688,7 @@ lcCalc();
 </section>
 
 <!-- ============ Bank comparison tool (side-by-side) ============ -->
-<section class="section" id="bank-compare" style="padding-top: 0;">
+<section class="section section-soft" id="bank-compare">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7971,37 +7971,6 @@ lcCalc();
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ Toronto budget ============ -->
-<section class="section" id="monthly-budget">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Toronto Budget</span>
-      </div>
-      <h2>A realistic monthly breakdown.</h2>
-      <p>Sample budget for a single student in a 1-bedroom near campus. Adjust upward for Yorkville, downward for roommates.</p>
-    </div>
-
-    <table class="compare-table" style="max-width: 720px;">
-      <tbody>
-        <tr><th style="background: white;">Rent (1-bed near campus)</th><td style="text-align: right; font-feature-settings: 'tnum';">$2,400</td></tr>
-        <tr><th style="background: white;">Utilities (hydro, internet)</th><td style="text-align: right; font-feature-settings: 'tnum';">$120</td></tr>
-        <tr><th style="background: white;">Groceries</th><td style="text-align: right; font-feature-settings: 'tnum';">$500</td></tr>
-        <tr><th style="background: white;">Transit (Presto monthly)</th><td style="text-align: right; font-feature-settings: 'tnum';">$156</td></tr>
-        <tr><th style="background: white;">Phone</th><td style="text-align: right; font-feature-settings: 'tnum';">$55</td></tr>
-        <tr><th style="background: white;">Eating out / social</th><td style="text-align: right; font-feature-settings: 'tnum';">$300</td></tr>
-        <tr><th style="background: white;">Misc (clothing, gym, medical)</th><td style="text-align: right; font-feature-settings: 'tnum';">$200</td></tr>
-        <tr><th style="background: white;">Buffer</th><td style="text-align: right; font-feature-settings: 'tnum';">$200</td></tr>
-        <tr style="background: var(--uoft-navy); color: white;">
-          <th style="background: var(--uoft-navy); color: white; font-size: 16px;">Monthly total</th>
-          <td style="text-align: right; font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 22px; color: white; font-feature-settings: 'tnum';">~$3,930</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </section>
 
