@@ -1898,21 +1898,17 @@
   }
   .search-site {
     display: grid;
-    grid-template-columns: 44px 1fr 24px;
+    grid-template-columns: 44px minmax(0, 1fr) 24px;
     gap: 20px;
     padding: 22px 28px;
     border-bottom: 1px solid var(--hairline);
     transition: background 180ms;
     align-items: start;
+    width: 100%;
   }
   .search-site > div {
     min-width: 0;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-  .search-site-name {
-    word-break: normal;
-    overflow-wrap: break-word;
+    overflow: hidden;
   }
   .search-site:last-child { border-bottom: none; }
   .search-site:hover { background: var(--paper-soft); }
@@ -1930,11 +1926,13 @@
     color: var(--uoft-navy);
     margin-bottom: 6px;
     line-height: 1.25;
+    white-space: normal;
   }
   .search-site-note {
     font-size: 13px;
     line-height: 1.55;
     color: var(--ink-soft);
+    overflow-wrap: anywhere;
   }
   .search-site-arrow {
     font-size: 16px;
@@ -7162,14 +7160,20 @@
         </div>
         <div class="search-site-arrow">↗</div>
       </a>
-      <a class="search-site" href="https://www.facebook.com/marketplace/toronto/propertyrentals" target="_blank" rel="noopener">
+      <div class="search-site">
         <div class="search-site-rank">04</div>
         <div>
-          <h4 class="search-site-name">Facebook Marketplace + Housing Groups</h4>
-          <p class="search-site-note">Where off-market deals from upper-years tend to surface first. Key groups: <a href="https://www.facebook.com/groups/uofthousing" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;" onclick="event.stopPropagation()">UofT Housing</a>, <a href="https://www.facebook.com/groups/torontometropolitanhousingforum" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;" onclick="event.stopPropagation()">TMU Housing</a>, <a href="https://www.facebook.com/groups/uoftgraduatestudenthousing" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;" onclick="event.stopPropagation()">UofT Graduate Student Housing</a>. Always tour in person before committing.</p>
+          <h4 class="search-site-name">Facebook Marketplace + Groups</h4>
+          <p class="search-site-note">Where off-market deals from upper-years tend to surface first. Always tour in person before committing.</p>
+          <p class="search-site-note" style="margin-top:8px;">
+            <a href="https://www.facebook.com/marketplace/toronto/propertyrentals" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;margin-right:12px;">Marketplace ↗</a>
+            <a href="https://www.facebook.com/groups/uofthousing" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;margin-right:12px;">UofT Housing ↗</a>
+            <a href="https://www.facebook.com/groups/torontometropolitanhousingforum" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;margin-right:12px;">TMU Housing ↗</a>
+            <a href="https://www.facebook.com/groups/uoftgraduatestudenthousing" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;">UofT Grad Housing ↗</a>
+          </p>
         </div>
-        <div class="search-site-arrow">↗</div>
-      </a>
+        <div class="search-site-arrow"></div>
+      </div>
       <a class="search-site" href="https://www.kijiji.ca/b-apartments-condos/toronto/c37l1700273" target="_blank" rel="noopener">
         <div class="search-site-rank">05</div>
         <div>
