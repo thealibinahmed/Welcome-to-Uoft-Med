@@ -1416,7 +1416,7 @@
     font-weight: 700;
     color: var(--uoft-teal);
     padding: 18px 0 8px;
-    border-top: 1px solid var(--hairline-soft);
+    border-top: 1px solid var(--hairline);
   }
   .qs-card > .qs-group-eyebrow:first-child {
     border-top: none;
@@ -1426,11 +1426,15 @@
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 16px;
-    padding: 14px 0;
-    border-top: 1px solid var(--hairline-soft);
+    padding: 16px 14px;
+    border-top: 1px solid var(--hairline);
     align-items: start;
+    margin: 0 -14px;
   }
-  .qs-group-eyebrow + .qs-row { border-top: none; padding-top: 4px; }
+  .qs-row:nth-child(even) {
+    background: var(--paper-soft);
+  }
+  .qs-group-eyebrow + .qs-row { border-top: none; padding-top: 6px; }
   .qs-row-title {
     font-size: 15px;
     font-weight: 600;
@@ -1637,6 +1641,137 @@
     margin-left: 6px;
     vertical-align: middle;
   }
+
+  /* ── Phase 05: final stretch ── */
+  .final-stretch {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 12px;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .final-stretch {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+  }
+  .final-step {
+    background: white;
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--uoft-navy);
+    padding: 20px 22px;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .final-step + .final-step { border-left: none; }
+  }
+  .final-step-destination {
+    background: var(--uoft-navy);
+    color: white;
+    border: 1px solid var(--uoft-navy);
+    border-top: 3px solid var(--uoft-navy);
+  }
+  .final-step-pill {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin: 0 0 8px;
+  }
+  .final-step-destination .final-step-pill { color: rgba(255,255,255,0.7); }
+  .final-step h4 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--uoft-navy);
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .final-step-destination h4 { color: white; }
+  .final-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .final-step p:last-child { margin-bottom: 0; }
+  .final-step-destination p { color: rgba(255,255,255,0.85); }
+  .final-step-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--uoft-teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--uoft-teal);
+    padding-bottom: 1px;
+  }
+  .final-step-link:hover { color: var(--uoft-navy); border-color: var(--uoft-navy); }
+
+  /* ── Equipment buy list: icon cards by category ── */
+  .buy-group-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .buy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 640px) {
+    .buy-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .buy-grid:last-child { margin-bottom: 0; }
+  .buy-item {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .buy-item-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    color: var(--uoft-navy);
+    margin-top: 2px;
+  }
+  .buy-item-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .buy-item-note {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .buy-item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--uoft-teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--uoft-teal);
+    padding-bottom: 1px;
+  }
+  .buy-item-link:hover { color: var(--uoft-navy); border-color: var(--uoft-navy); }
 
   /* Comparison table */
   .compare-table {
@@ -6930,7 +7065,7 @@
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">Before bank appointment</p>
+            <p class="step-card-pill">Required to open LOC</p>
             <h4>Request your Letter of Confirmation</h4>
             <p>Banks won't finalize your Professional Student LOC without this. The Faculty processes requests via Qualtrics. Submit early so it's ready when needed.</p>
             <a class="step-card-link" href="https://survey.ca1.qualtrics.com/jfe/form/SV_8Dt7x3cB6vMXvtH" target="_blank" rel="noopener">Letter of Confirmation form ↗</a>
@@ -6939,7 +7074,7 @@
           <div class="step-card">
             <p class="step-card-pill">May – June</p>
             <h4>Open a Professional Student LOC <span class="step-card-tag">Time-sensitive</span></h4>
-            <p>Compare offers from Scotia, RBC, CIBC, TD, and BMO. Differences are at the margins. Bring your offer letter and Letter of Confirmation.</p>
+            <p>Compare offers from Scotia, RBC, CIBC, TD, and BMO. Differences are at the margins. You'll need your Letter of Confirmation to finalize.</p>
             <a class="step-card-link" href="finances.html">See the Finances comparison →</a>
           </div>
 
@@ -6992,14 +7127,14 @@
       <div>
         <p class="phase-number">03</p>
         <div class="phase-meta">
-          <p class="phase-meta-eyebrow">Mid-June onward</p>
+          <p class="phase-meta-eyebrow">June onward</p>
           <h3>Registration requirements.</h3>
-          <p class="phase-meta-desc">The Faculty publishes the year's full list in mid-June. Most items are online forms and uploads, but a couple need real lead time.</p>
+          <p class="phase-meta-desc">The Faculty maintains a list of forms, modules, and clinical clearances to complete before September. Most items are online forms and uploads, but a couple need real lead time.</p>
         </div>
       </div>
       <div class="phase-items">
         <div class="reg-overview">
-          <p class="reg-overview-lede">The full list, current deadlines, and updated forms live on the Faculty's <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements page</a>. The visual below is a quick inventory of what to expect, not a substitute. Check the official page the moment it goes live in mid-June.</p>
+          <p class="reg-overview-lede">The full list, current deadlines, and updated forms live on the Faculty's <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements page</a>. The visual below is a quick inventory of what to expect, not a substitute. Check the official page for current deadlines and current-year forms.</p>
 
           <div class="reg-ribbon" aria-hidden="true">
             <div class="reg-ribbon-line"></div>
@@ -7029,7 +7164,7 @@
 
           <div class="reg-ribbon-callout">
             <span class="reg-ribbon-callout-icon" aria-hidden="true">⚑</span>
-            <span><strong>Start your police check as soon as you can.</strong> Toronto Police processing takes 8+ weeks. It's the one item with real lead time, so kick it off before the rest of the page even goes live.</span>
+            <span><strong>Start your police check as soon as you can.</strong> Toronto Police processing takes 8+ weeks. It's the one item with real lead time, so don't put it off.</span>
           </div>
 
           <div class="reg-chips-section">
@@ -7164,42 +7299,40 @@
         </div>
       </div>
       <div class="phase-items">
-        <div class="checklist-item">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Buy your stethoscope (by the Stethoscope Ceremony)</p>
-            <p class="checklist-desc">A stethoscope is required. Most students get either the <strong>Littmann Classic III</strong> or the <strong>Cardiology IV</strong>; either is fine. Deals exist through the cohort, online retailers, and medical supply stores, so shop around before paying full retail. Team Blast put together a lookbook with what you need and where to get it.</p>
-            <a class="checklist-link" href="https://drive.google.com/file/d/1uhbXw4uPJz7kwI-YWp6CqYpA4Neyknaz/view" target="_blank" rel="noopener">Team Blast Equipment Lookbook ↗</a>
+        <div class="step-grid">
+
+          <div class="step-card">
+            <p class="step-card-pill">By the Stethoscope Ceremony</p>
+            <h4>Buy your stethoscope</h4>
+            <p>A stethoscope is required. Most students get either the Littmann Classic III or the Cardiology IV. Deals exist through the cohort and online retailers, so shop around before paying full retail.</p>
+            <a class="step-card-link" href="https://drive.google.com/file/d/1uhbXw4uPJz7kwI-YWp6CqYpA4Neyknaz/view" target="_blank" rel="noopener">Team Blast Equipment Lookbook ↗</a>
           </div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Order cohort merch (Patagonia + class items)</p>
-            <p class="checklist-desc">The Patagonia jacket has become a cohort tradition. Optional, but most people get one. Last year, merch orders were due <strong>Tuesday July 15</strong> at 11:59 PM EST. Patagonia orders went out <strong>September 25</strong>, due <strong>October 3</strong>, and were picked up <strong>January 23rd</strong>. A new catalogue will be posted for 3T0; watch the Discord for the order window.</p>
-            <a class="checklist-link" href="https://adcomms.utoronto.ca/email-templates/brand/assets/med/2021/12/Temerty-Merchandise-Catalogue-FINAL.pdf" target="_blank" rel="noopener">Previous merch catalogue (reference only, new one coming) ↗</a>
+
+          <div class="step-card">
+            <p class="step-card-pill">July (last year: July 15)</p>
+            <h4>Order cohort merch</h4>
+            <p>The Patagonia jacket has become a cohort tradition. Optional, but most people get one. A new catalogue will be posted for 3T0. Watch the Discord for the order window.</p>
+            <a class="step-card-link" href="https://adcomms.utoronto.ca/email-templates/brand/assets/med/2021/12/Temerty-Merchandise-Catalogue-FINAL.pdf" target="_blank" rel="noopener">Previous catalogue (reference) ↗</a>
           </div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Confirm OHIP / health insurance coverage</p>
-            <p class="checklist-desc">Moving to Ontario from another province or country triggers a 3-month OHIP wait. Apply on arrival. UTGSU offers supplementary coverage during the gap.</p>
+
+          <div class="step-card">
+            <p class="step-card-pill">On arrival in Ontario</p>
+            <h4>Confirm OHIP / health insurance</h4>
+            <p>Moving to Ontario from another province or country triggers a 3-month OHIP wait. Apply on arrival. UTGSU offers supplementary coverage during the gap.</p>
           </div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Move to Toronto</p>
-            <p class="checklist-desc">No fixed deadline. Most people aim to be moved in and settled in time for O-Week. People move at different times (June, July, August) depending on lease and circumstances. Avoid September 1 if possible; it's the busiest moving day of the year and movers cost significantly more.</p>
+
+          <div class="step-card">
+            <p class="step-card-pill">June – August</p>
+            <h4>Move to Toronto</h4>
+            <p>No fixed deadline. Most people aim to be moved in and settled in time for O-Week. Avoid September 1 if possible; it's the busiest moving day of the year and movers cost significantly more.</p>
           </div>
-        </div>
-        <div class="checklist-item important">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Register for O-Week <span class="important-tag">Time-sensitive</span></p>
-            <p class="checklist-desc">O-Week registration requires a form submission and a fee (last year: <strong>$195</strong>, due <strong>Thursday July 10</strong> at 11:59 PM EST). Watch the Discord and your UofT email for when the form goes live. The deadline comes earlier than most people expect.</p>
+
+          <div class="step-card">
+            <p class="step-card-pill">By July (last year: July 10)</p>
+            <h4>Register for O-Week <span class="step-card-tag">Time-sensitive</span></h4>
+            <p>O-Week registration requires a form submission and a fee (last year: $195). Watch the Discord and your UofT email for when the form goes live. The deadline comes earlier than most people expect.</p>
           </div>
+
         </div>
       </div>
     </div>
@@ -7215,27 +7348,27 @@
         </div>
       </div>
       <div class="phase-items">
-        <div class="checklist-item important">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Pay or defer your fall tuition fees <span class="important-tag">Deadline: August 24, 2026</span></p>
-            <p class="checklist-desc">You must either pay your fall term tuition and incidental fees in full, or file a fee deferral on ACORN, by <strong>August 24, 2026</strong>. If you have OSAP, you'll need to process the deferral on ACORN; your fees are then due by September 30, 2026 once funding arrives.</p>
+        <div class="final-stretch">
+
+          <div class="final-step">
+            <p class="final-step-pill">By Aug 24, 2026</p>
+            <h4>Pay or defer fall fees</h4>
+            <p>Pay your fall term tuition and incidental fees in full, or file a fee deferral on ACORN. With OSAP, your fees are due September 30 once funding arrives.</p>
           </div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">Attend O-Week and meet your people <span class="important-tag">Aug 17–21, 2026</span></p>
-            <p class="checklist-desc">O-Week isn't 100% mandatory. Some events are required (academy day, stethoscope ceremony) and most are social and optional. Either way, it's where you'll meet your cohort, your academy, and the people you'll go through medical school with. Worth showing up for, even if you skip a couple of events.</p>
-            <a class="checklist-link" href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener">See the O-Week guide →</a>
+
+          <div class="final-step">
+            <p class="final-step-pill">Aug 17–21, 2026</p>
+            <h4>O-Week</h4>
+            <p>Some sessions are mandatory (academy day, stethoscope ceremony) and most are social. Either way, this is where you'll meet your cohort and your academy.</p>
+            <a class="final-step-link" href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener">See the O-Week guide →</a>
           </div>
-        </div>
-        <div class="checklist-item milestone">
-          <div class="checklist-marker"></div>
-          <div>
-            <p class="checklist-title">First day of classes <span class="milestone-tag">August 24, 2026</span></p>
-            <p class="checklist-desc">Medical school begins. Everything on this page was the run-up to this moment.</p>
+
+          <div class="final-step final-step-destination">
+            <p class="final-step-pill">August 24, 2026</p>
+            <h4>First day of medical school</h4>
+            <p>Everything on this page was the run-up to this moment.</p>
           </div>
+
         </div>
       </div>
     </div>
@@ -7255,58 +7388,102 @@
       <p>You don't need to buy everything in May. Most equipment is cheaper through the cohort group order in August.</p>
     </div>
 
-    <div class="compare-scroll">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th style="width: 18%;">Category</th>
-            <th style="width: 22%;">Item</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Required</th>
-            <td class="compare-cell-strong">Stethoscope</td>
-            <td>Littmann Classic III or Cardiology IV; either is fine. Do by the Stethoscope Ceremony. Deals exist; check the Team Blast lookbook before buying.</td>
-          </tr>
-          <tr>
-            <th>Required</th>
-            <td class="compare-cell-strong">Clinical Skills Kit</td>
-            <td>Includes: penlight with pupil gauge, eye chart, medical measuring tape, reflex hammer, 128 Hz tuning fork, 512 Hz tuning fork. Last year's kit was ~$56.99. See the Team Blast lookbook for where to order.</td>
-          </tr>
-          <tr>
-            <th>Required</th>
-            <td class="compare-cell-strong">Lab coat</td>
-            <td>Any white lab coat is fine. It doesn't need to be UofT-branded or specific to the program.</td>
-          </tr>
-          <tr>
-            <th>Required</th>
-            <td class="compare-cell-strong">Dissection kit</td>
-            <td>Includes: scalpel handle, spare scalpel blades, probe, tweezers, scissors. See the Team Blast lookbook for sourcing.</td>
-          </tr>
-          <tr>
-            <th>Required</th>
-            <td class="compare-cell-strong">Gloves</td>
-            <td>Standard nitrile exam gloves. Know your size before buying in bulk.</td>
-          </tr>
-          <tr>
-            <th>Optional</th>
-            <td class="compare-cell-strong">Blood pressure cuff</td>
-            <td>Useful for at-home practice during clinical skills prep. Not required; placements provide them. <a href="https://www.amazon.ca/gp/product/B000QV5HOM/" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">Common pick on Amazon ↗</a></td>
-          </tr>
-          <tr>
-            <th>Cohort tradition</th>
-            <td class="compare-cell-strong">Patagonia jacket</td>
-            <td>The cohort jacket. Optional but most people get one. Watch the Discord for the order window.</td>
-          </tr>
-          <tr>
-            <th>Cohort tradition</th>
-            <td class="compare-cell-strong">Class merch</td>
-            <td>Hoodies and other items. A new catalogue will be posted for 3T0; watch the Discord.</td>
-          </tr>
-        </tbody>
-      </table>
+    <p class="buy-group-label">Required</p>
+    <div class="buy-grid">
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="6" cy="6" r="2"/><circle cx="14" cy="6" r="2"/>
+          <path d="M6 8v4a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V8"/>
+          <path d="M10 16v2a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3v-2"/>
+          <circle cx="19" cy="14" r="2"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Stethoscope</p>
+          <p class="buy-item-note">Littmann Classic III or Cardiology IV. By the Stethoscope Ceremony. Check the Team Blast lookbook for deals.</p>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="14" rx="1"/>
+          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          <path d="M12 11v6M9 14h6"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Clinical Skills Kit</p>
+          <p class="buy-item-note">Penlight, eye chart, measuring tape, reflex hammer, 128 + 512 Hz tuning forks. Last year ~$56.99.</p>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M8 4l-3 2v16h14V6l-3-2"/>
+          <path d="M8 4h8M9 4v3a3 3 0 0 0 6 0V4"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Lab coat</p>
+          <p class="buy-item-note">Any white lab coat works. Doesn't need to be UofT-branded or program-specific.</p>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4 10l8-7 8 7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" transform="rotate(45 12 12)"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Dissection kit</p>
+          <p class="buy-item-note">Scalpel handle, spare blades, probe, tweezers, scissors. See the Team Blast lookbook for sourcing.</p>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="6" y="8" width="12" height="8" rx="1"/>
+          <path d="M6 12h-2M18 12h2M12 8V4M10 4h4"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Blood pressure cuff</p>
+          <p class="buy-item-note">Standard sphygmomanometer for clinical skills practice. Many placements have them on hand, but it's worth owning your own.</p>
+          <a class="buy-item-link" href="https://www.amazon.ca/gp/product/B000QV5HOM/" target="_blank" rel="noopener">Common pick on Amazon ↗</a>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M7 11V7a2 2 0 0 1 4 0v4M11 11V5a2 2 0 0 1 4 0v6M15 11V7a2 2 0 0 1 4 0v6a8 8 0 0 1-8 8 6 6 0 0 1-6-6v-3a2 2 0 0 1 3-2"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Gloves</p>
+          <p class="buy-item-note">Standard nitrile exam gloves. Know your size before buying in bulk.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="buy-group-label">Cohort tradition</p>
+    <div class="buy-grid">
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 4l3-2h6l3 2 2 4-2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10L4 8z"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Patagonia jacket</p>
+          <p class="buy-item-note">The cohort jacket. Optional but most people get one. Watch the Discord for the order window.</p>
+        </div>
+      </div>
+
+      <div class="buy-item">
+        <svg class="buy-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M5 4l3-2h8l3 2v6h-3v10H8V10H5z"/>
+        </svg>
+        <div>
+          <p class="buy-item-name">Class merch</p>
+          <p class="buy-item-note">Hoodies and other items. A new catalogue will be posted for 3T0; watch the Discord.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
