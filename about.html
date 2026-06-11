@@ -4333,37 +4333,38 @@
   }
   .mission-body a:hover { color: var(--uoft-navy); }
 
-  /* Maintainer note (small photo + blurb) */
-  .maintainer-grid {
+  /* Founder grid (photo + blurb) */
+  .founder-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 48px;
+    gap: 32px;
+    margin-bottom: 56px;
   }
   @media (min-width: 768px) {
-    .maintainer-grid {
-      grid-template-columns: 160px 1fr;
-      gap: 32px;
+    .founder-grid {
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
       align-items: start;
     }
   }
   @media (min-width: 1024px) {
-    .maintainer-grid {
-      grid-template-columns: 180px 1fr;
-      gap: 40px;
+    .founder-grid {
+      grid-template-columns: 320px 1fr;
+      gap: 64px;
     }
   }
-  .maintainer-photo > div {
-    border: 1px solid var(--hairline);
-    overflow: hidden;
-  }
-  .maintainer-blurb p {
+  .founder-blurb p {
     font-size: 16px;
     line-height: 1.7;
     color: var(--ink);
     margin-bottom: 16px;
   }
-  .community-section-heading {
+  .founder-signoff {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+  }
+  .founder-section-heading {
     font-family: 'Roboto Slab', serif;
     font-weight: 800;
     color: var(--uoft-navy);
@@ -4372,7 +4373,7 @@
     margin-bottom: 8px;
     margin-top: 24px;
   }
-  .community-section-sub {
+  .founder-section-sub {
     font-size: 14px;
     color: var(--ink-soft);
     margin-bottom: 32px;
@@ -4384,7 +4385,6 @@
     border: 1px solid var(--hairline);
     background: var(--paper);
     overflow: hidden;
-    max-width: 820px;
   }
   .carousel-track {
     display: flex;
@@ -4394,11 +4394,11 @@
   .carousel-slide {
     flex: 0 0 100%;
     width: 100%;
-    padding: 16px;
+    padding: 24px;
     box-sizing: border-box;
   }
   @media (min-width: 768px) {
-    .carousel-slide { padding: 24px 48px; }
+    .carousel-slide { padding: 32px 64px; }
   }
   .carousel-caption {
     margin-top: 16px;
@@ -6180,33 +6180,33 @@
   </div>
 </section>
 
-<!-- ============ Maintainer note ============ -->
+<!-- ============ Founder intro ============ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">A note from Ali</span>
+        <span class="eyebrow-text">Who I am</span>
       </div>
-      <h2>The feeling behind the guide.</h2>
+      <h2>Hi, I'm Ali :)</h2>
     </div>
 
-    <div class="maintainer-grid">
-  <div class="maintainer-photo">
-    <div style="position:relative; aspect-ratio: 1 / 1; background: var(--paper-soft);">
-      <img src="assets/about/ABA1.jpeg" alt="Ali Ahmed, student maintainer" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
+    <div class="founder-grid">
+  <div class="founder-photo">
+    <div style="position:relative; aspect-ratio: 2 / 3; background: var(--paper-soft);">
+      <img src="assets/about/ABA1.jpeg" alt="Portrait of Ali" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
     </div>
   </div>
-      <div class="maintainer-blurb">
-        <p>The feeling behind this guide is personal, but the site is not meant to be about one person. Getting into medical school is joyful, but the weeks after an offer can also feel strangely isolating if you do not already know the hidden map: what to prioritize, who to ask, what the acronyms mean, what matters now, and what can wait.</p>
-        <p>A lot of the information new students need is technically out there, but it is scattered across emails, group chats, old documents, upper-year advice, and conversations that only happen if you already know who to talk to. That can make people feel behind before they have even arrived. This guide exists to make those invisible pieces easier to find.</p>
-        <p>Ali Ahmed, a UofT MD student in the Class of 2T9, currently helps maintain the site, but the useful parts come from many students, alumni, and mentors sharing what they know. The hope is that each cohort leaves the guide a little better for the next one.</p>
-        <p>For students reading this on offer day: congratulations. Take a breath, celebrate properly, and know that there is a community here ready to welcome you.</p>
+      <div class="founder-blurb">
+        <p>I'm a UofT MD student in the Class of 2T9. I started this guide because I spent my first months in medical school piecing together what now feels like basic information from a dozen different sources. A lot of my classmates were doing the same, and I wanted to make sure the next cohort didn't have to.</p>
+        <p>The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
+        <p>If you're reading this on the day you got your offer: congratulations! Take a deep breath and go celebrate. I remember calling all my family and friends, getting sweets, and having a great day with good food and good company. We cannot wait to welcome you to UofT.</p>
+        <p class="founder-signoff">— <em>Ali Ahmed (2T9)</em></p>
       </div>
     </div>
 
-    <h3 class="community-section-heading">Community snapshots</h3>
-    <p class="community-section-sub">A small window into student life. The photos are here for warmth, not as the main point of the page.</p>
+    <h3 class="founder-section-heading">Snapshots from medical school</h3>
+    <p class="founder-section-sub">A few moments from medical school so far. More to come.</p>
 
     <div class="photo-carousel" data-carousel>
       <button class="carousel-btn carousel-btn-prev" aria-label="Previous photo" data-carousel-prev>‹</button>
