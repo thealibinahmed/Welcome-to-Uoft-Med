@@ -4372,8 +4372,8 @@
     margin-bottom: 32px;
   }
   .founder-byline-avatar {
-    width: 52px;
-    height: 52px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -4414,8 +4414,30 @@
   .founder-section-sub {
     font-size: 14px;
     color: var(--ink-soft);
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+  @media (max-width: 767px) {
+    .photo-strip { grid-template-columns: repeat(3, 1fr); }
+  }
+  .photo-strip-item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .photo-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .photo-strip-item:hover img { transform: scale(1.04); }
 
   /* Photo carousel */
   .photo-carousel {
@@ -6231,10 +6253,10 @@
       </div>
     </div>
 
-      <div class="founder-blurb">
-        <p>I'm a UofT MD student in the Class of 2T9. I started this guide because I spent my first months in medical school piecing together what now feels like basic information from a dozen different sources. A lot of my classmates were doing the same, and I wanted to make sure the next cohort didn't have to.</p>
-        <p>The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
-        <p>If you're reading this on the day you got your offer: congratulations! Take a deep breath and go celebrate. I remember calling all my family and friends, getting sweets, and having a great day with good food and good company. We cannot wait to welcome you to UofT.</p>
+     <div class="founder-blurb">
+        <p>A lot of the practical context for starting medical school: timelines, housing, finances, what the first weeks actually look like. It doesn't live in one place. This guide tries to collect it.</p>
+        <p>A lot of classmates were piecing the same things together in those first months, and the idea was to make it a little easier for the next cohort. The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
+        <p>If you're reading this on the day you got your offer: congratulations. Take a deep breath and go celebrate. We cannot wait to welcome you to UofT.</p>
         <p class="founder-signoff">— <em>Ali Ahmed (2T9)</em></p>
       </div>
     </div>
@@ -6242,15 +6264,15 @@
     <h3 class="founder-section-heading">From Year 1</h3>
     <p class="founder-section-sub">A few moments so far.</p>
 
-    <div class="photo-carousel" data-carousel>
-      <button class="carousel-btn carousel-btn-prev" aria-label="Previous photo" data-carousel-prev>‹</button>
-      <div class="carousel-track" data-carousel-track>
-        <div class="carousel-slide">
-          <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
-            <img src="assets/about/AA1.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
-          </div>
-          <p class="carousel-caption"></p>
-        </div>
+    <div class="photo-strip">
+      <div class="photo-strip-item"><img src="assets/about/AA1.jpeg" alt="" loading="lazy"></div>
+      <div class="photo-strip-item"><img src="assets/about/AA4.jpeg" alt="" loading="lazy"></div>
+      <div class="photo-strip-item"><img src="assets/about/AA7.jpeg" alt="" loading="lazy"></div>
+      <div class="photo-strip-item"><img src="assets/about/AA10.jpeg" alt="" loading="lazy"></div>
+      <div class="photo-strip-item"><img src="assets/about/AA15.jpeg" alt="" loading="lazy"></div>
+      <div class="photo-strip-item"><img src="assets/about/AA19.jpeg" alt="" loading="lazy"></div>
+    </div>
+        
         <div class="carousel-slide">
           <div style="position:relative; aspect-ratio: 3 / 2; background: var(--paper-soft);">
             <img src="assets/about/AA2.jpeg" alt="" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
@@ -6377,10 +6399,6 @@
           </div>
           <p class="carousel-caption"></p>
         </div>
-      </div>
-      <button class="carousel-btn carousel-btn-next" aria-label="Next photo" data-carousel-next>›</button>
-      <div class="carousel-dots" data-carousel-dots></div>
-    </div>
   </div>
 </section>
 
