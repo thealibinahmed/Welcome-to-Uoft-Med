@@ -4333,38 +4333,37 @@
   }
   .mission-body a:hover { color: var(--uoft-navy); }
 
-  /* Founder grid (photo + blurb) */
-  .founder-grid {
+  /* Maintainer note (small photo + blurb) */
+  .maintainer-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
-    margin-bottom: 56px;
+    gap: 24px;
+    margin-bottom: 48px;
   }
   @media (min-width: 768px) {
-    .founder-grid {
-      grid-template-columns: 280px 1fr;
-      gap: 48px;
+    .maintainer-grid {
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
       align-items: start;
     }
   }
   @media (min-width: 1024px) {
-    .founder-grid {
-      grid-template-columns: 320px 1fr;
-      gap: 64px;
+    .maintainer-grid {
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
     }
   }
-  .founder-blurb p {
+  .maintainer-photo > div {
+    border: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .maintainer-blurb p {
     font-size: 16px;
     line-height: 1.7;
     color: var(--ink);
     margin-bottom: 16px;
   }
-  .founder-signoff {
-    font-size: 14px;
-    color: var(--ink-muted);
-    margin-top: 8px;
-  }
-  .founder-section-heading {
+  .community-section-heading {
     font-family: 'Roboto Slab', serif;
     font-weight: 800;
     color: var(--uoft-navy);
@@ -4373,7 +4372,7 @@
     margin-bottom: 8px;
     margin-top: 24px;
   }
-  .founder-section-sub {
+  .community-section-sub {
     font-size: 14px;
     color: var(--ink-soft);
     margin-bottom: 32px;
@@ -4385,6 +4384,7 @@
     border: 1px solid var(--hairline);
     background: var(--paper);
     overflow: hidden;
+    max-width: 820px;
   }
   .carousel-track {
     display: flex;
@@ -4394,11 +4394,11 @@
   .carousel-slide {
     flex: 0 0 100%;
     width: 100%;
-    padding: 24px;
+    padding: 16px;
     box-sizing: border-box;
   }
   @media (min-width: 768px) {
-    .carousel-slide { padding: 32px 64px; }
+    .carousel-slide { padding: 24px 48px; }
   }
   .carousel-caption {
     margin-top: 16px;
@@ -5876,10 +5876,10 @@
     // O-Week
 
     // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists: the hidden curriculum, decoded." },
+    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists, who it is for, and how student knowledge keeps it useful." },
     { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
     { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
+    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "Students, alumni, and mentors who shared knowledge and reviewed parts of the guide." },
 
     // Feedback
     { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
@@ -6091,7 +6091,7 @@
         <div class="nav-dropdown-menu" role="menu">
           <a href="about.html" data-page="about" role="menuitem">
             <span class="nav-dropdown-label">About</span>
-            <span class="nav-dropdown-desc">Mission, who built this, credits</span>
+            <span class="nav-dropdown-desc">Mission, maintenance, credits</span>
           </a>
           <a href="mentorship.html" data-page="mentorship" role="menuitem">
             <span class="nav-dropdown-label">Mentorship</span>
@@ -6143,17 +6143,17 @@
           <span class="eyebrow-rule"></span>
           <span class="eyebrow-text">About</span>
         </div>
-        <h1>You're meant<br/>to be here.</h1>
-        <p class="page-hero-lede">Medical school has a hidden curriculum. The unspoken rules, the unwritten timelines, the people who already know who to email. If you didn't grow up with that map, the first months can feel isolating in a way nobody talks about. This guide tries to fill that gap.</p>
+        <h1>A guide for the parts no one writes down.</h1>
+        <p class="page-hero-lede">This site exists to make the unofficial parts of starting UofT Medicine easier to find: timelines, housing decisions, money questions, student vocabulary, and the small pieces of context that usually travel by group chat.</p>
       </div>
       <div>
         <div class="page-hero-meta">
           <strong>Built by students, for students</strong>
-          A volunteer project from the UofT MD Class of 2T9. Maintained, not for profit, not affiliated with the Faculty.
+          A volunteer, student-maintained guide for incoming MD students. Not for profit, not affiliated with the Faculty.
         </div>
         <div class="page-hero-meta">
-          <strong>Always open to additions</strong>
-          If something's missing, we'll add it. We can also connect you to someone who can answer your question.
+          <strong>Community knowledge, kept current</strong>
+          The goal is to collect practical context from students and point readers back to official Faculty sources when details matter.
         </div>
       </div>
     </div>
@@ -6171,42 +6171,41 @@
       </div>
       <h2 class="mission-statement">No one should feel lost or out of place stepping into medical school.</h2>
       <div class="mission-body">
-        <p>Medicine has a hidden curriculum. The acceptance letter tells you you got in. It doesn't tell you when to set up your line of credit, what a CEE is, which neighborhood to live in if you're at MAM, why you need a tuition deferral form even though you have OSAP, or who at the Faculty picks up the phone.</p>
-        <p>If you came in with mentorship (a sibling, a parent, a friend a year ahead), most of this is small talk over dinner. If you didn't, it's a thousand small decisions made under pressure, with the quiet suspicion that everyone else got the memo and you missed it.</p>
-        <p><strong>You didn't miss it. There was no memo.</strong> The information is real, but it's scattered across emails, Discord servers, alumni group chats, and one Google Doc that someone updated in 2022 and never touched again. This guide is an attempt to put it in one place, written plainly, kept current.</p>
-        <p>If something's missing, tell us and we'll add it. If your question is too specific or too personal for a public page, the <a href="feedback.html">Feedback form</a> goes to a real student who will answer it directly or pass it to the right person: a current MD, an academy faculty member, the Office of Learner Affairs, the Financial Counsellor.</p>
+        <p>Medicine has a hidden curriculum. The acceptance letter tells you you got in. It doesn't tell you when to set up a line of credit, what a CEE is, which neighbourhood to live in if you're at MAM, why a tuition deferral form might matter, or where to ask a question that feels too small for an official email.</p>
+        <p>The goal is simple: gather the practical, student-to-student knowledge that helps the first few months feel less confusing. Official Faculty pages are still the source of truth for academic, financial, and administrative requirements. This guide is the companion beside them, written plainly and updated when students notice a gap.</p>
+        <p><strong>Built by students, for students.</strong> The guide works best when it reflects many people's experience: students at St. George and MAM, people moving to Toronto for the first time, commuters, students applying for aid, first-generation students, and anyone who has had to learn the system one question at a time.</p>
+        <p>If something's missing, tell us and we'll add it. If your question is too specific or too personal for a public page, the <a href="feedback.html">Feedback form</a> can help route it to someone who can answer: a current MD student, an academy contact, the Office of Learner Affairs, the Financial Counsellor, or another appropriate support.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Founder intro ============ -->
+<!-- ============ Maintainer note ============ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Who I am</span>
+        <span class="eyebrow-text">Who maintains this site?</span>
       </div>
-      <h2>Hi, I'm Ali :)</h2>
+      <h2>A student-maintained guide.</h2>
     </div>
 
-    <div class="founder-grid">
-  <div class="founder-photo">
-    <div style="position:relative; aspect-ratio: 2 / 3; background: var(--paper-soft);">
-      <img src="assets/about/ABA1.jpeg" alt="Portrait of Ali" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
+    <div class="maintainer-grid">
+  <div class="maintainer-photo">
+    <div style="position:relative; aspect-ratio: 1 / 1; background: var(--paper-soft);">
+      <img src="assets/about/ABA1.jpeg" alt="Ali Ahmed, student maintainer" loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 15%; display:block;">
     </div>
   </div>
-      <div class="founder-blurb">
-        <p>I'm a UofT MD student in the Class of 2T9. I started this guide because I spent my first months in medical school piecing together what now feels like basic information from a dozen different sources. A lot of my classmates were doing the same, and I wanted to make sure the next cohort didn't have to.</p>
-        <p>The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
-        <p>If you're reading this on the day you got your offer: congratulations! Take a deep breath and go celebrate. I remember calling all my family and friends, getting sweets, and having a great day with good food and good company. We cannot wait to welcome you to UofT.</p>
-        <p class="founder-signoff">— <em>Ali Ahmed (2T9)</em></p>
+      <div class="maintainer-blurb">
+        <p>Day-to-day maintenance is currently handled by Ali Ahmed, a UofT MD student in the Class of 2T9, with corrections, additions, and reality checks from classmates, upper-year students, alumni, and faculty mentors.</p>
+        <p>The site is meant to stay bigger than any one person. Every cohort will notice different gaps, ask different questions, and know different things that would help the next group feel more at home. The hope is that the guide keeps improving as that knowledge gets shared.</p>
+        <p>For students reading this on offer day: congratulations. Take a breath, celebrate properly, and know that there is a community here ready to welcome you.</p>
       </div>
     </div>
 
-    <h3 class="founder-section-heading">Snapshots from medical school</h3>
-    <p class="founder-section-sub">A few moments from medical school so far. More to come.</p>
+    <h3 class="community-section-heading">Community snapshots</h3>
+    <p class="community-section-sub">A small window into student life. The photos are here for warmth, not as the main point of the page.</p>
 
     <div class="photo-carousel" data-carousel>
       <button class="carousel-btn carousel-btn-prev" aria-label="Previous photo" data-carousel-prev>‹</button>
@@ -6389,14 +6388,14 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Credits</span>
       </div>
-      <h2 class="credits-heading">Built with the help of these people.</h2>
+      <h2 class="credits-heading">Shaped by shared student knowledge.</h2>
       <p class="credits-intro">This guide draws on knowledge shared by upper-year MD students, alumni, and faculty mentors who answered questions, reviewed drafts, and pointed new students in the right direction. Listed alphabetically.</p>
 
       <div class="credits-list">
         <p> · Adham ElSherbini · Amel Sassi · Angie Awadallah · Anum Anjum · Arpsima Aziz · Hirday Josan · Phoebe Ji · Shazia Rahiman · Soliana Lijiam · Add names here · Add names here</p>
       </div>
 
-      <p class="credits-footer">If you've contributed and your name isn't here, that's a mistake on my end. Let me know via the <a href="feedback.html">Feedback form</a> and I'll fix it. If you'd prefer to be removed or stay anonymous, same form.</p>
+      <p class="credits-footer">If you've contributed and your name isn't here, please let us know via the <a href="feedback.html">Feedback form</a> and we'll fix it. If you'd prefer to be removed or stay anonymous, same form.</p>
     </div>
   </div>
 </section>
