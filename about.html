@@ -4353,10 +4353,55 @@
       gap: 64px;
     }
   }
+  .founder-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 0;
+  }
+  @media (min-width: 768px) {
+    .founder-layout {
+      grid-template-columns: 3fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
   .founder-blurb {
     border-left: 3px solid var(--uoft-teal);
     padding: 4px 0 4px 24px;
-    max-width: 560px;
+  }
+  .founder-credits-aside {
+    border-top: 2px solid var(--uoft-navy);
+    padding-top: 20px;
+  }
+  .founder-credits-aside h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .founder-credits-aside p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .founder-credits-aside .credits-list {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-bottom: 12px;
+  }
+  .founder-credits-aside .credits-list p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--ink);
+    word-spacing: 2px;
+  }
+  .founder-credits-aside .credits-footer {
+    font-size: 12px;
   }
   .founder-blurb p {
     font-size: 16px;
@@ -6245,14 +6290,23 @@
       </div>
     </div>
 
-     <div class="founder-blurb">
-        <p>I'm a UofT MD student in the Class of 2T9. In my first months of medical school, I spent a lot of time piecing together what now feels like basic information from a dozen different sources. A lot of my classmates were doing the same, and I wanted to make sure the next cohort didn't have to.</p>
-        <p>The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
-        <p>If you're reading this on the day you got your offer: congratulations. Take a deep breath and go celebrate. We cannot wait to welcome you to UofT.</p>
-        <p class="founder-signoff">— <em>Ali Ahmed (2T9)</em></p>
+     <div class="founder-layout">
+        <div class="founder-blurb">
+          <p>I'm a UofT MD student in the Class of 2T9. In my first months of medical school, I spent a lot of time piecing together what now feels like basic information from a dozen different sources. A lot of my classmates were doing the same, and I wanted to make sure the next cohort didn't have to.</p>
+          <p>The version of me who got an offer letter would have given a lot for a single page that said here is what to do, in the order you need to do it, and here is who to ask if you get stuck. So we made one. It's not finished and probably never will be. Every cohort adds something and every student finds a gap we missed.</p>
+          <p>If you're reading this on the day you got your offer: congratulations. Take a deep breath and go celebrate. We cannot wait to welcome you to UofT.</p>
+          <p class="founder-signoff">— <em>Ali Ahmed (2T9)</em></p>
+        </div>
+        <div class="founder-credits-aside">
+          <h3>Shaped by shared student knowledge.</h3>
+          <p>This guide draws on knowledge shared by upper-year MD students, alumni, and faculty mentors who answered questions, reviewed drafts, and pointed new students in the right direction. Listed alphabetically.</p>
+          <div class="credits-list">
+            <p> · Adham ElSherbini · Amel Sassi · Angie Awadallah · Anum Anjum · Arpsima Aziz · Hirday Josan · Phoebe Ji · Shazia Rahiman · Soliana Lijiam · Add names here · Add names here</p>
+          </div>
+          <p class="credits-footer">If you've contributed and your name isn't here, please let us know via the <a href="feedback.html">Feedback form</a> and we'll fix it. If you'd prefer to be removed or stay anonymous, same form.</p>
+        </div>
       </div>
-
-  </div>
+    </div>
 </section>
 
 <!-- ============ Changelog ============ -->
@@ -6285,26 +6339,6 @@
   </div>
 </section>
 
-<!-- ============ Credits ============ -->
-<section class="section section-soft" style="position: relative;">
-  <img class="cg-egg-peek cg-egg-peek-bl" src="assets/cg/cg-george.png" alt="" aria-hidden="true" loading="lazy" />
-  <div class="container">
-    <div class="credits-block">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Credits</span>
-      </div>
-      <h2 class="credits-heading">Shaped by shared student knowledge.</h2>
-      <p class="credits-intro">This guide draws on knowledge shared by upper-year MD students, alumni, and faculty mentors who answered questions, reviewed drafts, and pointed new students in the right direction. Listed alphabetically.</p>
-
-      <div class="credits-list">
-        <p> · Adham ElSherbini · Amel Sassi · Angie Awadallah · Anum Anjum · Arpsima Aziz · Hirday Josan · Phoebe Ji · Shazia Rahiman · Soliana Lijiam · Add names here · Add names here</p>
-      </div>
-
-      <p class="credits-footer">If you've contributed and your name isn't here, please let us know via the <a href="feedback.html">Feedback form</a> and we'll fix it. If you'd prefer to be removed or stay anonymous, same form.</p>
-    </div>
-  </div>
-</section>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">
