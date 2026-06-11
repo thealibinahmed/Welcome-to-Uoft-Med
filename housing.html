@@ -1898,12 +1898,21 @@
   }
   .search-site {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) 24px;
+    grid-template-columns: 44px 1fr 24px;
     gap: 20px;
     padding: 22px 28px;
     border-bottom: 1px solid var(--hairline);
     transition: background 180ms;
     align-items: start;
+  }
+  .search-site > div {
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .search-site-name {
+    word-break: normal;
+    overflow-wrap: break-word;
   }
   .search-site:last-child { border-bottom: none; }
   .search-site:hover { background: var(--paper-soft); }
