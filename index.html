@@ -424,6 +424,56 @@
   }
 
   /* ── Section tiles (4-up) ── */
+  /* CTA solid block — no photo variant */
+  .cta-solid {
+    background: var(--uoft-navy);
+    padding: 56px 32px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  @media (min-width: 768px) {
+    .cta-solid { padding: 72px 48px; }
+  }
+  .cta-solid .eyebrow-text {
+    color: #a8c4e0;
+  }
+  .cta-solid .eyebrow-rule {
+    background: #a8c4e0;
+    opacity: 0.4;
+  }
+  .cta-solid h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    color: white;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 16px auto 16px;
+    max-width: 520px;
+  }
+  .cta-solid p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #e8edf5;
+    margin: 0 auto 28px;
+    max-width: 480px;
+  }
+  .cta-solid .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    transition: background 180ms;
+  }
+  .cta-solid .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
   .tiles-section {
     padding: 80px 0;
     background: var(--paper-soft);
@@ -6315,24 +6365,15 @@
 <!-- ============ 4. ACCEPT YOUR OFFER — primary conversion moment ============ -->
 <section class="cta-section" style="padding-top: 32px;">
   <div class="container">
-    <div class="cta-grid">
-      <div class="cta-text-panel">
-        <div class="eyebrow light">
-          <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">Ready to Start</span>
-        </div>
-        <h2>Accepting your offer is the first step.</h2>
-        <p>We'll walk you through the rest — checklist, housing, finances, and the curriculum vocabulary you'll need by week one.</p>
-        <a href="post-acceptance.html" class="btn btn-outline-light">Open the checklist <span aria-hidden>→</span></a>
+    <div class="cta-solid">
+      <div class="eyebrow" style="justify-content: center;">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Ready to Start</span>
+        <span class="eyebrow-rule"></span>
       </div>
-      <div class="placeholder square-aspect">
-        <div class="placeholder-stripe"></div>
-        <div class="placeholder-content">
-          <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-          <span class="placeholder-kind">3T0 Photo Slot</span>
-          <p class="placeholder-label">Suggested: a quieter cohort moment — students on the steps of MSB, or walking down King's College Circle.</p>
-        </div>
-      </div>
+      <h2>Accepting your offer is the first step.</h2>
+      <p>We'll walk you through the rest: checklist, housing, finances, and the curriculum vocabulary you'll need by week one.</p>
+      <a href="post-acceptance.html" class="btn-outline-light">Open the checklist →</a>
     </div>
   </div>
 </section>
