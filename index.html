@@ -446,52 +446,81 @@
   .tiles-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 8px;
   }
-  @media (min-width: 640px) { .tiles-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-  @media (min-width: 1024px) { .tiles-grid { grid-template-columns: repeat(4, 1fr); } }
-  .tile { display: flex; flex-direction: column; }
-  .tile-img-wrap {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 24px;
+  @media (min-width: 640px) { .tiles-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .tiles-grid { grid-template-columns: repeat(3, 1fr); } }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 24px 32px;
+    background: white;
+    border: 1px solid var(--hairline);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 180ms, transform 180ms;
+    min-height: 200px;
     position: relative;
   }
-  .tile-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  .tile:hover {
+    border-color: var(--uoft-teal);
   }
-  .tile:hover .tile-img-wrap img { transform: scale(1.04); }
+  .tile:hover .tile-arrow {
+    transform: translateX(4px);
+  }
   .tile-num {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--uoft-navy);
-    color: white;
-    padding: 6px 12px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: 44px;
+    color: var(--uoft-teal);
+    line-height: 1;
+  }
+  .tile-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
   .tile-label {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
     font-weight: 700;
-    color: var(--uoft-teal);
-    margin-bottom: 12px;
+    font-size: 17px;
+    color: var(--uoft-navy);
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
+    margin: 0;
   }
   .tile-desc {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.55;
-    color: var(--ink);
-    margin-bottom: 24px;
-    flex: 1;
+    color: var(--ink-soft);
+    margin: 0;
   }
-  .tile .btn { align-self: flex-start; }
+  .tile-arrow {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+    color: var(--ink-muted);
+    font-size: 18px;
+    transition: transform 180ms;
+  }
+  /* Wider About card spans 2 columns on desktop */
+  @media (min-width: 1024px) {
+    .tile-about {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+    .tile-about .tile-num {
+      font-size: 56px;
+    }
+    .tile-about .tile-body {
+      flex: 1;
+    }
+  }
 
   /* ── Full-bleed image break ── */
   .image-break {
@@ -6322,73 +6351,66 @@
 
     <div class="tiles-grid">
       <a class="tile" href="post-acceptance.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">01</span>
-          <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=600&q=80" alt="" />
+        <span class="tile-num">01</span>
+        <div class="tile-body">
+          <p class="tile-label">Post-Acceptance</p>
+          <p class="tile-desc">Phased checklist from offer letter to first day of class.</p>
         </div>
-        <p class="tile-label">Post-Acceptance</p>
-        <p class="tile-desc">Phased checklist from offer letter to first day of class.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="housing.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">02</span>
-          <img src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=600&q=80" alt="" />
+        <span class="tile-num">02</span>
+        <div class="tile-body">
+          <p class="tile-label">Housing</p>
+          <p class="tile-desc">Neighborhood guide with real commutes to MSB and named buildings.</p>
         </div>
-        <p class="tile-label">Housing</p>
-        <p class="tile-desc">Neighborhood guide with real commutes to MSB and named buildings.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="finances.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">03</span>
-          <img src="assets/index-page/S73.jpeg" alt="" />
+        <span class="tile-num">03</span>
+        <div class="tile-body">
+          <p class="tile-label">Finances</p>
+          <p class="tile-desc">Line of Credit, OSAP, bursaries. Funding four years of school.</p>
         </div>
-        <p class="tile-label">Finances</p>
-        <p class="tile-desc">Line of Credit, OSAP, bursaries — funding four years of school.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="academics.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">04</span>
-        <img src="assets/index-page/S74.jpeg" alt="" style="object-fit: contain; background: var(--paper-soft);" />
+        <span class="tile-num">04</span>
+        <div class="tile-body">
+          <p class="tile-label">Academics</p>
+          <p class="tile-desc">Shared notes, the year-one block calendar, and the EEE shadowing guide.</p>
         </div>
-        <p class="tile-label">Academics</p>
-        <p class="tile-desc">Shared notes and decks from upper years, the year-one block calendar, and the EEE shadowing guide.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="handbook.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">05</span>
-          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="" />
+        <span class="tile-num">05</span>
+        <div class="tile-body">
+          <p class="tile-label">The Handbook</p>
+          <p class="tile-desc">Academies, platforms, student groups, wellness, and everything else that doesn't fit on a checklist.</p>
         </div>
-        <p class="tile-label">The Handbook</p>
-        <p class="tile-desc">Academies, platforms, student groups, wellness resources, and everything else that doesn't fit on a checklist.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="mentorship.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">06</span>
-         <img src="assets/index-page/S76.jpeg" alt="" />
+        <span class="tile-num">06</span>
+        <div class="tile-body">
+          <p class="tile-label">Mentorship</p>
+          <p class="tile-desc">Upper-year students who've offered to be reached out to. Browse by background, identity, and circumstance.</p>
         </div>
-        <p class="tile-label">Mentorship</p>
-        <p class="tile-desc">Upper-year students who've offered to be reached out to — browse by background, identity, and circumstance.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
-      <a class="tile" href="about.html">
-        <div class="tile-img-wrap">
-          <span class="tile-num">07</span>
-          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=600&q=80" alt="" />
+      <a class="tile tile-about" href="about.html">
+        <span class="tile-num">07</span>
+        <div class="tile-body">
+          <p class="tile-label">About</p>
+          <p class="tile-desc">Why this guide exists, who built it, and the people who helped along the way.</p>
         </div>
-        <p class="tile-label">About</p>
-        <p class="tile-desc">Why this guide exists, who built it, and the people who helped along the way.</p>
-        <span class="btn btn-outline">Open <span aria-hidden>→</span></span>
+        <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
     </div>
   </div>
