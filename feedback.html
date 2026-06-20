@@ -6372,18 +6372,7 @@
 
       <div class="form-row">
         <label class="form-label" for="hr-building">Building / neighborhood</label>
-        <select class="form-select" id="hr-building">
-          <option value="">Select a building...</option>
-          <option>Campus One</option>
-          <option>Graduate House</option>
-          <option>Annex Victorian walk-ups</option>
-          <option>Kensington walk-ups</option>
-          <option>1 Bedford / 1000 Bay</option>
-          <option>U Condos</option>
-          <option>Little Italy walk-ups</option>
-          <option>Erin Mills / Square One condos</option>
-          <option>Other (describe in review)</option>
-        </select>
+        <input class="form-input" type="text" id="hr-building" placeholder="e.g., Campus One, Annex walk-up, Erin Mills" />
       </div>
 
       <div class="form-row">
@@ -6560,7 +6549,7 @@
     });
   }
   // ── Google Sheets submission ──
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz8kKw_rMHbRmkGDf0vh1DhlBhSVO17cGbjZhCA1ROJK0IKlvyJlC2tPLMKYEngKLnrKw/exec'; // ← Replace with your Apps Script deployment URL
+  const SHEET_URL = 'YOUR_APPS_SCRIPT_URL'; // ← Replace with your Apps Script deployment URL
 
   function collectFields(type) {
     const prefixes = {
