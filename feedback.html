@@ -6559,8 +6559,78 @@
       btn.classList.toggle('selected', i + 1 === n);
     });
   }
+  // ── Google Sheets submission ──
+  const SHEET_URL = 'YOUR_APPS_SCRIPT_URL'; // ← Replace with your Apps Script deployment URL
+
+  function collectFields(type) {
+    const prefixes = {
+      'housing-review': 'hr',
+      'community-content': 'cc',
+      'content-correction': 'cor',
+      'general-feedback': 'gf'
+    };
+    const prefix = prefixes[type];
+    if (!prefix) return {};
+    const fields = {};
+    const shell = document.getElementById('form-' + type);
+    if (!shell) return {};
+    shell.querySelectorAll('input, textarea, select').forEach(function(el) {
+      if (el.id && el.id.startsWith(prefix + '-')) {
+        const key = el.id.replace(prefix + '-', '');
+        fields[key] = el.type === 'radio' ? (el.checked ? el.value : undefined) : el.value;
+      }
+    });
+    // Rating stars (if present)
+    const activeStars = shell.querySelectorAll('.rating-star.active');
+    if (activeStars.length) fields.rating = activeStars.length;
+    // Clean undefined values
+    Object.keys(fields).forEach(function(k) { if (fields[k] === undefined) delete fields[k]; });
+    return fields;
+  }
+
   function handleSubmit(type) {
-    alert(`Preview only. In production, this would create a row in the Supabase 'submissions' table with type='${type}', status='pending', and notify maintainers.`);
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL') {
+      alert('Form not yet connected. The site maintainer needs to add the Google Apps Script URL.');
+      return;
+    }
+    const fields = collectFields(type);
+    const email = fields.email || '';
+    const btn = event.target;
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type, fields: fields, email: email })
+    })
+    .then(function() {
+      btn.textContent = '✓ Submitted';
+      btn.style.background = 'var(--uoft-teal)';
+      // Clear the form
+      var shell = document.getElementById('form-' + type);
+      if (shell) {
+        shell.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
+        shell.querySelectorAll('select').forEach(function(el) { el.selectedIndex = 0; });
+        shell.querySelectorAll('.rating-star').forEach(function(el) { el.classList.remove('active'); });
+      }
+      setTimeout(function() {
+        btn.textContent = origText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error — try again';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+      setTimeout(function() {
+        btn.textContent = origText;
+        btn.style.background = '';
+      }, 3000);
+    });
   }
 </script>
 </main>
