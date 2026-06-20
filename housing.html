@@ -1452,8 +1452,12 @@
   }
   /* Highlight differences when toggle is on */
   .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different {
-    color: var(--ink);
-    font-weight: 500;
+    background: #fff8e1;
+    border-left: 3px solid #f0ad4e;
+    padding-left: 10px;
+  }
+  .compare-tool[data-highlight="on"] .compare-tool-row-value:not(.is-different) {
+    opacity: 0.45;
   }
   .compare-tool[data-highlight="on"] .compare-tool-row-value.is-different strong {
     color: var(--ink);
