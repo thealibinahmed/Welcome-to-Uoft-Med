@@ -6296,6 +6296,69 @@
     .jump-nav { gap: 4px; }
     .jump-nav a { font-size: 11px; padding: 4px 10px; }
   }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--uoft-navy);
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .back-to-top:hover { background: var(--uoft-teal); }
+
+  /* Collapsible sections */
+  .collapsible {
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .collapsible summary {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper-soft);
+    user-select: none;
+  }
+  .collapsible summary::-webkit-details-marker { display: none; }
+  .collapsible summary::after {
+    content: '+';
+    font-size: 18px;
+    color: var(--ink-muted);
+    transition: transform 0.2s;
+  }
+  .collapsible[open] summary::after {
+    content: '−';
+  }
+  .collapsible summary:hover { background: var(--paper); }
+  .collapsible .collapsible-body {
+    padding: 20px;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -7190,10 +7253,10 @@
   <div class="cs">
     <div class="ct">Interest method</div>
     <div class="seg">
-      <button class="active" id="lc-btn-compound" onclick="lcSetMethod('compound')">Compound (Scotia-style)</button>
-      <button id="lc-btn-simple" onclick="lcSetMethod('simple')">Simple interest</button>
+      <button class="active" id="lc-btn-simple" onclick="lcSetMethod('simple')">Simple (Scotia)</button>
+      <button id="lc-btn-compound" onclick="lcSetMethod('compound')">Compound</button>
     </div>
-    <div class="rf" id="lc-method-desc">Interest accrues on the full balance, including previously posted interest. This is how Scotia and most LOCs actually work.</div>
+    <div class="rf" id="lc-method-desc">Interest accrues only on the amount you actually borrowed (principal). This is how Scotia's Professional Student LOC works.</div>
   </div>
   <div class="cs">
     <div class="ct">Years to estimate</div>
@@ -7285,7 +7348,7 @@ const ONE_TIME_OPTIONS=[
 ];
 const customized={};
 const activeOneTime={};
-let resYears=3,showRes=false,living='downtown',estYears=1,interestMethod='compound';
+let resYears=3,showRes=false,living='downtown',estYears=1,interestMethod='simple';
 function fmt(n){return'$'+Math.round(n).toLocaleString('en-CA');}
 function pct(n){return n.toFixed(2)+'%';}
 function getVal(id,year){if(customized[id]&&customized[id][year]!==undefined)return customized[id][year];const el=document.getElementById(id);return el?(parseFloat(el.value)||0):0;}
@@ -7385,7 +7448,7 @@ window.lcStepYears=function(d){
 }
 window.lcToggleRes=function(){showRes=!showRes;document.getElementById('lc-res-section').classList.toggle('hidden',!showRes);document.getElementById('lc-toggle-res').textContent=showRes?'− Remove residency':'+ Continue into residency';document.getElementById('lc-metric-monthly').classList.toggle('hidden',!showRes);lcCalc();}
 window.lcStepRes=function(d){resYears=Math.max(2,Math.min(7,resYears+d));document.getElementById('lc-res-val').textContent=resYears+' year'+(resYears!==1?'s':'');lcCalc();}
-window.lcSetMethod=function(m){interestMethod=m;document.getElementById('lc-btn-compound').classList.toggle('active',m==='compound');document.getElementById('lc-btn-simple').classList.toggle('active',m==='simple');document.getElementById('lc-method-desc').textContent=m==='compound'?'Interest accrues on the full balance, including previously posted interest. This is how Scotia and most LOCs actually work.':'Interest accrues only on the amount you actually borrowed (principal), not on accumulated interest. Cheaper over time, but not how most LOCs work.';lcCalc();}
+window.lcSetMethod=function(m){interestMethod=m;document.getElementById('lc-btn-compound').classList.toggle('active',m==='compound');document.getElementById('lc-btn-simple').classList.toggle('active',m==='simple');document.getElementById('lc-method-desc').textContent=m==='simple'?'Interest accrues only on the amount you actually borrowed (principal). This is how Scotia\'s Professional Student LOC works.':'Interest accrues on the full balance, including previously posted interest. More expensive over time. Use this to compare what a compound LOC would cost.';lcCalc();}
 function lcRunScenario(r){
   let balance=0,totalInterest=0,totalDraw=0,cumulativeDraws=0;const yearRows=[];
   for(let y=1;y<=estYears;y++){
@@ -7495,9 +7558,11 @@ lcCalc();
     </div>
 
     <!-- Category 1: Loan structure -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 32px 0 12px; line-height: 1.2;">01 · Loan structure</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">How much you can borrow, how it's released, and what it costs you.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>01 · Loan structure</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">How much you can borrow, how it's released, and what it costs you.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7545,11 +7610,15 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Category 2: Repayment -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 48px 0 12px; line-height: 1.2;">02 · Repayment & flexibility</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">What happens after graduation and how flexible the terms are.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>02 · Repayment & flexibility</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">What happens after graduation and how flexible the terms are.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7605,11 +7674,15 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Category 3: Eligibility -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 48px 0 12px; line-height: 1.2;">03 · Eligibility & approval</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Who qualifies, what's needed, and how long it takes.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>03 · Eligibility & approval</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Who qualifies, what's needed, and how long it takes.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7657,11 +7730,15 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Category 4: Transitions -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 48px 0 12px; line-height: 1.2;">04 · Residency & post-grad transitions</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">How the loan converts when you finish school and start practice.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>04 · Residency & post-grad transitions</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">How the loan converts when you finish school and start practice.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7701,11 +7778,15 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Category 5: Protection -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 48px 0 12px; line-height: 1.2;">05 · Insurance & protection</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Insurance products tied to the LOC and protections if things go wrong.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>05 · Insurance & protection</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Insurance products tied to the LOC and protections if things go wrong.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7748,11 +7829,15 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Category 6: Incentives -->
-    <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 22px; color: var(--uoft-navy); margin: 48px 0 12px; line-height: 1.2;">06 · Incentives & banking benefits</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Sign-up bonuses, rate discounts, and bundled banking products. Promotional terms change frequently. verify before signing.</p>
-    <div class="compare-scroll">
+    <details class="collapsible" open>
+      <summary>06 · Incentives & banking benefits</summary>
+      <div class="collapsible-body">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; max-width: 60ch;">Sign-up bonuses, rate discounts, and bundled banking products. Promotional terms change frequently. verify before signing.</p>
+        <div class="compare-scroll">
       <table class="compare-table">
         <thead>
           <tr>
@@ -7781,6 +7866,8 @@ lcCalc();
         </tbody>
       </table>
     </div>
+      </div>
+    </details>
 
     <!-- Scotia rep contacts -->
     <div class="rep-contact-callout">
@@ -8356,5 +8443,16 @@ lcCalc();
   </div>
 </footer>
 
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

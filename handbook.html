@@ -6263,6 +6263,69 @@
   .skip-link:focus {
     top: 0;
   }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--uoft-navy);
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .back-to-top:hover { background: var(--uoft-teal); }
+
+  /* Collapsible sections */
+  .collapsible {
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .collapsible summary {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper-soft);
+    user-select: none;
+  }
+  .collapsible summary::-webkit-details-marker { display: none; }
+  .collapsible summary::after {
+    content: '+';
+    font-size: 18px;
+    color: var(--ink-muted);
+    transition: transform 0.2s;
+  }
+  .collapsible[open] summary::after {
+    content: '−';
+  }
+  .collapsible summary:hover { background: var(--paper); }
+  .collapsible .collapsible-body {
+    padding: 20px;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -7144,7 +7207,7 @@
     </div>
 
     <div class="callout-soft" style="margin-bottom: 28px; border-left: 3px solid var(--uoft-navy);">
-      <strong>When does the assignment arrive?</strong> Late June. Last year's class received their academy email on <strong>June 26 around 10 AM</strong>. The exact date shifts year to year, but the late-June window has been consistent. There's no announced timeline beforehand. Just an email that lands one morning. Don't sign a lease before this email arrives: if you ranked downtown and got MAM (or vice versa), your housing search restarts in a different city.
+      <strong>When does the assignment arrive?</strong> Late June. Last year's class received their academy email on <strong>June 26 around 10 AM</strong>. The exact date shifts year to year, but the late-June window has been consistent. There's no announced timeline beforehand. Just an email that lands one morning. Worth knowing before you commit to housing: if you ranked downtown and got MAM (or vice versa), your location changes.
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 16px;" class="academy-grid">
@@ -7969,5 +8032,16 @@
   </div>
 </footer>
 
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>
