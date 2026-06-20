@@ -6245,6 +6245,57 @@
     font-weight: 600;
     padding-left: 4px;
   }
+
+  /* Skip to content */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 8px 16px;
+    background: var(--uoft-navy);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 0 0 4px 4px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Jump nav */
+  .jump-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: var(--paper);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .jump-nav a {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--hairline);
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .jump-nav a:hover {
+    background: var(--uoft-teal);
+    color: #fff;
+    border-color: var(--uoft-teal);
+  }
+  @media (max-width: 600px) {
+    .jump-nav { gap: 4px; }
+    .jump-nav a { font-size: 11px; padding: 4px 10px; }
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6662,6 +6713,7 @@
 </div>
 
 <!-- ============ Header ============ -->
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">
@@ -6731,6 +6783,7 @@
 </div>
 
 <!-- ============ Page hero ============ -->
+<main id="main-content">
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-grid">
@@ -6768,6 +6821,15 @@
     </div>
   </div>
 </section>
+<nav class="jump-nav container" aria-label="Page sections">
+  <a href="#costs">Costs</a>
+  <a href="#loc">LOC Overview</a>
+  <a href="#loc-calculator">Calculator</a>
+  <a href="#bank-questions">Bank Q&amp;A</a>
+  <a href="#bank-comparison">Negotiate</a>
+  <a href="#osap">OSAP</a>
+</nav>
+
 
 <aside class="toc-sidebar" aria-label="Page sections">
   <div class="toc-sidebar-inner">
@@ -8171,63 +8233,63 @@ lcCalc();
         <a class="resource-link" href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Current Fees</h4>
+            <h3 class="resource-title">Current Fees</h3>
             <p class="resource-note">The Faculty's tuition and ancillary fees page. Updated each academic year.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/finances-awards" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Finances & Awards</h4>
+            <h3 class="resource-title">Finances & Awards</h3>
             <p class="resource-note">Full overview of awards, scholarships, bursaries, and government aid.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Financial Aid</h4>
+            <h3 class="resource-title">Financial Aid</h3>
             <p class="resource-note">Application processes for need-based aid through the Faculty.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/debt-management" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Debt Management</h4>
+            <h3 class="resource-title">Debt Management</h3>
             <p class="resource-note">Faculty resources for managing student debt. including the Financial Counsellor.</p>
           </div>
         </a>
         <a class="resource-link" href="https://studentaccount.utoronto.ca/tuition-fee-deferral/" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Tuition Fee Deferral (UofT Student Accounts)</h4>
+            <h3 class="resource-title">Tuition Fee Deferral (UofT Student Accounts)</h3>
             <p class="resource-note">Step-by-step on requesting a deferral if you have OSAP or other government aid.</p>
           </div>
         </a>
         <a class="resource-link" href="https://studentaccount.utoronto.ca/important-dates/" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Important Dates &amp; Deadlines</h4>
+            <h3 class="resource-title">Important Dates &amp; Deadlines</h3>
             <p class="resource-note">Official current-year tuition payment, deferral, and refund deadlines from the University Registrar.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Temerty Faculty of Medicine Grant</h4>
+            <h3 class="resource-title">Temerty Faculty of Medicine Grant</h3>
             <p class="resource-note">The main need-based grant for in-program MD students, separate from entrance bursaries. Application typically opens in mid-August (Aug 13 last year). Watch your <code>@mail.utoronto.ca</code> inbox.</p>
           </div>
         </a>
         <a class="resource-link" href="https://www.ontario.ca/page/osap-ontario-student-assistance-program" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">OSAP — Ontario Student Assistance Program</h4>
+            <h3 class="resource-title">OSAP — Ontario Student Assistance Program</h3>
             <p class="resource-note">Government of Ontario portal. Application opens here each spring.</p>
           </div>
         </a>
         <a class="resource-link" href="https://governingcouncil.utoronto.ca/secretariat/policies/student-financial-support-policy-april-30-1998" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">UofT Student Financial Support Policy</h4>
+            <h3 class="resource-title">UofT Student Financial Support Policy</h3>
             <p class="resource-note">"No student offered admission to a program at the University of Toronto should be unable to enter or complete the program due to lack of financial means."</p>
           </div>
         </a>
@@ -8237,6 +8299,7 @@ lcCalc();
 </section>
 
 </div><!-- /.has-toc -->
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">

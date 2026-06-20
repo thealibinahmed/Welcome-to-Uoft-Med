@@ -6183,6 +6183,57 @@
     font-weight: 600;
     padding-left: 4px;
   }
+
+  /* Skip to content */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 8px 16px;
+    background: var(--uoft-navy);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 0 0 4px 4px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Jump nav */
+  .jump-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: var(--paper);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .jump-nav a {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--hairline);
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .jump-nav a:hover {
+    background: var(--uoft-teal);
+    color: #fff;
+    border-color: var(--uoft-teal);
+  }
+  @media (max-width: 600px) {
+    .jump-nav { gap: 4px; }
+    .jump-nav a { font-size: 11px; padding: 4px 10px; }
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6600,6 +6651,7 @@
 </div>
 
 <!-- ============ Header ============ -->
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">
@@ -6836,6 +6888,7 @@
 </style>
 
 <!-- ============ Page hero ============ -->
+<main id="main-content">
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-grid">
@@ -6860,9 +6913,20 @@
     </div>
   </div>
 </section>
+<nav class="jump-nav container" aria-label="Page sections">
+  <a href="#framework">3 Questions</a>
+  <a href="#residences">Residences</a>
+  <a href="#map">Map</a>
+  <a href="#compare">Compare</a>
+  <a href="#commuter">Commuter</a>
+  <a href="#where-to-search">Search</a>
+  <a href="#tenant-rights">Tenant Rights</a>
+  <a href="#warnings">Pitfalls</a>
+</nav>
+
 
 <!-- ============ Decision framework ============ -->
-<section class="section section-soft">
+<section id="framework" class="section section-soft">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -6877,17 +6941,17 @@
       <div style="display: grid; grid-template-columns: 1fr;" class="decision-grid">
         <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
           <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">01</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Which academy?</h4>
+          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Which academy?</h3>
           <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">St. George academies cluster around downtown campus; MAM is at UTM. Where you'll spend most of your week shapes the math, but plenty of students commute in either direction. Do the math honestly before signing.</p>
         </div>
         <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
           <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">02</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Walk, transit, or drive?</h4>
+          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Walk, transit, or drive?</h3>
           <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">8am sessions are common. A 45-minute commute in February feels different than it does in September, and plenty of students live with parents or partners further out and make it work. Be realistic about what you'll tolerate.</p>
         </div>
         <div style="padding: 32px 28px;">
           <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">03</p>
-          <h4 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Solo or roommates?</h4>
+          <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Solo or roommates?</h3>
           <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">A 2-bedroom split two ways is often $400–600/month cheaper per person than a comparable 1-bed. Worth considering even if you'd prefer to live alone.</p>
         </div>
       </div>
@@ -6897,7 +6961,7 @@
 </section>
 
 <!-- ============ UofT Residences ============ -->
-<section class="section">
+<section id="residences" class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -6971,7 +7035,7 @@
 </section>
 
 <!-- ============ THE MAP ============ -->
-<section class="section section-tight">
+<section id="map" class="section section-tight">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7068,7 +7132,7 @@
 </section>
 
 <!-- ============ Commuter testimonials ============ -->
-<section class="section-tight section-soft">
+<section id="commuter" class="section-tight section-soft">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7106,7 +7170,7 @@
 </section>
 
 <!-- ============ Where to search ============ -->
-<section class="section">
+<section id="where-to-search" class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7138,7 +7202,7 @@
       <a class="search-site" href="https://www.realtor.ca/" target="_blank" rel="noopener">
         <div class="search-site-rank">01</div>
         <div>
-          <h4 class="search-site-name">Realtor.ca</h4>
+          <h3 class="search-site-name">Realtor.ca</h3>
           <p class="search-site-note">MLS-listed rentals, always through a licensed realtor, with lower scam risk. Slightly slower to update than Condos.ca but covers houses and walk-ups, not just condos.</p>
         </div>
         <div class="search-site-arrow">↗</div>
@@ -7146,7 +7210,7 @@
       <a class="search-site" href="https://condos.ca/toronto/condos-for-rent" target="_blank" rel="noopener">
         <div class="search-site-rank">02</div>
         <div>
-          <h4 class="search-site-name">Condos.ca</h4>
+          <h3 class="search-site-name">Condos.ca</h3>
           <p class="search-site-note">Best for newer condo stock in Yorkville, Bay Corridor, and King West. Shows building details and historical rent ranges. Strong signal that the listing is from a licensed realtor.</p>
         </div>
         <div class="search-site-arrow">↗</div>
@@ -7154,7 +7218,7 @@
       <a class="search-site" href="https://www.medshousing.com/" target="_blank" rel="noopener">
         <div class="search-site-rank">03</div>
         <div>
-          <h4 class="search-site-name">MedsHousing</h4>
+          <h3 class="search-site-name">MedsHousing</h3>
           <p class="search-site-note">Built specifically for medical students, with listings posted by and for med students across Canada. Good for finding furnished sublets and roommates who understand the schedule.</p>
         </div>
         <div class="search-site-arrow">↗</div>
@@ -7162,7 +7226,7 @@
       <div class="search-site">
         <div class="search-site-rank">04</div>
         <div>
-          <h4 class="search-site-name">Facebook Marketplace + Groups</h4>
+          <h3 class="search-site-name">Facebook Marketplace + Groups</h3>
           <p class="search-site-note">Where off-market deals from upper-years tend to surface first. Always tour in person before committing.</p>
           <p class="search-site-note" style="margin-top:8px;">
             <a href="https://www.facebook.com/marketplace/toronto/propertyrentals" target="_blank" rel="noopener" style="color:var(--uoft-teal);text-decoration:underline;text-underline-offset:3px;margin-right:12px;">Marketplace ↗</a>
@@ -7176,7 +7240,7 @@
       <a class="search-site" href="https://www.kijiji.ca/b-apartments-condos/toronto/c37l1700273" target="_blank" rel="noopener">
         <div class="search-site-rank">05</div>
         <div>
-          <h4 class="search-site-name">Kijiji</h4>
+          <h3 class="search-site-name">Kijiji</h3>
           <p class="search-site-note">Annex and Kensington walk-ups often appear here before anywhere else. Listing quality varies, so verify the landlord owns the unit before paying anything, and never wire money without touring and signing first.</p>
         </div>
         <div class="search-site-arrow">↗</div>
@@ -7184,7 +7248,7 @@
       <a class="search-site" href="https://www.padmapper.com/apartments/toronto-on" target="_blank" rel="noopener">
         <div class="search-site-rank">06</div>
         <div>
-          <h4 class="search-site-name">PadMapper</h4>
+          <h3 class="search-site-name">PadMapper</h3>
           <p class="search-site-note">Map-based search with rent and bedroom filters. Aggregates listings from multiple sources. Useful for setting up email alerts on specific neighborhoods once you've narrowed down your shortlist.</p>
         </div>
         <div class="search-site-arrow">↗</div>
@@ -7194,7 +7258,7 @@
 </section>
 
 <!-- ============ Housing law + tenant insurance ============ -->
-<section class="section section-soft">
+<section id="tenant-rights" class="section section-soft">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7245,7 +7309,7 @@
 </section>
 
 <!-- ============ Warnings ============ -->
-<section class="section">
+<section id="warnings" class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -9274,6 +9338,7 @@
     }
   })();
 </script>
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">

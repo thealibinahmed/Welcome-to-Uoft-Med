@@ -5694,6 +5694,24 @@
     font-weight: 600;
     padding-left: 4px;
   }
+
+  /* Skip to content */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 8px 16px;
+    background: var(--uoft-navy);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 0 0 4px 4px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6111,6 +6129,7 @@
 </div>
 
 <!-- ============ Header ============ -->
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">
@@ -6180,8 +6199,9 @@
 </div>
 
 <!-- ============ 1. HERO with inset block ============ -->
+<main id="main-content">
 <section class="hero">
-  <img src="assets/index-page/USG4.jpeg" style="object-position: center 20%;" />
+  <img src="assets/index-page/USG4.jpeg" style="object-position: center 20%;" alt="University of Toronto St. George campus" />
   <div class="hero-tint"></div>
   <div class="hero-content">
     <div class="container">
@@ -6504,28 +6524,28 @@
         <a class="resource-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Accepting Your Offer</h4>
+            <h3 class="resource-title">Accepting Your Offer</h3>
             <p class="resource-note">Step-by-step walkthrough of the formal acceptance process and offer-related forms.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Registration Requirements & Requests</h4>
+            <h3 class="resource-title">Registration Requirements & Requests</h3>
             <p class="resource-note">Updated annually each June. Wait for the year's refreshed list before booking immunizations or training.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">Financial Aid</h4>
+            <h3 class="resource-title">Financial Aid</h3>
             <p class="resource-note">Government assistance, Faculty grants, bursaries, and the Professional Student Line of Credit.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
-            <h4 class="resource-title">MD Program Home</h4>
+            <h3 class="resource-title">MD Program Home</h3>
             <p class="resource-note">The MD Program's central site. curriculum, academies, and program-wide announcements.</p>
           </div>
         </a>
@@ -6533,6 +6553,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">

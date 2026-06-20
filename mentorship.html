@@ -6337,6 +6337,24 @@
     pointer-events: none;
   }
 
+
+  /* Skip to content */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 8px 16px;
+    background: var(--uoft-navy);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 0 0 4px 4px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6754,6 +6772,7 @@
 </div>
 
 <!-- ============ Header ============ -->
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">
@@ -6823,6 +6842,7 @@
 </div>
 
 <!-- ============ Page hero ============ -->
+<main id="main-content">
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-grid">
@@ -7203,6 +7223,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-disclaimer">
