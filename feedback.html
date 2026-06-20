@@ -6172,7 +6172,7 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  @media (min-width: 768px) { .form-grid-2 { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 768px) { .form-grid-2 { grid-template-columns: 1fr 1fr; align-items: end; } }
   .form-rating-group {
     display: flex;
     gap: 4px;
@@ -6351,6 +6351,14 @@
         <p class="submission-type-title">General feedback</p>
         <p class="submission-type-desc">Anything else. suggestions, requests, ideas.</p>
       </button>
+      <button type="button" class="submission-type" data-type="mentor-signup" onclick="setSubmissionType('mentor-signup')">
+        <p class="submission-type-title">Mentor sign-up</p>
+        <p class="submission-type-desc">Offer to be listed on the Mentorship page.</p>
+      </button>
+      <button type="button" class="submission-type" data-type="testimonial" onclick="setSubmissionType('testimonial')">
+        <p class="submission-type-title">Testimonial</p>
+        <p class="submission-type-desc">Share a study tip, commuter experience, or reflection.</p>
+      </button>
     </div>
 
     <!-- HOUSING REVIEW FORM -->
@@ -6528,6 +6536,103 @@
       </div>
     </div>
 
+    <!-- MENTOR SIGN-UP FORM -->
+    <div class="form-shell" id="form-mentor-signup" style="display: none;">
+      <h3>Sign up as a mentor</h3>
+      <p class="form-shell-desc">You'll be listed on the Mentorship page with your name, blurb, and contact method. We review before publishing.</p>
+
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label class="form-label" for="ms-name">Your name</label>
+          <input class="form-input" type="text" id="ms-name" placeholder="First and last name" />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="ms-cohort">Your cohort year</label>
+          <input class="form-input" type="text" id="ms-cohort" placeholder="e.g., 2T7" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-pronouns">Pronouns (optional)</label>
+        <input class="form-input" type="text" id="ms-pronouns" placeholder="e.g., she/her, he/him, they/them" />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-tags">Topics you can speak to</label>
+        <p class="form-help">Comma-separated. e.g., mature student, commuter life, LGBTQ+, finances, accommodations, international student</p>
+        <input class="form-input" type="text" id="ms-tags" placeholder="e.g., career change, finances, study strategies" />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-blurb">Personal blurb (2-4 sentences)</label>
+        <p class="form-help">In your own voice. What you wish you'd known, what you're willing to talk about, why you signed up.</p>
+        <textarea class="form-textarea" id="ms-blurb" rows="4" placeholder="Write in first person. This appears on your card exactly as written."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-contact">How to reach you</label>
+        <p class="form-help">Email, Instagram, or however you prefer to be contacted. This will be public on your card.</p>
+        <input class="form-input" type="text" id="ms-contact" placeholder="e.g., yourname@mail.utoronto.ca" />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-photo">Link to a photo of you (optional)</label>
+        <p class="form-help">Paste a Google Drive, Instagram, or LinkedIn photo link. We'll crop it for the card.</p>
+        <input class="form-input" type="url" id="ms-photo" placeholder="https://..." />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ms-email">Your email</label>
+        <p class="form-help">For follow-up only. Not displayed on the site.</p>
+        <input class="form-input" type="email" id="ms-email" placeholder="you@mail.utoronto.ca" />
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-submit-note">By submitting, you agree to be listed publicly on the Mentorship page and contacted by incoming students.</p>
+        <button class="btn btn-primary" type="button" onclick="handleSubmit('mentor-signup')">Submit for review →</button>
+      </div>
+    </div>
+
+    <!-- TESTIMONIAL FORM -->
+    <div class="form-shell" id="form-testimonial" style="display: none;">
+      <h3>Share a testimonial</h3>
+      <p class="form-shell-desc">Short reflections that help incoming students. These appear on the relevant page (housing, academics, etc.).</p>
+
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label class="form-label" for="ts-display">Display name</label>
+          <p class="form-help">How you'll be credited. Most use "[year] student."</p>
+          <input class="form-input" type="text" id="ts-display" placeholder="e.g., 2T7 student" />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="ts-page">Which section is this for?</label>
+          <select class="form-select" id="ts-page">
+            <option value="">Select one...</option>
+            <option value="commuter">Housing: commuter experience</option>
+            <option value="study">Academics: study approach</option>
+            <option value="finances">Finances: LOC or budgeting</option>
+            <option value="general">General reflection</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ts-quote">Your testimonial</label>
+        <p class="form-help">2-4 sentences. Specific beats generic. "I took the GO train from Oakville, 65 min door to door" is more useful than "commuting was fine."</p>
+        <textarea class="form-textarea" id="ts-quote" rows="4" placeholder="Write in first person."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="ts-email">Your email (optional)</label>
+        <input class="form-input" type="email" id="ts-email" placeholder="you@example.com" />
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-submit-note">Testimonials may be lightly edited for length or clarity before publishing.</p>
+        <button class="btn btn-primary" type="button" onclick="handleSubmit('testimonial')">Submit →</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -6538,7 +6643,7 @@
     document.querySelector(`[data-type="${type}"]`).classList.add('active');
 
     // Show the right form
-    ['housing-review', 'community-content', 'content-correction', 'general-feedback'].forEach(t => {
+    ['housing-review', 'community-content', 'content-correction', 'general-feedback', 'mentor-signup', 'testimonial'].forEach(t => {
       const el = document.getElementById(`form-${t}`);
       if (el) el.style.display = t === type ? '' : 'none';
     });
@@ -6549,14 +6654,16 @@
     });
   }
   // ── Google Sheets submission ──
-  const SHEET_URL = 'YOUR_APPS_SCRIPT_URL'; // ← Replace with your Apps Script deployment URL
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz8kKw_rMHbRmkGDf0vh1DhlBhSVO17cGbjZhCA1ROJK0IKlvyJlC2tPLMKYEngKLnrKw/exec';
 
   function collectFields(type) {
     const prefixes = {
       'housing-review': 'hr',
       'community-content': 'cc',
       'content-correction': 'cor',
-      'general-feedback': 'gf'
+      'general-feedback': 'gf',
+      'mentor-signup': 'ms',
+      'testimonial': 'ts'
     };
     const prefix = prefixes[type];
     if (!prefix) return {};
@@ -6578,32 +6685,32 @@
   }
 
   function handleSubmit(type) {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL') {
+    if (false) {
       alert('Form not yet connected. The site maintainer needs to add the Google Apps Script URL.');
       return;
     }
     const fields = collectFields(type);
     const email = fields.email || '';
-    const btn = event.target;
-    const origText = btn.textContent;
+    var btns = document.querySelectorAll('#form-' + type + ' .btn-primary');
+    var btn = btns[btns.length - 1];
+    var origText = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
     fetch(SHEET_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ type: type, fields: fields, email: email })
     })
     .then(function() {
-      btn.textContent = '✓ Submitted';
+      btn.textContent = '\u2713 Submitted';
       btn.style.background = 'var(--uoft-teal)';
-      // Clear the form
       var shell = document.getElementById('form-' + type);
       if (shell) {
         shell.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
         shell.querySelectorAll('select').forEach(function(el) { el.selectedIndex = 0; });
-        shell.querySelectorAll('.rating-star').forEach(function(el) { el.classList.remove('active'); });
+        shell.querySelectorAll('.rating-star, .form-rating-btn').forEach(function(el) { el.classList.remove('active', 'selected'); });
       }
       setTimeout(function() {
         btn.textContent = origText;
@@ -6612,7 +6719,7 @@
       }, 3000);
     })
     .catch(function() {
-      btn.textContent = 'Error — try again';
+      btn.textContent = 'Error. try again';
       btn.style.background = '#c0392b';
       btn.disabled = false;
       setTimeout(function() {
