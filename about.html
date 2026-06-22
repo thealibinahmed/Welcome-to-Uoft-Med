@@ -4435,6 +4435,148 @@
     font-size: 13px;
     color: var(--ink-muted);
   }
+
+  /* Pull quote */
+  .mission-pullquote {
+    border-left: 3px solid var(--uoft-teal);
+    padding: 20px 24px;
+    background: var(--paper-soft);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 28px;
+    margin-top: 16px;
+  }
+  .mission-pullquote p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+    line-height: 1.35;
+    color: var(--uoft-navy);
+    margin: 0;
+  }
+
+  /* Principle cards */
+  .principle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  @media (min-width: 600px) {
+    .principle-grid { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .principle-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline-soft);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .principle-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(0,127,163,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .principle-card-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--uoft-teal);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .principle-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin-bottom: 6px;
+  }
+  .principle-card-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Credit pills */
+  .credit-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .credit-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper);
+    border: 1px solid var(--hairline-soft);
+    border-radius: 999px;
+    padding: 5px 16px 5px 5px;
+  }
+  .credit-pill-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .credit-pill-name {
+    font-size: 14px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* Changelog compact */
+  .changelog-compact {
+    max-width: 56rem;
+  }
+  .changelog-timeline {
+    border-left: 2px solid var(--hairline);
+    padding-left: 20px;
+    margin-top: 16px;
+  }
+  .changelog-timeline-entry {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .changelog-timeline-entry:last-child { margin-bottom: 0; }
+  .changelog-timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--uoft-teal);
+  }
+  .changelog-timeline-date {
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+  }
+  .changelog-timeline-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--uoft-navy);
+    margin-bottom: 4px;
+  }
+  .changelog-timeline-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
   .founder-blurb p {
     font-size: 16px;
     line-height: 1.7;
@@ -6310,6 +6452,8 @@
 
 <!-- ============ Page hero ============ -->
 <main id="main-content">
+
+<!-- ============ Hero (compact) ============ -->
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-grid">
@@ -6319,23 +6463,13 @@
           <span class="eyebrow-text">About</span>
         </div>
         <h1>A guide for the parts no one writes down.</h1>
-        <p class="page-hero-lede">This site exists to make the unofficial parts of starting UofT Medicine easier to find: timelines, housing decisions, money questions, student vocabulary, and the small pieces of context that usually travel by group chat.</p>
-      </div>
-      <div>
-        <div class="page-hero-meta">
-          <strong>Built by students, for students</strong>
-          A volunteer, student-maintained guide for incoming MD students. Not for profit, not affiliated with the Faculty.
-        </div>
-        <div class="page-hero-meta">
-          <strong>Community knowledge, kept current</strong>
-          The goal is to collect practical context from students and point readers back to official Faculty sources when details matter.
-        </div>
+        <p class="page-hero-lede">Timelines, housing decisions, money questions, student vocabulary, and the small pieces of context that usually travel by group chat.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Mission ============ -->
+<!-- ============ Mission + Principles ============ -->
 <section class="section section-soft" style="position: relative;">
   <img class="cg-egg-peek cg-egg-peek-tr" src="assets/cg/cg-balloon.png" alt="" aria-hidden="true" loading="lazy" />
   <div class="container">
@@ -6344,12 +6478,30 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Why this exists</span>
       </div>
-      <h2 class="mission-statement">No one should feel lost or out of place stepping into medical school.</h2>
+      <div class="mission-pullquote">
+        <p>No one should feel lost or out of place stepping into medical school.</p>
+      </div>
       <div class="mission-body">
         <p>Medicine has a hidden curriculum. The acceptance letter tells you you got in. It doesn't tell you when to set up a line of credit, what a CEE is, which neighbourhood to live in if you're at MAM, why a tuition deferral form might matter, or where to ask a question that feels too small for an official email.</p>
-        <p>The goal is simple: gather the practical, student-to-student knowledge that helps the first few months feel less confusing. Official Faculty pages are still the source of truth for academic, financial, and administrative requirements. This guide is the companion beside them, written plainly and updated when students notice a gap.</p>
-        <p><strong>Built by students, for students.</strong> The guide works best when it reflects many people's experience: students at St. George and MAM, people moving to Toronto for the first time, commuters, students applying for aid, first-generation students, and anyone who has had to learn the system one question at a time.</p>
-        <p>If something's missing, tell us and we'll add it. If your question is too specific or too personal for a public page, the <a href="feedback.html">Feedback form</a> can help route it to someone who can answer: a current MD student, an academy contact, the Office of Learner Affairs, the Financial Counsellor, or another appropriate support.</p>
+        <p>This guide gathers the practical, student-to-student knowledge that helps the first few months feel less confusing. Official Faculty pages are still the source of truth for academic, financial, and administrative requirements. This is the companion beside them, written plainly and updated when students notice a gap.</p>
+      </div>
+
+      <div class="principle-grid">
+        <div class="principle-card">
+          <div class="principle-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <p class="principle-card-title">Student-built</p>
+          <p class="principle-card-body">Volunteer, not-for-profit, and independent of the Faculty. The guide works best when it reflects many people's experience: students at St. George and MAM, commuters, first-generation students, and anyone learning the system one question at a time.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <p class="principle-card-title">Kept current</p>
+          <p class="principle-card-body">Updated when students spot a gap or something changes. We re-verify time-sensitive details (rates, fees, dates) each cycle. Check the changelog below for specifics.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <p class="principle-card-title">Open to feedback</p>
+          <p class="principle-card-body">If something's missing, <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">tell us</a> and we'll add it. If your question is too specific for a public page, use the Feedback form to reach a current student, academy contact, or another support.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -6364,9 +6516,17 @@
         <span class="eyebrow-text">Credits</span>
       </div>
       <h3>Shaped by shared student knowledge.</h3>
-      <p>This guide draws on knowledge shared by upper-year MD students, alumni, and faculty mentors who answered questions, reviewed drafts, and pointed new students in the right direction. Listed alphabetically.</p>
-      <div class="credits-list">
-        <p> · Adham ElSherbini · Amel Sassi · Angie Awadallah · Anum Anjum · Arpsima Aziz · Hirday Josan · Phoebe Ji · Shazia Rahiman · Soliana Lijiam · </p>
+      <p>Upper-year MD students, alumni, and faculty mentors answered questions, reviewed drafts, and pointed new students in the right direction.</p>
+      <div class="credit-pills">
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #E6F1FB; color: #0C447C;">AE</span><span class="credit-pill-name">Adham ElSherbini</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #E1F5EE; color: #085041;">AS</span><span class="credit-pill-name">Amel Sassi</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #EEEDFE; color: #3C3489;">AA</span><span class="credit-pill-name">Angie Awadallah</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #FAECE7; color: #712B13;">AA</span><span class="credit-pill-name">Anum Anjum</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #FBEAF0; color: #72243E;">AA</span><span class="credit-pill-name">Arpsima Aziz</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #E6F1FB; color: #0C447C;">HJ</span><span class="credit-pill-name">Hirday Josan</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #E1F5EE; color: #085041;">PJ</span><span class="credit-pill-name">Phoebe Ji</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #EEEDFE; color: #3C3489;">SR</span><span class="credit-pill-name">Shazia Rahiman</span></div>
+        <div class="credit-pill"><span class="credit-pill-avatar" style="background: #FAECE7; color: #712B13;">SL</span><span class="credit-pill-name">Soliana Lijiam</span></div>
       </div>
       <p class="credits-footer">If you've contributed and your name isn't here, please let us know via the <a href="feedback.html">Feedback form</a> and we'll fix it. If you'd prefer to be removed or stay anonymous, same form.</p>
     </div>
@@ -6374,31 +6534,26 @@
 </section>
 
 <!-- ============ Changelog ============ -->
-<section class="section" id="changelog">
+<section class="section-tight" id="changelog" style="padding-top: 32px;">
   <div class="container">
-    <div class="changelog-block">
-      <div class="changelog-head">
-        <div class="eyebrow">
-          <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">What's Changed</span>
+    <div class="changelog-compact">
+      <div class="eyebrow" style="margin-bottom: 16px;">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">What's Changed</span>
+      </div>
+      <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: clamp(1.25rem, 2vw, 1.5rem); color: var(--uoft-navy); line-height: 1.2; margin-bottom: 6px;">Recent updates.</h2>
+      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: May 3, 2026</p>
+
+      <div class="changelog-timeline">
+        <div class="changelog-timeline-entry">
+          <p class="changelog-timeline-date">May 3, 2026</p>
+          <p class="changelog-timeline-title">Initial public version</p>
+          <p class="changelog-timeline-body">First version of the guide goes live for the Class of 3T0. Covers Post-Acceptance, O-Week, Housing (with interactive map), Finances, Academics, Handbook, Mentorship, About, and Feedback. Includes verified Scotia LOC details, current 2026 fee figures from the Faculty, and the academy decision date from the previous cycle (June 26 last year).</p>
         </div>
-        <h2 class="changelog-heading">Recent updates.</h2>
-        <p class="changelog-lede">A running log of meaningful changes to the guide. Useful for returning visitors, and a way to flag whether time-sensitive info (rates, fees, dates) has been re-verified recently.</p>
-        <p class="changelog-meta"><strong>Last updated:</strong> May 3, 2026</p>
+        <!-- Add new entries above this line, newest first -->
       </div>
 
-      <ol class="changelog-list">
-        <li class="changelog-entry">
-          <div class="changelog-date">May 3, 2026</div>
-          <div class="changelog-content">
-            <p class="changelog-title">Initial public version</p>
-            <p class="changelog-body">First version of the guide goes live for the Class of 3T0. Covers Post-Acceptance, O-Week, Housing (with interactive map), Finances, Academics, Handbook, Mentorship, About, and Feedback. Includes verified Scotia LOC details, current 2026 fee figures from the Faculty, and the academy decision date from the previous cycle (June 26 last year).</p>
-          </div>
-        </li>
-        <!-- Add new entries above this line, newest first -->
-      </ol>
-
-      <p class="changelog-footer-note">Spotted something out of date? <a href="feedback.html">Submit a correction via Feedback</a>. Corrections are usually applied within a week.</p>
+      <p style="font-size: 13px; color: var(--ink-muted); margin-top: 24px;">Spotted something out of date? <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Submit a correction via Feedback</a>. Corrections are usually applied within a week.</p>
     </div>
   </div>
 </section>
