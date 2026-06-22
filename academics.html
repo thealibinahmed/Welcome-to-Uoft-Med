@@ -5646,6 +5646,28 @@
     pointer-events: auto;
   }
   .back-to-top:hover { background: var(--uoft-teal); }
+
+  /* Placeholder content marker */
+  .needs-content {
+    position: relative;
+    border: 1.5px dashed #e6a817 !important;
+    background: #fffdf0 !important;
+  }
+  .needs-content::after {
+    content: '📝 Needs real content';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #b8860b;
+    background: #fff3cd;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6429,11 +6451,11 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Study Tips · Upper Years</span>
       </div>
-      <h2>What actually worked for them. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
+      <h2>Study strategies from real students. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
       <p>Short reflections from upper-year UofT MD students on how they approached pre-clerkship. There is no single right method. read across them and pick what resonates.</p>
     </div>
 
-    <div class="testimonial-grid">
+    <div class="testimonial-grid needs-content" style="position:relative;">
       <article class="testimonial">
         <p class="testimonial-quote">Treat CBL prep as the spine. Everything else. Anki, lecture, notes. wraps around the cases. Going to a CBL underprepared once was enough to convince me.</p>
         <p class="testimonial-byline">— Pre-clerkship student, M2</p>
