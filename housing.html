@@ -6917,6 +6917,28 @@
     padding: 4px 10px;
     margin-bottom: 12px;
   }
+
+  /* Placeholder content marker */
+  .needs-content {
+    position: relative;
+    border: 1.5px dashed #e6a817 !important;
+    background: #fffdf0 !important;
+  }
+  .needs-content::after {
+    content: '📝 Needs real content';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #b8860b;
+    background: #fff3cd;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
 </style>
 
 <!-- ============ Page hero ============ -->
@@ -7175,7 +7197,7 @@
       <p>Living downtown isn't the only path. Plenty of MD students commute from home, the suburbs, or further out, for financial, family, or personal reasons. A few representative stories.</p>
     </div>
 
-    <div class="testimonial-grid">
+    <div class="testimonial-grid needs-content" style="position:relative;">
       <article class="testimonial-card">
         <div class="testimonial-eyebrow">Living with parents · Markham</div>
         <p>"I save roughly $2,400/month staying home. The GO train + subway is about 65 minutes door-to-MSB, which I use to read or pre-CBL. The trade-off is a quieter social life mid-week. I make it up on weekends. For me, graduating with $80K less debt is worth it."</p>
