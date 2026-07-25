@@ -6854,6 +6854,8 @@
     font-size: 10px;
     line-height: 1.3;
   }
+  .timed-event.starts-half-hour { margin-top: 25px; }
+  .timed-event.ends-half-hour { margin-bottom: 25px; }
   .timed-event strong,
   .timed-event span {
     display: block;
@@ -7158,7 +7160,7 @@
     { page: "academics", title: "Anki decks", anchor: "#anki", keywords: "anki bhadra anatomy spaced repetition", snippet: "Student-shared anatomy, ITM and CPC decks. Check for outdated content before committing." },
     { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
     { page: "academics", title: "2026–27 Year 1 calendar", anchor: "#calendar", keywords: "year one calendar ITM CPC dates topics curriculum", snippet: "Confirmed course start and end dates from the Faculty Foundations key-dates sheet." },
-    { page: "academics", title: "What a typical week can look like", anchor: "#calendar", keywords: "weekly schedule CBL clinical skills anatomy MedSIS", snippet: "A recent-cohort illustration, not the current timetable. Friday morning is the usual Year 1 clinical-skills session." },
+    { page: "academics", title: "What a typical week can look like", anchor: "#calendar", keywords: "weekly schedule CBL clinical skills anatomy MedSIS ME ISAL", snippet: "Recent-cohort examples. MEs are Monday 8–9 AM, Year 1 Clinical Skills is Friday 8 AM–12 PM and ISAL is usually the Friday before an ME." },
     { page: "academics", title: "Mastery Exercises (MEs)", anchor: "#calendar", keywords: "ME mastery exercise assessment cadence", snippet: "Generally about every two weeks, with some shorter or longer intervals. Confirm exact dates and times in MedSIS." },
     { page: "academics", title: "MD Plus and early opportunities", anchor: "#md-plus", keywords: "MD Plus GDipHR CREMS GHEP global health MIT QuEST MD PhD MBA MEng", snippet: "Programs and research opportunities that may require planning or applications during Year 1." },
     { page: "academics", title: "Shadowing and EEE", anchor: "#shadowing", keywords: "shadowing EEE enriching educational experiences 36 hours CAP MedSIS career advising preparation", snippet: "The 2025–26 manual required 36 hours by June 15 of Year 2. Log every clinical EEE in MedSIS in advance." },
@@ -7580,8 +7582,8 @@
 
     <div class="longitudinal-list">
       <details>
-        <summary><span>ICE: Clinical Skills</span><small>Usually Friday mornings in Year 1</small></summary>
-        <p>Clinical skills teaching runs as one morning session each week in Year 1. Year 2 sessions are usually Thursday. Use MedSIS for your exact session, location and any exceptions.</p>
+        <summary><span>ICE: Clinical Skills</span><small>Friday mornings in Year 1</small></summary>
+        <p>Year 1 Clinical Skills runs Friday from 8:00 AM–12:00 PM. Year 2 sessions are usually Thursday. Use MedSIS for the current location and any communicated exceptions.</p>
       </details>
       <details>
         <summary><span>ICE: Career Advising and Preparation</span><small>Career exploration and EEE</small></summary>
@@ -7668,28 +7670,27 @@
           <div class="timed-hour timed-hour-left" style="grid-row:11">5 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:11">5 PM</div>
 
           <div class="timed-event is-teaching" style="grid-column:2;grid-row:3/6"><strong>Course teaching</strong><span>9:00–12:00</span></div>
-          <div class="timed-event is-cbl" style="grid-column:2;grid-row:7/10" data-hide-on="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
-          <div class="timed-event is-cbl" style="grid-column:2;grid-row:7/9" data-week-only="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
-          <div class="timed-event is-portfolio" style="grid-column:2;grid-row:9/11" data-week-only="portfolio"><strong>Portfolio</strong><span>From about 3:30</span></div>
+          <div class="timed-event is-cbl starts-half-hour ends-half-hour" style="grid-column:2;grid-row:7/10" data-hide-on="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
+          <div class="timed-event is-cbl starts-half-hour ends-half-hour" style="grid-column:2;grid-row:7/10" data-week-only="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
+          <div class="timed-event is-portfolio starts-half-hour" style="grid-column:2;grid-row:9/11" data-week-only="portfolio"><strong>Portfolio</strong><span>From about 3:30</span></div>
 
           <div class="timed-event is-teaching" style="grid-column:3;grid-row:3/6"><strong>MAPS / anatomy</strong><span>Morning teaching</span></div>
-          <div class="timed-event is-teaching" style="grid-column:3;grid-row:7/10"><strong>Lab or scheduled learning</strong><span>When scheduled</span></div>
+          <div class="timed-event is-teaching" style="grid-column:3;grid-row:7/10"><strong>Lab or scheduled learning*</strong><span>Section and rotation times vary</span></div>
 
           <div class="timed-event is-open" style="grid-column:4;grid-row:3/10"><strong>Day off in this example</strong><span>No scheduled teaching shown</span></div>
 
           <div class="timed-event is-longitudinal" style="grid-column:5;grid-row:3/6"><strong>Longitudinal teaching</strong><span>Morning component varies</span></div>
           <div class="timed-event is-cbl" style="grid-column:5;grid-row:7/10"><strong>Faculty-led CBL</strong><span>Academy or hospital site</span></div>
 
-          <div class="timed-event is-clinical" style="grid-column:6;grid-row:2/6" data-hide-on="me"><strong>ICE: Clinical Skills</strong><span>Usual Year 1 morning</span></div>
-          <div class="timed-event is-open" style="grid-column:6;grid-row:7/9" data-hide-on="me"><strong>Check the week</strong><span>Some Fridays include another session</span></div>
-          <div class="timed-event is-assessment" style="grid-column:6;grid-row:2/3" data-week-only="me"><strong>ME</strong><span>8:00–9:00</span></div>
-          <div class="timed-event is-teaching" style="grid-column:6;grid-row:3/6" data-week-only="me"><strong>Course lectures</strong><span>Teaching continues after the ME</span></div>
+          <div class="timed-event is-assessment" style="grid-column:2;grid-row:2/3" data-week-only="me"><strong>ME</strong><span>Monday · 8:00–9:00</span></div>
+          <div class="timed-event is-clinical" style="grid-column:6;grid-row:2/6"><strong>ICE: Clinical Skills</strong><span>Friday · 8:00–12:00</span></div>
+          <div class="timed-event is-open starts-half-hour" style="grid-column:6;grid-row:7/10" data-hide-on="me"><strong>ISAL when scheduled</strong><span>Friday before an ME · 1:30–4:00</span></div>
         </div>
       </div>
 
       <div class="timed-week-notes">
-        <div><strong>Weeks vary.</strong><span>The number, timing and type of scheduled sessions change across blocks.</span></div>
-        <div><strong>MEs are generally about every two weeks.</strong><span>A smaller number of blocks may be closer to one or three weeks.</span></div>
+        <div><strong>*Tuesday afternoons vary.</strong><span>You may attend only your assigned section, rotate between activities or have a different time from another section.</span></div>
+        <div><strong>MEs are Monday from 8:00–9:00.</strong><span>They are generally about every two weeks. ISAL is usually the preceding Friday from 1:30–4:00.</span></div>
         <div><strong>Do not schedule from this illustration.</strong><span>Use MedSIS for dates, rooms, mandatory status and changes.</span></div>
       </div>
     </div>
@@ -8376,7 +8377,7 @@
   var description = week.querySelector('[data-timed-description]');
   var copy = {
     typical: 'A recent-cohort illustration of a regular teaching week. The exact number and placement of sessions changes across blocks.',
-    me: 'The ME is shown from 8:00–9:00 on Friday, followed by course lectures. An assessment does not necessarily mean the rest of the teaching day is empty.',
+    me: 'The ME is shown on Monday from 8:00–9:00. Course teaching can continue afterward. The related ISAL is usually the preceding Friday from 1:30–4:00.',
     portfolio: 'This recent-cohort pattern places Portfolio from about 3:30 onward on Monday, after Independent CBL. Confirm the current session in MedSIS.'
   };
   buttons.forEach(function(button) {
