@@ -5741,1220 +5741,6 @@
     text-transform: uppercase;
     pointer-events: none;
   }
-
-  /* Academics: course sequence and longitudinal components */
-  .course-sequence {
-    margin-top: 42px;
-  }
-  .course-sequence-tabs {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-  .course-sequence-tabs::before {
-    content: '';
-    position: absolute;
-    top: 23px;
-    left: 16.5%;
-    right: 16.5%;
-    height: 1px;
-    background: var(--hairline);
-  }
-  .course-sequence-tab {
-    position: relative;
-    display: grid;
-    justify-items: center;
-    gap: 9px;
-    padding: 0 10px;
-    border: 0;
-    background: transparent;
-    color: var(--ink);
-    font: inherit;
-    text-align: center;
-    cursor: pointer;
-  }
-  .course-sequence-tab:focus-visible {
-    outline: 3px solid rgba(0, 127, 163, 0.32);
-    outline-offset: 6px;
-  }
-  .course-sequence-node {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    width: 46px;
-    height: 46px;
-    place-items: center;
-    border: 1.5px solid var(--uoft-navy);
-    background: var(--paper);
-    color: var(--uoft-navy);
-    font-weight: 800;
-  }
-  .course-sequence-tab.is-active .course-sequence-node {
-    border-color: var(--uoft-teal);
-    background: var(--uoft-teal);
-    color: white;
-  }
-  .course-sequence-name {
-    color: var(--uoft-navy);
-    font: 800 20px/1.15 'Roboto Slab', Georgia, serif;
-  }
-  .course-sequence-date {
-    color: var(--ink-muted);
-    font-size: 12px;
-    line-height: 1.55;
-  }
-  .course-sequence-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
-    gap: 32px;
-    margin-top: 20px;
-    padding: 22px 24px;
-    border-left: 3px solid var(--uoft-teal);
-    background: var(--paper-soft);
-  }
-  .course-sequence-panel[hidden] {
-    display: none;
-  }
-  .course-sequence-panel h3,
-  .longitudinal-intro h3,
-  .glossary-block-heading h3 {
-    margin-top: 10px;
-    color: var(--uoft-navy);
-    font: 800 24px/1.25 'Roboto Slab', Georgia, serif;
-  }
-  .course-sequence-panel p,
-  .longitudinal-intro p {
-    margin-top: 12px;
-    color: var(--ink-soft);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .longitudinal-intro {
-    display: grid;
-    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1fr);
-    gap: 48px;
-    margin-top: 48px;
-    align-items: end;
-  }
-  .longitudinal-list {
-    margin-top: 28px;
-    border-top: 1px solid var(--hairline);
-  }
-  .longitudinal-list details {
-    border-bottom: 1px solid var(--hairline);
-  }
-  .longitudinal-list summary {
-    display: grid;
-    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1fr);
-    gap: 24px;
-    padding: 20px 0;
-    cursor: pointer;
-    list-style: none;
-  }
-  .longitudinal-list summary::-webkit-details-marker {
-    display: none;
-  }
-  .longitudinal-list summary span {
-    color: var(--uoft-navy);
-    font-weight: 700;
-  }
-  .longitudinal-list summary small {
-    position: relative;
-    padding-right: 30px;
-    color: var(--ink-muted);
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .longitudinal-list summary small::after {
-    content: '+';
-    position: absolute;
-    top: -3px;
-    right: 2px;
-    color: var(--uoft-teal);
-    font-size: 22px;
-    font-weight: 400;
-  }
-  .longitudinal-list details[open] summary small::after {
-    content: '−';
-  }
-  .longitudinal-list details > p {
-    max-width: 760px;
-    padding: 0 0 22px calc(30% + 24px);
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .glossary-block {
-    margin-top: 56px;
-    padding-top: 34px;
-    border-top: 1px solid var(--hairline);
-  }
-  .glossary-block-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .glossary-block-heading a {
-    color: var(--uoft-teal);
-    font-size: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-    border-bottom: 1px solid currentColor;
-  }
-  .glossary-compact {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 28px;
-    margin-top: 24px;
-    padding: 22px 0;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .glossary-compact-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: start;
-    gap: 8px;
-  }
-  .glossary-compact-buttons button {
-    min-width: 64px;
-    padding: 9px 12px;
-    border: 1px solid var(--hairline);
-    background: var(--paper);
-    color: var(--uoft-navy);
-    font: 800 13px/1 'Public Sans', sans-serif;
-    cursor: pointer;
-  }
-  .glossary-compact-buttons button.is-active {
-    border-color: var(--uoft-navy);
-    background: var(--uoft-navy);
-    color: white;
-  }
-  .glossary-compact-buttons button:focus-visible {
-    outline: 3px solid rgba(0, 127, 163, 0.3);
-    outline-offset: 2px;
-  }
-  .glossary-compact-answer {
-    min-height: 72px;
-    padding-left: 28px;
-    border-left: 2px solid var(--student-warm);
-  }
-  .glossary-compact-answer strong {
-    color: var(--uoft-navy);
-    font: 800 17px/1.3 'Roboto Slab', Georgia, serif;
-  }
-  .glossary-compact-answer p {
-    margin-top: 8px;
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.65;
-  }
-
-  @media (max-width: 767px) {
-    .course-sequence-tabs {
-      gap: 8px;
-    }
-    .course-sequence-tabs::before {
-      left: 17%;
-      right: 17%;
-    }
-    .course-sequence-tab {
-      padding: 0 2px;
-    }
-    .course-sequence-name {
-      font-size: 17px;
-    }
-    .course-sequence-date {
-      font-size: 10px;
-    }
-    .course-sequence-panel,
-    .longitudinal-intro,
-    .longitudinal-list summary {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    .longitudinal-list details > p {
-      padding-left: 0;
-    }
-    .longitudinal-intro {
-      margin-top: 48px;
-    }
-    .glossary-block {
-      margin-top: 46px;
-    }
-    .glossary-block-heading {
-      align-items: start;
-      flex-direction: column;
-    }
-    .glossary-compact {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .glossary-compact-answer {
-      padding: 18px 0 0;
-      border-top: 2px solid var(--student-warm);
-      border-left: 0;
-    }
-  }
-
-  /* Academics: EEE guide */
-  .eee-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-metrics > div {
-    padding: 28px 26px;
-    border-left: 1px solid var(--hairline);
-  }
-  .eee-metrics > div:first-child {
-    border-left: 0;
-  }
-  .eee-metrics strong {
-    display: block;
-    color: var(--uoft-navy);
-    font: 800 28px/1.1 'Roboto Slab', Georgia, serif;
-  }
-  .eee-metrics span {
-    display: block;
-    margin-top: 8px;
-    color: var(--ink-muted);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-  .eee-source-note {
-    margin-top: 26px;
-  }
-  .eee-two-column,
-  .eee-guidance-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 56px;
-    margin-top: 64px;
-  }
-  .eee-feature-groups {
-    display: grid;
-    gap: 52px;
-    margin-top: 56px;
-  }
-  .eee-feature-group {
-    display: grid;
-    grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
-    gap: 46px;
-    align-items: start;
-  }
-  .eee-feature-intro h3 {
-    margin-top: 12px;
-    color: var(--uoft-navy);
-    font: 800 21px/1.3 'Roboto Slab', Georgia, serif;
-  }
-  .eee-feature-intro p {
-    margin-top: 12px;
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.65;
-  }
-  .eee-type-list,
-  .eee-setting-list,
-  .eee-rules {
-    margin-top: 22px;
-    border-top: 1px solid var(--hairline);
-  }
-  .eee-type-list article {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-type-list h3 {
-    color: var(--uoft-navy);
-    font: 800 18px/1.2 'Roboto Slab', Georgia, serif;
-  }
-  .eee-type-list small {
-    display: block;
-    margin-top: 4px;
-    color: var(--uoft-teal);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .eee-type-list p {
-    margin-top: 10px;
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  .eee-setting-list > div {
-    display: grid;
-    grid-template-columns: minmax(140px, 0.42fr) 1fr;
-    gap: 18px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-setting-list strong {
-    color: var(--uoft-navy);
-    font-size: 14px;
-  }
-  .eee-setting-list span {
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.55;
-  }
-  .eee-steps {
-    margin-top: 22px;
-    list-style: none;
-    counter-reset: eee-step;
-    border-top: 1px solid var(--hairline);
-  }
-  .eee-steps li {
-    counter-increment: eee-step;
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 14px;
-    padding: 17px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-steps li::before {
-    content: counter(eee-step, decimal-leading-zero);
-    color: var(--uoft-teal);
-    font: 700 12px/1.5 'Public Sans', sans-serif;
-  }
-  .eee-steps strong,
-  .eee-steps span {
-    grid-column: 2;
-  }
-  .eee-steps strong {
-    color: var(--ink);
-    font-size: 14px;
-  }
-  .eee-steps span {
-    margin-top: -8px;
-    color: var(--ink-muted);
-    font-size: 13px;
-    line-height: 1.55;
-  }
-  .eee-rules details {
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-rules summary {
-    position: relative;
-    padding: 18px 30px 18px 0;
-    color: var(--uoft-navy);
-    font-weight: 700;
-    cursor: pointer;
-    list-style: none;
-  }
-  .eee-rules summary::-webkit-details-marker {
-    display: none;
-  }
-  .eee-rules summary::after {
-    content: '+';
-    position: absolute;
-    right: 2px;
-    color: var(--uoft-teal);
-    font-size: 21px;
-    font-weight: 400;
-  }
-  .eee-rules details[open] summary::after {
-    content: '−';
-  }
-  .eee-rules p {
-    padding: 0 0 20px;
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.65;
-  }
-  .eee-email {
-    margin-top: 64px;
-    padding: 32px;
-    border: 1px solid var(--hairline);
-    border-top: 3px solid var(--student-warm);
-    background: var(--paper);
-  }
-  .eee-email-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 24px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .eee-email-heading h3 {
-    margin-top: 8px;
-    color: var(--uoft-navy);
-    font: 800 22px/1.2 'Roboto Slab', Georgia, serif;
-  }
-  .eee-email-copy {
-    max-width: 760px;
-    padding-top: 24px;
-  }
-  .eee-email-copy p {
-    margin-top: 14px;
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .eee-email-copy p:first-child {
-    margin-top: 0;
-  }
-  .eee-approval-note {
-    margin-top: 28px;
-  }
-  .eee-links {
-    margin-top: 34px;
-  }
-  @media (max-width: 767px) {
-    .eee-metrics {
-      grid-template-columns: 1fr;
-    }
-    .eee-metrics > div {
-      border-top: 1px solid var(--hairline);
-      border-left: 0;
-    }
-    .eee-metrics > div:first-child {
-      border-top: 0;
-    }
-    .eee-two-column,
-    .eee-guidance-grid {
-      grid-template-columns: 1fr;
-      gap: 46px;
-      margin-top: 52px;
-    }
-    .eee-feature-group {
-      grid-template-columns: 1fr;
-      gap: 22px;
-    }
-    .eee-email {
-      margin-top: 52px;
-      padding: 24px 20px;
-    }
-    .eee-email-heading {
-      align-items: start;
-      flex-direction: column;
-    }
-  }
-
-  /* Academics: MD Plus and early opportunities */
-  .opportunity-timing {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    background: var(--paper);
-  }
-  .opportunity-timing > div {
-    padding: 24px 22px;
-    border-left: 1px solid var(--hairline);
-  }
-  .opportunity-timing > div:first-child {
-    border-left: 0;
-  }
-  .opportunity-timing strong {
-    display: block;
-    color: var(--uoft-navy);
-    font-size: 13px;
-  }
-  .opportunity-timing span {
-    display: block;
-    margin-top: 7px;
-    color: var(--ink-muted);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .opportunity-groups {
-    display: grid;
-    gap: 48px;
-    margin-top: 48px;
-  }
-  .opportunity-group {
-    display: grid;
-    grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
-    gap: 38px;
-  }
-  .opportunity-group-intro h3 {
-    margin-top: 10px;
-    color: var(--uoft-navy);
-    font: 800 22px/1.3 'Roboto Slab', Georgia, serif;
-  }
-  .opportunity-group-intro p {
-    margin-top: 13px;
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  .opportunity-list {
-    border-top: 1px solid var(--hairline);
-  }
-  .opportunity-list article {
-    display: grid;
-    grid-template-columns: minmax(175px, 0.42fr) minmax(0, 1fr) auto;
-    gap: 18px;
-    align-items: start;
-    padding: 17px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .opportunity-list h3 {
-    color: var(--uoft-navy);
-    font: 800 16px/1.3 'Roboto Slab', Georgia, serif;
-  }
-  .opportunity-list small {
-    display: block;
-    margin-top: 5px;
-    color: var(--uoft-teal);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1.4;
-    text-transform: uppercase;
-  }
-  .opportunity-list p {
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .opportunity-list a {
-    color: var(--uoft-teal);
-    font-size: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-    border-bottom: 1px solid currentColor;
-  }
-  .opportunity-groups + .callout-soft {
-    margin-top: 44px;
-  }
-  @media (max-width: 900px) {
-    .opportunity-timing {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .opportunity-timing > div:nth-child(3) {
-      border-left: 0;
-      border-top: 1px solid var(--hairline);
-    }
-    .opportunity-timing > div:nth-child(4) {
-      border-top: 1px solid var(--hairline);
-    }
-    .opportunity-group {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-  }
-  @media (max-width: 640px) {
-    .opportunity-list article {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .opportunity-list a {
-      width: fit-content;
-      white-space: normal;
-    }
-  }
-
-  /* Academics: learner support */
-  .learner-support {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.7fr);
-    gap: 58px;
-    margin-bottom: 54px;
-    padding: 38px 0;
-    border-top: 3px solid var(--student-warm);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .learner-support h3 {
-    max-width: 650px;
-    margin-top: 12px;
-    color: var(--uoft-navy);
-    font: 800 clamp(25px, 3.2vw, 39px)/1.15 'Roboto Slab', Georgia, serif;
-  }
-  .learner-support p {
-    max-width: 690px;
-    margin-top: 18px;
-    color: var(--ink-soft);
-    font-size: 15px;
-    line-height: 1.75;
-  }
-  .learner-support .btn {
-    margin-top: 24px;
-  }
-  .help-routing {
-    border-top: 1px solid var(--hairline);
-  }
-  .help-routing > div {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.58fr) minmax(0, 1fr);
-    gap: 16px;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .help-routing strong {
-    color: var(--ink);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .help-routing span {
-    color: var(--ink-muted);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .quick-links-heading {
-    margin-top: 12px;
-    margin-bottom: 30px;
-    padding-top: 46px;
-    border-top: 1px solid var(--hairline);
-  }
-  .quick-links-heading h3 {
-    margin-top: 12px;
-    color: var(--uoft-navy);
-    font: 800 clamp(25px, 3vw, 36px)/1.2 'Roboto Slab', Georgia, serif;
-  }
-  .quick-links-heading p {
-    max-width: 680px;
-    margin-top: 13px;
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  @media (max-width: 800px) {
-    .learner-support {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-  }
-
-  /* Academics: study-resource search */
-  .study-resource-tools {
-    display: grid;
-    grid-template-columns: auto minmax(220px, 1fr);
-    gap: 10px 18px;
-    margin-bottom: 34px;
-    padding: 24px;
-    border: 1px solid var(--hairline);
-    background: var(--paper-soft);
-  }
-  .study-resource-tools label {
-    align-self: center;
-    color: var(--uoft-navy);
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .study-resource-tools input {
-    width: 100%;
-    padding: 11px 13px;
-    border: 1px solid var(--hairline);
-    background: var(--paper);
-    color: var(--ink);
-    font: inherit;
-    font-size: 14px;
-  }
-  .study-resource-tools input:focus-visible,
-  .study-resource-filters button:focus-visible {
-    outline: 3px solid rgba(0, 127, 163, 0.3);
-    outline-offset: 2px;
-  }
-  .study-resource-filters {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .study-resource-filters button {
-    padding: 8px 11px;
-    border: 1px solid var(--hairline);
-    background: var(--paper);
-    color: var(--ink-soft);
-    font: inherit;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .study-resource-filters button.is-active {
-    border-color: var(--uoft-navy);
-    background: var(--uoft-navy);
-    color: white;
-  }
-  .study-resource-count {
-    grid-column: 1 / -1;
-    color: var(--ink-muted);
-    font-size: 11px;
-  }
-  @media (max-width: 600px) {
-    .study-resource-tools {
-      grid-template-columns: 1fr;
-    }
-    .study-resource-filters,
-    .study-resource-count {
-      grid-column: 1;
-    }
-  }
-
-  /* Academics: weekly rhythm views */
-  .week-mode {
-    border-top: 1px solid var(--hairline);
-  }
-  .week-mode-tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .week-mode-tabs button {
-    padding: 14px 22px;
-    border: 0;
-    border-right: 1px solid var(--hairline);
-    background: transparent;
-    color: var(--ink-muted);
-    font: 700 12px/1.2 'Public Sans', sans-serif;
-    cursor: pointer;
-  }
-  .week-mode-tabs button.is-active {
-    background: var(--uoft-navy);
-    color: white;
-  }
-  .week-mode-tabs button:focus-visible {
-    position: relative;
-    z-index: 1;
-    outline: 3px solid rgba(0, 127, 163, 0.32);
-    outline-offset: -3px;
-  }
-  .week-mode-intro {
-    display: grid;
-    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
-    gap: 34px;
-    padding: 24px 0;
-  }
-  .week-mode-intro strong {
-    color: var(--uoft-navy);
-    font: 800 17px/1.3 'Roboto Slab', Georgia, serif;
-  }
-  .week-mode-intro p {
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.65;
-  }
-  .week-mode-panel[hidden] {
-    display: none;
-  }
-  .week-mode-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .week-mode-day {
-    min-width: 0;
-    padding: 0 14px 18px;
-    border-left: 1px solid var(--hairline);
-    background: var(--paper);
-  }
-  .week-mode-day:first-child {
-    border-left: 0;
-  }
-  .week-mode-day.is-open-day {
-    background: #f8f7f3;
-  }
-  .week-mode-day > h3 {
-    margin: 0 -14px 14px;
-    padding: 13px 14px;
-    border-bottom: 1px solid var(--hairline);
-    color: var(--uoft-navy);
-    font: 800 14px/1.2 'Roboto Slab', Georgia, serif;
-  }
-  .week-slot {
-    margin-top: 10px;
-    padding: 13px 12px;
-    border-left: 3px solid var(--hairline);
-    background: var(--paper-soft);
-  }
-  .week-slot time,
-  .week-slot strong,
-  .week-slot span {
-    display: block;
-  }
-  .week-slot time {
-    color: var(--ink-muted);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .week-slot strong {
-    margin-top: 5px;
-    color: var(--ink);
-    font-size: 12px;
-    line-height: 1.35;
-  }
-  .week-slot span {
-    margin-top: 5px;
-    color: var(--ink-muted);
-    font-size: 10px;
-    line-height: 1.5;
-  }
-  .week-slot.is-teaching { border-left-color: var(--uoft-navy); }
-  .week-slot.is-cbl { border-left-color: var(--uoft-teal); }
-  .week-slot.is-clinical { border-left-color: #557a46; }
-  .week-slot.is-longitudinal { border-left-color: #8b6b9c; }
-  .week-slot.is-assessment { border-left-color: var(--student-warm); background: var(--student-warm-soft); }
-  .week-slot.is-portfolio { border-left-color: #a17a25; background: #faf4e4; }
-  .week-slot.is-open { border-left-color: var(--hairline); background: transparent; }
-  .week-mode-notes {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 34px;
-  }
-  .week-mode-notes > div {
-    padding-top: 15px;
-    border-top: 2px solid var(--uoft-teal);
-  }
-  .week-mode-notes strong,
-  .week-mode-notes span {
-    display: block;
-  }
-  .week-mode-notes strong {
-    color: var(--uoft-navy);
-    font-size: 13px;
-  }
-  .week-mode-notes span {
-    margin-top: 7px;
-    color: var(--ink-muted);
-    font-size: 12px;
-    line-height: 1.55;
-  }
-  @media (max-width: 900px) {
-    .week-mode-grid {
-      grid-template-columns: 1fr;
-    }
-    .week-mode-day {
-      padding: 0 0 18px;
-      border-top: 1px solid var(--hairline);
-      border-left: 0;
-    }
-    .week-mode-day:first-child {
-      border-top: 0;
-    }
-    .week-mode-day > h3 {
-      margin: 0 0 14px;
-      padding: 13px 16px;
-    }
-    .week-slot {
-      margin-right: 16px;
-      margin-left: 16px;
-    }
-  }
-  @media (max-width: 700px) {
-    .week-mode-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .week-mode-tabs button {
-      padding: 12px 8px;
-      font-size: 10px;
-    }
-    .week-mode-intro,
-    .week-mode-notes {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Academics: one continuous resource library */
-  .resource-library-section {
-    background: var(--paper);
-    padding-bottom: 30px;
-  }
-  .resource-library-section + .resource-library-section {
-    padding-top: 0;
-  }
-  #osce-resources.resource-library-section {
-    padding-bottom: 76px;
-  }
-  .resource-category {
-    margin-top: 46px;
-    padding-top: 30px;
-    border-top: 1px solid var(--hairline);
-  }
-  .resource-category-first {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: 0;
-  }
-  .resource-category-heading {
-    display: grid;
-    grid-template-columns: minmax(180px, 0.34fr) minmax(220px, 0.44fr) minmax(0, 1fr);
-    gap: 24px;
-    align-items: start;
-    margin-bottom: 24px;
-  }
-  .resource-category-heading h3 {
-    color: var(--uoft-navy);
-    font: 800 18px/1.35 'Roboto Slab', Georgia, serif;
-  }
-  .resource-category-heading p {
-    color: var(--ink-soft);
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .resource-library-section:not(#study-notes) .section-header {
-    max-width: none;
-    margin-bottom: 24px;
-    padding-top: 36px;
-    border-top: 1px solid var(--hairline);
-  }
-  .resource-library-section:not(#study-notes) .section-header h2 {
-    font-size: clamp(23px, 3vw, 31px);
-  }
-  .resource-library-section .data-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    border-top: 1px solid var(--hairline);
-  }
-  .resource-library-section .data-card {
-    display: grid;
-    grid-template-columns: minmax(145px, 0.28fr) minmax(200px, 0.42fr) minmax(0, 1fr);
-    gap: 10px 26px;
-    padding: 22px 0;
-    border: 0;
-    border-bottom: 1px solid var(--hairline);
-    background: transparent;
-  }
-  .resource-library-section .data-card > .eyebrow {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-    align-self: start;
-  }
-  .resource-library-section .data-card > h3 {
-    grid-column: 2;
-    margin: 0;
-    font-size: 18px;
-  }
-  .resource-library-section .data-card > p,
-  .resource-library-section .data-card > ul {
-    grid-column: 3;
-    margin-top: 0;
-  }
-  .resource-library-section .data-card > .resource-link-mini,
-  .resource-library-section .data-card > .data-card-note {
-    grid-column: 2;
-    width: fit-content;
-    margin-top: 4px;
-  }
-  .resource-library-section .data-grid + .callout-soft {
-    margin-top: 28px;
-  }
-  @media (max-width: 760px) {
-    .resource-category-heading {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .resource-library-section .data-card {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .resource-library-section .data-card > .eyebrow,
-    .resource-library-section .data-card > h3,
-    .resource-library-section .data-card > p,
-    .resource-library-section .data-card > ul,
-    .resource-library-section .data-card > .resource-link-mini,
-    .resource-library-section .data-card > .data-card-note {
-      grid-column: 1;
-      grid-row: auto;
-    }
-  }
-
-  /* Academics: timed weekly calendar */
-  .timed-week-tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .timed-week-tabs button {
-    padding: 9px 14px;
-    border: 1px solid var(--hairline);
-    background: var(--paper);
-    color: var(--ink-soft);
-    font: 700 11px/1.2 'Public Sans', sans-serif;
-    cursor: pointer;
-  }
-  .timed-week-tabs button.is-active {
-    border-color: var(--uoft-navy);
-    background: var(--uoft-navy);
-    color: white;
-  }
-  .timed-week-tabs button:focus-visible {
-    outline: 3px solid rgba(0, 127, 163, 0.3);
-    outline-offset: 2px;
-  }
-  .timed-week-description {
-    max-width: 820px;
-    margin-top: 22px;
-    color: var(--ink-soft);
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  .timed-board-wrap {
-    margin-top: 26px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-  }
-  .timed-board {
-    display: grid;
-    grid-template-columns: 58px repeat(5, minmax(118px, 1fr)) 58px;
-    grid-template-rows: 48px repeat(10, 44px);
-    min-width: 820px;
-    border-top: 1px solid var(--hairline);
-    border-left: 1px solid var(--hairline);
-    background: var(--paper);
-  }
-  .timed-board > * {
-    min-width: 0;
-    border-right: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .timed-head {
-    display: grid;
-    place-items: center;
-    padding: 8px;
-    color: var(--uoft-navy);
-    font: 800 12px/1.2 'Roboto Slab', Georgia, serif;
-  }
-  .timed-corner {
-    background: var(--paper-soft);
-  }
-  .timed-hour {
-    display: grid;
-    place-items: start center;
-    padding-top: 5px;
-    background: var(--paper);
-    color: var(--ink-muted);
-    font-size: 9px;
-    font-weight: 700;
-    z-index: 3;
-  }
-  .timed-hour-left {
-    grid-column: 1;
-    position: sticky;
-    left: 0;
-  }
-  .timed-hour-right {
-    grid-column: 7;
-    position: sticky;
-    right: 0;
-  }
-  .timed-cell {
-    background: #fbfbfa;
-  }
-  .timed-event {
-    z-index: 2;
-    margin: 3px;
-    padding: 7px 8px;
-    overflow: hidden;
-    border-left: 3px solid var(--uoft-navy);
-    background: var(--paper-soft);
-    color: var(--ink);
-    font-size: 10px;
-    line-height: 1.3;
-  }
-  .timed-event strong,
-  .timed-event span {
-    display: block;
-  }
-  .timed-event strong {
-    font-size: 10px;
-    line-height: 1.3;
-  }
-  .timed-event span {
-    margin-top: 3px;
-    color: var(--ink-muted);
-    font-size: 9px;
-    line-height: 1.35;
-  }
-  .timed-event.is-teaching { border-left-color: var(--uoft-navy); }
-  .timed-event.is-cbl { border-left-color: var(--uoft-teal); background: #eaf5f7; }
-  .timed-event.is-clinical { border-left-color: #557a46; background: #edf3e9; }
-  .timed-event.is-longitudinal { border-left-color: #8b6b9c; background: #f2edf4; }
-  .timed-event.is-assessment { border-left-color: var(--student-warm); background: var(--student-warm-soft); }
-  .timed-event.is-portfolio { border-left-color: #a17a25; background: #faf4e4; }
-  .timed-event.is-open {
-    border-left-color: var(--hairline);
-    border-left-style: dashed;
-    background: rgba(244, 244, 242, 0.45);
-  }
-  .timed-event[data-week-only] {
-    display: none;
-  }
-  .timed-board[data-mode="me"] .timed-event[data-week-only="me"],
-  .timed-board[data-mode="portfolio"] .timed-event[data-week-only="portfolio"] {
-    display: block;
-  }
-  .timed-board[data-mode="me"] .timed-event[data-hide-on="me"],
-  .timed-board[data-mode="portfolio"] .timed-event[data-hide-on="portfolio"] {
-    display: none;
-  }
-  .timed-week-notes {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 30px;
-  }
-  .timed-week-notes > div {
-    padding-top: 14px;
-    border-top: 2px solid var(--uoft-teal);
-  }
-  .timed-week-notes strong,
-  .timed-week-notes span {
-    display: block;
-  }
-  .timed-week-notes strong {
-    color: var(--uoft-navy);
-    font-size: 12px;
-  }
-  .timed-week-notes span {
-    margin-top: 6px;
-    color: var(--ink-muted);
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  @media (max-width: 700px) {
-    .timed-week-notes {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Academics: tighter page rhythm */
-  #calendar,
-  #study-notes,
-  #testimonials,
-  #shadowing,
-  #md-plus,
-  #faculty-resources {
-    padding-top: 44px;
-    padding-bottom: 44px;
-  }
-  #calendar .section-header,
-  #study-notes .section-header,
-  #testimonials .section-header,
-  #shadowing .section-header,
-  #md-plus .section-header,
-  #faculty-resources .section-header {
-    margin-bottom: 30px;
-  }
-  #md-plus .opportunity-groups + .callout-soft {
-    margin-bottom: 0;
-  }
-  #md-plus {
-    padding-bottom: 36px;
-  }
-  @media (max-width: 767px) {
-    #calendar,
-    #study-notes,
-    #testimonials,
-    #shadowing,
-    #md-plus,
-    #faculty-resources {
-      padding-top: 36px;
-      padding-bottom: 36px;
-    }
-  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -7158,8 +5944,8 @@
     { page: "academics", title: "Anki decks", anchor: "#anki", keywords: "anki bhadra anatomy spaced repetition", snippet: "Student-shared anatomy, ITM and CPC decks. Check for outdated content before committing." },
     { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
     { page: "academics", title: "2026–27 Year 1 calendar", anchor: "#calendar", keywords: "year one calendar ITM CPC dates topics curriculum", snippet: "Confirmed course start and end dates from the Faculty Foundations key-dates sheet." },
-    { page: "academics", title: "What a typical week can look like", anchor: "#calendar", keywords: "weekly schedule CBL clinical skills anatomy MedSIS", snippet: "A recent-cohort illustration, not the current timetable. Friday morning is the usual Year 1 clinical-skills session." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "#calendar", keywords: "ME mastery exercise assessment cadence", snippet: "Generally about every two weeks, with some shorter or longer intervals. Confirm exact dates and times in MedSIS." },
+    { page: "academics", title: "What a typical week can look like", anchor: "#weekly-schedule", keywords: "weekly schedule CBL clinical skills anatomy MedSIS", snippet: "A recent-cohort illustration, not the current timetable. Friday morning is the usual Year 1 clinical-skills session." },
+    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "#weekly-schedule", keywords: "ME mastery exercise assessment cadence", snippet: "Generally about every two weeks, with some shorter or longer intervals. Confirm exact dates and times in MedSIS." },
     { page: "academics", title: "MD Plus and early opportunities", anchor: "#md-plus", keywords: "MD Plus GDipHR CREMS GHEP global health MIT QuEST MD PhD MBA MEng", snippet: "Programs and research opportunities that may require planning or applications during Year 1." },
     { page: "academics", title: "Shadowing and EEE", anchor: "#shadowing", keywords: "shadowing EEE enriching educational experiences 36 hours CAP MedSIS career advising preparation", snippet: "The 2025–26 manual required 36 hours by June 15 of Year 2. Log every clinical EEE in MedSIS in advance." },
 
@@ -7194,9 +5980,6 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
-  </script>
-  <script src="site-search-index.js"></script>
-  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -7218,7 +6001,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Field Guide',
+    handbook: 'Handbook',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -7394,7 +6177,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics" class="is-active">Academics</a>
-      <a href="handbook.html" data-page="handbook">Field Guide</a>
+      <a href="handbook.html" data-page="handbook">Handbook</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -7474,7 +6257,7 @@
       <div class="toc-mobile-eyebrow">On this page</div>
       <ol>
         <li><a href="#curriculum-start">Start with the curriculum</a></li>
-        <li><a href="#calendar">Weekly rhythm</a></li>
+        <li><a href="#calendar">Year-one calendar</a></li>
         <li><a href="#study-notes">Study resources</a></li>
         <li><a href="#osce-resources">OSCE &amp; clinical skills</a></li>
         <li><a href="#shadowing">Shadowing &amp; EEE</a></li>
@@ -7490,7 +6273,7 @@
     <div class="toc-eyebrow">On this page</div>
     <ul>
       <li><a href="#curriculum-start">Start with the curriculum</a></li>
-      <li><a href="#calendar">Weekly rhythm</a></li>
+      <li><a href="#calendar">Year-one calendar</a></li>
       <li><a href="#study-notes">Study resources</a></li>
       <li><a href="#osce-resources">OSCE &amp; clinical skills</a></li>
       <li><a href="#shadowing">Shadowing &amp; EEE</a></li>
@@ -7513,215 +6296,41 @@
       <h2>Three courses shape Year 1.</h2>
       <p>Introduction to Medicine leads into CPC 1 and CPC 2. ICE, Portfolio, Health Systems and Research, MAPS and other longitudinal components run alongside the course blocks rather than replacing them.</p>
     </div>
-
-    <div class="course-sequence" data-course-sequence>
-      <div class="course-sequence-tabs" role="tablist" aria-label="Year 1 course sequence">
-        <button class="course-sequence-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="course-panel-itm" id="course-tab-itm">
-          <span class="course-sequence-node">01</span>
-          <span class="course-sequence-name">ITM</span>
-          <span class="course-sequence-date">Weeks 1–8<br/>Aug 24–Oct 16, 2026</span>
-        </button>
-        <button class="course-sequence-tab" type="button" role="tab" aria-selected="false" aria-controls="course-panel-cpc1" id="course-tab-cpc1" tabindex="-1">
-          <span class="course-sequence-node">02</span>
-          <span class="course-sequence-name">CPC 1</span>
-          <span class="course-sequence-date">Weeks 9–25<br/>Oct 26, 2026–Feb 26, 2027</span>
-        </button>
-        <button class="course-sequence-tab" type="button" role="tab" aria-selected="false" aria-controls="course-panel-cpc2" id="course-tab-cpc2" tabindex="-1">
-          <span class="course-sequence-node">03</span>
-          <span class="course-sequence-name">CPC 2</span>
-          <span class="course-sequence-date">Weeks 26–36<br/>Mar 1–May 28, 2027</span>
-        </button>
-      </div>
-
-      <article class="course-sequence-panel" id="course-panel-itm" role="tabpanel" aria-labelledby="course-tab-itm">
-        <div>
-          <span class="eyebrow-text">Introduction to Medicine</span>
-          <h3>A shared foundation for what comes next.</h3>
-          <p>A broad introduction to the language and culture of medicine, foundational and social sciences, humanities and professional behaviours.</p>
-        </div>
-        <div>
-          <span class="eyebrow-text">Student context</span>
-          <p>The volume increases quickly. Use this block to test study systems without assuming that someone else's routine has to become yours.</p>
-        </div>
+    <div class="curriculum-start-grid">
+      <article class="curriculum-start-card">
+        <span class="eyebrow-text">Weeks 1–8</span>
+        <h3>ITM</h3>
+        <p>A broad introduction to the language and culture of medicine, foundational sciences, social sciences and humanities.</p>
+        <a href="#calendar">See dates and structure</a>
       </article>
-
-      <article class="course-sequence-panel" id="course-panel-cpc1" role="tabpanel" aria-labelledby="course-tab-cpc1" hidden>
-        <div>
-          <span class="eyebrow-text">Concepts, Patients and Communities 1</span>
-          <h3>The first systems-based course.</h3>
-          <p>Pediatrics, dermatology, immunology, microbiology, blood, health promotion, cardiovascular and respiratory medicine.</p>
-        </div>
-        <div>
-          <span class="eyebrow-text">Student context</span>
-          <p>This is a longer course made up of distinct instructional sections. Assessment dates and teaching details belong in MedSIS and Elentra.</p>
-        </div>
+      <article class="curriculum-start-card">
+        <span class="eyebrow-text">Weeks 9–25</span>
+        <h3>CPC 1</h3>
+        <p>Pediatrics, dermatology, immunology, microbiology, blood, health promotion, cardiovascular and respiratory medicine.</p>
+        <a href="#calendar">See dates and structure</a>
       </article>
-
-      <article class="course-sequence-panel" id="course-panel-cpc2" role="tabpanel" aria-labelledby="course-tab-cpc2" hidden>
-        <div>
-          <span class="eyebrow-text">Concepts, Patients and Communities 2</span>
-          <h3>The integrated approach continues.</h3>
-          <p>Endocrinology, gastroenterology and genitourinary medicine, continuing the patient-centred, systems-based approach.</p>
-        </div>
-        <div>
-          <span class="eyebrow-text">Student context</span>
-          <p>The year is well underway by this point. Keep clinical-skills practice steady rather than leaving it for the end.</p>
-        </div>
+      <article class="curriculum-start-card">
+        <span class="eyebrow-text">Weeks 26–36</span>
+        <h3>CPC 2</h3>
+        <p>Endocrinology, gastroenterology and genitourinary medicine, continuing the integrated case-based approach.</p>
+        <a href="#calendar">See dates and structure</a>
       </article>
-    </div>
-
-    <div class="longitudinal-intro">
-      <div>
-        <span class="eyebrow-text">Running alongside the blocks</span>
-        <h3>The course name does not describe your whole week.</h3>
-      </div>
-      <p>These components continue across multiple blocks. Exact sessions, locations and submission dates should still be checked in MedSIS, Elentra and the current course materials.</p>
-    </div>
-
-    <div class="longitudinal-list">
-      <details>
-        <summary><span>ICE: Clinical Skills</span><small>Usually Friday mornings in Year 1</small></summary>
-        <p>Clinical skills teaching runs as one morning session each week in Year 1. Year 2 sessions are usually Thursday. Use MedSIS for your exact session, location and any exceptions.</p>
-      </details>
-      <details>
-        <summary><span>ICE: Career Advising and Preparation</span><small>Career exploration and EEE</small></summary>
-        <p>Career exploration, specialty exposure and the EEE requirements described later on this page. The current CAP manual and MedSIS module should lead.</p>
-      </details>
-      <details>
-        <summary><span>Health Systems and Research</span><small>Longitudinal learning</small></summary>
-        <p>Community, health-systems and research learning with its own activities and assessment expectations. Use the current student materials for the year-specific requirements.</p>
-      </details>
-      <details>
-        <summary><span>Portfolio</span><small>Reflection, coaching and progress review</small></summary>
-        <p>Meetings and submissions are separate. Check MedSIS for meeting details and OASES for submissions.</p>
-      </details>
-      <details>
-        <summary><span>MAPS</span><small>Imaging, anatomy, pathology and surgery</small></summary>
-        <p>Longitudinal teaching that appears within the Foundations schedule. The exact learning events and associated assessments are listed in the current Elentra materials.</p>
-      </details>
-    </div>
-
-    <div class="glossary-block">
-      <div class="glossary-block-heading">
-        <div>
-          <span class="eyebrow-text">Quick glossary</span>
-          <h3>Four abbreviations worth knowing early.</h3>
-        </div>
-        <a href="handbook.html#vocabulary">Open the full glossary →</a>
-      </div>
-      <div class="glossary-compact" data-academic-glossary>
-        <div class="glossary-compact-buttons" role="list" aria-label="Academic abbreviations">
-          <button type="button" class="is-active" data-glossary-term="CBL" aria-pressed="true">CBL</button>
-          <button type="button" data-glossary-term="ME" aria-pressed="false">ME</button>
-          <button type="button" data-glossary-term="OSCE" aria-pressed="false">OSCE</button>
-          <button type="button" data-glossary-term="OASES" aria-pressed="false">OASES</button>
-        </div>
-        <div class="glossary-compact-answer" data-glossary-answer aria-live="polite">
-          <strong>Case-based learning</strong>
-          <p>Small-group learning organized around a clinical case. Preparation and session structure vary by course, so use the current instructions in Elentra.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Weekly rhythm ============ -->
-<section class="section section-soft" id="calendar">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">What a week can look like</span>
-      </div>
-      <h2>The rhythm changes from week to week.</h2>
-      <p>Switch between a typical teaching week, an ME week and a Portfolio week. These are recent-cohort illustrations, not the 2026–27 timetable. MedSIS remains the source for your actual sessions, times and locations.</p>
-    </div>
-
-    <div class="timed-week" data-timed-week>
-      <div class="timed-week-tabs" aria-label="Choose an example week type">
-        <button type="button" class="is-active" aria-pressed="true" data-timed-mode="typical">Typical week</button>
-        <button type="button" aria-pressed="false" data-timed-mode="me">ME week</button>
-        <button type="button" aria-pressed="false" data-timed-mode="portfolio">Portfolio week</button>
-      </div>
-
-      <p class="timed-week-description" data-timed-description aria-live="polite">A recent-cohort illustration of a regular teaching week. The exact number and placement of sessions changes across blocks.</p>
-
-      <div class="timed-board-wrap" role="region" aria-label="Illustrative weekly calendar with times">
-        <div class="timed-board" data-timed-board data-mode="typical">
-          <div class="timed-head timed-corner"></div>
-          <div class="timed-head">Monday</div>
-          <div class="timed-head">Tuesday</div>
-          <div class="timed-head">Wednesday</div>
-          <div class="timed-head">Thursday</div>
-          <div class="timed-head">Friday</div>
-          <div class="timed-head timed-corner"></div>
-
-          <div class="timed-hour timed-hour-left" style="grid-row:2">8 AM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:2">8 AM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:3">9 AM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:3">9 AM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:4">10 AM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:4">10 AM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:5">11 AM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:5">11 AM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:6">12 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:6">12 PM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:7">1 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:7">1 PM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:8">2 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:8">2 PM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:9">3 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:9">3 PM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:10">4 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:10">4 PM</div>
-          <div class="timed-hour timed-hour-left" style="grid-row:11">5 PM</div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-cell"></div><div class="timed-hour timed-hour-right" style="grid-row:11">5 PM</div>
-
-          <div class="timed-event is-teaching" style="grid-column:2;grid-row:3/6"><strong>Course teaching</strong><span>9:00–12:00</span></div>
-          <div class="timed-event is-cbl" style="grid-column:2;grid-row:7/10" data-hide-on="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
-          <div class="timed-event is-cbl" style="grid-column:2;grid-row:7/9" data-week-only="portfolio"><strong>Independent CBL</strong><span>About 1:30–3:30</span></div>
-          <div class="timed-event is-portfolio" style="grid-column:2;grid-row:9/11" data-week-only="portfolio"><strong>Portfolio</strong><span>From about 3:30</span></div>
-
-          <div class="timed-event is-teaching" style="grid-column:3;grid-row:3/6"><strong>MAPS / anatomy</strong><span>Morning teaching</span></div>
-          <div class="timed-event is-teaching" style="grid-column:3;grid-row:7/10"><strong>Lab or scheduled learning</strong><span>When scheduled</span></div>
-
-          <div class="timed-event is-open" style="grid-column:4;grid-row:3/10"><strong>Day off in this example</strong><span>No scheduled teaching shown</span></div>
-
-          <div class="timed-event is-longitudinal" style="grid-column:5;grid-row:3/6"><strong>Longitudinal teaching</strong><span>Morning component varies</span></div>
-          <div class="timed-event is-cbl" style="grid-column:5;grid-row:7/10"><strong>Faculty-led CBL</strong><span>Academy or hospital site</span></div>
-
-          <div class="timed-event is-clinical" style="grid-column:6;grid-row:2/6" data-hide-on="me"><strong>ICE: Clinical Skills</strong><span>Usual Year 1 morning</span></div>
-          <div class="timed-event is-open" style="grid-column:6;grid-row:7/9" data-hide-on="me"><strong>Check the week</strong><span>Some Fridays include another session</span></div>
-          <div class="timed-event is-assessment" style="grid-column:6;grid-row:2/3" data-week-only="me"><strong>ME</strong><span>8:00–9:00</span></div>
-          <div class="timed-event is-teaching" style="grid-column:6;grid-row:3/6" data-week-only="me"><strong>Course lectures</strong><span>Teaching continues after the ME</span></div>
-        </div>
-      </div>
-
-      <div class="timed-week-notes">
-        <div><strong>Weeks vary.</strong><span>The number, timing and type of scheduled sessions change across blocks.</span></div>
-        <div><strong>MEs are generally about every two weeks.</strong><span>A smaller number of blocks may be closer to one or three weeks.</span></div>
-        <div><strong>Do not schedule from this illustration.</strong><span>Use MedSIS for dates, rooms, mandatory status and changes.</span></div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ Study Notes ============ -->
-<section class="section resource-library-section" id="study-notes">
+<section class="section" id="study-notes">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Student-shared resources</span>
+        <span class="eyebrow-text">Study Notes</span>
       </div>
-      <h2>Resources shared forward. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
-      <p>Search notes, Anki decks, block guides and clinical-skills resources shared by U of T MD students. Treat them as a starting framework, not a substitute for current learning objectives or Faculty materials.</p>
+      <h2>Notes shared by upper years. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
+      <p>Personal study notes shared by U of T MD students. Treat them as a starting framework, not as a substitute for current learning objectives, Faculty slides or your own review. Course content changes between cohorts.</p>
     </div>
 
-    <div class="study-resource-tools" data-study-resource-tools>
-      <label for="study-resource-search">Find a resource</label>
-      <input id="study-resource-search" type="search" placeholder="Try “ITM”, “Anki”, “anatomy” or “OSCE”" data-study-resource-search/>
-      <div class="study-resource-filters" aria-label="Filter study resources">
-        <button type="button" class="is-active" data-study-filter="all" aria-pressed="true">All resources</button>
-        <button type="button" data-study-filter="study-notes" aria-pressed="false">Notes</button>
-        <button type="button" data-study-filter="anki" aria-pressed="false">Anki</button>
-        <button type="button" data-study-filter="study-guides" aria-pressed="false">Guides</button>
-        <button type="button" data-study-filter="osce-resources" aria-pressed="false">Clinical skills</button>
-      </div>
-      <p class="study-resource-count" data-study-resource-count aria-live="polite"></p>
-    </div>
-
-    <div class="resource-category resource-category-first" data-resource-group="study-notes">
     <div class="data-grid">
       <article class="data-card">
         <div class="eyebrow">
@@ -7762,14 +6371,20 @@
     <div class="callout-soft">
       <strong>Have notes to share?</strong> If you've made comprehensive notes for an MD block and want them surfaced here for future cohorts, submit them via the <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Feedback page</a>. Open access (Drive link with sharing enabled) makes adoption much higher than request-only files.
     </div>
-    </div>
+  </div>
+</section>
 
-    <div class="resource-category" id="anki" data-resource-group="anki">
-      <div class="resource-category-heading">
-        <span class="eyebrow-text">Anki decks</span>
-        <h3>U of T-specific decks shared by students.</h3>
-      <p>Anki works well for some students and poorly for others. If you use it, these are U of T-specific decks students have shared. Check every deck against current course content before investing heavily in it.</p>
+<!-- ============ Anki ============ -->
+<section class="section section-soft" id="anki">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Anki</span>
       </div>
+      <h2>Decks that have circulated through UofT.</h2>
+      <p>Anki works well for some students and poorly for others. If you use it, these are U of T-specific decks students have shared. Check every deck against current course content before investing heavily in it.</p>
+    </div>
 
     <div class="data-grid">
       <article class="data-card">
@@ -7816,14 +6431,20 @@
     <div class="callout-soft">
       <strong>If you are new to Anki:</strong> test one existing deck for a week before committing. Suspend outdated cards, edit explanations that do not make sense to you and avoid letting review volume displace practice questions, CBL preparation or sleep.
     </div>
-    </div>
+  </div>
+</section>
 
-    <div class="resource-category" id="study-guides" data-resource-group="study-guides">
-      <div class="resource-category-heading">
-        <span class="eyebrow-text">Block-specific guides</span>
-        <h3>Guides that explain how a course works in practice.</h3>
-      <p>Student-written guides can help explain how a course feels in practice. They still require an identified author, original source and year before they should be treated as a dependable resource.</p>
+<!-- ============ Study Guides ============ -->
+<section class="section" id="study-guides">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Study Guides</span>
       </div>
+      <h2>Block-specific guides.</h2>
+      <p>Student-written guides can help explain how a course feels in practice. They still require an identified author, original source and year before they should be treated as a dependable resource.</p>
+    </div>
 
     <div class="data-grid">
       <article class="data-card">
@@ -7842,18 +6463,24 @@
           <span class="eyebrow-text">Coming soon</span>
         </div>
         <h3>More guides being collected</h3>
-        <p>If you've written a study guide for ITM, CPC 1, CPC 2 or another current course component and want it surfaced for future cohorts, submit it via Feedback.</p>
+        <p>If you've written a study guide for a specific block (Foundations, Brain &amp; Behaviour, Life Cycle, etc.) and want it surfaced for future cohorts, submit it via Feedback.</p>
         <a class="resource-link-mini" href="feedback.html">Submit a guide</a>
       </article>
     </div>
-    </div>
+  </div>
+</section>
 
-    <div class="resource-category" id="osce-resources" data-resource-group="osce-resources">
-      <div class="resource-category-heading">
-        <span class="eyebrow-text">Physical exams, histories and the OSCE</span>
-        <h3>Clinical-skills resources.</h3>
-      <p>The Year 1 clinical-skills OSCE is scheduled through ICE: Clinical Skills. These student resources cover physical examinations, histories and practice checklists, but station format and expectations should come from current Faculty materials.</p>
+<!-- ============ OSCE Resources ============ -->
+<section class="section section-soft" id="osce-resources">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">OSCE &amp; Clinical Skills</span>
       </div>
+      <h2>For physical exams, histories, and the OSCE.</h2>
+      <p>The Year 1 clinical-skills OSCE is scheduled through ICE: Clinical Skills. These student resources cover physical examinations, histories and practice checklists, but station format and expectations should come from current Faculty materials.</p>
+    </div>
 
     <div class="data-grid">
       <article class="data-card">
@@ -7916,7 +6543,6 @@
         <p class="data-card-note">Available on the App Store. Search "OSCEr".</p>
       </article>
     </div>
-    </div>
   </div>
 </section>
 
@@ -7944,6 +6570,301 @@
   </div>
 </section>
 
+<!-- ============ Calendar ============ -->
+<section class="section section-soft" id="calendar" style="position: relative;">
+  <img class="cg-egg-peek cg-egg-peek-tr" src="assets/cg/cg-binoculars.png" alt="" aria-hidden="true" loading="lazy" />
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Year One Calendar</span>
+      </div>
+      <h2>ITM → CPC-1 → CPC-2.</h2>
+      <p>The three sequential Year 1 courses, shown with dates from the Faculty's 2026–27 Foundations key-dates sheet. Dates remain subject to change, so confirm them in MedSIS and the current academic calendar.</p>
+    </div>
+
+    <div class="block-calendar">
+      <article class="block-card">
+        <div class="block-card-marker">01</div>
+        <div class="block-card-meta">
+          <p class="block-card-window">August 24 → October 16, 2026</p>
+          <h3 class="block-card-title">ITM · Introduction to Medicine</h3>
+        </div>
+        <div class="block-card-body">
+          <p>The first eight weeks introduce the language and culture of medicine, foundational and social sciences, humanities and professional behaviours. Patient-centred cases help connect the disciplines.</p>
+          <p class="block-card-topics-eyebrow">Topics covered</p>
+          <div class="block-card-topics">
+            <span class="topic-pill">Embryology</span>
+            <span class="topic-pill">Medical Genetics</span>
+            <span class="topic-pill">Pathology</span>
+            <span class="topic-pill">Inflammation &amp; Infection</span>
+            <span class="topic-pill">Immunology I</span>
+            <span class="topic-pill">Cancer</span>
+            <span class="topic-pill">Drugs &amp; Pharmacology</span>
+          </div>
+          <ul class="data-bullets">
+            <li><strong>Alongside ITM:</strong> ICE: Clinical Skills begins Friday, August 28</li>
+            <li><strong>Assessment:</strong> Mastery Exercises occur during the course; use MedSIS for exact timing</li>
+            <li><strong>Transition:</strong> Fall Term Break runs October 19–23 before CPC 1 begins</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="block-card">
+        <div class="block-card-marker">02</div>
+        <div class="block-card-meta">
+          <p class="block-card-window">October 26, 2026 → February 26, 2027</p>
+          <h3 class="block-card-title">CPC-1 · Concepts, Patients, Communities I</h3>
+        </div>
+        <div class="block-card-body">
+          <p>The first of three Concepts, Patients and Communities courses. It uses the body's physiological systems to integrate foundational disciplines with clinical medicine.</p>
+          <p class="block-card-topics-eyebrow">Topics covered</p>
+          <div class="block-card-topics">
+            <span class="topic-pill">Pediatrics</span>
+            <span class="topic-pill">Dermatology</span>
+            <span class="topic-pill">Immunology II</span>
+            <span class="topic-pill">Microbiology</span>
+            <span class="topic-pill">Blood</span>
+            <span class="topic-pill">Health Promotion</span>
+            <span class="topic-pill">Cardiology</span>
+            <span class="topic-pill">Respirology</span>
+          </div>
+          <ul class="data-bullets">
+            <li><strong>Structure:</strong> eight sections across weeks 9–25</li>
+            <li><strong>Winter break:</strong> classes pause after December 18 and resume January 6</li>
+            <li><strong>Transition:</strong> CPC 2 begins Monday, March 1</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="block-card">
+        <div class="block-card-marker">03</div>
+        <div class="block-card-meta">
+          <p class="block-card-window">March 1 → May 28, 2027</p>
+          <h3 class="block-card-title">CPC-2 · Concepts, Patients, Communities II</h3>
+        </div>
+        <div class="block-card-body">
+          <p>The second CPC course covers homeostatic regulation, gut health and renal and genitourinary medicine across normal and diseased states.</p>
+          <p class="block-card-topics-eyebrow">Topics covered</p>
+          <div class="block-card-topics">
+            <span class="topic-pill">Endocrinology</span>
+            <span class="topic-pill">Gastrointestinal</span>
+            <span class="topic-pill">Kidney &amp; Urinary Tract</span>
+            <span class="topic-pill">Integration</span>
+          </div>
+          <ul class="data-bullets">
+            <li><strong>Structure:</strong> endocrinology (4 weeks), gastroenterology (4 weeks) and genitourinary medicine (3 weeks)</li>
+            <li><strong>Clinical skills OSCE:</strong> Friday, May 7, 2027</li>
+            <li><strong>End of Year 1:</strong> Friday, May 28, 2027</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout-soft">
+      <strong>Running alongside the course blocks:</strong> ICE includes Clinical Skills, Health in Community and Career Advising and Preparation. Portfolio, HSR, MAPS and other themes or components also appear across the year. Each has its own attendance, submission and satisfactory-completion requirements.
+    </div>
+
+    <!-- ─── What a week looks like ─── -->
+    <h3 class="schedule-section-heading" id="weekly-schedule">What a week actually looks like.</h3>
+    <p class="schedule-section-sub">This recent-cohort example shows how lectures, anatomy, CBL, longitudinal teaching and Friday-morning clinical skills can fit together. It is an orientation tool, not the 2026–27 timetable. Session days, times and locations can change.</p>
+
+    <div class="week-rhythm-summary">
+      <div class="rhythm-day">
+        <p class="rhythm-day-label">Mon</p>
+        <p class="rhythm-day-content">Block lectures<br/><span>+ Portfolio occasional</span></p>
+      </div>
+      <div class="rhythm-day">
+        <p class="rhythm-day-label">Tue</p>
+        <p class="rhythm-day-content">Anatomy<br/><span>(MAPS lecture + lab)</span></p>
+      </div>
+      <div class="rhythm-day rhythm-day-off">
+        <p class="rhythm-day-label">Wed</p>
+        <p class="rhythm-day-content">Off<br/><span>self-study, shadowing</span></p>
+      </div>
+      <div class="rhythm-day">
+        <p class="rhythm-day-label">Thu</p>
+        <p class="rhythm-day-content">AM: ethics / research<br/>PM: <strong>CBL</strong> at hospital</p>
+      </div>
+      <div class="rhythm-day">
+        <p class="rhythm-day-label">Fri</p>
+        <p class="rhythm-day-content">Clinical skills<br/><span>+ variable afternoon schedule</span></p>
+      </div>
+    </div>
+
+    <p class="schedule-example-eyebrow">Example: Week 1 of M1, recent cohort</p>
+    <div class="week-grid-wrap">
+      <div class="week-grid">
+        <!-- Header row -->
+        <div class="week-grid-cell week-grid-time-header"></div>
+        <div class="week-grid-cell week-grid-day-header">
+          <p class="day-name">Monday</p>
+          <p class="day-date">Aug 25</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-header">
+          <p class="day-name">Tuesday</p>
+          <p class="day-date">Aug 26</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-header week-grid-day-off">
+          <p class="day-name">Wednesday</p>
+          <p class="day-date">Aug 27</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-header">
+          <p class="day-name">Thursday</p>
+          <p class="day-date">Aug 28</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-header">
+          <p class="day-name">Friday</p>
+          <p class="day-date">Aug 29</p>
+        </div>
+
+        <!-- 8 AM row -->
+        <div class="week-grid-cell week-grid-time">8 AM</div>
+        <div class="week-grid-cell session session-assess">
+          <p class="session-title">Intro to Mastery Exercise</p>
+          <p class="session-meta">Lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell"></div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+        <div class="week-grid-cell"></div>
+        <div class="week-grid-cell session session-clinskills" style="grid-row: span 4;">
+          <p class="session-flag">Mandatory · 8:00 – 12:00</p>
+          <p class="session-title">Clinical Skills</p>
+          <p class="session-meta">ICE block · MSB · communication, feedback, workplace learning, standardized patient</p>
+        </div>
+
+        <!-- 9 AM row -->
+        <div class="week-grid-cell week-grid-time">9 AM</div>
+        <div class="week-grid-cell session session-block">
+          <p class="session-title">Gametogenesis &amp; Fertilization</p>
+          <p class="session-meta">Block lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell session session-block">
+          <p class="session-title">Assessment Orientation</p>
+          <p class="session-meta">Lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+        <div class="week-grid-cell session session-ethics" style="grid-row: span 2;">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">Intro to UME Ethics &amp; Professionalism</p>
+          <p class="session-meta">Longitudinal theme · MSB</p>
+        </div>
+
+        <!-- 10 AM row -->
+        <div class="week-grid-cell week-grid-time">10 AM</div>
+        <div class="week-grid-cell session session-block">
+          <p class="session-title">Implantation &amp; Early Development</p>
+          <p class="session-meta">Block lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell session session-block">
+          <p class="session-title">OLA &amp; Accessibility Services</p>
+          <p class="session-meta">Longitudinal theme · MSB</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+
+        <!-- 11 AM row -->
+        <div class="week-grid-cell week-grid-time">11 AM</div>
+        <div class="week-grid-cell session session-block">
+          <p class="session-title">Placentation &amp; Extra-embryonic Development</p>
+          <p class="session-meta">Block lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell session session-anat">
+          <p class="session-title">Intro to Skeletal System</p>
+          <p class="session-meta">Anatomy lecture · MSB</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+        <div class="week-grid-cell session session-leader">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">CanMEDS Leader: Working in Teams</p>
+          <p class="session-meta">Longitudinal theme · MSB</p>
+        </div>
+
+        <!-- 12 PM (lunch / off) -->
+        <div class="week-grid-cell week-grid-time">12 PM</div>
+        <div class="week-grid-cell"></div>
+        <div class="week-grid-cell"></div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+        <div class="week-grid-cell"></div>
+        <div class="week-grid-cell"></div>
+
+        <!-- 1 PM row -->
+        <div class="week-grid-cell week-grid-time">1 PM</div>
+        <div class="week-grid-cell session session-cbl">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">Intro to CBL</p>
+          <p class="session-meta">Online (Zoom)</p>
+        </div>
+        <div class="week-grid-cell session session-anat" style="grid-row: span 2;">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">Anatomy Lab Orientation / Cadaveric</p>
+          <p class="session-meta">MSB Anatomy Lab</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+        <div class="week-grid-cell session session-cbl" style="grid-row: span 3;">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">CBL: Faculty-Led</p>
+          <p class="session-meta">At hospital site (academy)</p>
+        </div>
+        <div class="week-grid-cell session session-assess" style="grid-row: span 3;">
+          <p class="session-flag">Schedule varies</p>
+          <p class="session-title">Friday afternoon</p>
+          <p class="session-meta">Check MedSIS for the current session name and time.</p>
+        </div>
+
+        <!-- 2 PM row -->
+        <div class="week-grid-cell week-grid-time">2 PM</div>
+        <div class="week-grid-cell session session-cbl" style="grid-row: span 2;">
+          <p class="session-flag">Mandatory</p>
+          <p class="session-title">CBL: Student-Led</p>
+          <p class="session-meta">PB-CBL101 / hospital</p>
+        </div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+
+        <!-- 3 PM row -->
+        <div class="week-grid-cell week-grid-time">3 PM</div>
+        <div class="week-grid-cell week-grid-day-off"></div>
+      </div>
+    </div>
+
+    <div class="week-grid-legend">
+      <span class="legend-label">Session types:</span>
+      <span class="legend-item"><span class="legend-swatch session-block"></span> Block lecture</span>
+      <span class="legend-item"><span class="legend-swatch session-anat"></span> Anatomy</span>
+      <span class="legend-item"><span class="legend-swatch session-cbl"></span> CBL</span>
+      <span class="legend-item"><span class="legend-swatch session-clinskills"></span> Clinical skills (ICE)</span>
+      <span class="legend-item"><span class="legend-swatch session-ethics"></span> Ethics</span>
+      <span class="legend-item"><span class="legend-swatch session-leader"></span> Leader / longitudinal</span>
+      <span class="legend-item"><span class="legend-swatch session-assess"></span> Assessment</span>
+    </div>
+
+    <div class="schedule-variations">
+      <article class="schedule-variation">
+        <p class="schedule-variation-eyebrow">ME Weeks</p>
+        <h3 class="schedule-variation-title">MEs are roughly every 2 weeks.</h3>
+        <p class="schedule-variation-body">Students generally experience an ME about every two weeks, although a small number of intervals may be closer to one or three weeks. The confirmed 2026–27 key-dates sheet lists MEs on Fridays. Use MedSIS for the exact time and any schedule changes.</p>
+      </article>
+      <article class="schedule-variation">
+        <p class="schedule-variation-eyebrow">Quieter weeks</p>
+        <h3 class="schedule-variation-title">Many weeks are lighter than this.</h3>
+        <p class="schedule-variation-body">Some weeks carry more scheduled teaching than others. Self-directed time may appear in the timetable, but it should not be treated as a guaranteed day off. Friday morning is the usual Year 1 ICE: Clinical Skills session.</p>
+      </article>
+      <article class="schedule-variation">
+        <p class="schedule-variation-eyebrow">Portfolio</p>
+        <h3 class="schedule-variation-title">Portfolio sessions land on Mondays.</h3>
+        <p class="schedule-variation-body">Year 1 Portfolio is scheduled on selected Mondays. Exact session and submission dates are provided in the current Portfolio materials and MedSIS.</p>
+      </article>
+    </div>
+
+    <div class="callout-soft" style="margin-top: 28px;">
+      <strong>Where the current information lives:</strong> <a href="https://medsis.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">MedSIS</a> contains scheduling and administrative information. <a href="https://meded.elentra.utoronto.ca" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Elentra</a> contains course learning materials. Check both rather than relying on this illustrative calendar.
+    </div>
+
+    <div class="callout-soft" style="margin-top: 16px; border-left-color: var(--uoft-navy);">
+      <strong>Interested in an additional program?</strong> Some opportunities recruit during the fall of Year 1. The dedicated <a href="#md-plus" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">MD Plus and early-opportunities section</a> summarizes what to investigate and links to the official Faculty pages.
+    </div>
+  </div>
+</section>
+
 <!-- ============ Shadowing / EEE ============ -->
 <section class="section" id="shadowing">
   <div class="container">
@@ -7956,110 +6877,66 @@
       <p>EEEs are part of ICE: Career Advising and Preparation. They include short-term, self-initiated clinical placements used to explore specialties, practice settings and professional roles. Every clinical shadowing experience during Foundations must be logged in MedSIS in advance.</p>
     </div>
 
-    <div class="eee-metrics" aria-label="EEE requirements from the 2025–26 student manual">
-      <div><strong>36 hours</strong><span>Minimum before clerkship</span></div>
-      <div><strong>June 15</strong><span>Deadline at the end of Year 2</span></div>
-      <div><strong>6 hours</strong><span>Maximum Alt-EEE contribution</span></div>
+    <div class="ws-grid">
+      <article class="ws-card">
+        <div class="ws-card-letter">W<span>hat</span></div>
+        <h3>What is an EEE?</h3>
+        <p>The 2025–26 ICE:CAP manual required <strong>36 hours by June 15 of Year 2</strong> to progress to clerkship. The manual recognizes core clinical EEEs, approved longitudinal experiences and up to six hours of alternative EEE activities such as informational interviews. Confirm the requirement for your cohort in the current manual.</p>
+      </article>
+
+      <article class="ws-card">
+        <div class="ws-card-letter">W<span>here</span></div>
+        <h3>Where to log everything: MedSIS CAP Module</h3>
+        <p>Use the <strong>CAP dashboard in MedSIS</strong> to find the EEE catalogue, register an experience and review site requirements. Afterward, return to record the completed hours and any required reflection. An unlogged placement is not treated as a sanctioned curricular activity.</p>
+      </article>
+
+      <article class="ws-card">
+        <div class="ws-card-letter">W<span>hen</span></div>
+        <h3>Advance registration rules</h3>
+        <p>You may begin organizing EEEs after your academy-specific clinical orientation and first ICE:CAP session. Non-TAHSN hospitals and other clinics require <strong>at least three weeks</strong> between logging and attending so agreements can be checked. Site registration or prerequisite training may also be required.</p>
+      </article>
+
+      <article class="ws-card">
+        <div class="ws-card-letter">W<span>ho</span></div>
+        <h3>What's expected of you</h3>
+        <p>Identify an attending or faculty physician as the primary supervisor, even if residents are involved. Follow the site dress, identification, privacy and infection-control rules. Do not perform an examination, procedure or provide advice unless it is authorized and appropriately supervised.</p>
+      </article>
+
+      <article class="ws-card ws-card-wide">
+        <div class="ws-card-letter">W<span>hy</span></div>
+        <h3>Why do EEEs?</h3>
+        <p>Try different settings rather than repeating one kind of placement. A clinic can show longitudinal decision-making, a ward can show team-based inpatient care and an operating room can show procedural workflow. Emergency departments, diagnostic services, community practices and virtual or non-clinical informational interviews answer different career questions.</p>
+      </article>
     </div>
 
-    <div class="callout-soft eee-source-note">
-      <strong>These figures come from the 2025–26 ICE:CAP student manual.</strong> Confirm them against the 3T0 manual when it is released. The manual recommends completing the requirement well before the deadline.
+    <div class="callout-soft">
+      <strong>Why logging matters:</strong> the ICE:CAP manual states that logged, approved experiences are eligible for the legal and liability mechanisms that apply to sanctioned school activities. EEEs must occur in Canada and at a site with an appropriate affiliation agreement. Use the current manual or contact the program team for your specific placement.
     </div>
 
-    <div class="eee-feature-groups">
-      <div class="eee-feature-group">
-        <div class="eee-feature-intro">
-        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">The three official types</span></div>
-          <h3>How an EEE can be structured</h3>
-          <p>These are the categories used in the 2025–26 manual. They are not interchangeable, and only a limited number of Alt-EEE hours can count toward the requirement.</p>
-        </div>
-        <div class="eee-type-list">
-          <article>
-            <div><h3>Core EEE</h3><small>Clinical career exploration</small></div>
-            <p>A clinical experience sponsored by a department, division or specialty. FMLE is part of the core curriculum and does not count toward EEE hours.</p>
-          </article>
-          <article>
-            <div><h3>Longitudinal Experience</h3><small>Repeated learning over time</small></div>
-            <p>An approved experience completed over multiple encounters rather than as a single half-day placement.</p>
-          </article>
-          <article>
-            <div><h3>Alt-EEE</h3><small>Non-clinical career exploration</small></div>
-            <p>Eligible activities such as informational interviews with physicians. Research does not count. The 2025–26 manual permits up to six Alt-EEE hours.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="eee-feature-group">
-        <div class="eee-feature-intro">
-        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Settings worth exploring</span></div>
-          <h3>Different settings answer different questions</h3>
-          <p>These are practical examples rather than separate official EEE categories. The experience still needs to be eligible, approved and logged.</p>
-        </div>
-        <div class="eee-setting-list">
-          <div><strong>Clinic</strong><span>Longitudinal decisions, follow-up and patient relationships</span></div>
-          <div><strong>Ward</strong><span>Inpatient care, rounds and interprofessional teamwork</span></div>
-          <div><strong>Operating room</strong><span>Procedural workflow and perioperative care</span></div>
-          <div><strong>Emergency department</strong><span>Undifferentiated presentations and acute decisions</span></div>
-          <div><strong>Diagnostic service</strong><span>Imaging, pathology or another consultative specialty</span></div>
-          <div><strong>Informational interview</strong><span>A non-clinical conversation that may qualify as Alt-EEE</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="eee-guidance-grid">
-      <div>
-        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Before you attend</span></div>
-        <ol class="eee-steps">
-          <li><strong>Read the current CAP and EEE guidance.</strong><span>Confirm the requirements for your cohort before contacting a supervisor.</span></li>
-          <li><strong>Arrange the experience.</strong><span>Identify an attending or faculty physician as the primary supervisor.</span></li>
-          <li><strong>Log it in MedSIS in advance.</strong><span>An email agreement alone is not an approved EEE.</span></li>
-          <li><strong>Complete the site's requirements.</strong><span>This can include registration, training, identification or other local steps.</span></li>
-          <li><strong>Return to MedSIS afterward.</strong><span>Record the completed hours and any required documentation.</span></li>
-        </ol>
-      </div>
-      <div>
-        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Timing and eligibility</span></div>
-        <div class="eee-rules">
-          <details>
-            <summary>When can I start?</summary>
-            <p>The 2025–26 manual says students may begin organizing EEEs after academy-specific clinical-work orientation and the first ICE:CAP session.</p>
-          </details>
-          <details>
-            <summary>How much notice is needed?</summary>
-            <p>The manual asks students to give academies at least one week for affiliated experiences. Non-TAHSN hospitals and other clinics require at least three weeks so an affiliation agreement can be checked or established.</p>
-          </details>
-          <details>
-            <summary>When can an EEE happen?</summary>
-            <p>Self-directed time, evenings, weekends and the summer between Years 1 and 2 may be used. An EEE cannot replace mandatory curricular time and must still be logged.</p>
-          </details>
-          <details>
-            <summary>Where can it happen?</summary>
-            <p>The 2025–26 manual limits EEEs to Canada and requires an appropriate affiliation agreement. Check the current manual before choosing a date.</p>
-          </details>
-        </div>
-      </div>
-    </div>
-
-    <div class="eee-email">
-      <div class="eee-email-heading">
+    <div class="resource-list" style="margin-top: 32px;">
+      <a class="resource-link" href="https://md.utoronto.ca/career-advising-and-preparation" target="_blank" rel="noopener">
+        <div class="resource-arrow">→</div>
         <div>
-          <span class="eyebrow-text">A sample first email</span>
-          <h3>Short, specific and easy to answer.</h3>
+          <h3 class="resource-title">ICE: Career Advising and Preparation (CAP)</h3>
+          <p class="resource-note">The Faculty's home page for CAP, the umbrella curriculum that EEEs sit within. Includes the official EEE description, FAQs comparing EEEs vs. electives, and the Supervisor &amp; Student Guidelines.</p>
         </div>
-        <button type="button" class="btn btn-outline" data-copy-eee-email>Copy email</button>
-      </div>
-      <div class="eee-email-copy" data-eee-email-copy>
-        <p>Hello Dr. [Name],</p>
-        <p>My name is [Name] and I am a first-year U of T medical student interested in learning more about [specialty or setting]. I was particularly interested in your work in [specific clinical area].</p>
-        <p>Would you be open to having me shadow you for a half-day in [clinic / on the ward / in the OR] sometime in [date range]? I am happy to work around your availability and complete the required U of T and site registration steps.</p>
-        <p>Thank you for considering my request,<br/>[Name]</p>
-      </div>
+      </a>
+      <a class="resource-link" href="https://medsis.utoronto.ca/medsis/" target="_blank" rel="noopener">
+        <div class="resource-arrow">→</div>
+        <div>
+          <h3 class="resource-title">MedSIS — CAP Dashboard</h3>
+          <p class="resource-note">Log in with your UTORid to access the CAP Module: searchable preceptor database, EEE registration, site requirements, and all course documentation.</p>
+        </div>
+      </a>
     </div>
 
-    <div class="callout-soft eee-approval-note">
-      <strong>An agreement is not yet an approved EEE.</strong> Log the experience in MedSIS, allow enough time for review and complete any site-specific requirements before attending.
+    <div class="callout-soft" style="margin-top: 24px;">
+      <strong>Sample first email:</strong><br/>
+      Hello Dr. [Name],<br/><br/>
+      My name is [Name] and I am a first-year U of T medical student interested in learning more about [specialty or setting]. I was particularly interested in your work in [specific clinical area]. Would you be open to having me join you for a half-day EEE at a time that is convenient for you? I would complete the required MedSIS and site registration in advance.<br/><br/>
+      Thank you for considering my request,<br/>
+      [Name]
     </div>
-
   </div>
 </section>
 
@@ -8075,55 +6952,43 @@
       <p>You do not need to add another program to have a strong medical-school experience. If one genuinely fits your goals, investigate it early because several applications open or close during the fall of Year 1. Dates below are intentionally not copied forward. Use each official program page for the current cycle.</p>
     </div>
 
-    <div class="opportunity-timing" aria-label="When to explore additional opportunities">
-      <div><strong>Early fall</strong><span>Watch for current program announcements and information sessions.</span></div>
-      <div><strong>Fall–winter</strong><span>Explore supervisors and summer research opportunities.</span></div>
-      <div><strong>Before applying</strong><span>Compare workload, added time, tuition and fit.</span></div>
-      <div><strong>Every cycle</strong><span>Use the current program page rather than an older deadline.</span></div>
-    </div>
-
-    <div class="opportunity-groups">
-      <div class="opportunity-group">
-        <div class="opportunity-group-intro">
-          <span class="eyebrow-text">Degrees and formal MD Plus</span>
-          <h3>Programs that change the shape of your training</h3>
-          <p>These require more planning than an extracurricular program. Explore structure, added time, cost and application timing early.</p>
-        </div>
-        <div class="opportunity-list">
-          <article><div><h3>MD/MBA</h3><small>Combined degree</small></div><p>Medicine and management training through Temerty Medicine and the Rotman School of Management.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MD/PhD</h3><small>Combined degree</small></div><p>Physician-scientist training. Current eligibility and application timing should be confirmed on the official program page.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MSc in Health Systems Leadership and Innovation</h3><small>MD Plus graduate degree</small></div><p>Health-system leadership and innovation training designed to remain compatible with medical school.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>Graduate Diploma in Health Research</h3><small>First-year application</small></div><p>A 20-month research diploma with a U of T faculty mentor, research-skills course and graduate elective.</p><a href="https://md.utoronto.ca/graduate-diploma-health-research-gdiphr" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MD-oriented MEng</h3><small>Biomedical engineering</small></div><p>Professional engineering training focused on biomedical technology, science and commercialization.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-        </div>
-      </div>
-
-      <div class="opportunity-group">
-        <div class="opportunity-group-intro">
-          <span class="eyebrow-text">Certificates and co-curricular programs</span>
-          <h3>Structured learning without another full degree</h3>
-          <p>These may still have application windows, attendance requirements or cohort limits. Check early rather than assuming registration remains open.</p>
-        </div>
-        <div class="opportunity-list">
-          <article><div><h3>MD Global Health Education Program</h3><small>Years 1 and 2</small></div><p>An extracurricular certificate focused on global and local inequities, ethics, health systems, advocacy and social determinants of health.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>Medical Innovation and Technology</h3><small>Foundations and clerkship</small></div><p>Healthcare entrepreneurship, venture development and innovation. Confirm the current application cycle on the program page.</p><a href="https://md.utoronto.ca/medical-innovation-technology-program" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>QuEST</h3><small>MAM quality-improvement program</small></div><p>Quality-improvement and patient-safety training with seminars, asynchronous learning and a supervised longitudinal project.</p><a href="https://md.utoronto.ca/mam/quest" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>Indigenous Health Elective</h3><small>Years 1 and 2</small></div><p>An opportunity to learn with Indigenous community leaders about health, social challenges and culture. Use the current Faculty page for details.</p><a href="https://md.utoronto.ca/indigenous-programming" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-        </div>
-      </div>
-
-      <div class="opportunity-group">
-        <div class="opportunity-group-intro">
-          <span class="eyebrow-text">Research and summer</span>
-          <h3>Start looking before summer arrives</h3>
-          <p>Summer positions may require finding a supervisor or preparing an application months in advance.</p>
-        </div>
-        <div class="opportunity-list">
-          <article><div><h3>CREMS Summer Research Program</h3><small>Between MD years</small></div><p>A competitive, full-time ten-week summer research program with a U of T faculty mentor.</p><a href="https://md.utoronto.ca/crems-summer-research-program" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>Medical Student Post-Doctoral Summer Research</h3><small>For students who already hold a doctorate</small></div><p>A separate competitive ten-week program for eligible MD students.</p><a href="https://md.utoronto.ca/medical-student-post-doctoral-summer-research-program" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MAM research opportunities</h3><small>Mississauga-specific</small></div><p>Faculty contacts, projects and ways for MAM students to become involved in research.</p><a href="https://md.utoronto.ca/mam/research-opportunities" target="_blank" rel="noopener">Explore opportunities <span class="footer-ext">↗</span></a></article>
-        </div>
-      </div>
+    <div class="data-grid">
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Fall of Year 1</span></div>
+        <h3>Graduate Diploma in Health Research</h3>
+        <p>A competitive 20-month research program for first-year MD students, combining a mentored project, research-skills course and graduate elective. The previous cycle closed in early November.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/graduate-diploma-health-research-gdiphr" target="_blank" rel="noopener">Check the current GDipHR cycle <span class="footer-ext">↗</span></a>
+      </article>
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Summer planning</span></div>
+        <h3>CREMS Summer Research</h3>
+        <p>A ten-week, full-time summer research program between MD years. Finding a supervisor and project can take time, so review the program before the application window.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/crems-summer-research-program" target="_blank" rel="noopener">Open the official CREMS page <span class="footer-ext">↗</span></a>
+      </article>
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Years 1–2</span></div>
+        <h3>Global Health Education Program</h3>
+        <p>An extracurricular certificate program for first- and second-year MD students focused on global health, equity, advocacy and social determinants of health.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Find GHEP under MD Plus <span class="footer-ext">↗</span></a>
+      </article>
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Foundations + Clerkship</span></div>
+        <h3>Medical Innovation &amp; Technology</h3>
+        <p>A free hybrid program on health-care entrepreneurship and innovation. Application dates and delivery format can change between cohorts.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/medical-innovation-technology-program" target="_blank" rel="noopener">Check the current MIT intake <span class="footer-ext">↗</span></a>
+      </article>
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">MAM · Co-curricular</span></div>
+        <h3>QuEST</h3>
+        <p>A year-long quality-improvement and patient-safety program at MAM and Trillium Health Partners with learning modules, seminars, longitudinal projects and a capstone.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/mam/quest" target="_blank" rel="noopener">Open the official QuEST page <span class="footer-ext">↗</span></a>
+      </article>
+      <article class="data-card">
+        <div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Longer pathways</span></div>
+        <h3>Combined degrees and other MD Plus options</h3>
+        <p>The Faculty lists MD/PhD, MD/MBA, HSLI, MD/MEng and other options. Eligibility, timing, tuition and whether a pathway extends training differ substantially.</p>
+        <a class="resource-link-mini" href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Compare official MD Plus options <span class="footer-ext">↗</span></a>
+      </article>
     </div>
 
     <div class="callout-soft">
@@ -8138,53 +7003,13 @@
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Support</span>
+        <span class="eyebrow-text">Official UofT Resources</span>
       </div>
-      <h2>Know who to reach out to.</h2>
-      <p>Different questions belong in different places. Start with the route below, then use the final Quick Links directory for the official pages.</p>
-    </div>
-
-    <div class="learner-support">
-      <div>
-        <span class="eyebrow-text">You do not have to figure it out alone</span>
-        <h3>Learning support is not only for when something is wrong.</h3>
-        <p>The Office of Learner Affairs offers academic, clinical-skills, career, mentorship and personal supports. A Learning Strategist can help you work through study approaches, clinical reasoning, reflective practice and transitions in training.</p>
-        <a class="btn btn-primary" href="https://meded.temertymedicine.utoronto.ca/book-appointment" target="_blank" rel="noopener">Book an OLA appointment <span class="footer-ext">↗</span></a>
-      </div>
-      <div class="help-routing">
-        <div><strong>Study approach or clinical reasoning</strong><span>OLA Learning Strategist</span></div>
-        <div><strong>Clinical-skills practice</strong><span>Clinical Skills Enhancement</span></div>
-        <div><strong>Career exploration</strong><span>Career Services or ICE:CAP</span></div>
-        <div><strong>Course-specific question</strong><span>Current course team in Elentra</span></div>
-        <div><strong>Schedule or room question</strong><span>MedSIS and your academy</span></div>
-        <div><strong>Personal support</strong><span>OLA personal supports</span></div>
-      </div>
-    </div>
-
-    <div class="quick-links-heading">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Quick links · Official sources</span>
-      </div>
-      <h3>Pages worth bookmarking.</h3>
-      <p>These links are intentionally last so the page ends with the places where current information lives.</p>
+      <h2>Official pages worth bookmarking.</h2>
+      <p>Use these pages for current requirements, academic support, career planning and research opportunities. They should take priority over student summaries when the two differ.</p>
     </div>
 
     <div class="resource-list">
-      <a class="resource-link" href="https://md.utoronto.ca/career-advising-and-preparation" target="_blank" rel="noopener">
-        <div class="resource-arrow">→</div>
-        <div>
-          <h3 class="resource-title">ICE: Career Advising and Preparation</h3>
-          <p class="resource-note">Official CAP and EEE information, including current Faculty guidance.</p>
-        </div>
-      </a>
-      <a class="resource-link" href="https://medsis.utoronto.ca/medsis/" target="_blank" rel="noopener">
-        <div class="resource-arrow">→</div>
-        <div>
-          <h3 class="resource-title">MedSIS CAP Module</h3>
-          <p class="resource-note">EEE registration, documentation, site requirements and completed-hour records.</p>
-        </div>
-      </a>
     <a class="resource-link" href="https://ipecurriculum.utoronto.ca/" target="_blank" rel="noopener">
         <div class="resource-arrow">→</div>
         <div>
@@ -8203,7 +7028,7 @@
         <div class="resource-arrow">→</div>
         <div>
           <h3 class="resource-title">Career Planning</h3>
-          <p class="resource-note">Central UofT career-planning page for MD students, including specialty exploration, advising contacts and planning timelines.</p>
+          <p class="resource-note">Central UofT career planning page for MD students. specialty exploration, advising contacts, and planning timelines for M1 through M4.</p>
         </div>
       </a>
       <a class="resource-link" href="https://meded.temertymedicine.utoronto.ca/undergraduate-medicine-career-services" target="_blank" rel="noopener">
@@ -8238,7 +7063,7 @@
         <div class="resource-arrow">→</div>
         <div>
           <h3 class="resource-title">MAM · Research Opportunities</h3>
-          <p class="resource-note">Research opportunities available to MAM students, including faculty contacts, projects and ways to become involved.</p>
+          <p class="resource-note">Research opportunities available to MAM students. faculty contacts, projects, and how to get involved in research while at the Mississauga campus.</p>
         </div>
       </a>
       <a class="resource-link" href="https://md.utoronto.ca/mam/student-information" target="_blank" rel="noopener">
@@ -8283,7 +7108,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Field Guide</a></li>
+          <li><a href="handbook.html">Handbook</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -8306,164 +7131,13 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
+    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
 <button type="button" class="back-to-top" onclick="window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
-(function(){
-  var sequence = document.querySelector('[data-course-sequence]');
-  if (!sequence) return;
-  var tabs = Array.from(sequence.querySelectorAll('[role="tab"]'));
-  var panels = Array.from(sequence.querySelectorAll('[role="tabpanel"]'));
-
-  function selectTab(tab) {
-    tabs.forEach(function(item) {
-      var selected = item === tab;
-      item.classList.toggle('is-active', selected);
-      item.setAttribute('aria-selected', selected ? 'true' : 'false');
-      item.setAttribute('tabindex', selected ? '0' : '-1');
-    });
-    panels.forEach(function(panel) {
-      panel.hidden = panel.id !== tab.getAttribute('aria-controls');
-    });
-  }
-
-  tabs.forEach(function(tab, index) {
-    tab.addEventListener('click', function() {
-      selectTab(tab);
-    });
-    tab.addEventListener('keydown', function(event) {
-      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-      event.preventDefault();
-      var direction = event.key === 'ArrowRight' ? 1 : -1;
-      var next = (index + direction + tabs.length) % tabs.length;
-      selectTab(tabs[next]);
-      tabs[next].focus();
-    });
-  });
-})();
-
-(function(){
-  var glossary = document.querySelector('[data-academic-glossary]');
-  if (!glossary) return;
-  var answer = glossary.querySelector('[data-glossary-answer]');
-  var definitions = {
-    CBL: ['Case-based learning', 'Small-group learning organized around a clinical case. Preparation and session structure vary by course, so use the current instructions in Elentra.'],
-    ME: ['Mastery Exercise', 'A recurring assessment within Foundations. The cadence is generally about every two weeks, with a smaller number of one- or three-week blocks. Use MedSIS for confirmed dates.'],
-    OSCE: ['Objective Structured Clinical Examination', 'A practical clinical-skills assessment. Station format and expectations should come from the current ICE materials rather than an older student guide.'],
-    OASES: ['Assessment platform', 'Used for selected submissions and assessment-related work. OASES is not the canonical class schedule. Check MedSIS for scheduling information.']
-  };
-  glossary.querySelectorAll('[data-glossary-term]').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var term = button.getAttribute('data-glossary-term');
-      glossary.querySelectorAll('[data-glossary-term]').forEach(function(item) {
-        var active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      answer.innerHTML = '<strong>' + definitions[term][0] + '</strong><p>' + definitions[term][1] + '</p>';
-    });
-  });
-})();
-
-(function(){
-  var week = document.querySelector('[data-timed-week]');
-  if (!week) return;
-  var buttons = Array.from(week.querySelectorAll('[data-timed-mode]'));
-  var board = week.querySelector('[data-timed-board]');
-  var description = week.querySelector('[data-timed-description]');
-  var copy = {
-    typical: 'A recent-cohort illustration of a regular teaching week. The exact number and placement of sessions changes across blocks.',
-    me: 'The ME is shown from 8:00–9:00 on Friday, followed by course lectures. An assessment does not necessarily mean the rest of the teaching day is empty.',
-    portfolio: 'This recent-cohort pattern places Portfolio from about 3:30 onward on Monday, after Independent CBL. Confirm the current session in MedSIS.'
-  };
-  buttons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      var mode = button.getAttribute('data-timed-mode');
-      buttons.forEach(function(item) {
-        var active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      board.setAttribute('data-mode', mode);
-      description.textContent = copy[mode];
-    });
-  });
-})();
-
-(function(){
-  var button = document.querySelector('[data-copy-eee-email]');
-  var sample = document.querySelector('[data-eee-email-copy]');
-  if (!button || !sample) return;
-  button.addEventListener('click', function() {
-    if (!navigator.clipboard || !navigator.clipboard.writeText) {
-      button.textContent = 'Select and copy';
-      return;
-    }
-    navigator.clipboard.writeText(sample.innerText).then(function() {
-      button.textContent = 'Copied';
-      window.setTimeout(function() {
-        button.textContent = 'Copy email';
-      }, 1800);
-    }).catch(function() {
-      button.textContent = 'Select and copy';
-    });
-  });
-})();
-
-(function(){
-  var tools = document.querySelector('[data-study-resource-tools]');
-  if (!tools) return;
-  var search = tools.querySelector('[data-study-resource-search]');
-  var count = tools.querySelector('[data-study-resource-count]');
-  var buttons = Array.from(tools.querySelectorAll('[data-study-filter]'));
-  var groups = Array.from(document.querySelectorAll('[data-resource-group]'));
-  var activeFilter = 'all';
-
-  function updateResources() {
-    var query = search.value.trim().toLowerCase();
-    var shown = 0;
-
-    groups.forEach(function(group) {
-      var cards = Array.from(group.querySelectorAll('.data-card'));
-      var groupName = group.getAttribute('data-resource-group');
-      var groupMatchesFilter = activeFilter === 'all' || groupName === activeFilter;
-      var visibleInSection = 0;
-
-      cards.forEach(function(card) {
-        var matchesSearch = !query || card.textContent.toLowerCase().indexOf(query) !== -1;
-        var visible = groupMatchesFilter && matchesSearch;
-        card.hidden = !visible;
-        if (visible) {
-          visibleInSection += 1;
-          shown += 1;
-        }
-      });
-
-      group.hidden = visibleInSection === 0;
-    });
-
-    count.textContent = shown === 1 ? 'Showing 1 resource.' : 'Showing ' + shown + ' resources.';
-  }
-
-  buttons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      activeFilter = button.getAttribute('data-study-filter');
-      buttons.forEach(function(item) {
-        var active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      updateResources();
-    });
-  });
-
-  search.addEventListener('input', updateResources);
-  updateResources();
-})();
-
 (function(){
   var btn = document.querySelector('.back-to-top');
   if (!btn) return;
