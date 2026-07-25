@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Handbook · UofT MD Guide</title>
+<title>Field Guide · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -6545,7 +6545,7 @@
     { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
     { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
     { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
+    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "What OMSA represents, current OMA student membership, and where to review insurance separately." },
     { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
     { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
 
@@ -6567,6 +6567,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -6588,7 +6591,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6734,6 +6737,467 @@
     });
   });
 </script>
+<style>
+  /* Handbook refinement: compact navigation without changing the shared visual system */
+  .handbook-routes {
+    padding: 48px 0 56px;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--paper);
+  }
+  .handbook-routes .container {
+    display: grid;
+    gap: 28px;
+  }
+  .handbook-routes-intro { max-width: 42rem; }
+  .handbook-routes-kicker,
+  .learning-map-year {
+    color: var(--uoft-teal);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .handbook-routes-intro h2 {
+    margin-top: 8px;
+    color: var(--uoft-navy);
+    font: 800 clamp(1.55rem, 3vw, 2.15rem)/1.12 'Roboto Slab', serif;
+  }
+  .handbook-routes-intro > p:last-child {
+    max-width: 38rem;
+    margin-top: 12px;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .handbook-route-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--hairline);
+  }
+  .handbook-route {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    min-height: 76px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--hairline);
+    transition: padding 180ms, color 180ms;
+  }
+  .handbook-route:hover { padding-left: 10px; color: var(--uoft-teal); }
+  .handbook-route-num {
+    color: var(--uoft-teal);
+    font: 700 10px/1 'Public Sans', sans-serif;
+    letter-spacing: 0.14em;
+  }
+  .handbook-route strong {
+    display: block;
+    color: var(--uoft-navy);
+    font: 800 16px/1.25 'Roboto Slab', serif;
+  }
+  .handbook-route small {
+    display: block;
+    margin-top: 3px;
+    color: var(--ink-muted);
+    font-size: 12px;
+  }
+  @media (min-width: 760px) {
+    .handbook-routes .container { grid-template-columns: 4fr 8fr; gap: 56px; align-items: start; }
+    .handbook-route-grid { grid-template-columns: 1fr 1fr; }
+    .handbook-route:nth-child(odd) { padding-right: 20px; }
+    .handbook-route:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--hairline); }
+    .handbook-route:nth-child(even):hover { padding-left: 26px; }
+  }
+
+  .learning-map {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+    border: 1px solid var(--hairline);
+    background: white;
+  }
+  .learning-map-stage {
+    position: relative;
+    padding: 24px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .learning-map-stage:last-child { border-bottom: 0; }
+  .learning-map-stage-current { box-shadow: inset 3px 0 0 var(--uoft-teal); }
+  .learning-map-stage h3 {
+    margin-top: 7px;
+    color: var(--uoft-navy);
+    font: 800 20px/1.2 'Roboto Slab', serif;
+  }
+  .learning-map-flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 18px;
+    color: var(--uoft-navy);
+    font-size: 14px;
+  }
+  .learning-map-flow span { color: var(--uoft-teal); }
+  .learning-map-support {
+    margin-top: 10px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  @media (min-width: 850px) {
+    .learning-map { grid-template-columns: repeat(3, 1fr); }
+    .learning-map-stage { border-right: 1px solid var(--hairline); border-bottom: 0; }
+    .learning-map-stage:last-child { border-right: 0; }
+    .learning-map-stage-current { box-shadow: inset 0 3px 0 var(--uoft-teal); }
+  }
+
+  .glossary-tools {
+    margin: -8px 0 28px;
+    padding: 24px;
+    border: 1px solid var(--hairline);
+    background: var(--paper-soft);
+  }
+  .glossary-search-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--uoft-navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .glossary-search {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid var(--hairline);
+    border-radius: 0;
+    background: white;
+    color: var(--ink);
+    font: inherit;
+  }
+  .glossary-search:focus {
+    border-color: var(--uoft-teal);
+    outline: 3px solid rgba(0,127,163,0.14);
+    outline-offset: 1px;
+  }
+  .glossary-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .glossary-filter {
+    min-height: 38px;
+    padding: 8px 13px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--ink-soft);
+    font: 700 12px/1.2 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .glossary-filter:hover,
+  .glossary-filter:focus-visible {
+    border-color: var(--uoft-teal);
+    color: var(--uoft-navy);
+    outline: none;
+  }
+  .glossary-filter.is-active {
+    border-color: var(--uoft-navy);
+    background: var(--uoft-navy);
+    color: white;
+  }
+  .glossary-results {
+    min-height: 1.4em;
+    margin-top: 12px;
+    color: var(--ink-muted);
+    font-size: 12px;
+  }
+  .glossary-platform-link {
+    display: inline-flex;
+    margin-top: 4px;
+    color: var(--uoft-teal);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .glossary-row[hidden] { display: none; }
+  .glossary-row {
+    transition: background 160ms;
+  }
+  .glossary-row:hover { background: rgba(0,127,163,0.035); }
+  .glossary-detail { display: none; }
+  .glossary-row.is-open .glossary-detail { display: block; }
+  .glossary-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--uoft-teal);
+    font: 700 12px/1.4 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .glossary-toggle::after { content: '+'; font-size: 16px; }
+  .glossary-toggle[aria-expanded="true"]::after { content: '−'; }
+  .glossary-toggle:hover,
+  .glossary-toggle:focus-visible {
+    color: var(--uoft-navy);
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .source-status {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 18px;
+    padding: 6px 9px;
+    border: 1px solid var(--hairline);
+    color: var(--ink-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .section + .section { scroll-margin-top: 110px; }
+  .onboarding-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .onboarding-step {
+    border: 1px solid var(--hairline);
+    background: white;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px;
+    align-items: start;
+  }
+  .onboarding-step-num {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    border: 1px solid rgba(0,127,163,0.35);
+    color: var(--uoft-teal);
+    font-size: 20px;
+    line-height: 1;
+  }
+  .onboarding-step-body { min-width: 0; }
+  .onboarding-step-list,
+  .onboarding-step-grid,
+  .onboarding-step-bring-title,
+  .onboarding-step-note {
+    display: none;
+  }
+  .onboarding-step.is-open .onboarding-step-list,
+  .onboarding-step.is-open .onboarding-step-grid,
+  .onboarding-step.is-open .onboarding-step-bring-title,
+  .onboarding-step.is-open .onboarding-step-note {
+    display: grid;
+  }
+  .onboarding-step-toggle {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 14px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--uoft-teal);
+    font: 700 12px/1.4 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .onboarding-step-toggle::after { content: '+'; font-size: 16px; }
+  .onboarding-step-toggle[aria-expanded="true"]::after { content: '−'; }
+  @media (min-width: 860px) {
+    .onboarding-steps { grid-template-columns: 1fr 1fr; }
+    .onboarding-step:last-child { grid-column: 1 / -1; }
+  }
+  #program-structure .phase-grid { display: none !important; }
+  #mam-field-guide { padding-top: 52px; }
+  #omsa-oma { padding-top: 52px; }
+  #community-groups .council-roles { margin-top: 24px; }
+  .council-role-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 22px;
+  }
+  .council-role-filters button {
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--ink-soft);
+    font: 700 12px/1.2 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .council-role-filters button.is-active {
+    border-color: var(--uoft-navy);
+    background: var(--uoft-navy);
+    color: white;
+  }
+  .council-roles-grid.is-filtered .council-roles-group[hidden] { display: none; }
+  .council-roles-group {
+    padding: 16px 18px;
+    border: 1px solid var(--hairline);
+    border-top: 2px solid var(--uoft-teal);
+    background: white;
+  }
+  .council-roles-group-wide { grid-column: auto; }
+  @media (min-width: 1024px) {
+    .council-roles-grid { grid-template-columns: repeat(3, 1fr); }
+    .council-roles-group-wide { grid-column: 1 / -1; }
+  }
+
+  .prayer-launch {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    margin-top: 28px;
+    padding: 24px 26px;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--uoft-teal);
+    background: white;
+  }
+  .prayer-launch h3 {
+    color: var(--uoft-navy);
+    font: 800 20px/1.25 'Roboto Slab', serif;
+  }
+  .prayer-launch p { margin-top: 5px; color: var(--ink-soft); font-size: 13px; }
+  .prayer-launch button {
+    padding: 11px 16px;
+    border: 1px solid var(--uoft-navy);
+    background: var(--uoft-navy);
+    color: white;
+    font: 700 12px/1.2 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .prayer-dialog {
+    width: min(1040px, calc(100vw - 32px));
+    max-height: min(820px, calc(100vh - 40px));
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--ink);
+  }
+  .prayer-dialog::backdrop { background: rgba(0,20,84,0.62); backdrop-filter: blur(3px); }
+  .prayer-dialog-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+    padding: 22px 26px;
+    border-bottom: 1px solid var(--hairline);
+    background: white;
+  }
+  .prayer-dialog-header h3 { color: var(--uoft-navy); font: 800 22px/1.2 'Roboto Slab', serif; }
+  .prayer-dialog-close {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--uoft-navy);
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .prayer-dialog .prayer-spaces-grid { border: 0; margin: 0; }
+  .prayer-dialog .prayer-spaces-credit { margin: 0; padding: 0 32px 28px; }
+
+  .council-roles .interest-groups-block {
+    margin-top: 28px;
+    border-top: 3px solid var(--uoft-teal);
+  }
+  .interest-groups-title {
+    margin-bottom: 8px;
+    color: var(--uoft-navy);
+    font: 800 20px/1.25 'Roboto Slab', serif;
+  }
+  .quick-links-section {
+    padding: 64px 0 80px;
+    border-top: 1px solid var(--hairline);
+    background: var(--paper-soft);
+  }
+
+  .academy-selector,
+  .mam-tabs,
+  .platform-taskbar,
+  .group-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .academy-selector button,
+  .mam-tabs button,
+  .platform-taskbar button,
+  .group-filters button {
+    min-height: 42px;
+    padding: 9px 14px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--ink-soft);
+    font: 700 12px/1.2 'Public Sans', sans-serif;
+    cursor: pointer;
+  }
+  .academy-selector button.is-active,
+  .mam-tabs button.is-active,
+  .platform-taskbar button.is-active,
+  .group-filters button.is-active {
+    border-color: var(--uoft-navy);
+    background: var(--uoft-navy);
+    color: white;
+  }
+  .academy-focus {
+    min-height: 290px;
+    padding: 30px;
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--uoft-teal);
+    background: white;
+  }
+  .academy-focus .academy-card {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  .academy-grid.is-enhanced { display: none !important; }
+
+  .mam-tabs { position: sticky; top: 120px; z-index: 4; padding: 10px; background: rgba(255,255,255,0.96); border: 1px solid var(--hairline); }
+  .mam-panel[hidden] { display: none; }
+  .mam-panel { animation: fadeUp 220ms ease both; }
+
+  .groups-grid.is-filtered .group-card[hidden],
+  .platform-grid.is-filtered .platform-card[hidden] { display: none; }
+  .platform-grid.is-filtered {
+    grid-template-columns: 1fr;
+    max-width: 58rem;
+  }
+  .platform-task-note {
+    margin: -8px 0 20px;
+    color: var(--ink-muted);
+    font-size: 13px;
+  }
+  .quick-links-label {
+    margin-top: 42px;
+    padding-top: 26px;
+    border-top: 1px solid var(--hairline);
+    color: var(--uoft-navy);
+    font: 800 18px/1.3 'Roboto Slab', serif;
+  }
+  @media (max-width: 767px) {
+    .glossary-tools { padding: 18px; }
+    .glossary-filter { flex: 1 1 auto; }
+  }
+</style>
 </head>
 <body data-page="handbook">
 
@@ -6753,7 +7217,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6764,7 +7228,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook" class="is-active">Handbook</a>
+      <a href="handbook.html" data-page="handbook" class="is-active">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6823,15 +7287,16 @@
       <div>
         <div class="eyebrow">
           <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">Section 04 · The Handbook</span>
+        <span class="eyebrow-text">Section 05 · Field Guide</span>
         </div>
         <h1>The vocabulary,<br/>decoded.</h1>
-        <p class="page-hero-lede">By the end of orientation week you'll hear Foundations, CBL, ICE, OSCE, Portfolio, and academy a hundred times. Here's what each one actually means and why it matters.</p>
+        <p class="page-hero-lede">The names, systems and student-life details that make UofT Medicine easier to navigate. Start with the glossary, then come back whenever an unfamiliar acronym appears.</p>
       </div>
       <div>
         <div class="page-hero-meta">
           <strong>Maintained by</strong>
-          Current and recent UofT MD students. Cultural and community group sections are populated by the groups themselves. <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline;">submit content here</a>.
+          Current and recent UofT MD students. Student-reported details are labelled and official sources are linked wherever information may change. <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline;">Submit an update</a>.
+          <span class="source-status">Last verified June 2026</span>
         </div>
       </div>
     </div>
@@ -6841,11 +7306,11 @@
         <li><a href="#program-structure">Program structure</a></li>
         <li><a href="#getting-set-up">Getting set up</a></li>
         <li><a href="#vocabulary">Vocabulary</a></li>
+        <li><a href="#platforms">Platforms</a></li>
         <li><a href="#academies">Academies</a></li>
         <li><a href="#community-groups">Student life</a></li>
         <li><a href="#omsa-oma">OMSA &amp; OMA</a></li>
         <li><a href="#wellness">Wellness &amp; support</a></li>
-        <li><a href="#platforms">Platforms</a></li>
       </ol>
     </div>
   </div>
@@ -6858,17 +7323,61 @@
       <li><a href="#program-structure">Program structure</a></li>
       <li><a href="#getting-set-up">Getting set up</a></li>
       <li><a href="#vocabulary">Vocabulary</a></li>
+      <li><a href="#platforms">Platforms</a></li>
       <li><a href="#academies">Academies</a></li>
       <li><a href="#mam-field-guide">MAM field guide</a></li>
       <li><a href="#community-groups">Student life</a></li>
       <li><a href="#omsa-oma">OMSA &amp; OMA</a></li>
       <li><a href="#wellness">Wellness &amp; support</a></li>
-      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#quick-links">Official links</a></li>
     </ul>
   </div>
 </aside>
 
 <div class="has-toc">
+
+<!-- ============ Field Guide routes ============ -->
+<section class="handbook-routes" aria-labelledby="handbook-routes-title">
+  <div class="container">
+    <div class="handbook-routes-intro">
+      <p class="handbook-routes-kicker">Start with what you need</p>
+      <h2 id="handbook-routes-title">This is a reference, not a reading assignment.</h2>
+      <p>You do not need to learn this page from top to bottom. Choose a route now, then use the glossary or search when a new term comes up.</p>
+    </div>
+    <nav class="handbook-route-grid" aria-label="Field Guide routes">
+      <a class="handbook-route" href="#getting-set-up">
+        <span class="handbook-route-num">01</span>
+        <span><strong>I am getting started</strong><small>UTORid, TCard and access</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="handbook-route" href="#vocabulary">
+        <span class="handbook-route-num">02</span>
+        <span><strong>I heard an acronym</strong><small>Courses, ICE and assessments</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="handbook-route" href="#academies">
+        <span class="handbook-route-num">03</span>
+        <span><strong>I need my academy</strong><small>Home bases and MAM logistics</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="handbook-route" href="#community-groups">
+        <span class="handbook-route-num">04</span>
+        <span><strong>I want student life</strong><small>Communities, councils and groups</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="handbook-route" href="#wellness">
+        <span class="handbook-route-num">05</span>
+        <span><strong>I need support</strong><small>OLA, accessibility and wellbeing</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="handbook-route" href="#platforms">
+        <span class="handbook-route-num">06</span>
+        <span><strong>I need the right system</strong><small>Schedule, materials and submissions</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </nav>
+  </div>
+</section>
 
 <!-- ============ Program structure ============ -->
 <section class="section" id="program-structure">
@@ -6879,7 +7388,7 @@
         <span class="eyebrow-text">The Shape of the Program</span>
       </div>
       <h2>Four years, two phases.</h2>
-      <p>UofT's MD program splits cleanly into Foundations (years 1–2) and Clerkship (years 3–4). Knowing which phase you're in shapes how you should be spending your time.</p>
+      <p>The MD program has two broad phases: Foundations in Years 1 and 2, followed by Clerkship in Years 3 and 4. This is an orientation, not a replacement for the official curriculum or academic calendar.</p>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid var(--hairline); background: white;" class="phase-grid">
@@ -6888,11 +7397,11 @@
         <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 28px; color: var(--uoft-navy); line-height: 1.15;">Foundations (Pre-Clerkship)</h3>
         <dl style="margin-top: 24px;">
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Focus</dt>
-          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Foundational sciences integrated with clinical reasoning. CBL, lectures, anatomy, simulation, ICE: HC (Health in Community), and Portfolio.</dd>
+          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Foundational and clinical sciences taught through ITM, CPC 1, CPC 2 and CPC 3, alongside longitudinal learning in ICE, Portfolio and MAPS.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Typical week</dt>
-          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Mostly 9–5 with study time on top. CBLs, lectures, and one Portfolio half-day per week at your academy hospital.</dd>
+          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">A variable mix of CBL, lectures, independent learning, MAPS, ICE and occasional Portfolio sessions. See the Academics page for a sourced sample week.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Evaluation</dt>
-          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Mastery Exercises (MEs) at the end of each component test content; your cumulative average across the MEs determines pass/fail. Year-end OSCE is the practical clinical-skills assessment. ICE: HC and Portfolio are pass/fail throughout.</dd>
+          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Progression depends on satisfactory completion of the program's required assessments and learning activities. Mastery Exercises are a major part of Foundations assessment, while clinical skills are assessed separately. Use official course and assessment documents for current requirements.</dd>
         </dl>
       </div>
       <div style="padding: 40px;">
@@ -6904,14 +7413,14 @@
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Typical week</dt>
           <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Hospital hours: variable, sometimes long. Call shifts. Less classroom, more team-based learning.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Evaluation</dt>
-          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">End-of-rotation evaluations from supervisors, plus a Mastery Exercise (ME) after each block. OSCEs run for select specialties (OB/GYN, Internal Medicine, Surgery) and a clerkship-wide OSCE. The MCCQE is written during the clerkship years.</dd>
+          <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Assessment varies by rotation and program requirement. The official curriculum and clerkship materials should be used for the current assessment structure.</dd>
         </dl>
       </div>
     </div>
     <style>@media (min-width: 768px) { .phase-grid { grid-template-columns: 1fr 1fr !important; } .phase-grid > div:first-child { border-bottom: none !important; border-right: 1px solid var(--hairline); } }</style>
 
     <div class="callout-soft" style="margin-top: 32px;">
-      <strong>For exact term dates, exam windows, and holidays</strong>. the official <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT MD Academic Calendar</a> is the source of truth. It shows year-by-year schedules for Foundations and Clerkship, including Component start dates, OSCE timing, and break weeks.
+      <strong>Use the official calendar for current requirements.</strong> The <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT MD Academic Calendar</a> is the source of truth for program structure, policies and published dates. The <a href="academics.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page</a> explains what the first year commonly feels like in practice.
     </div>
   </div>
 </section>
@@ -6925,7 +7434,7 @@
         <span class="eyebrow-text">Onboarding · Identity &amp; Access</span>
       </div>
       <h2>Getting set up.</h2>
-      <p>Before you can do almost anything at UofT (log into Quercus, access the library, swipe into a hospital, or get a building keycard. you need three credentials in this order: a <strong>JOINid</strong> (temporary), a <strong>UTORid</strong> (permanent), and a <strong>TCard</strong> (your physical student ID). Most of this happens online; the TCard pickup happens in person. The official starting point is <a href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">tcard.utoronto.ca ↗</a>.</p>
+      <p>Your <strong>JOINid</strong> is the temporary credential used before your permanent <strong>UTORid</strong> is activated. Your <strong>TCard</strong> is the physical student card. Fall students can currently begin the official process on May 1. Start with <a href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT's UTORid and TCard guide ↗</a> because document requirements and office information can change.</p>
     </div>
 
     <div class="onboarding-steps">
@@ -6963,11 +7472,11 @@
         <div class="onboarding-step-num">03</div>
         <div class="onboarding-step-body">
           <h3 class="onboarding-step-title">Check your email for submission status</h3>
-          <p class="onboarding-step-lede">Online submissions take <strong>up to 3–5 business days</strong> to process. UofT will send approval or denial emails to the address listed in your <strong>ACORN profile</strong>. Make sure that address is current.</p>
+          <p class="onboarding-step-lede">UofT reviews the submitted photo and documents, then sends the outcome by email. Processing time varies, so submit early and make sure the email listed in ACORN is current.</p>
           <ul class="onboarding-step-list">
             <li>Approval/denial notifications come from UofT to the email on file in ACORN</li>
             <li>If denied, you'll be asked to resubmit, which delays everything downstream</li>
-            <li>Don't expect same-day turnaround; plan for the 3–5 business day window</li>
+            <li>Leave time to correct and resubmit anything that is not accepted</li>
           </ul>
         </div>
       </article>
@@ -6977,10 +7486,10 @@
         <div class="onboarding-step-num">04</div>
         <div class="onboarding-step-body">
           <h3 class="onboarding-step-title">Activate your UTORid</h3>
-          <p class="onboarding-step-lede">Once your photo is approved, you'll receive an email from <strong>infosec@utoronto.ca</strong> with the subject <em>"Activate Your U of T UTORid."</em> The UTORid is your permanent UofT login and unlocks Quercus, the library, campus Wi-Fi, and your UofT email.</p>
+          <p class="onboarding-step-lede">After approval, follow the activation email to set up your permanent UTORid and UofT email. Use the official instructions in that message rather than relying on screenshots from another student.</p>
           <ul class="onboarding-step-list">
             <li>Follow the steps in the email to activate your UTORid and set up your UofT email address</li>
-            <li>Once you receive this email, your old <strong>JOINid password will stop working</strong></li>
+            <li>Save your new UTORid credentials in a secure password manager</li>
             <li>From this point on, UTORid is what you use everywhere on campus</li>
           </ul>
         </div>
@@ -6991,7 +7500,7 @@
         <div class="onboarding-step-num">05</div>
         <div class="onboarding-step-body">
           <h3 class="onboarding-step-title">Pick up your TCard</h3>
-          <p class="onboarding-step-lede">Once your UTORid is activated, you can pick up your physical <strong>TCard</strong>. <strong>No appointments required.</strong> Just walk in. Note: for newly admitted summer/winter students, the TCard is only issued once your registration status on ACORN is changed to <em>Registered</em>.</p>
+          <p class="onboarding-step-lede">Once your UTORid is activated, follow the current UofT instructions to collect your physical <strong>TCard</strong>. Confirm the location, hours and required original identification before leaving home.</p>
 
           <p class="onboarding-step-bring-title">Bring with you:</p>
           <ul class="onboarding-step-list">
@@ -7035,8 +7544,43 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Glossary</span>
       </div>
-      <h2>Terms you'll hear in week one.</h2>
-      <p>Foundations, CBL, ICE (and its streams: Clinical Skills, HC, CAP, FMLE), CEE, EEE, OSCE, CaRMS, Elentra. The vocabulary you'll need by the second day of orientation.</p>
+      <h2>The glossary.</h2>
+      <p>Use the categories to narrow the list, or search an abbreviation directly. Open any entry for the short definition first, with additional context available when you need it.</p>
+    </div>
+
+    <div class="learning-map" aria-label="How the terms fit across medical school">
+      <article class="learning-map-stage learning-map-stage-current">
+        <p class="learning-map-year">Year 1</p>
+        <h3>Build the foundation</h3>
+        <p class="learning-map-flow"><strong>ITM</strong><span>→</span><strong>CPC 1</strong><span>→</span><strong>CPC 2</strong></p>
+        <p class="learning-map-support">Alongside: CBL, MAPS, ICE: Clinical Skills, ICE: HC, ICE: CAP and Portfolio</p>
+      </article>
+      <article class="learning-map-stage">
+        <p class="learning-map-year">Year 2</p>
+        <h3>Continue Foundations</h3>
+        <p class="learning-map-flow"><strong>CPC 3</strong></p>
+        <p class="learning-map-support">Alongside: continuing ICE and Portfolio, plus FMLE and preparation for Clerkship</p>
+      </article>
+      <article class="learning-map-stage">
+        <p class="learning-map-year">Years 3–4</p>
+        <h3>Move into Clerkship</h3>
+        <p class="learning-map-flow"><strong>Core rotations</strong><span>→</span><strong>Electives</strong></p>
+        <p class="learning-map-support">Later vocabulary includes CaRMS, ERAS and the MCCQE</p>
+      </article>
+    </div>
+
+    <div class="glossary-tools" aria-label="Filter the glossary">
+      <label class="glossary-search-label" for="glossary-search">Find a term</label>
+      <input class="glossary-search" id="glossary-search" type="search" placeholder="Try ICE, ISAL, CaRMS…" autocomplete="off" />
+      <div class="glossary-filters" role="group" aria-label="Glossary categories">
+        <button type="button" class="glossary-filter is-active" data-glossary-filter="all">All terms</button>
+        <button type="button" class="glossary-filter" data-glossary-filter="program">Program map</button>
+        <button type="button" class="glossary-filter" data-glossary-filter="year1">Year 1 terms</button>
+        <button type="button" class="glossary-filter" data-glossary-filter="year2">Year 2</button>
+        <button type="button" class="glossary-filter" data-glossary-filter="later">Later years</button>
+      </div>
+      <a class="glossary-platform-link" href="#platforms">Looking for MedSIS, OASES, ACORN or another platform? Open the system chooser ↓</a>
+      <p class="glossary-results" aria-live="polite"></p>
     </div>
 
     <div class="glossary">
@@ -7077,7 +7621,7 @@
         </div>
         <div>
           <p class="glossary-def">The longitudinal clinical thread woven through all of Foundations.</p>
-          <p class="glossary-detail">Typically two half-days per week. ICE has multiple streams that run alongside lectures and CBL: <strong>Clinical Skills</strong> (history-taking and physical exam), <strong>Health in Community</strong> (HC), <strong>Career Advising &amp; Preparation</strong> (CAP, which houses the EEE shadowing program), and in Year 2 the <strong>Family Medicine Longitudinal Experience</strong> (FMLE). Each stream is described separately below.</p>
+          <p class="glossary-detail">ICE includes several streams that run alongside the course curriculum: <strong>Clinical Skills</strong>, <strong>Health in Community</strong>, <strong>Career Advising &amp; Preparation</strong>, and in Year 2 the <strong>Family Medicine Longitudinal Experience</strong>. In the 2025–26 schedule, Year 1 ICE: Clinical Skills generally occupied Friday morning and Year 2 generally used Thursday morning. Always follow your current MedSIS timetable.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7086,8 +7630,8 @@
           <p class="glossary-expansion">History &amp; Physical Exam</p>
         </div>
         <div>
-          <p class="glossary-def">The half-day each week where you actually learn how to be a doctor with patients.</p>
-          <p class="glossary-detail">Groups of six. Instruction in taking patient histories and performing the physical exam, often paired with the week's CBL content (e.g. cardiac exam during the cardiology week). Standardized patient encounters and real patient encounters happen here. The dress code is business casual. no white coat. The clinical skills resource hub is at <a href="https://thehub.utoronto.ca/clinicalskills/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">thehub.utoronto.ca/clinicalskills</a>.</p>
+          <p class="glossary-def">A recurring morning focused on history-taking, physical examination and clinical encounters.</p>
+          <p class="glossary-detail">Sessions may involve simulated or real patients and are organized through your academy. Expectations and locations vary by session, so check the current course material and MedSIS timetable. The clinical skills resource hub is at <a href="https://thehub.utoronto.ca/clinicalskills/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">thehub.utoronto.ca/clinicalskills</a>.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7097,7 +7641,7 @@
         </div>
         <div>
           <p class="glossary-def">Two-year community-engaged learning thread inside ICE.</p>
-          <p class="glossary-detail">Combines pre-departure training, in-person tutorials, and self-directed placements at community organizations. The placements themselves are called <strong>CEEs (Community Engaged Experiences)</strong>; see below. You'll complete a mix: long-term care (LTC), intellectual &amp; developmental disabilities (IDD), Flex placements (your choice), and a longitudinal site you visit several times. Builds competencies in social determinants of health, advocacy, and community health practice. Note: <strong>CEE here is not the same as exam-related CEE</strong>: this is the placements.</p>
+          <p class="glossary-detail">Combines preparation, facilitated learning and experiences with community organizations. The placements are called <strong>Community Engaged Experiences (CEEs)</strong>. Requirements should be taken from the current ICE: HC manual and your assigned course materials.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7107,7 +7651,7 @@
         </div>
         <div>
           <p class="glossary-def">Longitudinal mentorship + career advising thread.</p>
-          <p class="glossary-detail">Helps you explore specialties, plan electives, and prepare your CaRMS application. Most contact is through your academy and the Career Advising team. <strong>Houses the EEE shadowing program</strong> (see below). When you log a shadowing experience on MedSIS, it goes into the CAP dashboard.</p>
+          <p class="glossary-detail">Introduces career exploration, specialty information and practical planning. It also provides the program context for arranging and documenting approved shadowing experiences. Follow current ICE: CAP and MedSIS instructions because processes can change.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7117,7 +7661,7 @@
         </div>
         <div>
           <p class="glossary-def">Small-group reflective practice with an Academy Scholar. Not shadowing.</p>
-          <p class="glossary-detail">Half-day every three to four weeks (not weekly), in a small group with an <strong>Academy Scholar</strong> as your tutor. Plus periodic one-on-one progress review meetings where the Scholar coaches you on your learning plan. Pass/fail. Less about content, more about making sense of what you're learning across all the other streams. The reflections, sign-offs, and progress meetings are tracked in Elentra.</p>
+          <p class="glossary-detail">Portfolio includes scheduled small-group sessions, reflective work, self-assessment and progress-review meetings. Dates and submission requirements vary by year. Use the current Portfolio handbook and the submission platform identified by the Faculty.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7137,7 +7681,7 @@
         </div>
         <div>
           <p class="glossary-def">The actual placement visits inside ICE: HC.</p>
-          <p class="glossary-detail">Four placement types across the two years: <strong>LTC</strong> (long-term care, ~1 visit), <strong>IDD</strong> (intellectual &amp; developmental disabilities, ~1 visit), <strong>Flex</strong> (self-directed placements at community organizations, ~3–4 visits), and a longitudinal <strong>CBSL</strong> site (Community-Based Service Learning, one agency you return to ~4–5 times). All logged on MedSIS. Geographic restrictions apply: St. George students place within Toronto; MAM students place within Mississauga / GTA outside the City of Toronto.</p>
+          <p class="glossary-detail">The current ICE: HC manual describes the required CEE types, preparation, documentation and geographic rules. Because these requirements can change between cohorts, this guide explains the term but does not reproduce the checklist.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7147,7 +7691,7 @@
         </div>
         <div>
           <p class="glossary-def">Self-initiated shadowing. Short observerships you arrange yourself.</p>
-          <p class="glossary-detail">Lives under ICE: CAP. You email a physician (often via the MedSIS CAP catalogue or through tutors), arrange a half-day observership, and log it on MedSIS. <strong>Must be registered in advance</strong>: at least three weeks ahead for non-TAHSN sites, so the placement agreement can be put in place. <strong>You can't start shadowing until after the orientation seminar in October.</strong> Some EEE completion is required by the end of second year.</p>
+          <p class="glossary-detail">An EEE is an approved opportunity to observe a physician or clinical setting. Students receive an orientation before participating. Registration, site approval and completion requirements must be confirmed in the current ICE: CAP materials before arranging an experience.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7157,7 +7701,7 @@
         </div>
         <div>
           <p class="glossary-def">Practical exam where you rotate through stations performing clinical tasks.</p>
-          <p class="glossary-detail">Each station is timed (8–10 min) and assessed by a physician examiner. End of major blocks and end of pre-clerkship. Predictable; preparation with classmates is the standard approach.</p>
+          <p class="glossary-detail">OSCE formats, station lengths and timing vary. The Faculty's assessment instructions for your year are the source of truth. Practising histories, examinations and communication with classmates can help you prepare.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7167,17 +7711,17 @@
         </div>
         <div>
           <p class="glossary-def">Your home base for clinical learning. UofT MD has four.</p>
-          <p class="glossary-detail">FitzGerald (St. Mike's / St. Joe's), Peters-Boyd (Sunnybrook / Women's College / North York General), Wightman-Berris (UHN-anchored: TGH, TWH, Mount Sinai, plus community sites), and MAM (Mississauga Hospital / Credit Valley). Assigned, not chosen. One of the strongest predictors of where you'll spend clinical time.</p>
+          <p class="glossary-detail">The four academies are FitzGerald, Peters-Boyd, Wightman-Berris and the Mississauga Academy of Medicine. Your academy helps organize clinical learning, Portfolio and community. Assignments are made by the program; students with significant circumstances can ask the appropriate Faculty office about the current transfer process.</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">CaRMS</p>
-          <p class="glossary-expansion">Resident Matching</p>
+          <p class="glossary-expansion">Canadian Resident Matching Service</p>
         </div>
         <div>
-          <p class="glossary-def">The national algorithm that matches graduating students to residency programs.</p>
-          <p class="glossary-detail">Far away in year 1 but quietly shapes decisions throughout. Electives, research, reference letters, and personal statements all feed into your CaRMS file.</p>
+          <p class="glossary-def">The organization that administers residency matches in Canada.</p>
+          <p class="glossary-detail">CaRMS is most relevant later in medical school. Career advising, electives and application requirements should be followed through current Faculty and CaRMS guidance.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7187,7 +7731,47 @@
         </div>
         <div>
           <p class="glossary-def">The MD Program's curriculum management system.</p>
-          <p class="glossary-detail">Where you'll find your schedule, complete EEEs, submit assessments, and track competencies. You'll live in this system. Bookmark it.</p>
+          <p class="glossary-detail">Course pages, learning events and shared materials are commonly housed here. Your <strong>actual timetable is in MedSIS</strong>. The tools section below gives a clearer system-by-system breakdown.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">ISAL</p>
+          <p class="glossary-expansion">Integrated and Application Lectures</p>
+        </div>
+        <div>
+          <p class="glossary-def">Sessions near the end of a course subsection that bring together key concepts and challenging material.</p>
+          <p class="glossary-detail">ISAL sessions may use clinical cases, sample questions or student questions to reinforce learning. Attendance is mandatory when patients are present. Check the learning event for the session's specific expectations.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">ERAS</p>
+          <p class="glossary-expansion">Electronic Residency Application Service</p>
+        </div>
+        <div>
+          <p class="glossary-def">The AAMC application service used by applicants to participating U.S. residency programs.</p>
+          <p class="glossary-detail">ERAS is an application system, not a matching service. Students considering U.S. residency should seek current advising early and verify requirements directly with the AAMC and the relevant match organization.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">MD+</p>
+          <p class="glossary-expansion">Optional Enrichment Pathways</p>
+        </div>
+        <div>
+          <p class="glossary-def">An umbrella term used in this guide for optional programs and structured opportunities completed alongside the MD curriculum.</p>
+          <p class="glossary-detail">Programs differ in topic, workload, eligibility and deadline. Some recruit early in first year. See the <a href="academics.html#md-plus" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page's MD+ opportunity guide</a>, then verify the current application details with the program itself.</p>
+        </div>
+      </div>
+      <div class="glossary-row">
+        <div>
+          <p class="glossary-term">MCCQE</p>
+          <p class="glossary-expansion">Medical Council of Canada Qualifying Examination</p>
+        </div>
+        <div>
+          <p class="glossary-def">A national examination assessing knowledge and clinical decision-making at the level expected of a student completing a Canadian medical degree.</p>
+          <p class="glossary-detail">Students may apply when they meet the MCC's eligibility requirements, including being expected to complete all graduation requirements from an eligible school. Use the MCC website for current eligibility, sessions and application instructions.</p>
         </div>
       </div>
     </div>
@@ -7275,9 +7859,9 @@
     <div class="academy-transfers" id="academy-transfers">
       <div class="academy-transfers-header">
         <p class="academy-transfers-eyebrow">Academy &amp; Campus Transfers</p>
-        <h3 class="academy-transfers-title">If your assignment isn't where you need to be.</h3>
+        <h3 class="academy-transfers-title">If your academy assignment isn't what you were hoping for.</h3>
       </div>
-      <p class="academy-transfers-body">Academy and campus assignments are binding for four years, but transfers do happen for students whose circumstances change, typically for caregiving, health, or significant family situations. The program reviews each request individually. If you're considering it, start with OLA. They can walk you through what the process looks like before you formally apply.</p>
+      <p class="academy-transfers-body">Your academy assignment is intended to remain your clinical home base. If significant circumstances affect your ability to continue in that assignment, contact the Office of Learner Affairs to ask about the current process and available support. Requests are considered individually; this guide cannot predict an outcome.</p>
       <div class="academy-transfers-links">
         <a class="academy-transfers-link" href="https://meded.temertymedicine.utoronto.ca/transfers" target="_blank" rel="noopener">
           <span class="academy-transfers-link-label">Transfer process &amp; eligibility</span>
@@ -7357,8 +7941,8 @@
 
       <div style="padding: 32px; border-bottom: 1px solid var(--hairline);">
         <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--uoft-teal); font-weight: 700; margin-bottom: 8px;">Parking</p>
-        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">The MAM-specific pass.</h3>
-        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 12px;">You'll get an email in the summer to purchase a parking pass. Most MAM students buy the <strong>MAM-specific pass</strong>, discounted (~$600), runs late-August to end of May, and gets you into <strong>lots P4 and P8</strong>. Both are a 2–3 minute walk to TDHSC.</p>
+        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">The MAM-specific pass.</h4>
+        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 12px;">Parking options, eligible lots, prices and permit dates can change each year. Watch for the MAM or UTM parking instructions sent to your cohort before purchasing a permit.</p>
         <div class="callout-soft" style="margin-top: 16px; border-left: 3px solid #c0392b; padding: 14px 18px;">
           <strong>Don't park in P9.</strong> P9 is the lot right in front of TDHSC. Every cohort tries to finesse it; every cohort gets ticketed. They check. Use P4 or P8.
         </div>
@@ -7367,13 +7951,13 @@
 
       <div style="padding: 32px; border-bottom: 1px solid var(--hairline);">
         <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--uoft-teal); font-weight: 700; margin-bottom: 8px;">MiWay</p>
-        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Free with tuition.</h3>
+        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Included transit access.</h4>
         <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);">Mississauga's transit system (MiWay) is included in your incidental fees. Worth using when you don't want to drive and don't need to be downtown. Routes 110 and 109 connect Square One to UTM directly, a key factor in where many MAMers choose to live.</p>
       </div>
 
       <div style="padding: 32px;">
         <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--uoft-teal); font-weight: 700; margin-bottom: 8px;">Inter-site shuttle</p>
-        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">For clinical skills mornings.</h3>
+        <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">For clinical skills mornings.</h4>
         <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);">There's a dedicated shuttle from UTM to <strong>Mississauga Hospital</strong> or <strong>Credit Valley Hospital</strong> on clinical skills mornings, returning to UTM after. A second shuttle runs between MH and CVH directly. You don't need to figure out parking at the hospital sites for these sessions.</p>
       </div>
 
@@ -7387,8 +7971,8 @@
 
       <div class="academy-card">
         <h3 class="academy-card-name">UTM Shuttle Bus <span class="academy-card-name-sub">The default for O-Week</span></h3>
-        <p class="academy-card-meta">Free (covered by tuition) · ~1 hr with current Gardiner construction</p>
-        <p class="academy-card-vibe">Picks up at the Instructional Centre at UTM and drops at Wetmore Hall on St. George. Bring your T-Card. The driver will check or scan it. First shuttle leaves UTM at 5:55 AM; last shuttle leaves St. George at 10:35 PM (Mon–Thu) or 9:35 PM (Fri).</p>
+        <p class="academy-card-meta">Included for eligible UTM students · Travel time is traffic-dependent</p>
+        <p class="academy-card-vibe">The UTM–St. George shuttle is often the simplest downtown option. Bring your TCard and check the official schedule before every trip because routes, stops and service hours can change by term.</p>
         <p class="academy-card-list-eyebrow">Two things to know</p>
         <ul class="academy-card-list">
           <li>Access only activates once the school year starts. T-Card won't scan beforehand</li>
@@ -7399,12 +7983,12 @@
 
       <div class="academy-card">
         <h3 class="academy-card-name">GO Train</h3>
-        <p class="academy-card-meta">Costs money · Runs late · Most comfortable option</p>
-        <p class="academy-card-vibe">Two lines serve Mississauga. The <strong>Lakeshore West</strong> line (Clarkson and Port Credit GO) is closest to UTM. Clarkson to Union is 35–40 minutes. The <strong>Milton</strong> line serves Dixie, Cooksville, Erindale, Streetsville, and Meadowvale. From Union, take Line 1 to Queen's Park for MSB (~10–15 min).</p>
-        <p class="academy-card-list-eyebrow">Service hours</p>
+        <p class="academy-card-meta">Paid fare · Often useful when shuttle timing does not work</p>
+        <p class="academy-card-vibe">Lakeshore West and Milton-line stations serve different parts of Mississauga. Compare the full door-to-door trip in a current transit planner, including the connection from Union Station to the Medical Sciences Building.</p>
+        <p class="academy-card-list-eyebrow">Before travelling</p>
         <ul class="academy-card-list">
-          <li>First train from Clarkson: 5:24 AM</li>
-          <li>Last train from Union: 12:17 AM (Mon–Thu), 12:47 AM (Fri)</li>
+          <li>Check the current GO schedule and service alerts</li>
+          <li>Compare the final local-transit connection, not only train time</li>
           <li>Apply the <a href="https://www.gotransit.com/en/student-savings/post-secondary-discount" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">Presto post-secondary discount</a> — you qualify</li>
         </ul>
       </div>
@@ -7430,7 +8014,7 @@
     background: #fffdf0 !important;
   }
   .needs-content::after {
-    content: '📝 Needs real content';
+    content: 'Upper-year input needed';
     position: absolute;
     top: 8px;
     right: 8px;
@@ -7652,7 +8236,7 @@
           <li><span class="prayer-list-name">Toronto Western (TWH)</span><span class="prayer-list-loc">4th floor, Fell Pavilion, Room 108</span></li>
           <li><span class="prayer-list-name">Mount Sinai (MSH)</span><span class="prayer-list-loc">4th floor. exit through University Ave elevators, turn right, enter through doors right beside the registration / volunteer desk</span></li>
           <li><span class="prayer-list-name">Princess Margaret (PMH)</span><span class="prayer-list-loc">Main floor, Room M909</span></li>
-          <li><span class="prayer-list-name">St. Michael's (SMH)</span><span class="prayer-list-loc">3rd floor, Bond Wing, Room 3-010 · door code <strong>1937</strong></span></li>
+          <li><span class="prayer-list-name">St. Michael's (SMH)</span><span class="prayer-list-loc">Prayer space access can change. Contact MMAC for the current room and access instructions.</span></li>
           <li><span class="prayer-list-name">SickKids</span><span class="prayer-list-loc">1st floor, Atrium, Room 1730</span></li>
           <li><span class="prayer-list-name">Women's College (WCH)</span><span class="prayer-list-loc">Peter Gilgan Atrium, Room 1415 · weekdays 9am–4pm. With badge access: 10th floor. exit elevators, first door on left</span></li>
           <li><span class="prayer-list-name">Toronto Rehab (TRI), University site</span><span class="prayer-list-loc">Room 6-204</span></li>
@@ -7760,11 +8344,11 @@
           <span class="eyebrow-text">OMSA</span>
         </div>
         <h3>Ontario Medical Students Association</h3>
-        <p>The provincial body representing all six Ontario medical schools. Membership is automatic for UofT MD students. No separate sign-up.</p>
+        <p>Ontario's provincial medical-student voice to the OMA. Students from each Ontario medical school elect representatives to its council.</p>
         <ul class="data-bullets">
-          <li>Provincial advocacy on tuition, wellness, accommodations, and CaRMS issues</li>
-          <li>Annual events: OMSA Education Day, lobby day at Queen's Park</li>
-          <li>Coordinates with the school student council (MSS) on shared positions</li>
+          <li>Provincial advocacy, services and student opportunities</li>
+          <li>Events, educational resources, grants and mentorship initiatives vary by year</li>
+          <li>Ask your VP External how UofT students can participate</li>
         </ul>
         <a class="resource-link-mini" href="https://omsa.ca" target="_blank" rel="noopener">omsa.ca <span class="footer-ext">↗</span></a>
       </article>
@@ -7775,19 +8359,18 @@
           <span class="eyebrow-text">OMA</span>
         </div>
         <h3>Ontario Medical Association</h3>
-        <p>The provincial physician association. Medical students join free as Student Members and get more practical perks than you'd expect.</p>
+        <p>The provincial association representing physicians, residents and medical students. Student membership currently costs <strong>$10 per year</strong>.</p>
         <ul class="data-bullets">
-          <li><strong>Free OMA Insurance</strong>: life, disability, and other coverage on student-friendly terms (worth a look in M1)</li>
-          <li>OMA Practice Management resources and discounted CME content</li>
-          <li>Student section advocacy and an annual student conference</li>
-          <li>Discount programs: hotels, car rental, professional services</li>
+          <li>Access to member programs, services and discounts</li>
+          <li>Student participation in OMA advocacy and professional activities</li>
+          <li>Eligibility for the separate OMA Insurance Essentials for Students offering, which currently includes discounted disability and complimentary life insurance</li>
         </ul>
         <a class="resource-link-mini" href="https://www.oma.org/membership/medical-students/" target="_blank" rel="noopener">Join as a student <span class="footer-ext">↗</span></a>
       </article>
     </div>
 
     <div class="callout-soft">
-      <strong>Worth doing in M1:</strong> register your free OMA student membership and review the OMA Insurance options. The disability and life policies are designed around physician income trajectories and are usually a better deal than commercial alternatives, and the best time to set them up is while you're young and healthy.
+      <strong>Membership and insurance are separate decisions.</strong> Review the current OMA membership fee and insurance terms directly before enrolling. Insurance needs are personal; this student guide does not recommend a particular product.
     </div>
   </div>
 </section>
@@ -7801,14 +8384,14 @@
         <span class="eyebrow-text">Wellness &amp; Support</span>
       </div>
       <h2>You don't have to figure this out alone.</h2>
-      <p>Medical school is hard. Burnout, anxiety, and impostor syndrome are statistically common. The Faculty built support specifically for this. Use it earlier than you think you need to. None of this affects your academic record.</p>
+      <p>Academic, personal, accessibility and wellbeing support is available through the Faculty and University. You do not need to decide which office is perfect before reaching out; start with the official support pages below.</p>
     </div>
 
     <div class="wellness-grid">
       <a class="wellness-card wellness-card-primary" href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">
-        <p class="wellness-card-eyebrow">First call · Confidential</p>
+        <p class="wellness-card-eyebrow">A practical first contact</p>
         <h3 class="wellness-card-title">Office of Learner Affairs (OLA)</h3>
-        <p class="wellness-card-body">Your dedicated Faculty support office. Confidential one-on-one meetings with learner affairs counsellors and physician advisors who specifically understand the medical-school context. Academic concerns, personal issues, accommodation requests, mistreatment, financial stress, anything affecting your ability to be a student. <strong>Conversations with OLA are confidential and do not appear in your academic record.</strong></p>
+        <p class="wellness-card-body">The Office of Learner Affairs supports MD students with academic concerns, personal issues, wellbeing, accommodations and navigating available resources. Review its current privacy and service information directly, especially if you have questions about confidentiality or documentation.</p>
         <span class="wellness-card-cta">Visit the OLA site <span class="footer-ext">↗</span></span>
       </a>
 
@@ -7822,30 +8405,29 @@
       <a class="wellness-card" href="https://meded.temertymedicine.utoronto.ca/accommodation-accessibility" target="_blank" rel="noopener">
         <p class="wellness-card-eyebrow">Accommodations</p>
         <h3 class="wellness-card-title">Accessibility &amp; religious accommodations</h3>
-        <p class="wellness-card-body">For disability-related accommodations (including ME accommodations), contact UofT Accessibility Services first. They assess your needs and set up a plan that OLA then implements in the MD Program. Religious observance accommodations go through OLA directly. Both are confidential and separate from your academic record.</p>
+        <p class="wellness-card-body">The Faculty's official page explains how disability-related and religious accommodations are handled in the MD Program and where to begin. Start early when possible because documentation and implementation can take time.</p>
         <span class="wellness-card-cta">Accommodation &amp; Accessibility <span class="footer-ext">↗</span></span>
       </a>
     </div>
 
     <div class="callout-soft" style="margin-top: 28px; border-left: 3px solid var(--uoft-navy);">
-      <strong>If you're in crisis right now:</strong> call or text <strong>9-8-8</strong> (Canada's Suicide Crisis Helpline, free, 24/7) or go to your nearest emergency department. The OLA and personal supports above are for ongoing support; <strong>9-8-8</strong> and ER are for immediate help.
+      <strong>If there is an immediate risk to your health or safety,</strong> contact local emergency services or go to the nearest emergency department. The Faculty's Personal Supports directory lists current urgent and ongoing support options.
     </div>
 
-    <p class="wellness-footer-note">Two things worth knowing: <strong>using these supports is normal</strong>. A meaningful fraction of every cohort uses OLA at some point in M1, often for things they would have called "not a big deal" before they got to medical school. And <strong>seeking support is not the same as making a formal complaint</strong>. A confidential conversation with a learner advocate doesn't trigger any process unless you decide to escalate.</p>
+    <p class="wellness-footer-note"><strong>You can ask what happens next before sharing details.</strong> If privacy, documentation or escalation is a concern, ask the office to explain its process and limits before you proceed.</p>
   </div>
 </section>
 
 <!-- ============ Cited tools and systems ============ -->
 <section class="section" id="platforms" style="position: relative;">
-  <img class="cg-egg-peek cg-egg-peek-bl" src="assets/cg/cg-binoculars.png" alt="" aria-hidden="true" loading="lazy" />
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Tools &amp; Systems</span>
       </div>
-      <h2>The platforms you'll live in.</h2>
-      <p>Most of medical school happens across half a dozen platforms. None of them talk to each other particularly well. Bookmark all of them the day you get your UTORid. Don't be surprised when something has to be done in a system you've never opened before.</p>
+      <h2>Use the right platform.</h2>
+      <p>The confusing part is rarely logging in. It is knowing which system holds what. This is a practical orientation only; follow the platform named in the Faculty's current instructions when a task is due.</p>
     </div>
 
     <div class="platform-grid">
@@ -7855,12 +8437,11 @@
           <p class="platform-card-eyebrow">Curriculum hub</p>
           <h3 class="platform-card-name">Elentra</h3>
         </div>
-        <p class="platform-card-desc">The MD Program's curriculum content platform. Lecture slides, pre-readings, CBL cases, ICE assignments, and Portfolio submissions all live here. <strong>This is where your course material lives.</strong> If Elentra and a classmate disagree on what's been posted, trust Elentra.</p>
+        <p class="platform-card-desc">The MD Program's curriculum platform. <strong>Start here for course pages and learning-event material.</strong></p>
         <ul class="platform-card-uses">
-          <li>Download lecture slides + pre-readings</li>
-          <li>Access CBL cases and ICE content</li>
-          <li>Complete EEE (mandatory clinical experiences)</li>
-         <li>Submit Portfolio reflections</li>
+          <li>Open course and learning-event pages</li>
+          <li>Access posted slides, readings and cases</li>
+          <li>Review course announcements and instructions</li>
         </ul>
         <a class="platform-card-link" href="https://meded.utoronto.ca/medicine" target="_blank" rel="noopener">meded.utoronto.ca/medicine <span class="footer-ext">↗</span></a>
       </article>
@@ -7885,12 +8466,11 @@
           <p class="platform-card-eyebrow">Clinical / placements</p>
           <h3 class="platform-card-name">MedSIS</h3>
         </div>
-        <p class="platform-card-desc">The MD Program's clinical learning record system, and where your <strong>actual timetable lives</strong>. Your day-to-day schedule (sessions, locations, times) is in MedSIS. It also tracks your placements, clinical assessments, and onboarding modules.</p>
+        <p class="platform-card-desc">The MD Program system where your <strong>actual timetable lives</strong>. Use it for session times and locations, plus the MD-specific tasks assigned to you there.</p>
         <ul class="platform-card-uses">
           <li>Check your weekly timetable and session locations</li>
-          <li>Complete M1 registration / orientation modules</li>
-          <li>View your clinical placement schedule</li>
-         <li>Submit clinical assessments</li>
+          <li>Complete assigned registration or orientation modules</li>
+          <li>Follow current placement and experience instructions</li>
         </ul>
         <a class="platform-card-link" href="http://medsis.utoronto.ca/" target="_blank" rel="noopener">medsis.utoronto.ca <span class="footer-ext">↗</span></a>
       </article>
@@ -7900,10 +8480,10 @@
           <p class="platform-card-eyebrow">Portfolio</p>
           <h3 class="platform-card-name">OASES</h3>
         </div>
-        <p class="platform-card-desc">The system used for Portfolio submissions and reflective work. Your reflections, supervisor sign-offs, and Portfolio milestones all sync here. Pass/fail, but consistent neglect adds up.</p>
+        <p class="platform-card-desc">A submission system used for assigned MD Program work, including Portfolio submissions when directed. <strong>It is not your timetable.</strong></p>
         <ul class="platform-card-uses">
-          <li>Submit Portfolio reflections by deadline</li>
-          <li>Track Portfolio sign-offs from supervisor</li>
+          <li>Submit the work identified in current Faculty instructions</li>
+          <li>Use the deadline and naming conventions provided for your cohort</li>
         </ul>
         <a class="platform-card-link" href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">medit.med.utoronto.ca/OASES <span class="footer-ext">↗</span></a>
       </article>
@@ -7913,11 +8493,10 @@
           <p class="platform-card-eyebrow">Marks &amp; progression</p>
           <h3 class="platform-card-name">Learner Chart</h3>
         </div>
-        <p class="platform-card-desc">Your overall progression view in the MD Program: assessments, ME results, OSCE scores, completion of mandatory components. The closest thing to a "transcript" view of your medical school progress.</p>
+        <p class="platform-card-desc">A learner-facing view used for assessment and progression information made available by the MD Program.</p>
         <ul class="platform-card-uses">
-          <li>See ME and OSCE scores</li>
-          <li>Track completion of mandatory milestones</li>
-          <li>Pull progression summaries when needed</li>
+          <li>Review released assessment information</li>
+          <li>Follow Faculty instructions for interpreting your record</li>
         </ul>
         <a class="platform-card-link" href="https://medit.med.utoronto.ca/learner-chart" target="_blank" rel="noopener">medit.med.utoronto.ca/learner-chart <span class="footer-ext">↗</span></a>
       </article>
@@ -7927,10 +8506,10 @@
           <p class="platform-card-eyebrow">Quizzes &amp; review</p>
           <h3 class="platform-card-name">ExamSoft</h3>
         </div>
-        <p class="platform-card-desc">Web portal where you view your exam results and review questions after the fact. Result release timing is set by the Faculty per assessment.</p>
+        <p class="platform-card-desc">An assessment portal used when identified by the Faculty. Availability and review functions depend on the assessment.</p>
         <ul class="platform-card-uses">
-          <li>View ME / quiz results when released</li>
-          <li>Review missed questions and rationales</li>
+          <li>Follow the assessment-specific access instructions</li>
+          <li>Check Faculty communications for result-release details</li>
         </ul>
         <a class="platform-card-link" href="https://ei.examsoft.com/GKWeb/login/utorontomed" target="_blank" rel="noopener">ei.examsoft.com/GKWeb/login/utorontomed <span class="footer-ext">↗</span></a>
       </article>
@@ -7940,11 +8519,11 @@
           <p class="platform-card-eyebrow">Exam app</p>
           <h3 class="platform-card-name">Examplify</h3>
         </div>
-        <p class="platform-card-desc">The lockdown browser app where Mastery Exercises (MEs) actually run. Install it on your laptop early in M1. <strong>Don't wait until your first ME week.</strong> The Faculty sends activation instructions via email.</p>
+        <p class="platform-card-desc">The secure application used for assessments when directed by the Faculty. Install and test the required version using the instructions sent for your cohort.</p>
         <ul class="platform-card-uses">
-          <li>Install + register before your first ME</li>
-          <li>Download the exam file in advance when prompted</li>
-          <li>Run a practice / system check before exam day</li>
+          <li>Complete required setup before the stated deadline</li>
+          <li>Run the assigned practice or system check</li>
+          <li>Use the Faculty's technical-support pathway if setup fails</li>
         </ul>
       </article>
 
@@ -7965,7 +8544,7 @@
 
     <div class="platform-callout">
       <p class="platform-callout-eyebrow">Faculty index page</p>
-      <p class="platform-callout-text">All of the above (and a few minor systems) are listed on the Faculty's official index, which gets updated as platforms change.</p>
+      <p class="platform-callout-text">Start with the Faculty's official index. It is the best place to confirm current platform links as systems change.</p>
       <a class="platform-callout-link" href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources <span class="footer-ext">↗</span></a>
     </div>
 
@@ -7989,7 +8568,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -8005,7 +8584,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -8028,11 +8607,10 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){
@@ -8041,6 +8619,370 @@
   window.addEventListener('scroll', function() {
     btn.classList.toggle('visible', window.scrollY > 600);
   }, { passive: true });
+})();
+</script>
+<script>
+(function () {
+  var glossary = document.querySelector('#vocabulary .glossary');
+  var search = document.getElementById('glossary-search');
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.glossary-filter'));
+  var resultText = document.querySelector('.glossary-results');
+  if (!glossary || !search || !filters.length) return;
+
+  var groups = {
+    program: ['Foundations', 'Clerkship', 'Academy'],
+    year1: ['CBL', 'ICE', 'ICE: Clinical Skills', 'ICE: HC', 'ICE: CAP', 'Portfolio', 'CEE', 'EEE', 'ISAL', 'OSCE', 'MD+'],
+    year2: ['CBL', 'ICE', 'ICE: Clinical Skills', 'ICE: HC', 'ICE: CAP', 'Portfolio', 'ICE: FMLE', 'CEE', 'EEE', 'ISAL', 'OSCE', 'MD+'],
+    later: ['Clerkship', 'CaRMS', 'ERAS', 'MCCQE'],
+    systems: ['Elentra']
+  };
+  var activeGroup = 'all';
+  var rows = Array.prototype.slice.call(glossary.querySelectorAll('.glossary-row'));
+
+  rows.forEach(function (row, index) {
+    var termNode = row.querySelector('.glossary-term');
+    var detail = row.querySelector('.glossary-detail');
+    var definition = row.querySelector('.glossary-def');
+    if (!termNode || !detail || !definition) return;
+    var term = termNode.textContent.trim();
+    row.dataset.category = Object.keys(groups).filter(function (key) {
+      return groups[key].indexOf(term) !== -1;
+    }).join(' ') || 'program';
+    detail.id = 'glossary-detail-' + index;
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'glossary-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', detail.id);
+    toggle.textContent = 'More context';
+    definition.insertAdjacentElement('afterend', toggle);
+    toggle.addEventListener('click', function () {
+      var open = row.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'Less context' : 'More context';
+    });
+  });
+
+  function updateGlossary() {
+    var query = search.value.trim().toLowerCase();
+    var visible = 0;
+    rows.forEach(function (row) {
+      var groupMatch = activeGroup === 'all' || row.dataset.category.split(' ').indexOf(activeGroup) !== -1;
+      var queryMatch = !query || row.textContent.toLowerCase().indexOf(query) !== -1;
+      row.hidden = !(groupMatch && queryMatch);
+      if (!row.hidden) visible += 1;
+    });
+    var note = activeGroup === 'year2' ? ' Year 2 continues many Year 1 streams and adds FMLE.' : '';
+    resultText.textContent = visible + (visible === 1 ? ' term shown.' : ' terms shown.') + note;
+  }
+
+  filters.forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeGroup = button.dataset.glossaryFilter;
+      filters.forEach(function (item) {
+        item.classList.toggle('is-active', item === button);
+      });
+      updateGlossary();
+    });
+  });
+  search.addEventListener('input', updateGlossary);
+  updateGlossary();
+})();
+</script>
+<script>
+(function () {
+  function makeButton(label, className) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = className || '';
+    button.textContent = label;
+    return button;
+  }
+
+  /* TCard: keep the sequence visible, reveal only the checklist needed */
+  document.querySelectorAll('#getting-set-up .onboarding-step').forEach(function (step, index) {
+    var title = step.querySelector('.onboarding-step-title');
+    var body = step.querySelector('.onboarding-step-body');
+    if (!title || !body) return;
+    var button = makeButton('Show checklist', 'onboarding-step-toggle');
+    button.setAttribute('aria-expanded', 'false');
+    body.appendChild(button);
+    button.addEventListener('click', function () {
+      var open = step.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', String(open));
+      button.textContent = open ? 'Hide checklist' : 'Show checklist';
+    });
+  });
+
+  /* Academies: four compact choices, one readable profile */
+  var academyGrid = document.querySelector('#academies .academy-grid');
+  if (academyGrid) {
+    var academyCards = Array.prototype.slice.call(academyGrid.querySelectorAll(':scope > .academy-card'));
+    if (academyCards.length) {
+      var selector = document.createElement('div');
+      selector.className = 'academy-selector';
+      selector.setAttribute('role', 'tablist');
+      selector.setAttribute('aria-label', 'Choose an academy');
+      var focus = document.createElement('div');
+      focus.className = 'academy-focus';
+      focus.setAttribute('role', 'tabpanel');
+      academyGrid.before(selector, focus);
+      academyGrid.classList.add('is-enhanced');
+      function showAcademy(index) {
+        focus.innerHTML = '';
+        focus.appendChild(academyCards[index].cloneNode(true));
+        Array.prototype.forEach.call(selector.children, function (button, buttonIndex) {
+          var active = buttonIndex === index;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-selected', String(active));
+        });
+      }
+      academyCards.forEach(function (card, index) {
+        var heading = card.querySelector('.academy-card-name');
+        var shortName = heading ? heading.childNodes[0].textContent.trim() : 'Academy ' + (index + 1);
+        var button = makeButton(shortName);
+        button.setAttribute('role', 'tab');
+        button.addEventListener('click', function () { showAcademy(index); });
+        selector.appendChild(button);
+      });
+      showAcademy(0);
+    }
+  }
+
+  /* MAM field guide: three useful views instead of one very long article */
+  var mamContainer = document.querySelector('#mam-field-guide .container');
+  if (mamContainer) {
+    var headings = Array.prototype.slice.call(mamContainer.children).filter(function (node) {
+      return node.tagName === 'H3';
+    });
+    if (headings.length) {
+      var tabs = document.createElement('div');
+      tabs.className = 'mam-tabs';
+      tabs.setAttribute('role', 'tablist');
+      tabs.setAttribute('aria-label', 'MAM field guide topics');
+      var panels = [];
+      headings.forEach(function (heading, index) {
+        var panel = document.createElement('div');
+        panel.className = 'mam-panel';
+        panel.setAttribute('role', 'tabpanel');
+        panel.id = 'mam-panel-' + index;
+        heading.before(panel);
+        var node = heading;
+        while (node && (node === heading || node.tagName !== 'H3')) {
+          var next = node.nextElementSibling;
+          panel.appendChild(node);
+          node = next;
+          if (!node || node.tagName === 'H3') break;
+        }
+        panels.push(panel);
+        var label = heading.textContent.replace(/\.$/, '');
+        var button = makeButton(label);
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-controls', panel.id);
+        button.addEventListener('click', function () {
+          panels.forEach(function (item, panelIndex) {
+            var active = panelIndex === index;
+            item.hidden = !active;
+            tabs.children[panelIndex].classList.toggle('is-active', active);
+            tabs.children[panelIndex].setAttribute('aria-selected', String(active));
+          });
+        });
+        tabs.appendChild(button);
+      });
+      panels[0].before(tabs);
+      Array.prototype.forEach.call(tabs.children, function (button, index) {
+        button.click();
+        if (index !== 0) panels[index].hidden = true;
+      });
+      tabs.children[0].click();
+    }
+  }
+
+  /* Student life: filter the directory without hiding the broader context below it */
+  var groupsGrid = document.querySelector('#community-groups .groups-grid');
+  if (groupsGrid) {
+    var groupCards = Array.prototype.slice.call(groupsGrid.querySelectorAll(':scope > .group-card'));
+    if (groupCards.length) {
+      var groupFilters = document.createElement('div');
+      groupFilters.className = 'group-filters';
+      var groupOptions = [
+        ['all', 'All groups'],
+        ['council', 'Councils'],
+        ['faith', 'Faith'],
+        ['cultural', 'Cultural'],
+        ['affinity', 'Affinity'],
+        ['arts', 'Arts & activities']
+      ];
+      groupOptions.forEach(function (option, optionIndex) {
+        var button = makeButton(option[1]);
+        button.addEventListener('click', function () {
+          groupCards.forEach(function (card) {
+            var label = (card.querySelector('.group-card-eyebrow') || {}).textContent || '';
+            card.hidden = option[0] !== 'all' && label.toLowerCase().indexOf(option[0]) === -1;
+          });
+          Array.prototype.forEach.call(groupFilters.children, function (item) {
+            item.classList.toggle('is-active', item === button);
+          });
+          groupsGrid.classList.add('is-filtered');
+        });
+        groupFilters.appendChild(button);
+      });
+      groupsGrid.before(groupFilters);
+      groupFilters.children[1].click();
+    }
+  }
+
+  /* Platforms: let the student's task choose the system */
+  var platformGrid = document.querySelector('#platforms .platform-grid');
+  if (platformGrid) {
+    var platformCards = Array.prototype.slice.call(platformGrid.querySelectorAll(':scope > .platform-card'));
+    var platformTasks = [
+      ['all', 'Show all'],
+      ['MedSIS', 'Find my schedule'],
+      ['Elentra', 'Open course material'],
+      ['OASES', 'Submit assigned work'],
+      ['ACORN', 'Fees & enrolment'],
+      ['assessment', 'Assessment tools']
+    ];
+    var taskbar = document.createElement('div');
+    taskbar.className = 'platform-taskbar';
+    taskbar.setAttribute('aria-label', 'Choose what you need to do');
+    var taskNote = document.createElement('p');
+    taskNote.className = 'platform-task-note';
+    taskNote.textContent = 'Choose a task to show the most relevant system. You can always return to the full directory.';
+    platformTasks.forEach(function (task, taskIndex) {
+      var button = makeButton(task[1]);
+      button.classList.toggle('is-active', taskIndex === 0);
+      button.addEventListener('click', function () {
+        platformCards.forEach(function (card) {
+          var name = (card.querySelector('.platform-card-name') || {}).textContent || '';
+          var assessment = ['Learner Chart', 'ExamSoft', 'Examplify'].indexOf(name.trim()) !== -1;
+          card.hidden = task[0] !== 'all' && name.trim() !== task[0] && !(task[0] === 'assessment' && assessment);
+        });
+        Array.prototype.forEach.call(taskbar.children, function (item) {
+          item.classList.toggle('is-active', item === button);
+        });
+        platformGrid.classList.toggle('is-filtered', task[0] !== 'all');
+      });
+      taskbar.appendChild(button);
+    });
+    platformGrid.before(taskbar, taskNote);
+    var bookmarkLabel = document.createElement('h3');
+    bookmarkLabel.className = 'quick-links-label';
+    bookmarkLabel.textContent = 'Official links worth bookmarking';
+    var callout = document.querySelector('#platforms .platform-callout');
+    if (callout) callout.before(bookmarkLabel);
+  }
+
+  /* One program map only: place it in Program Structure and remove the old two-column repetition */
+  var learningMap = document.querySelector('#vocabulary .learning-map');
+  var programHeader = document.querySelector('#program-structure .section-header');
+  if (learningMap && programHeader) programHeader.insertAdjacentElement('afterend', learningMap);
+
+  /* Put the full platform chooser directly after the glossary */
+  var platformsSection = document.getElementById('platforms');
+  var vocabularySection = document.getElementById('vocabulary');
+  if (platformsSection && vocabularySection) vocabularySection.insertAdjacentElement('afterend', platformsSection);
+
+  /* Keep official bookmarks as the final page section */
+  if (platformsSection) {
+    var officialCallout = platformsSection.querySelector('.platform-callout');
+    var officialFooter = platformsSection.querySelector('.platform-footer-note');
+    var oldBookmarkLabel = platformsSection.querySelector('.quick-links-label');
+    if (officialCallout || officialFooter) {
+      var quickLinks = document.createElement('section');
+      quickLinks.className = 'quick-links-section';
+      quickLinks.id = 'quick-links';
+      var quickContainer = document.createElement('div');
+      quickContainer.className = 'container';
+      quickContainer.innerHTML = '<div class="section-header"><div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Official sources</span></div><h2>Links worth bookmarking.</h2><p>Use these pages when a policy, deadline or platform detail needs to be current.</p></div>';
+      quickLinks.appendChild(quickContainer);
+      if (oldBookmarkLabel) oldBookmarkLabel.remove();
+      if (officialCallout) quickContainer.appendChild(officialCallout);
+      if (officialFooter) quickContainer.appendChild(officialFooter);
+      var pageFlow = document.querySelector('.has-toc');
+      if (pageFlow) pageFlow.appendChild(quickLinks);
+    }
+  }
+
+  /* Council roles: leadership, academy representation and working portfolios */
+  var councilRoles = document.querySelector('#community-groups .council-roles');
+  if (councilRoles) {
+    var councilGrid = councilRoles.querySelector('.council-roles-grid');
+    var councilGroups = councilGrid ? Array.prototype.slice.call(councilGrid.children) : [];
+    if (councilGroups.length) {
+      var roleFilters = document.createElement('div');
+      roleFilters.className = 'council-role-filters';
+      var roleOptions = [
+        ['all', 'All positions'],
+        ['leadership', 'Leadership & community'],
+        ['academy', 'Academy & hospital reps'],
+        ['academic', 'Academic portfolios']
+      ];
+      councilGroups.forEach(function (group) {
+        var title = (group.querySelector('.council-roles-group-title') || {}).textContent || '';
+        var lower = title.toLowerCase();
+        group.dataset.roleGroup = /academy/.test(lower) ? 'academy' :
+          /educational|academic/.test(lower) ? 'academic' : 'leadership';
+      });
+      roleOptions.forEach(function (option, index) {
+        var button = makeButton(option[1]);
+        button.classList.toggle('is-active', index === 0);
+        button.addEventListener('click', function () {
+          councilGroups.forEach(function (group) {
+            group.hidden = option[0] !== 'all' && group.dataset.roleGroup !== option[0];
+          });
+          Array.prototype.forEach.call(roleFilters.children, function (item) {
+            item.classList.toggle('is-active', item === button);
+          });
+          councilGrid.classList.toggle('is-filtered', option[0] !== 'all');
+        });
+        roleFilters.appendChild(button);
+      });
+      councilGrid.before(roleFilters);
+    }
+  }
+
+  /* Interest groups belong with the council and student-opportunity map */
+  var interestBlock = document.querySelector('#community-groups .interest-groups-block');
+  var interestHeading = interestBlock ? interestBlock.previousElementSibling : null;
+  var interestNote = interestHeading ? interestHeading.previousElementSibling : null;
+  if (councilRoles && interestBlock) {
+    var interestTitle = document.createElement('h3');
+    interestTitle.className = 'interest-groups-title';
+    interestTitle.textContent = 'Interest groups';
+    interestBlock.prepend(interestTitle);
+    councilRoles.appendChild(interestBlock);
+    if (interestHeading && interestHeading.classList.contains('student-life-subhead-note')) interestHeading.remove();
+    if (interestNote && interestNote.classList.contains('student-life-subhead')) interestNote.remove();
+  }
+
+  /* Prayer-space directory as an accessible modal instead of another full wall */
+  var prayerHeading = document.getElementById('prayer-spaces');
+  var prayerNote = prayerHeading ? prayerHeading.nextElementSibling : null;
+  var prayerGrid = prayerNote ? prayerNote.nextElementSibling : null;
+  var prayerCredit = prayerGrid ? prayerGrid.nextElementSibling : null;
+  if (prayerHeading && prayerGrid && prayerGrid.classList.contains('prayer-spaces-grid')) {
+    var prayerLaunch = document.createElement('div');
+    prayerLaunch.className = 'prayer-launch';
+    prayerLaunch.innerHTML = '<div><h3>Prayer spaces</h3><p>Search the student-compiled directory by hospital or campus. Access details can change.</p></div>';
+    var openPrayer = makeButton('Open directory');
+    prayerLaunch.appendChild(openPrayer);
+    var prayerDialog = document.createElement('dialog');
+    prayerDialog.className = 'prayer-dialog';
+    prayerDialog.innerHTML = '<div class="prayer-dialog-header"><h3>Prayer spaces</h3><button class="prayer-dialog-close" type="button" aria-label="Close prayer-space directory">×</button></div>';
+    prayerDialog.appendChild(prayerGrid);
+    if (prayerCredit && prayerCredit.classList.contains('prayer-spaces-credit')) prayerDialog.appendChild(prayerCredit);
+    prayerHeading.before(prayerLaunch);
+    prayerLaunch.after(prayerDialog);
+    prayerHeading.remove();
+    if (prayerNote && prayerNote.classList.contains('student-life-subhead-note')) prayerNote.remove();
+    openPrayer.addEventListener('click', function () { prayerDialog.showModal(); });
+    prayerDialog.querySelector('.prayer-dialog-close').addEventListener('click', function () { prayerDialog.close(); });
+    prayerDialog.addEventListener('click', function (event) {
+      if (event.target === prayerDialog) prayerDialog.close();
+    });
+  }
 })();
 </script>
 </body>

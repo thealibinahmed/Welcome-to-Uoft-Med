@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>UofT MD Guide. Class of 3T0</title>
+<title>Welcome to UofT Medicine · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -122,7 +122,7 @@
     line-height: 1;
   }
   .nav { display: none; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-  @media (min-width: 768px) { .nav { display: flex; } }
+  @media (min-width: 1100px) { .nav { display: flex; } }
   @media (min-width: 1100px) { .nav { gap: 28px; } }
   .nav a {
     font-size: 13px;
@@ -147,6 +147,65 @@
     height: 2px;
     background: var(--uoft-teal);
   }
+  .mobile-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 11px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--uoft-navy);
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  @media (min-width: 1100px) { .mobile-nav-toggle { display: none; } }
+  .mobile-nav-toggle-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .mobile-nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    right: 0;
+    z-index: 39;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding: 18px 24px 28px;
+    background: white;
+    border-bottom: 1px solid var(--hairline);
+    box-shadow: 0 16px 30px rgba(0, 26, 112, 0.1);
+  }
+  .mobile-nav[hidden] { display: none; }
+  @media (min-width: 1100px) { .mobile-nav { display: none !important; } }
+  .mobile-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid var(--hairline);
+  }
+  @media (min-width: 640px) {
+    .mobile-nav-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .mobile-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 11px 4px;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--uoft-navy);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  @media (min-width: 640px) {
+    .mobile-nav a:nth-child(odd) { padding-right: 18px; }
+    .mobile-nav a:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--hairline); }
+  }
+  .mobile-nav a:hover { color: var(--uoft-teal); }
 
   /* Dropdown nav (About → About / Mentorship) */
   .nav-dropdown {
@@ -499,7 +558,7 @@
     gap: 8px;
   }
   @media (min-width: 640px) { .tiles-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .tiles-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .tiles-grid { grid-template-columns: repeat(2, 1fr); } }
   .tile {
     display: flex;
     flex-direction: column;
@@ -555,6 +614,47 @@
     color: var(--ink-muted);
     font-size: 18px;
     transition: transform 180ms;
+  }
+  .tiles-secondary {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 18px;
+    border: 1px solid var(--hairline);
+    background: white;
+  }
+  @media (min-width: 640px) {
+    .tiles-secondary { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .tiles-secondary { grid-template-columns: repeat(4, 1fr); }
+  }
+  .tiles-secondary-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 68px;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--uoft-navy);
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 180ms, color 180ms;
+  }
+  @media (min-width: 640px) {
+    .tiles-secondary-link { border-right: 1px solid var(--hairline); }
+  }
+  @media (min-width: 1024px) {
+    .tiles-secondary-link { border-bottom: 0; }
+    .tiles-secondary-link:last-child { border-right: 0; }
+  }
+  .tiles-secondary-link:hover {
+    background: var(--paper-soft);
+    color: var(--uoft-teal);
+  }
+  .tiles-secondary-arrow {
+    color: var(--uoft-teal);
+    font-size: 16px;
   }
   /* Wider About card spans 2 columns on desktop */
   @media (min-width: 1024px) {
@@ -5740,6 +5840,27 @@
     pointer-events: auto;
   }
   .back-to-top:hover { background: var(--uoft-teal); }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid var(--uoft-teal);
+    outline-offset: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .fade-up {
+      animation: none !important;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -5923,7 +6044,6 @@
     { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
     { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
     { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
     { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
     { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
 
@@ -5942,12 +6062,12 @@
     { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
     { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
     { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
+    { page: "academics", title: "What a typical week looks like", anchor: "#curriculum-start", keywords: "weekly schedule CBL clinical skills anatomy ME portfolio", snippet: "Compare a typical week with ME and Portfolio weeks. Exact schedules vary and remain in MedSIS." },
     { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
     { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
     { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
 
-    // Handbook
+    // Field Guide
     { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
     { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
     { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
@@ -5978,6 +6098,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -5999,7 +6122,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6164,7 +6287,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6175,7 +6298,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6201,8 +6324,27 @@
         <span class="nav-search-btn-key" aria-hidden="true">⌘K</span>
       </button>
     </nav>
+    <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-guide-nav" data-mobile-nav-toggle>
+      <span class="mobile-nav-toggle-icon" aria-hidden="true">☰</span>
+      <span>Menu</span>
+    </button>
   </div>
 </header>
+
+<nav class="mobile-nav" id="mobile-guide-nav" aria-label="Mobile navigation" hidden data-mobile-nav>
+  <div class="mobile-nav-grid">
+    <a href="post-acceptance.html"><span>Post-Acceptance</span><span aria-hidden="true">→</span></a>
+    <a href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener"><span>O-Week</span><span aria-hidden="true">↗</span></a>
+    <a href="housing.html"><span>Housing</span><span aria-hidden="true">→</span></a>
+    <a href="finances.html"><span>Finances</span><span aria-hidden="true">→</span></a>
+    <a href="academics.html"><span>Academics</span><span aria-hidden="true">→</span></a>
+    <a href="handbook.html"><span>Field Guide</span><span aria-hidden="true">→</span></a>
+    <a href="mentorship.html"><span>Mentorship</span><span aria-hidden="true">→</span></a>
+    <a href="quicklinks.html"><span>Quick Links</span><span aria-hidden="true">→</span></a>
+    <a href="about.html"><span>About</span><span aria-hidden="true">→</span></a>
+    <a href="feedback.html"><span>Feedback</span><span aria-hidden="true">→</span></a>
+  </div>
+</nav>
 
 <!-- ============ Search modal ============ -->
 <div class="search-modal" data-search-modal aria-hidden="true" role="dialog" aria-label="Search the guide">
@@ -6228,7 +6370,7 @@
 
 <!-- ============ 1. HERO with inset block ============ -->
 <main id="main-content">
-<section class="hero">
+<section class="hero" data-home-section="hero">
   <img src="assets/index-page/USG4.jpeg" style="object-position: center 20%;" alt="University of Toronto St. George campus" />
   <div class="hero-tint"></div>
   <div class="hero-content">
@@ -6236,7 +6378,7 @@
       <div class="inset-block fade-up">
         <div class="eyebrow">
           <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">A Guide for the Class of 3T0</span>
+          <span class="eyebrow-text">A student guide for the Class of 3T0</span>
           <span class="eyebrow-rule"></span>
         </div>
         <h1>Welcome to<br/>UofT Medicine.</h1>
@@ -6247,41 +6389,41 @@
 </section>
 
 <!-- ============ 2. Lede paragraph ============ -->
-<section class="lede-section">
+<section class="lede-section" data-home-section="introduction">
   <div class="container">
     <div class="hero-disclaimer fade-up">
-      <span class="hero-disclaimer-label">Independent guide</span>
-      <span>Not affiliated with the University of Toronto or the Temerty Faculty of Medicine. Maintained by upper-year MD students. <strong>Currently focused on Year 1 (Foundations / pre-clerkship)</strong>. clerkship (M3 / M4) content will be added after launch.</span>
+      <span class="hero-disclaimer-label">Student-created and independent</span>
+      <span>Not affiliated with the University of Toronto or the Temerty Faculty of Medicine. Maintained by upper-year MD students. <strong>Currently focused on Year 1 and the transition into medical school.</strong></span>
     </div>
-    <p class="lede fade-up delay-1">A practical, student-maintained guide for the months between your acceptance letter and your first day of medical school, written by upper-year MD students, updated each summer, and grounded in the Faculty's official sources.</p>
+    <p class="lede fade-up delay-1">A practical guide for the months between your acceptance letter and your first day of medical school. It brings together official sources, student experience and the questions that tend to come up along the way.</p>
   </div>
 </section>
 
 <!-- ============ 3. WHAT YOU'RE JOINING — cohort photo/video section ============ -->
-<section class="cohort-section">
+<section class="cohort-section" data-home-section="student-life">
   <div class="container">
     <div class="cohort-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">The Class of 3T0</span>
+        <span class="eyebrow-text">Student Life</span>
       </div>
-      <h2>The cohort you'd be joining.</h2>
-      <p class="cohort-lede">Roughly 306 students across four academies, with hospital placements from MSB to Mississauga. A few moments from the Class of 2T9. from orientation week to the end of first year.</p>
+      <h2>A glimpse of student life.</h2>
+      <p class="cohort-lede">A few moments from the Class of 2T9, from O-Week through the end of first year.</p>
     </div>
 
     <!-- Asymmetric photo grid: one large left, two stacked right -->
     <div class="cohort-grid">
       <div class="cohort-large">
        <div class="cohort-aspect-large" style="position:relative; overflow:hidden;">
-          <img src="assets/index-page/sscohort.jpeg" alt="The Class of 3T0" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/index-page/sscohort.jpeg" alt="UofT medical students gathered together during the school year" loading="lazy" decoding="async" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
         </div>
       </div>
       <div class="cohort-stack">
        <div class="cohort-aspect-small" style="position:relative; overflow:hidden;">
-          <img src="assets/index-page/candid1.jpeg" alt="Candid moment" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 60%; display:block;">
+          <img src="assets/index-page/candid1.jpeg" alt="UofT medical students spending time together" loading="lazy" decoding="async" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position: center 60%; display:block;">
         </div>
         <div class="cohort-aspect-small" style="position:relative; overflow:hidden;">
-          <img src="assets/index-page/ID1.jpeg" alt="Candid moment" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/index-page/ID1.jpeg" alt="Students at a UofT Medicine class event" loading="lazy" decoding="async" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;">
         </div>
       </div>
     </div>
@@ -6290,7 +6432,7 @@
 
 
 <!-- ============ 3.5 Choose UofT — why pick this school ============ -->
-<section class="section section-soft">
+<section class="section section-soft" data-home-section="still-choosing">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -6305,7 +6447,7 @@
       <a class="choose-uoft-card" href="https://applymd.utoronto.ca/why-u-t" target="_blank" rel="noopener">
         <div class="choose-uoft-card-eyebrow">Why UofT MD</div>
         <h3 class="choose-uoft-card-title">The largest medical school in Canada, embedded in Toronto's hospital system.</h3>
-        <p class="choose-uoft-card-body">306 students per cohort, hospital placements across UHN, Mount Sinai, St. Michael's, Sunnybrook, SickKids, and Trillium.</p>
+        <p class="choose-uoft-card-body">Roughly 306 students per cohort, with learning across the Faculty's academy and clinical partner network.</p>
         <span class="choose-uoft-card-cta">Read the Faculty's pitch <span class="footer-ext">↗</span></span>
       </a>
       <a class="choose-uoft-card" href="https://applymd.utoronto.ca/life-toronto" target="_blank" rel="noopener">
@@ -6314,20 +6456,20 @@
         <p class="choose-uoft-card-body">MSB sits downtown, with most teaching hospitals a short walk or transit ride away. The day-to-day feels smaller than the city around it.</p>
         <span class="choose-uoft-card-cta">Read the Faculty's overview <span class="footer-ext">↗</span></span>
       </a>
-      <a class="choose-uoft-card" href="https://www.utm.utoronto.ca/future-students/events-outreach/visiting-mississauga" target="_blank" rel="noopener">
+      <a class="choose-uoft-card" href="https://applymd.utoronto.ca/life-mississauga" target="_blank" rel="noopener">
         <div class="choose-uoft-card-eyebrow">Life in Mississauga · MAM</div>
         <h3 class="choose-uoft-card-title">Smaller cohort, suburban pace, your own academy.</h3>
-        <p class="choose-uoft-card-body">A cohort of about 59 based at UTM, with placements at Mississauga Hospital and Credit Valley. Tighter community, lower cost of living, easier by car.</p>
+        <p class="choose-uoft-card-body">For the Class of 2T9, 59 students were based at UTM through the Mississauga Academy of Medicine. Cohort size may vary by year.</p>
         <span class="choose-uoft-card-cta">Read the Faculty's overview <span class="footer-ext">↗</span></span>
       </a>
     </div>
 
-    <p class="choose-uoft-note">Campus assignment (St. George vs. Mississauga Academy of Medicine) is indicated in your offer letter. If you are interested in transferring campuses, please refer to the Academy Transfer section of the handbook.</p>
+    <p class="choose-uoft-note">Campus assignment is indicated in your offer letter. If you are interested in the transfer process, see the Academy Transfers section of the Field Guide and confirm current eligibility with the Faculty.</p>
   </div>
 </section>
 
 <!-- ============ 3.7 FAQs — pre-acceptance questions ============ -->
-<section class="section" id="homepage-faqs" style="padding-bottom: 24px;">
+<section class="section" id="homepage-faqs" data-home-section="questions" style="padding-bottom: 24px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -6341,25 +6483,29 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary class="faq-question">
-          <span>What if I'm waitlisted, or didn't get the news I was hoping for?</span>
+          <span>What if I'm waitlisted?</span>
           <span class="faq-icon" aria-hidden="true">+</span>
         </summary>
         <div class="faq-answer">
-          <p>First, congratulations on making it this far. I know this may not be the email you were hoping for, and it can be hard to know what to do with that. Before anything else, I hope you can pause and give yourself credit. This process asks a lot of people. It asks for time, energy, hope, and honestly, a lot of courage. Whatever this email says, it does not define your worth. It does not define your potential. It does not define the kind of physician, friend, classmate, or person you will become. The path to medicine is rarely as clean or straightforward as it looks from the outside. People arrive here through many different roads. Be kind to yourself today. You deserve that much.</p>
-
-          <p><strong>If you're on the waitlist:</strong> UofT does see some movement, though historically less than some other Ontario schools. For the Class of 3T0, the offer deadline is <strong>May 26, 2026</strong>, so the first wave of waitlist movement will come after that. Last cycle, movement was seen around May 28th and again around June 9th. Keep your contact information current with OMSAS and respond quickly if an offer does come.</p>
-         <p>In the meantime: keep yourself busy, and hold onto hope without putting your life on hold. It can help to do both things at once. Browse this guide and start preparing as if you'll be joining us, while also making concrete plans for alternative paths. The uncertainty is the hardest part; give yourself permission to feel it.</p>
+          <p>For the Class of 3T0, the offer response deadline was May 26, 2026. Waitlist movement varies by cycle. Keep your contact information current with OMSAS and follow the deadline in any offer you receive.</p>
+          <p>In the meantime, hold onto hope without putting the rest of your plans on pause. You can browse this guide while still making concrete plans for your other options.</p>
           <ul class="faq-list-items">
-            <li><strong>Don't email asking for your position or odds.</strong> The admissions team genuinely can't tell you, and they'll reach out the moment something changes.</li>
-            <li><strong>Explore your alternatives in parallel.</strong> Confirm your specific situation with the admissions office before making any decisions about other offers.</li>
+            <li>Keep checking the email address connected to your application.</li>
+            <li>Confirm your specific situation with the admissions office before making decisions about another offer.</li>
           </ul>
+        </div>
+      </details>
 
-          <p><strong>If you received a refusal:</strong> There's no paragraph that makes this not hurt. A refusal after everything you put in, especially when it arrives as classmates are celebrating, is a real loss. Whatever you're feeling about it is valid.</p>
-          <p>When you're ready (not before): most successful Canadian medical students applied more than once. Two cycles is common; three is not unusual. The Faculty holds annual feedback sessions where you can request specific feedback on your application, worth attending when you're in that headspace. A reapplicant year is not a failed year. Some of the people you'd be classmates with went through exactly this two years ago.</p>
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>What if I did not receive an offer?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">
+          <p>There is no paragraph that makes that news easy. A refusal after everything you put into the process can feel like a real loss, especially while other people are celebrating.</p>
+          <p>When you are ready, the admissions site is the right place to check for current reapplication information and any feedback opportunities offered for your cycle. A future application can also look different because of what you learn, pursue and decide matters to you in the time between cycles.</p>
           <ul class="faq-list-items">
-            <li><a href="https://applymd.utoronto.ca/" target="_blank" rel="noopener">UofT MD admissions site</a>. Feedback sessions and reapplication guidance, posted each cycle.</li>
-            <li><a href="https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html" target="_blank" rel="noopener">Canada-wide mental health resources</a></li>
-            <li><strong>9-8-8</strong>. Canada's Suicide Crisis Helpline, free and confidential, call or text 24/7.</li>
+            <li><a href="https://applymd.utoronto.ca/" target="_blank" rel="noopener">Check the UofT MD admissions site for current information.</a></li>
           </ul>
         </div>
       </details>
@@ -6380,7 +6526,7 @@
           <span class="faq-icon" aria-hidden="true">+</span>
         </summary>
         <div class="faq-answer">
-          <p>UofT MD reserves at least 95% of seats for Ontario residents, so OOP spots are genuinely limited. If you received an offer, that's worth acknowledging. The transition involves a few extras Ontario applicants don't deal with: registering for OHIP after your three-month wait period (or maintaining your home province's coverage in the meantime), opening an Ontario bank account if you don't have one, and understanding that OSAP is calculated based on Ontario residency rules. None of it is insurmountable, but it adds up. Give yourself time to sort through it.</p>
+          <p>Moving from another province adds a few administrative steps. Review your provincial health coverage, financial-aid eligibility and the documents needed to establish yourself in Ontario. Ontario currently has no waiting period for OHIP if you are eligible, and you can apply after arriving. Confirm your own eligibility through <a href="https://www.ontario.ca/page/apply-ohip-and-get-health-card" target="_blank" rel="noopener">ServiceOntario</a> before changing existing coverage.</p>
         </div>
       </details>
 
@@ -6401,8 +6547,8 @@
           <span class="faq-icon" aria-hidden="true">+</span>
         </summary>
         <div class="faq-answer">
-          <p>It is expensive, but not impossible. The biggest cost is rent, and that will depend a lot on what you are willing to compromise on. This past year, the average rent was around $2,300/month, but there is still a wide range. Studios can sometimes be found around $1,800–2,100. A one-bedroom is often closer to $2,000–2,500. A lot of students also choose to split a two-bedroom/two-bathroom apartment, which can bring rent down to roughly $1,400–1,800 per person depending on the building, location, and timing.</p> 
-          <p>Most med students use a Line of Credit to cover the gap between OSAP, savings, family support if available, and the actual cost of living. The rest comes down to lifestyle. Groceries can be manageable, transit is relatively reasonable, and campus is walkable if you live nearby. Eating out, coffee runs, and social plans are usually what make Toronto feel expensive fast.</p>
+          <p>Housing is usually the largest variable, and asking rents change throughout the year. The Housing page compares neighbourhoods, buildings and commute estimates, while the Finances page lets you work through tuition, living costs and different funding sources using current figures.</p> 
+          <p>Students use different combinations of government aid, savings, family support, bursaries, employment and professional student lines of credit. The right plan depends on your own circumstances, so use the guide as a starting point and speak with the MD Program financial counsellor for individual guidance.</p>
         </div>
       </details>
     </div>
@@ -6410,7 +6556,7 @@
 </section>
 
 <!-- ============ 4. ACCEPT YOUR OFFER — primary conversion moment ============ -->
-<section class="cta-section" style="padding-top: 32px;">
+<section class="cta-section" data-home-section="checklist" style="padding-top: 32px;">
   <div class="container">
     <div class="cta-solid">
       <div class="eyebrow" style="justify-content: center;">
@@ -6418,15 +6564,15 @@
         <span class="eyebrow-text">Ready to Start</span>
         <span class="eyebrow-rule"></span>
       </div>
-      <h2>Accepting your offer is the first step.</h2>
-      <p>We'll walk you through the rest: checklist, housing, finances, and the curriculum vocabulary you'll need by week one.</p>
+      <h2>Accepted? Start with the checklist.</h2>
+      <p>Begin with the confirmed Faculty pages, then work through registration, finances, housing, equipment and O-Week.</p>
       <a href="post-acceptance.html" class="btn-outline-light">Open the checklist →</a>
     </div>
   </div>
 </section>
 
 <!-- ============ 5. SECTION TILES — what's in the guide ============ -->
-<section class="tiles-section">
+<section class="tiles-section" data-home-section="guide-paths">
   <div class="container">
     <div class="tiles-header">
       <div class="eyebrow" style="justify-content: center;">
@@ -6434,79 +6580,70 @@
         <span class="eyebrow-text">Inside the Guide</span>
         <span class="eyebrow-rule"></span>
       </div>
-      <h2>Seven sections, structured by decision.</h2>
+      <h2>Start with what you need.</h2>
     </div>
 
     <div class="tiles-grid">
-      <a class="tile" href="post-acceptance.html">
+      <a class="tile" href="housing.html">
         <span class="tile-num">01</span>
         <div class="tile-body">
-          <p class="tile-label">Post-Acceptance</p>
-          <p class="tile-desc">Phased checklist from offer letter to first day of class.</p>
-        </div>
-        <span class="tile-arrow" aria-hidden="true">→</span>
-      </a>
-
-      <a class="tile" href="housing.html">
-        <span class="tile-num">02</span>
-        <div class="tile-body">
           <p class="tile-label">Housing</p>
-          <p class="tile-desc">Neighborhood guide with real commutes to MSB and named buildings.</p>
+          <p class="tile-desc">Neighbourhoods, residences, building reviews, commute estimates and renting in Ontario.</p>
         </div>
         <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="finances.html">
-        <span class="tile-num">03</span>
+        <span class="tile-num">02</span>
         <div class="tile-body">
           <p class="tile-label">Finances</p>
-          <p class="tile-desc">Line of Credit, OSAP, bursaries. Funding four years of school.</p>
+          <p class="tile-desc">Tuition, OSAP, bursaries, professional student lines of credit and planning for four years.</p>
         </div>
         <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="academics.html">
-        <span class="tile-num">04</span>
+        <span class="tile-num">03</span>
         <div class="tile-body">
           <p class="tile-label">Academics</p>
-          <p class="tile-desc">Shared notes, the year-one block calendar, and the EEE shadowing guide.</p>
+          <p class="tile-desc">Course structure, a typical week, shared resources, shadowing, EEE and early opportunities.</p>
         </div>
         <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="tile" href="handbook.html">
-        <span class="tile-num">05</span>
+        <span class="tile-num">04</span>
         <div class="tile-body">
-          <p class="tile-label">The Handbook</p>
-          <p class="tile-desc">Academies, platforms, student groups, wellness, and everything else that doesn't fit on a checklist.</p>
+          <p class="tile-label">Field Guide</p>
+          <p class="tile-desc">Academies, platforms, the course glossary, student groups and support.</p>
         </div>
         <span class="tile-arrow" aria-hidden="true">→</span>
       </a>
+    </div>
 
-      <a class="tile" href="mentorship.html">
-        <span class="tile-num">06</span>
-        <div class="tile-body">
-          <p class="tile-label">Mentorship</p>
-          <p class="tile-desc">Upper-year students who've offered to be reached out to. Browse by background, identity, and circumstance.</p>
-        </div>
-        <span class="tile-arrow" aria-hidden="true">→</span>
+    <div class="tiles-secondary" aria-label="More from the guide">
+      <a class="tiles-secondary-link" href="mentorship.html">
+        <span>Find a mentor</span>
+        <span class="tiles-secondary-arrow" aria-hidden="true">→</span>
       </a>
-
-      <a class="tile tile-about" href="about.html">
-        <span class="tile-num">07</span>
-        <div class="tile-body">
-          <p class="tile-label">About</p>
-          <p class="tile-desc">Why this guide exists, who built it, and the people who helped along the way.</p>
-        </div>
-        <span class="tile-arrow" aria-hidden="true">→</span>
+      <a class="tiles-secondary-link" href="quicklinks.html">
+        <span>Browse Quick Links</span>
+        <span class="tiles-secondary-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="tiles-secondary-link" href="about.html">
+        <span>About the guide</span>
+        <span class="tiles-secondary-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="tiles-secondary-link" href="feedback.html">
+        <span>Send feedback</span>
+        <span class="tiles-secondary-arrow" aria-hidden="true">→</span>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ============ 6. Essay block ============ -->
-<section class="essay-section" style="position: relative;">
-  <img class="cg-egg-peek cg-egg-peek-tr" src="assets/cg/cg-balloon.png" alt="" aria-hidden="true" loading="lazy" />
+<section class="essay-section" data-home-section="about-guide" style="position: relative;">
   <div class="container">
     <div class="essay-grid">
       <div class="essay-head">
@@ -6519,16 +6656,17 @@
         <h3>The transition into it doesn't.</h3>
       </div>
       <div class="prose-content">
-        <p>Medical school is one of the most significant transitions a person goes through, and even with the best intentions, no institution can fully meet every need that comes with it. The practical questions about housing, finances, and curriculum; the unwritten norms about how things actually work; the lived experience of what year one really feels like. these things matter, and they don't always make it into the official channels.</p>
-        <p>This guide is built to fill that gap. It's written and maintained by current and recent UofT MD students, organized around the decisions you'll face, and updated each year before a new cohort arrives. Where the Faculty has an authoritative source. like the <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements page</a>, refreshed each June. we link directly rather than duplicating it.</p>
-        <p><strong>What this is:</strong> a trusted starting point. <strong>What it isn't:</strong> a replacement for advice from your academy, the MD Program Office, or financial professionals.</p>
+        <p>Medical school comes with practical questions about housing, finances, curriculum and the parts of student life that are difficult to understand before you arrive. Those questions matter, even when they do not fit neatly into an official webpage or checklist.</p>
+        <p>This guide brings those pieces together. It is written and maintained by current and recent UofT MD students and organized around the decisions you will face. When the Faculty has the authoritative information, such as the <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements page</a>, the official source comes first.</p>
+        <p><strong>Use this as a starting point.</strong> Confirm academic, administrative and financial decisions with the Faculty or the appropriate professional.</p>
+        <p><a href="about.html">Read more about the guide and who contributed →</a></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ 7. Full-bleed image break ============ -->
-<section class="image-break">
+<section class="image-break" data-home-section="student-life-photo">
   <figure class="image-break-photo">
     <img src="assets/index/cohort-2t9-front-campus.jpg" alt="The Class of 2T9 gathered on Front Campus Field with University College in the background during O-Week 2025" loading="lazy" />
   </figure>
@@ -6536,7 +6674,7 @@
 </section>
 
 <!-- ============ 8. Official resources stripe ============ -->
-<section class="resources-section">
+<section class="resources-section" data-home-section="official-resources">
   <div class="container">
     <div class="resources-grid">
       <div class="resources-head">
@@ -6560,21 +6698,21 @@
           <div class="resource-arrow">→</div>
           <div>
             <h3 class="resource-title">Registration Requirements & Requests</h3>
-            <p class="resource-note">Updated annually each June. Wait for the year's refreshed list before booking immunizations or training.</p>
+            <p class="resource-note">Current forms, requirements and deadlines for MD registration.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
             <h3 class="resource-title">Financial Aid</h3>
-            <p class="resource-note">Government assistance, Faculty grants, bursaries, and the Professional Student Line of Credit.</p>
+            <p class="resource-note">Faculty information on financial aid, grants and bursaries.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
             <h3 class="resource-title">MD Program Home</h3>
-            <p class="resource-note">The MD Program's central site. curriculum, academies, and program-wide announcements.</p>
+            <p class="resource-note">The MD Program's central site for curriculum, academies and program information.</p>
           </div>
         </a>
       </div>
@@ -6595,7 +6733,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -6611,7 +6749,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -6634,11 +6772,70 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<script>
+(function(){
+  var toggle = document.querySelector('[data-mobile-nav-toggle]');
+  var menu = document.querySelector('[data-mobile-nav]');
+  var header = document.querySelector('.header');
+  if (!toggle || !menu) return;
+
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+    document.body.style.overflow = open ? 'hidden' : '';
+    var icon = toggle.querySelector('.mobile-nav-toggle-icon');
+    if (icon) icon.textContent = open ? '×' : '☰';
+    if (open && header) {
+      var top = Math.max(0, header.getBoundingClientRect().bottom);
+      menu.style.top = top + 'px';
+      menu.style.maxHeight = 'calc(100vh - ' + top + 'px)';
+    }
+  }
+
+  toggle.addEventListener('click', function() {
+    setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() { setMenu(false); });
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 1100) setMenu(false);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var main = document.getElementById('main-content');
+  if (!main) return;
+  [
+    'hero',
+    'introduction',
+    'still-choosing',
+    'questions',
+    'checklist',
+    'guide-paths',
+    'student-life',
+    'about-guide',
+    'student-life-photo',
+    'official-resources'
+  ].forEach(function(name) {
+    var section = main.querySelector('[data-home-section="' + name + '"]');
+    if (section) main.appendChild(section);
+  });
+})();
+</script>
+
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Post-Acceptance · UofT MD Guide</title>
+<title>Post-Acceptance · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -6406,6 +6406,89 @@
   .collapsible .collapsible-body {
     padding: 20px;
   }
+
+  /* Post-acceptance information architecture */
+  .source-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 16px; color: var(--ink-soft); font-size: 12px;
+  }
+  .source-status::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--uoft-teal);
+  }
+  .route-nav {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px; margin-top: -22px; padding: 0;
+    background: var(--hairline); border: 1px solid var(--hairline);
+    position: relative; z-index: 2;
+  }
+  .route-nav a {
+    min-height: 74px; padding: 15px 16px; background: #fff;
+    color: var(--uoft-navy); text-decoration: none;
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    transition: background .18s ease, color .18s ease;
+  }
+  .route-nav a:hover, .route-nav a:focus-visible {
+    background: var(--uoft-navy); color: #fff;
+  }
+  .route-nav-num {
+    color: var(--uoft-teal); font-size: 10px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+  }
+  .route-nav-label { font-size: 13px; font-weight: 700; line-height: 1.25; }
+  .source-kind {
+    display: inline-flex; width: fit-content; margin-bottom: 8px; padding: 3px 7px;
+    border: 1px solid rgba(0, 42, 92, .18); color: var(--uoft-navy);
+    font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .date-key {
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    margin-top: 18px; color: var(--ink-soft); font-size: 12px;
+  }
+  .date-key span { display: inline-flex; align-items: center; gap: 6px; }
+  .date-key i { width: 7px; height: 7px; border-radius: 50%; background: var(--uoft-teal); }
+  .date-key span:last-child i { background: #b9b2a5; }
+  .phase-items > .step-grid { align-items: stretch; }
+  .step-card { display: flex; flex-direction: column; }
+  .step-card .step-card-link { margin-top: auto; }
+  .buy-source-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 14px; margin: 0 0 30px; padding: 18px 20px;
+    border: 1px solid var(--hairline); background: #fff;
+  }
+  .buy-source-bar p { margin: 0; max-width: 62ch; }
+  .buy-source-bar a {
+    color: var(--uoft-navy); font-size: 12px; font-weight: 700;
+    text-decoration: none; border-bottom: 1px solid var(--uoft-teal);
+  }
+  #day-by-day .event-block-meta { display: none; }
+  .archive-toggle {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 40px; margin-top: 8px; padding: 10px 16px;
+    border: 1px solid var(--uoft-navy); background: transparent;
+    color: var(--uoft-navy); font: inherit; font-size: 11px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .archive-toggle:hover, .archive-toggle:focus-visible {
+    background: var(--uoft-navy); color: #fff;
+  }
+  .archive-toggle::after { content: "+"; font-size: 16px; line-height: 1; }
+  #day-by-day:not(.is-collapsed) .archive-toggle::after { content: "−"; }
+  #day-by-day.is-collapsed > .container { display: none; }
+  .student-source-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin: 0 0 10px; color: var(--ink-muted);
+    font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .student-source-label::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--uoft-teal);
+  }
+  @media (max-width: 760px) {
+    .route-nav { grid-template-columns: 1fr 1fr; margin-top: 0; }
+    .route-nav a:last-child { grid-column: 1 / -1; }
+  }
 </style>
 <script>
   // TOC scroll observer — highlights active section in sidebar
@@ -6575,12 +6658,12 @@
     { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
     { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
     { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30. A hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May. Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
+    { page: "post-acceptance", title: "Acceptance confirmation", anchor: "#accept", keywords: "confirmation OMSAS deposit consent forms", snippet: "Keep your OMSAS receipt and check that the Faculty has received the acceptance materials required by your offer." },
     { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary", snippet: "Mid-August in-program grant application for MD students. Last year opened August 13." },
+    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "#decisions", keywords: "temerty grant financial aid bursary", snippet: "Watch Faculty email and the official financial aid page for the current application opening date." },
     { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "St. George academy assignment arrives", anchor: "", keywords: "academy decision june 24 assignment st george fitzgerald peters-boyd wightman-berris", snippet: "June 24: St. George academy assignment by email. MAM is in your offer letter." },
-    { page: "post-acceptance", title: "OSAP recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
+    { page: "post-acceptance", title: "St. George academy assignment", anchor: "#decisions", keywords: "academy decision assignment st george fitzgerald peters-boyd wightman-berris", snippet: "St. George academy selections and assignments are communicated by the Faculty; MAM is identified in the offer." },
+    { page: "post-acceptance", title: "Apply for government student aid", anchor: "#decisions", keywords: "OSAP loan financial aid ontario", snippet: "Apply early enough for processing before fall fees and review whether you qualify for an ACORN fee deferral." },
     { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application. Submit early via Qualtrics." },
     { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
 
@@ -6644,6 +6727,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -6665,7 +6751,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6830,18 +6916,18 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary navigation">
       <a href="post-acceptance.html" data-page="post-acceptance" class="is-active">Post-Acceptance</a>
       <a href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener" data-page="oweek">O-Week</a>
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6903,7 +6989,8 @@
           <span class="eyebrow-text">Section 01 · Post-Acceptance</span>
         </div>
         <h1>From offer letter<br/>to first day of class.</h1>
-        <p class="page-hero-lede">A walk-through of what the summer looks like between accepting your offer and your first day of medical school. Each section links to the Faculty's official sources where they're the source of truth.</p>
+        <p class="page-hero-lede">One place to understand the summer between accepting your offer and starting medical school, with official Faculty pages placed first whenever they control the details.</p>
+        <p class="source-status">Student-made guide · Content checked July 2026</p>
       </div>
       <div>
         <div class="page-hero-meta">
@@ -6912,19 +6999,18 @@
         </div>
         <div class="page-hero-meta">
           <strong>Updated annually</strong>
-          The Registration Requirements page is refreshed by the Faculty each mid-June. Don't book immunizations off prior years' lists.
+          Use the current-year Registration Requirements page for forms, submission instructions, and deadlines.
         </div>
       </div>
     </div>
   </div>
 </section>
-<nav class="jump-nav container" aria-label="Page sections">
-  <a href="#faculty-resources">Resources</a>
-  <a href="#timeline">Timeline</a>
-  <a href="#equipment">Equipment</a>
-  <a href="#faqs">FAQs</a>
-  <a href="#oweek-link">O-Week</a>
-  <a href="#last-year-schedule">Schedule</a>
+<nav class="route-nav container" aria-label="Post-acceptance pathways">
+  <a href="#accept"><span class="route-nav-num">First</span><span class="route-nav-label">Accept your offer</span></a>
+  <a href="#requirements"><span class="route-nav-num">Prepare</span><span class="route-nav-label">Registration requirements</span></a>
+  <a href="#decisions"><span class="route-nav-num">Plan</span><span class="route-nav-label">Money and housing</span></a>
+  <a href="#equipment"><span class="route-nav-num">Pack</span><span class="route-nav-label">Equipment and moving</span></a>
+  <a href="#oweek-link"><span class="route-nav-num">Arrive</span><span class="route-nav-label">O-Week and first day</span></a>
 </nav>
 
 
@@ -6938,28 +7024,39 @@
           <span class="eyebrow-text">Start Here</span>
         </div>
         <h2>Official Faculty resources.</h2>
-        <p>Three URLs do most of the work in this section. Bookmark them. Everything else on this page is supplementary student commentary.</p>
+        <p>These pages control the requirements. This guide helps you see how they fit together, but it does not replace your offer letter or the current Faculty instructions.</p>
       </div>
       <div class="resource-list">
         <a class="resource-link" href="https://applymd.utoronto.ca/incoming-students" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
+            <span class="source-kind">Official overview</span>
             <h3 class="resource-title">Incoming Students Hub</h3>
-            <p class="resource-note">The Faculty's central landing page for newly-accepted students. Links to acceptance, registration, financial aid, housing, immunizations, and orientation. If a link in this guide goes stale, this is where to find the current version.</p>
+            <p class="resource-note">The Faculty's central page for accepted students. Use it to recover a current link if one in this guide changes.</p>
           </div>
         </a>
         <a class="resource-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
+            <span class="source-kind">Official instructions</span>
             <h3 class="resource-title">Accepting Your Offer</h3>
-            <p class="resource-note">Step-by-step walkthrough of the formal acceptance process and offer-related forms.</p>
+            <p class="resource-note">OMSAS response, Response and Consent Form, tuition deposit, admission conditions, JOINid, UTORid, and TCard setup.</p>
+          </div>
+        </a>
+        <a class="resource-link" href="https://applymd.utoronto.ca/registration-requirements" target="_blank" rel="noopener">
+          <div class="resource-arrow">→</div>
+          <div>
+            <span class="source-kind">Incoming students</span>
+            <h3 class="resource-title">Registration Requirements</h3>
+            <p class="resource-note">The incoming-student entry point for the requirements completed before registration.</p>
           </div>
         </a>
         <a class="resource-link" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
           <div class="resource-arrow">→</div>
           <div>
+            <span class="source-kind">Current forms and dates</span>
             <h3 class="resource-title">Registration Requirements &amp; Requests</h3>
-            <p class="resource-note">Updated annually each June. Wait for the year's refreshed list before booking immunizations or training.</p>
+            <p class="resource-note">The detailed current-year list, deadlines, forms, upload instructions, and requests such as confirmation of enrolment.</p>
           </div>
         </a>
       </div>
@@ -6976,11 +7073,15 @@
         <span class="eyebrow-text">The Timeline</span>
       </div>
       <h2>The shape of your summer.</h2>
-      <p>Roughly, here's how the months between May and September tend to go. Nothing here needs to be done all at once.</p>
+      <p>The sequence is useful. Exact dates are not always fixed. Confirm anything marked year-specific against your offer letter, Faculty email, or the linked official page.</p>
+      <div class="date-key" role="group" aria-label="Date label key">
+        <span><i></i> Confirmed for 2026–27</span>
+        <span><i></i> Timing varies by student or year</span>
+      </div>
     </div>
 
     <!-- PHASE 01 -->
-    <div class="phase">
+    <div class="phase" id="accept">
       <div>
         <p class="phase-number">01</p>
         <div class="phase-meta">
@@ -6998,24 +7099,24 @@
           <div class="qs-row">
             <div>
               <p class="qs-row-title">Accept your offer on OMSAS</p>
-              <p class="qs-row-desc">Submit through the OMSAS portal. If you're coming off the waitlist, your deadline is whatever's written in your offer letter; otherwise the standard date applies.</p>
+              <p class="qs-row-desc">Submit through the OMSAS portal and keep the confirmation email. Your offer letter is the authority for your response deadline and any conditions.</p>
               <a class="qs-row-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Official: Accepting Your Offer ↗</a>
             </div>
-            <span class="qs-pill qs-pill-deadline">By May 26</span>
+            <span class="qs-pill qs-pill-deadline">Offer letter</span>
           </div>
 
           <div class="qs-row">
             <div>
               <p class="qs-row-title">Watch for your OMSAS receipt</p>
-              <p class="qs-row-desc">Automated email confirming your acceptance was logged. Save it as proof of submission if anything gets misfiled later.</p>
+              <p class="qs-row-desc">OMSAS sends an automated email confirming that your response was received. Keep it with your acceptance records.</p>
             </div>
-            <span class="qs-pill qs-pill-soft">24–48 hrs</span>
+            <span class="qs-pill qs-pill-soft">After response</span>
           </div>
 
           <div class="qs-row">
             <div>
               <p class="qs-row-title">Welcome email from the Faculty</p>
-              <p class="qs-row-desc">Sent after your acceptance is processed on the Faculty's end. Includes next steps for the summer, upcoming events, and deadlines. Check your spam if you don't see it within a week.</p>
+              <p class="qs-row-desc">Watch for Faculty emails with registration forms, events, and next steps. Processing time varies, so do not treat an upper-year timeline as a deadline.</p>
             </div>
             <span class="qs-pill qs-pill-soft">After accept</span>
           </div>
@@ -7023,19 +7124,19 @@
           <div class="qs-row">
             <div>
               <p class="qs-row-title">Submit both copies of your Consent Form</p>
-              <p class="qs-row-desc">Your offer letter contains a Consent Form that needs to be returned twice: a digital copy via the Faculty's secure ShareFile link, and a hard copy by mail or in person to UME Enrolment Services. Both are required. Sign pages 2 and 6 with your original signature.</p>
-              <a class="qs-row-link" href="https://utmed.sharefile.com/r-r0a9efcdb97ef4989ae6d84dbce2bc2cb" target="_blank" rel="noopener">ShareFile upload ↗</a>
+              <p class="qs-row-desc">The same signed Response and Consent Form is submitted twice: an electronic copy through the secure link and a hard copy to UME Enrolment Services by mail or in person. Follow the signature and deadline instructions in your offer package.</p>
+              <a class="qs-row-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Official submission instructions ↗</a>
             </div>
-            <span class="qs-pill qs-pill-deadline">June 5</span>
+            <span class="qs-pill qs-pill-deadline">Offer letter</span>
           </div>
 
           <div class="qs-row">
             <div>
               <p class="qs-row-title">Pay your tuition deposit</p>
-              <p class="qs-row-desc">Credit card only via ACORN. Personal cheques, certified cheques, money orders, and bank transfers are not accepted.</p>
+              <p class="qs-row-desc">Pay through ACORN using the method specified by the Faculty. Personal cheques, certified cheques or money orders, and bank transfers are not accepted.</p>
               <a class="qs-row-link" href="https://www.acorn.utoronto.ca/" target="_blank" rel="noopener">ACORN ↗</a>
             </div>
-            <span class="qs-pill qs-pill-deadline">June 5</span>
+            <span class="qs-pill qs-pill-deadline">Offer letter</span>
           </div>
 
           <div class="qs-row">
@@ -7070,16 +7171,16 @@
             <div>
               <p class="qs-milestone-eyebrow">Milestone</p>
               <p class="qs-row-title">Confirmation email arrives</p>
-              <p class="qs-row-desc">A single email from the Faculty confirming successful receipt of:</p>
+              <p class="qs-row-desc">The Faculty may send a confirmation after processing your acceptance materials. Check that it accounts for:</p>
               <ul class="qs-milestone-list">
                 <li>OMSAS acceptance</li>
                 <li>Tuition deposit</li>
                 <li>Electronic copy of response and consent forms</li>
                 <li>Hard copy of response and consent forms</li>
               </ul>
-              <p class="qs-row-desc">Last year's class got this on <strong>May 29</strong>. If it hasn't arrived by early June and you've submitted everything, send a polite email to MD admissions to confirm they have your hard-copy consent form. Mail can be the bottleneck.</p>
+              <p class="qs-row-desc">Timing varies. If something appears outstanding after your materials should have arrived, contact UME Enrolment Services rather than relying on another cohort's timing.</p>
             </div>
-            <span class="qs-pill qs-pill-milestone">Late May</span>
+            <span class="qs-pill qs-pill-milestone">Timing varies</span>
           </div>
 
         </div>
@@ -7087,6 +7188,7 @@
         <!-- Community subsection -->
         <h3 style="font-family: 'Roboto Slab', Georgia, serif; font-weight: 500; font-size: 22px; color: var(--uoft-navy); margin: 40px 0 4px;">Connect with the cohort.</h3>
         <p style="font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; line-height: 1.6;">The community spaces that make UofT MD feel like a cohort. None of this is on a Faculty page.</p>
+        <p class="student-source-label">Student-run links · Checked July 2026</p>
 
         <div class="cohort-spotlight">
 
@@ -7144,13 +7246,13 @@
     </div>
 
     <!-- PHASE 02 -->
-    <div class="phase">
+    <div class="phase" id="decisions">
       <div>
         <p class="phase-number">02</p>
         <div class="phase-meta">
-          <p class="phase-meta-eyebrow">May – June</p>
+          <p class="phase-meta-eyebrow">May – August</p>
           <h3>Decisions and money.</h3>
-          <p class="phase-meta-desc">Webinars to attend, financial aid to sort, your academy assignment, and the start of your housing search. Most are short tasks, but they shape the rest of your summer.</p>
+          <p class="phase-meta-desc">Get the broad decisions moving here. The Finances and Housing guides hold the detailed comparisons so this page can stay usable.</p>
         </div>
       </div>
       <div class="phase-items">
@@ -7164,26 +7266,26 @@
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">May 13–14 · 5:45–8:00 PM</p>
+            <p class="step-card-pill">Dates vary · Optional</p>
             <h3>Welcome calls from upper-years</h3>
             <p>Optional check-in calls from current MD students to answer questions about student life and the GTA. Not mandatory; just a friendly hello.</p>
             <a class="step-card-link" href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Events &amp; Webinars ↗</a>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">May 19 · 4:30–5:30 PM</p>
+            <p class="step-card-pill">Date varies · St. George</p>
             <h3>St. George Academies Webinar</h3>
             <p>Meet the Academy Directors. They share what makes each academy distinct and the clinical learning opportunities at each.</p>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">May 20 · 4:30–5:30 PM</p>
+            <p class="step-card-pill">Date varies · MAM</p>
             <h3>Mississauga Academy of Medicine Webinar</h3>
             <p>For MAM-placed students. Faculty leadership and MAM student reps speak to student life and clinical experiences across Trillium Health Partners.</p>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">May 21 · 4:00–5:00 PM</p>
+            <p class="step-card-pill">Date varies · Optional</p>
             <h3>Financial Aid &amp; Awards Webinar</h3>
             <p>The Financial Aid team covers tuition, scholarships, and how to access funding. Recordings are usually shared after.</p>
           </div>
@@ -7203,9 +7305,9 @@
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">By June 30</p>
+            <p class="step-card-pill">Apply early</p>
             <h3>Apply for OSAP (or your provincial equivalent)</h3>
-            <p>Even with an LOC, OSAP grants are non-repayable. Applying by June 30 keeps funding on track for September fees. If you have OSAP, you'll also file a fee deferral on ACORN in August.</p>
+            <p>Government aid may include grants as well as loans. Apply early enough for processing before fall fees, and use ACORN's deferral process if eligible.</p>
             <a class="step-card-link" href="finances.html#osap">OSAP &amp; bursary timeline →</a>
           </div>
 
@@ -7216,29 +7318,29 @@
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">Mid-August</p>
+            <p class="step-card-pill">Watch Faculty email</p>
             <h3>Watch for the Temerty Grant Application <span class="step-card-tag">All students</span></h3>
-            <p>The Faculty's in-program grant application opens after you start. It's the largest pool of in-program aid for MD students. Last year opened August 13. Watch your UTmail.</p>
+            <p>The Faculty's in-program grant application is separate from OSAP and admission awards. Opening dates change, so watch your UTmail and the official financial aid page.</p>
             <a class="step-card-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">MD Financial Aid ↗</a>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">By June 21 · 11:59 PM</p>
+            <p class="step-card-pill">Per Faculty email</p>
             <h3>Submit your Academy Selection survey <span class="step-card-tag">St. George only</span></h3>
             <p>In early June you'll receive a survey to rank FitzGerald, Peters-Boyd, and Wightman-Berris. Read the academy descriptions carefully before ranking. MAM students are set in their offer letter.</p>
             <a class="step-card-link" href="handbook.html#academies">Read about the academies →</a>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">June 24</p>
+            <p class="step-card-pill">Per Faculty email</p>
             <h3>Academy assignment arrives <span class="step-card-tag">St. George only</span></h3>
-            <p>Your academy is emailed on Wednesday, June 24. If it isn't what you hoped for, transfers exist but are uncommon and have specific criteria. Talk to OLA if you want to explore the option.</p>
+            <p>Your academy assignment is sent by email. Use it to refine your commute and housing search; assignment questions should go to the Faculty.</p>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">Mid-July – August</p>
+            <p class="step-card-pill">May – August</p>
             <h3>Start your housing search <span class="step-card-tag">Time-sensitive</span></h3>
-            <p>Toronto's rental market moves fast. Most students sign between mid-July and August for September. If you're St. George, waiting until June 24 lets you target your search around your home hospital.</p>
+            <p>Some students begin early; others wait for an academy assignment before narrowing the commute. The Housing guide compares neighbourhoods, residences, documents, and search tools.</p>
             <a class="step-card-link" href="housing.html">Open the Housing guide →</a>
           </div>
 
@@ -7247,18 +7349,18 @@
     </div>
 
     <!-- PHASE 03 -->
-    <div class="phase">
+    <div class="phase" id="requirements">
       <div>
         <p class="phase-number">03</p>
         <div class="phase-meta">
-          <p class="phase-meta-eyebrow">June onward</p>
+          <p class="phase-meta-eyebrow">May onward · Most due July 31</p>
           <h3>Registration requirements.</h3>
           <p class="phase-meta-desc">The Faculty maintains a list of forms, modules, and clinical clearances to complete before September. Most items are online forms and uploads, but a couple need real lead time.</p>
         </div>
       </div>
       <div class="phase-items">
         <div class="reg-overview">
-          <p class="reg-overview-lede">The full list, current deadlines, and updated forms live on the Faculty's <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements page</a>. The visual below is a quick inventory of what to expect, not a substitute. Check the official page for current deadlines and current-year forms.</p>
+          <p class="reg-overview-lede">The full list, current deadlines, forms, and submission methods live on the Faculty's <a href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">Registration Requirements &amp; Requests page</a>. Several items can be started in May, but always use that page's current-year form.</p>
 
           <div class="reg-ribbon" aria-hidden="true">
             <div class="reg-ribbon-line"></div>
@@ -7288,9 +7390,10 @@
 
           <div class="reg-chips-section">
             <p class="reg-chips-eyebrow">What's typically on the list</p>
+            <p style="margin: -2px 0 18px; color: var(--ink-soft); font-size: 13px; line-height: 1.55;">The tiles open the official requirements page containing the current form, deadline, and submission instructions.</p>
             <div class="reg-chips-grid">
 
-              <a class="reg-chip" href="https://utmed.sharefile.com/r-re09dd0227482459793c2f51942c98e62" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <path d="M19 11.5a7 7 0 0 1-14 0V6l7-3 7 3z"/>
                   <path d="M9 12l2 2 4-4"/>
@@ -7299,7 +7402,7 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="https://md.utoronto.ca/sites/default/files/inline-files/2026%20Incoming%20Student%20Immunization%20Form.pdf" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
                   <path d="M14 3v5h5"/>
@@ -7309,7 +7412,7 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="https://utmed.sharefile.com/r-r961366388c9b4da0bbbaa0a8e5cb6772" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <path d="M12 2v6M12 8l-3-3M12 8l3-3"/>
                   <rect x="4" y="13" width="16" height="8" rx="1"/>
@@ -7319,7 +7422,7 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="http://www.tps.ca/services/police-record-checks/" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/>
                 </svg>
@@ -7327,7 +7430,7 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="https://survey.ca1.qualtrics.com/jfe/form/SV_9KWuJGYzq0FxzyS" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <rect x="4" y="4" width="16" height="16" rx="1"/>
                   <path d="M8 10h8M8 14h8M8 18h5"/>
@@ -7336,16 +7439,16 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="https://md.utoronto.ca/sites/default/files/inline-files/2026%20WSIB%20Form.pdf" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <rect x="5" y="3" width="14" height="18" rx="1"/>
                   <path d="M8 8h8M8 12h8M8 16h5"/>
                 </svg>
-                <span class="reg-chip-label">WSIB Coverage Form</span>
+                <span class="reg-chip-label">WSIB or Private Insurance Form</span>
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="https://www.labour.gov.on.ca/english/hs/elearn/worker/foursteps.php" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <rect x="3" y="5" width="18" height="13" rx="1"/>
                   <path d="M8 18v3h8v-3"/>
@@ -7365,7 +7468,7 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <a class="reg-chip" href="http://physiciansapply.ca/" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://physiciansapply.ca/" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <rect x="4" y="6" width="16" height="12" rx="1"/>
                   <path d="M8 10h8M8 14h4"/>
@@ -7384,7 +7487,7 @@
                 <span class="reg-chip-label">Mask Fit testing</span>
               </div>
 
-              <a class="reg-chip" href="https://survey.ca1.qualtrics.com/jfe/form/SV_1L0oaWz1ER0472K" target="_blank" rel="noopener">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <rect x="4" y="5" width="16" height="15" rx="1"/>
                   <path d="M4 9h16M9 3v4M15 3v4"/>
@@ -7393,13 +7496,14 @@
                 <span class="reg-chip-ext">↗</span>
               </a>
 
-              <div class="reg-chip">
+              <a class="reg-chip" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
                 <svg class="reg-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                   <path d="M21 8l-9 6-9-6"/>
                   <rect x="3" y="5" width="18" height="14" rx="1"/>
                 </svg>
-                <span class="reg-chip-label">Letter of Good Standing</span>
-              </div>
+                <span class="reg-chip-label">Confirmation of enrolment request</span>
+                <span class="reg-chip-ext">↗</span>
+              </a>
 
             </div>
           </div>
@@ -7423,21 +7527,22 @@
           <div class="step-card">
             <p class="step-card-pill">By the Stethoscope Ceremony</p>
             <h3>Buy your stethoscope</h3>
-            <p>A stethoscope is required. Most students get either the Littmann Classic III or the Cardiology IV. Deals exist through the cohort and online retailers, so shop around before paying full retail.</p>
-            <a class="step-card-link" href="https://drive.google.com/file/d/1uhbXw4uPJz7kwI-YWp6CqYpA4Neyknaz/view" target="_blank" rel="noopener">Team Blast Equipment Lookbook ↗</a>
+            <p>Students buy their own stethoscope. Buying before the ceremony is recommended; if you do not have one that day, one can be borrowed free for the draping.</p>
+            <a class="step-card-link" href="https://drive.google.com/file/d/1SkpfsM9tdEez7tc9DgJqbuSNYqn0MxTC/view?usp=sharing" target="_blank" rel="noopener">2026 equipment lookbook ↗</a>
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">July (last year: July 15)</p>
-            <h3>Order cohort merch</h3>
-            <p>The Patagonia jacket has become a cohort tradition. Optional, but most people get one. A new catalogue will be posted for 3T0. Watch the Discord for the order window.</p>
-            <a class="step-card-link" href="https://adcomms.utoronto.ca/email-templates/brand/assets/med/2021/12/Temerty-Merchandise-Catalogue-FINAL.pdf" target="_blank" rel="noopener">Previous catalogue (reference) ↗</a>
+            <p class="step-card-pill">2026 orders close August 3</p>
+            <h3>Order equipment and optional cohort items</h3>
+            <p>Use the current lookbook to decide what you actually need, then place the order through the U of T Bookstore. Cohort clothing is optional.</p>
+            <a class="step-card-link" href="https://www.uoftbookstore.com/specialty/faculties-schools/temerty-medicine/medicine-orientation-week" target="_blank" rel="noopener">U of T Bookstore order page ↗</a>
           </div>
 
           <div class="step-card">
             <p class="step-card-pill">On arrival in Ontario</p>
             <h3>Confirm OHIP / health insurance</h3>
-            <p>Moving to Ontario from another province or country triggers a 3-month OHIP wait. Apply on arrival. UTGSU offers supplementary coverage during the gap.</p>
+            <p>If you are moving to Ontario and may be eligible, check the provincial criteria and apply in person. Ontario states there is no waiting period for eligible applicants. International students and anyone not eligible for OHIP should confirm their U of T health coverage separately.</p>
+            <a class="step-card-link" href="https://www.ontario.ca/page/apply-ohip-and-get-health-card" target="_blank" rel="noopener">Official OHIP eligibility and application ↗</a>
           </div>
 
           <div class="step-card">
@@ -7447,9 +7552,10 @@
           </div>
 
           <div class="step-card">
-            <p class="step-card-pill">By July (last year: July 10)</p>
+            <p class="step-card-pill">2026 registration is open</p>
             <h3>Register for O-Week <span class="step-card-tag">Time-sensitive</span></h3>
-            <p>O-Week registration requires a form submission and a fee (last year: $195). Watch the Discord and your UofT email for when the form goes live. The deadline comes earlier than most people expect.</p>
+            <p>The O-Week team controls registration, price, schedule, and changes. Use its current page rather than a copied schedule here.</p>
+            <a class="step-card-link" href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener">Official O-Week site ↗</a>
           </div>
 
         </div>
@@ -7478,7 +7584,7 @@
           <div class="final-step">
             <p class="final-step-pill">Aug 17–21, 2026</p>
             <h3>O-Week</h3>
-            <p>Some sessions are mandatory (academy day, stethoscope ceremony) and most are social. Either way, this is where you'll meet your cohort and your academy.</p>
+            <p>The O-Week team publishes which sessions require attendance and which are optional. Check its site for the current schedule and last-minute changes.</p>
             <a class="final-step-link" href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener">See the O-Week guide →</a>
           </div>
 
@@ -7504,10 +7610,20 @@
         <span class="eyebrow-text">What to Buy</span>
       </div>
       <h2>What you'll need to buy.</h2>
-      <p>You don't need to buy everything in May. Most equipment is cheaper through the cohort group order in August.</p>
+      <p>You do not need to buy everything in May. Use the current lookbook and bookstore page before placing an order.</p>
+      <p class="student-source-label">Product list checked against the 2026 lookbook</p>
     </div>
 
-    <p class="buy-group-label">Required</p>
+    <div class="buy-source-bar">
+      <p><strong>For 2026:</strong> review the equipment lookbook first, then use the bookstore order page. The listed closing date is August 3, 2026.</p>
+      <div>
+        <a href="https://drive.google.com/file/d/1SkpfsM9tdEez7tc9DgJqbuSNYqn0MxTC/view?usp=sharing" target="_blank" rel="noopener">Open lookbook ↗</a>
+        &nbsp;&nbsp;
+        <a href="https://www.uoftbookstore.com/specialty/faculties-schools/temerty-medicine/medicine-orientation-week" target="_blank" rel="noopener">Place an order ↗</a>
+      </div>
+    </div>
+
+    <p class="buy-group-label">Common clinical equipment</p>
     <div class="buy-grid">
 
       <div class="buy-item">
@@ -7519,7 +7635,7 @@
         </svg>
         <div>
           <p class="buy-item-name">Stethoscope</p>
-          <p class="buy-item-note">Littmann Classic III or Cardiology IV. By the Stethoscope Ceremony. Check the Team Blast lookbook for deals.</p>
+          <p class="buy-item-note">Students purchase their own. Aim to have one before the ceremony; one can be borrowed free for the draping if needed.</p>
         </div>
       </div>
 
@@ -7531,7 +7647,7 @@
         </svg>
         <div>
           <p class="buy-item-name">Clinical Skills Kit</p>
-          <p class="buy-item-note">Penlight, eye chart, measuring tape, reflex hammer, 128 + 512 Hz tuning forks. Last year ~$56.99.</p>
+          <p class="buy-item-note">The current lookbook lists the components and available bundle. Confirm the included pieces before ordering separately.</p>
         </div>
       </div>
 
@@ -7552,7 +7668,7 @@
         </svg>
         <div>
           <p class="buy-item-name">Dissection kit</p>
-          <p class="buy-item-note">Scalpel handle, spare blades, probe, tweezers, scissors. See the Team Blast lookbook for sourcing.</p>
+          <p class="buy-item-note">Check the current lookbook for the listed components and ordering option.</p>
         </div>
       </div>
 
@@ -7563,8 +7679,7 @@
         </svg>
         <div>
           <p class="buy-item-name">Blood pressure cuff</p>
-          <p class="buy-item-note">Standard sphygmomanometer for clinical skills practice. Many placements have them on hand, but it's worth owning your own.</p>
-          <a class="buy-item-link" href="https://www.amazon.ca/gp/product/B000QV5HOM/" target="_blank" rel="noopener">Common pick on Amazon ↗</a>
+          <p class="buy-item-note">Useful for clinical-skills practice. Check the current lookbook before purchasing one separately.</p>
         </div>
       </div>
 
@@ -7615,21 +7730,21 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Frequently Asked</span>
       </div>
-      <h2>Common questions before September.</h2>
+      <h2>A few details that depend on you.</h2>
     </div>
 
     <dl class="data-list">
       <div>
-        <dt>Should I move to Toronto before knowing my academy?</dt>
-        <dd>Either way works. Plenty of people move before their academy assignment arrives and it works out fine. Many students end up in the Bay-College or Yonge Corridor area, which is central regardless of academy. If you want the most precise housing decision, waiting until after June 24 means you'll know exactly which campus you're at.</dd>
+        <dt>Should I wait for my academy before signing a lease?</dt>
+        <dd>You do not have to, but knowing your academy can make commute comparisons easier. Use the <a href="housing.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Housing guide</a> to compare locations against your likely teaching sites rather than relying on one neighbourhood recommendation.</dd>
       </div>
       <div>
-        <dt>Do I need to attend the pre-O-Week webinars and welcome calls?</dt>
-        <dd>Not required. The Faculty's pre-O-Week webinars (academies, financial aid, etc.) and the upper-year welcome calls in May are all optional. Recordings are usually shared after. O-Week itself is a separate thing in August and has a mix of mandatory and optional sessions, which the <a href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">official O-Week site</a> will walk you through.</dd>
+        <dt>Which health-coverage information applies to me?</dt>
+        <dd>If you already have valid OHIP, this may only be a quick check. Students moving from another province or country should review their eligibility and confirm any U of T plan that applies to them. Do not assume that another student's coverage path matches yours.</dd>
       </div>
       <div>
-        <dt>When does my LOC need to be open?</dt>
-        <dd>Banks typically need until around July 1–2 to process and open your LOC from their end, so aim to have your appointment done well before then. You'll want it open before tuition and housing payments are due, and most students target having it ready by end of June.</dd>
+        <dt>Do I need a line of credit?</dt>
+        <dd>Not everyone does. Compare your available funding, expected costs, and timing before opening one. The <a href="finances.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Finances guide</a> explains the options and questions to bring to a bank appointment.</dd>
       </div>
     </dl>
   </div>
@@ -7647,7 +7762,7 @@
         </div>
         <h2 class="oweek-site-heading">The O-Week site is the source of truth for all orientation events.</h2>
         <p>The full schedule, RSVP forms, dress codes, location pins, last-minute changes, and the team's bios all live on the dedicated O-Week site, maintained by the team. Bookmark it the moment you receive your offer.</p>
-        <a class="oweek-site-link" href="https://uoftmedsoweek.ca/the-team" target="_blank" rel="noopener">Open uoftmedsoweek.ca <span class="footer-ext">↗</span></a>
+        <a class="oweek-site-link" href="https://uoftmedsoweek.ca/" target="_blank" rel="noopener">Open uoftmedsoweek.ca <span class="footer-ext">↗</span></a>
         <p class="oweek-site-note"><em>The site is refreshed each year by the incoming O-Week team. The link above goes to the current year's site.</em></p>
       </div>
     </div>
@@ -7662,8 +7777,8 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Recap Videos</span>
       </div>
-      <h2>What O-Week feels like.</h2>
-      <p>Past O-Week teams have produced recap videos at the end of each orientation. They're probably the closest thing you'll get to a preview of the week.</p>
+      <h2>See O-Week before you get there.</h2>
+      <p>Start with the recap videos, then open the Class of 2T9 photo archive below. These show previous cohorts, not the 2026 schedule.</p>
     </div>
     <div class="recap-grid">
       <a class="recap-card" href="https://www.youtube.com/watch?v=JsByhQnwZIg" target="_blank" rel="noopener">
@@ -7709,18 +7824,19 @@
 </div>
 
 <!-- ============ Day-by-Day Photo Journey ============ -->
-<section class="section" id="day-by-day" style="padding-top: 0;">
+<section class="section is-collapsed" id="day-by-day" style="padding-top: 0;">
   <div style="text-align: center; padding: 40px 32px 32px; border-bottom: 1px solid var(--hairline);">
     <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--uoft-teal); margin: 0 0 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
       <span style="display:block; width:32px; height:1px; background: var(--uoft-teal);"></span>
-      Day by Day · Class of 2T9
+      Historical Photo Archive · Class of 2T9 · 2025
       <span style="display:block; width:32px; height:1px; background: var(--uoft-teal);"></span>
     </p>
-    <h2 style="font-family: 'Roboto Slab', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: var(--uoft-navy); margin: 0 0 10px; letter-spacing: -0.025em; line-height: 1.05;">O-Week in Pictures.</h2>
-    <p style="font-size: 15px; color: var(--ink-soft); margin: 0 auto 16px; max-width: 46ch; line-height: 1.6;">The cohort's O-Week, event by event. New photos roll in as the cohort submits them.</p>
-    <a href="feedback.html" style="display: inline-block; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--uoft-navy); border: 1px solid var(--uoft-navy); padding: 4px 8px 3px; text-decoration: none;">Upper years: submit</a>
+    <h2 style="font-family: 'Roboto Slab', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: var(--uoft-navy); margin: 0 0 10px; letter-spacing: -0.025em; line-height: 1.05;">The 2T9 photo archive.</h2>
+    <p style="font-size: 15px; color: var(--ink-soft); margin: 0 auto 16px; max-width: 50ch; line-height: 1.6;">A look back at O-Week 2025. Event names and photographs are historical and should not be used as the current schedule.</p>
+    <button class="archive-toggle" type="button" aria-expanded="false" aria-controls="oweek-photo-archive">View O-Week photos</button>
+    <a href="feedback.html" style="display: block; width: fit-content; margin: 14px auto 0; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--uoft-navy); border-bottom: 1px solid var(--uoft-navy); padding: 2px 0; text-decoration: none;">Upper years: submit photos</a>
   </div>
-  <div class="container">
+  <div class="container" id="oweek-photo-archive">
 
     <div class="day-chapter">
       <div class="day-chapter-grid">
@@ -7912,7 +8028,7 @@
       <div class="event-block-header">
         <p class="event-block-title">Stethoscope Ceremony at Convocation Hall.</p>
         <p class="event-block-meta">5:00–8:30 PM · Doors 4:45 PM, start 6:00 PM</p>
-        <p class="event-block-context">The closing ceremony of O-Week. Each student receives their first stethoscope under the dome of Convocation Hall: the formal start of medical school.</p>
+        <p class="event-block-context">The closing ceremony of O-Week. Students bring the stethoscope they purchased for the draping; one can be borrowed free for the ceremony if needed.</p>
       </div>
       <div class="photo-spread">
         <figure class="photo-spread-tile" data-span="12"><div class="photo-spread-tile-inner is-wide" style="position:relative;"><img src="assets/oweek/stethoscope-ceremony/SC1.jpeg" alt="Stethoscope Ceremony" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block;"></div></figure>
@@ -7966,7 +8082,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -7982,7 +8098,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -8005,11 +8121,10 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){
@@ -8018,6 +8133,19 @@
   window.addEventListener('scroll', function() {
     btn.classList.toggle('visible', window.scrollY > 600);
   }, { passive: true });
+})();
+
+(function(){
+  var section = document.getElementById('day-by-day');
+  var toggle = section && section.querySelector('.archive-toggle');
+  if (!section || !toggle) return;
+
+  toggle.addEventListener('click', function() {
+    var willOpen = section.classList.contains('is-collapsed');
+    section.classList.toggle('is-collapsed', !willOpen);
+    toggle.setAttribute('aria-expanded', String(willOpen));
+    toggle.textContent = willOpen ? 'Hide O-Week photos' : 'View O-Week photos';
+  });
 })();
 </script>
 </body>

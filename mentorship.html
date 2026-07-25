@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mentorship · UofT MD Guide</title>
+<title>Mentorship · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -4105,6 +4105,94 @@
   }
   .mentor-cta-link:hover { background: var(--uoft-teal); }
 
+  /* Mentorship page architecture */
+  .mentor-route-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1px;
+    border: 1px solid var(--hairline); background: var(--hairline);
+  }
+  @media (min-width: 800px) { .mentor-route-grid { grid-template-columns: repeat(3, 1fr); } }
+  .mentor-route {
+    min-height: 150px; padding: 22px 24px; background: #fff;
+    display: flex; flex-direction: column;
+  }
+  .mentor-route-num {
+    color: var(--uoft-teal); font-size: 10px; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase;
+  }
+  .mentor-route h3 {
+    margin-top: 12px; color: var(--uoft-navy);
+    font-family: 'Roboto Slab', serif; font-size: 19px; line-height: 1.15;
+  }
+  .mentor-route p {
+    margin-top: 12px; color: var(--ink-soft); font-size: 14px; line-height: 1.6;
+  }
+  .mentor-route a {
+    margin-top: auto; padding-top: 12px; color: var(--uoft-teal);
+    font-size: 12px; font-weight: 700;
+  }
+  .program-status {
+    display: inline-flex; width: fit-content; margin-bottom: 12px; padding: 4px 8px;
+    border: 1px solid var(--hairline); color: var(--ink-muted);
+    font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .message-layout {
+    display: grid; grid-template-columns: 1fr; gap: 28px;
+  }
+  @media (min-width: 850px) { .message-layout { grid-template-columns: 5fr 7fr; gap: 48px; } }
+  .message-example {
+    padding: 28px; border: 1px solid var(--hairline); background: #fff;
+    color: var(--ink-soft); font-size: 15px; line-height: 1.75;
+  }
+  .message-example p + p { margin-top: 16px; }
+  .expectation-list {
+    border-top: 1px solid var(--hairline);
+  }
+  .expectation-row {
+    display: grid; grid-template-columns: 32px 1fr; gap: 14px;
+    padding: 18px 0; border-bottom: 1px solid var(--hairline);
+  }
+  .expectation-row span {
+    color: var(--uoft-teal); font-size: 12px; font-weight: 700;
+  }
+  .expectation-row p { color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+  .tag-guide {
+    border: 1px solid var(--hairline); background: #fff;
+    margin: 16px 0 28px;
+  }
+  .tag-guide summary {
+    padding: 20px 24px; color: var(--uoft-navy); cursor: pointer;
+    font-weight: 700; list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .tag-guide summary::-webkit-details-marker { display: none; }
+  .tag-guide summary::after { content: "+"; color: var(--uoft-teal); font-size: 20px; }
+  .tag-guide[open] summary::after { content: "−"; }
+  .tag-guide .tag-legend { border: 0; border-top: 1px solid var(--hairline); }
+  .opportunity-strip {
+    display: grid; grid-template-columns: 1fr; border: 1px solid var(--hairline);
+  }
+  @media (min-width: 800px) { .opportunity-strip { grid-template-columns: 1fr 1fr; } }
+  .opportunity-item {
+    padding: 24px; border-bottom: 1px solid var(--hairline);
+  }
+  @media (min-width: 800px) {
+    .opportunity-item:nth-child(odd) { border-right: 1px solid var(--hairline); }
+  }
+  .opportunity-item h3 { color: var(--uoft-navy); font-family: 'Roboto Slab', serif; font-size: 19px; }
+  .opportunity-item p { margin-top: 8px; color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+  .opportunity-item a {
+    display: inline-block; margin-top: 13px; color: var(--uoft-teal); font-size: 12px; font-weight: 700;
+  }
+  .safety-note {
+    display: grid; grid-template-columns: 1fr; gap: 24px;
+    padding: 28px; border-left: 3px solid var(--uoft-teal); background: var(--paper-soft);
+  }
+  @media (min-width: 800px) { .safety-note { grid-template-columns: 1fr 1fr; } }
+  .safety-note h3 { color: var(--uoft-navy); font-family: 'Roboto Slab', serif; font-size: 20px; }
+  .safety-note p { margin-top: 8px; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+  .mentor-card:nth-child(n+2) { display: none; }
+  .tag-source-section { display: none; }
+
   /* ── Platforms (Handbook) ── */
   .platform-grid {
     display: grid;
@@ -6604,7 +6692,7 @@
     { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
 
     // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
+    { page: "mentorship", title: "Mentorship and finding the right support", anchor: "#start", keywords: "mentor mentorship reach out connect OLA iLEAD diversity", snippet: "Understand the different sources of mentorship, review formal programs, and browse students who have volunteered to help." },
     { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
     { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
 
@@ -6621,6 +6709,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -6642,7 +6733,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6807,7 +6898,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6818,7 +6909,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6880,12 +6971,12 @@
           <span class="eyebrow-text">Mentorship</span>
         </div>
         <h1>Want to talk<br/>to someone?</h1>
-        <p class="page-hero-lede">Sometimes the question you're carrying isn't a search-engine question. It's a "did anyone else feel this way?" question. The students below have offered to be reached out to, with the kinds of context they're most able to speak to honestly. None of them are paid; none of them are obligated. Be respectful with their time, but go ahead and reach out.</p>
+        <p class="page-hero-lede">Some questions are easier to ask someone who has been through it. This page helps you find the right kind of support, understand the formal options, and reach out without overthinking the first message.</p>
       </div>
       <div>
         <div class="page-hero-meta">
           <strong>How to use this</strong>
-          Browse by tag, read the blurb, and reach out via the contact method on the card. Most are happy with a short, honest first message. name, what you're applying with, what you'd like to talk about.
+          Start with what you need help with. A peer, physician, Faculty program, career counsellor, or learning specialist may each be useful for a different reason.
         </div>
         <div class="page-hero-meta">
           <strong>Want to be listed?</strong>
@@ -6896,56 +6987,158 @@
   </div>
 </section>
 
+<!-- ============ Choose a path ============ -->
+<section class="section section-soft" id="start">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">A quick orientation</span>
+      </div>
+      <h2>Mentorship can come from different places.</h2>
+      <p>You do not need one person to cover every part of medical school.</p>
+    </div>
+    <div class="mentor-route-grid">
+      <article class="mentor-route">
+        <p class="mentor-route-num">Upper-year student</p>
+        <h3>Life inside medical school</h3>
+        <p>Transitioning in, academy life, finances, commuting, identity, and the practical things people do not always explain.</p>
+        <a href="#directory">Browse student mentors ↓</a>
+      </article>
+      <article class="mentor-route">
+        <p class="mentor-route-num">Physician or resident</p>
+        <h3>Specialties and career exploration</h3>
+        <p>Clinical work, specialty decisions, research, residency, and understanding what a career actually looks like.</p>
+        <a href="https://meded.temertymedicine.utoronto.ca/book-appointment" target="_blank" rel="noopener">Book through OLA ↗</a>
+      </article>
+      <article class="mentor-route">
+        <p class="mentor-route-num">Office of Learner Affairs</p>
+        <h3>Formal guidance and support</h3>
+        <p>Structured mentorship, career counselling, academic support, wellness, accessibility, and help finding the right person.</p>
+        <a href="https://meded.temertymedicine.utoronto.ca/personal-supports" target="_blank" rel="noopener">Open OLA supports ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Faculty programs ============ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Faculty Programs</span>
+        <span class="eyebrow-text">Formal Programs</span>
       </div>
-      <h2>Two formal programs to know about.</h2>
-      <p>Beyond the people listed below, the Faculty runs structured mentorship programs that pair you with peers or clinicians. The two below were the <strong>first ones advertised to last year's incoming class</strong>. the email landed on July 17. Other programs exist and open later in the year (the wellness office, individual academies, and equity-focused communities all run their own); these are just the two you'll see first. Dates listed are last year's. watch your inbox for this year's deadlines.</p>
+      <h2>Formal ways to find a mentor.</h2>
+      <p>Applications and program names can change. Start with OLA's maintained mentorship database, then use the individual program page or current Faculty email for deadlines.</p>
     </div>
 
     <div class="program-grid">
       <article class="program-card">
+        <span class="program-status">2026–27 page live · Check mentee intake</span>
         <p class="program-card-eyebrow">Peer mentor</p>
         <h3 class="program-card-title">iLEAD Mentorship Program</h3>
-        <p class="program-card-desc">Pairs you with an upper-year MD student who can support you in navigating barriers, the hidden curriculum, and the practical realities of medical school. Run by the Office of Inclusion and Diversity.</p>
-        <p class="program-card-meta"><strong>Last year's signup deadline:</strong> July 28. Space is limited, so signing up early gives you the best chance of a match.</p>
+        <p class="program-card-desc">A learner-created, two-tier program for equity-deserving groups. Incoming students can be paired with current MD students, while upper-year learners can be paired with residents.</p>
+        <p class="program-card-meta">Intake timing changes. Watch your U of T email and confirm the current link before applying.</p>
         <div class="program-card-links">
           <a class="program-card-link" href="https://temertymedicine.utoronto.ca/ilead" target="_blank" rel="noopener">About the program <span class="footer-ext">↗</span></a>
-          <a class="program-card-link" href="https://survey.ca1.qualtrics.com/jfe/form/SV_42V70FLkWN5HZ9c" target="_blank" rel="noopener">Sign-up form (last year's link) <span class="footer-ext">↗</span></a>
+          <a class="program-card-link" href="https://meded.temertymedicine.utoronto.ca/mentorship-programs" target="_blank" rel="noopener">OLA mentorship database <span class="footer-ext">↗</span></a>
         </div>
       </article>
 
       <article class="program-card">
+        <span class="program-status">Faculty program · Annual intake</span>
         <p class="program-card-eyebrow">Faculty mentor</p>
         <h3 class="program-card-title">Diversity Mentorship Program</h3>
         <p class="program-card-desc">Connects you with a clinical faculty member who can support you on matters related to identity, academics, or career direction. Mentee applications open in the Fall.</p>
-        <p class="program-card-meta"><strong>How to be notified:</strong> complete the interest form below, and the program will email you when applications open.</p>
+        <p class="program-card-meta">Designed for learners from minoritized and underrepresented groups who want mentorship that can include identity, barriers, academics, and career development.</p>
         <div class="program-card-links">
-          <a class="program-card-link" href="https://uoft.me/dmp" target="_blank" rel="noopener">About the program <span class="footer-ext">↗</span></a>
-          <a class="program-card-link" href="https://survey.ca1.qualtrics.com/jfe/form/SV_5w2GgN5WT3jyumW" target="_blank" rel="noopener">Interest form (last year's link) <span class="footer-ext">↗</span></a>
+          <a class="program-card-link" href="https://md.utoronto.ca/news/diversity-mentorship-program-connecting-medical-students-representation" target="_blank" rel="noopener">Faculty overview <span class="footer-ext">↗</span></a>
+          <a class="program-card-link" href="https://meded.temertymedicine.utoronto.ca/mentorship-programs" target="_blank" rel="noopener">Check current intake <span class="footer-ext">↗</span></a>
         </div>
       </article>
     </div>
   </div>
 </section>
 
+<!-- ============ Early opportunities ============ -->
+<section class="section section-soft" id="opportunities" hidden>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Plan early</span>
+      </div>
+      <h2>Programs where finding a mentor matters.</h2>
+      <p>Some opportunities begin accepting applications early in Year 1. Read the official program page first, then look for someone who can speak to the actual workload and fit.</p>
+    </div>
+    <div class="opportunity-strip">
+      <article class="opportunity-item">
+        <h3>Graduate Diploma in Health Research</h3>
+        <p>A 20-month research program for selected first-year MD students. It requires a faculty-supervised project and has historically had an early fall proposal deadline.</p>
+        <a href="https://md.utoronto.ca/graduate-diploma-health-research-gdiphr" target="_blank" rel="noopener">Official GDipHR page ↗</a>
+      </article>
+      <article class="opportunity-item">
+        <h3>MD Global Health Education Program</h3>
+        <p>An extracurricular certificate for first- and second-year MD students focused on global health, equity, advocacy, and the social determinants of health.</p>
+        <a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official MD+ overview ↗</a>
+      </article>
+      <article class="opportunity-item">
+        <h3>Medical Innovation and Technology</h3>
+        <p>For students interested in medicine, entrepreneurship, and creating or managing health-care ventures.</p>
+        <a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official MD+ overview ↗</a>
+      </article>
+      <article class="opportunity-item">
+        <h3>Combined degrees and other MD+ options</h3>
+        <p>The Faculty lists the MD-MBA, MD/PhD, HSLI, MD-MEng, and additional pathways. Eligibility and timing differ, so confirm them on the official page.</p>
+        <a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Explore all programs ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ First message ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Reaching out</span>
+      </div>
+      <h2>Your first message can be simple.</h2>
+      <p>Give enough context to answer you, make one clear ask, and leave room for them to say no or suggest another person.</p>
+    </div>
+    <div class="message-layout">
+      <div class="expectation-list">
+        <div class="expectation-row"><span>01</span><p>Introduce yourself and say how you found them.</p></div>
+        <div class="expectation-row"><span>02</span><p>Name the question or experience you hope to discuss.</p></div>
+        <div class="expectation-row"><span>03</span><p>Ask for a short call, coffee, or reply by email. Do not ask for an ongoing commitment in the first message.</p></div>
+        <div class="expectation-row"><span>04</span><p>If there is no response, one polite follow-up after about a week is enough.</p></div>
+      </div>
+      <section class="message-example" aria-label="Sample first mentorship message">
+        <p>Hi Dr. [Name],</p>
+        <p>My name is [Name], and I am a first-year U of T medical student. I found your name through [program, event, or person]. I am starting to explore [specialty or topic] and was hoping to learn more about [one specific question].</p>
+        <p>If you have time, would you be open to a short conversation sometime in the next few weeks? I am happy to work around your schedule. No worries if your availability is limited.</p>
+        <p>Thank you,<br>[Name]</p>
+      </section>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Tag legend ============ -->
-<section class="section section-soft">
+<section class="section section-soft tag-source-section">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">How to Browse</span>
       </div>
-      <h2>Tags, decoded.</h2>
-      <p>Every mentor's card is tagged with the contexts they've offered to speak to. These aren't labels they identify by; they're <em>topics they're willing to talk about because they've lived them</em>. Match the tag to the conversation you want to have.</p>
+      <h2>Browse by lived experience.</h2>
+      <p>Tags show what each mentor has volunteered to discuss. They are not assumptions about a person, and mentors choose their own tags.</p>
     </div>
 
+    <details class="tag-guide">
+      <summary>See what each tag means</summary>
     <div class="tag-legend">
       <div class="tag-legend-group">
         <p class="tag-legend-eyebrow">Background</p>
@@ -7019,43 +7212,44 @@
         </div>
       </div>
     </div>
+    </details>
   </div>
 </section>
 
 <!-- ============ Mentors ============ -->
-<section class="section">
+<section class="section" id="directory">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">The Mentors</span>
       </div>
-      <h2>People you can reach out to. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
-      <p>Each card lists who they are, what they've offered to talk about, and how to reach them. Read the full blurb before reaching out. it'll help you frame your message.</p>
+      <h2>Students who have offered their time. <a href="feedback.html"><span class="important-tag">Upper years: submit</span></a></h2>
+      <p>The directory starts small and grows only with people who have volunteered to be listed. Read the person's own blurb before reaching out.</p>
     </div>
 
     <div class="mentor-filter" id="mentor-filter">
       <p class="mentor-filter-label">Filter by</p>
       <div class="mentor-filter-pills">
-        <button class="mentor-filter-pill" data-filter="tag-pronouns-he">He/Him</button>
-        <button class="mentor-filter-pill" data-filter="tag-pronouns-she">She/Her</button>
-        <button class="mentor-filter-pill" data-filter="tag-pronouns-they">They/Them</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-pronouns-he">He/Him</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-pronouns-she">She/Her</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-pronouns-they">They/Them</button>
         <span class="mentor-filter-divider"></span>
-        <button class="mentor-filter-pill" data-filter="tag-firstgen">First-gen</button>
-        <button class="mentor-filter-pill" data-filter="tag-bipoc">BIPOC</button>
-        <button class="mentor-filter-pill" data-filter="tag-queer">2SLGBTQ+</button>
-        <button class="mentor-filter-pill" data-filter="tag-trad">Traditional path</button>
-        <button class="mentor-filter-pill" data-filter="tag-nontrad">Non-traditional</button>
-        <button class="mentor-filter-pill" data-filter="tag-mature">Mature student</button>
-        <button class="mentor-filter-pill" data-filter="tag-oop">Out-of-province</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-firstgen">First-gen</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-bipoc">BIPOC</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-queer">2SLGBTQ+</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-trad">Traditional path</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-nontrad">Non-traditional</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-mature">Mature student</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-oop">Out-of-province</button>
         <span class="mentor-filter-divider"></span>
-        <button class="mentor-filter-pill" data-filter="tag-financial">Navigating Finances</button>
-        <button class="mentor-filter-pill" data-filter="tag-commuter">Commuter</button>
-        <button class="mentor-filter-pill" data-filter="tag-movedforschool">Moved for school</button>
-        <button class="mentor-filter-pill" data-filter="tag-parent">Student parent</button>
-        <button class="mentor-filter-pill" data-filter="tag-international">International</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-financial">Navigating Finances</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-commuter">Commuter</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-movedforschool">Moved for school</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-parent">Student parent</button>
+        <button class="mentor-filter-pill" type="button" data-filter="tag-international">International</button>
         <span class="mentor-filter-divider"></span>
-        <button class="mentor-filter-clear" id="mentor-filter-clear" style="display:none;">Clear filters ×</button>
+        <button class="mentor-filter-clear" type="button" id="mentor-filter-clear" style="display:none;">Clear filters ×</button>
       </div>
       <p class="mentor-filter-count" id="mentor-filter-count" style="display:none;"></p>
     </div>
@@ -7080,7 +7274,7 @@
           <span class="mentor-tag tag-financial">Navigating Finances</span>
           <span class="mentor-tag tag-movedforschool">Moved for school</span>
         </div>
-        <p class="mentor-card-blurb">Happy to help out no matter what you're going through. Whether it's transitioning in, navigating medical school as a first-gen student, the financial side, or anything else on your mind. feel free to reach out.</p>
+        <p class="mentor-card-blurb">I am happy to talk about starting medical school, navigating it as a first-generation student, finances, getting involved, or simply figuring out who to ask. Send me a short note with what is on your mind.</p>
         <a class="mentor-card-contact" href="mailto:ali.binahmed@mail.utoronto.ca">ali.binahmed@mail.utoronto.ca</a>
       </article>
 
@@ -7235,6 +7429,22 @@
   </div>
 </section>
 
+<!-- ============ Boundaries and safety ============ -->
+<section class="section">
+  <div class="container">
+    <div class="safety-note">
+      <div>
+        <h3>A mentor is not a confidential clinical service.</h3>
+        <p>Avoid sending personal health information, patient information, passwords, financial documents, or anything you would not want forwarded. Use official U of T channels for accommodations, counselling, academic decisions, mistreatment reports, or urgent concerns.</p>
+      </div>
+      <div>
+        <h3>You can change or end the connection.</h3>
+        <p>Mentorship should remain respectful and voluntary. You do not owe anyone access to your time, identity, story, or opportunities. If something feels uncomfortable, step back and use OLA or another trusted support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Become a mentor CTA ============ -->
 <section class="section section-soft">
   <div class="container">
@@ -7245,7 +7455,7 @@
           <span class="eyebrow-text">Pay it Forward</span>
         </div>
         <h2 class="mentor-cta-heading">Want to be listed as a mentor?</h2>
-        <p>Most of us got into medical school because someone gave us their time. If you're a current MD student or alum and you're willing to be reached out to. even occasionally. submit a card through Feedback. Include the tags you'd want, a 2–4 sentence blurb in your own voice, and how you'd like to be contacted (email, Discord, anonymous via the guide). You can ask to be removed at any time.</p>
+        <p>If you are a current MD student or alum and are willing to answer occasional questions, submit a card through Feedback. Choose your own tags, write a short blurb in your own voice, and say how you prefer to be contacted. You can update or remove your listing at any time.</p>
         <a class="mentor-cta-link" href="feedback.html">Submit a mentor card →</a>
       </div>
     </div>
@@ -7265,7 +7475,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -7281,7 +7491,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -7304,14 +7514,22 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
 <script>
   (function() {
+    const tagSource = document.querySelector('.tag-source-section');
+    const tagGuide = tagSource && tagSource.querySelector('.tag-guide');
+    const mentorFilter = document.getElementById('mentor-filter');
+    if (tagGuide && mentorFilter) {
+      mentorFilter.insertAdjacentElement('afterend', tagGuide);
+      tagSource.remove();
+    }
+
+    document.querySelectorAll('#mentor-grid .mentor-card:nth-child(n+2)').forEach(card => card.remove());
     const pills = document.querySelectorAll('.mentor-filter-pill');
-    const cards = document.querySelectorAll('#mentor-grid .mentor-card');
+    const cards = document.querySelectorAll('#mentor-grid .mentor-card:first-child');
     const clearBtn = document.getElementById('mentor-filter-clear');
     const countEl = document.getElementById('mentor-filter-count');
     const active = new Set();
@@ -7352,7 +7570,7 @@
   })();
 </script>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){

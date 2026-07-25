@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Feedback · UofT MD Guide</title>
+<title>Feedback · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -5829,7 +5829,6 @@
     { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
     { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
     { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
     { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
     { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
 
@@ -5848,12 +5847,12 @@
     { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
     { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
     { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
+    { page: "academics", title: "What a typical week looks like", anchor: "#curriculum-start", keywords: "weekly schedule CBL clinical skills anatomy ME portfolio", snippet: "Compare a typical week with ME and Portfolio weeks. Exact schedules vary and remain in MedSIS." },
     { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
     { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
     { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
 
-    // Handbook
+    // Field Guide
     { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
     { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
     { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
@@ -5884,6 +5883,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -5905,7 +5907,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6070,7 +6072,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6081,7 +6083,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6140,7 +6142,7 @@
     gap: 12px;
   }
   @media (min-width: 768px) {
-    .submission-type-grid { grid-template-columns: repeat(4, 1fr); }
+    .submission-type-grid { grid-template-columns: repeat(3, 1fr); }
   }
   .submission-type {
     background: white;
@@ -6281,6 +6283,42 @@
     line-height: 1.55;
     color: var(--ink-soft);
   }
+  .feedback-note {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 14px;
+    margin-top: 28px;
+    padding: 18px 20px;
+    background: var(--paper-soft);
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--uoft-teal);
+  }
+  .feedback-note-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 1px solid var(--hairline);
+    color: var(--uoft-navy);
+    font-weight: 800;
+  }
+  .feedback-note strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--uoft-navy);
+  }
+  .feedback-note p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .submission-status {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
 </style>
 
 <!-- ============ Page hero ============ -->
@@ -6291,19 +6329,19 @@
       <div>
         <div class="eyebrow">
           <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">Section 05 · Feedback</span>
+          <span class="eyebrow-text">Student-created and independent · Feedback</span>
         </div>
-        <h1>Help build<br/>the guide.</h1>
-        <p class="page-hero-lede">This guide is maintained by upper-year students. Submit a housing review, contribute content for a community group, or send general feedback. Everything is reviewed before going live.</p>
+        <h1>Help keep the<br/>guide useful.</h1>
+        <p class="page-hero-lede">Found something that needs fixing? Have an experience that could help the next class? Send it here. A student maintainer reviews every submission before anything is added to the guide.</p>
       </div>
       <div>
         <div class="page-hero-meta">
           <strong>Who can submit</strong>
-          Current and recent UofT MD students. We verify cohort year before approving.
+          Anyone can report an error. Student experiences, group information and mentor profiles should come from current or recent UofT MD students.
         </div>
         <div class="page-hero-meta">
-          <strong>How long</strong>
-          Submissions are reviewed within roughly a week. Approved content appears on the live site within minutes of approval.
+          <strong>A source helps</strong>
+          For dates, requirements, fees or policies, include the official page or document when you can. It makes the correction easier to verify.
         </div>
       </div>
     </div>
@@ -6319,29 +6357,29 @@
           <span class="eyebrow-rule"></span>
           <span class="eyebrow-text">The Process</span>
         </div>
-        <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; color: var(--uoft-navy); font-size: clamp(1.75rem, 3vw, 2.25rem); margin-top: 16px; line-height: 1.15;">Every submission is reviewed.</h2>
-        <p style="margin-top: 16px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 38rem;">Nothing posts publicly until a maintainer approves it. This protects the cohort from spam, keeps content accurate, and lets us verify reviewers actually attended UofT MD.</p>
+        <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; color: var(--uoft-navy); font-size: clamp(1.75rem, 3vw, 2.25rem); margin-top: 16px; line-height: 1.15;">What happens after you submit</h2>
+        <p style="margin-top: 16px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 38rem;">Submissions do not appear automatically. Information is checked for accuracy, relevance and permission before it is considered for the guide.</p>
       </div>
       <div>
         <div class="pipeline-step">
           <div class="pipeline-num">1</div>
           <div>
             <p class="pipeline-title">You submit</p>
-            <p class="pipeline-desc">Fill out the form below. Submissions are sent to the maintainer for review. You can include your email if you'd like a notification when it's approved.</p>
+            <p class="pipeline-desc">Choose the closest option below and include enough detail to locate or understand the issue. Your email is optional unless follow-up is needed.</p>
           </div>
         </div>
         <div class="pipeline-step">
           <div class="pipeline-num">2</div>
           <div>
             <p class="pipeline-title">A maintainer reviews</p>
-            <p class="pipeline-desc">A current student maintainer (you'll know who) reads each submission. We check tone, accuracy, and whether the submitter is plausibly a UofT MD student.</p>
+            <p class="pipeline-desc">A current student maintainer checks the submission. Factual changes are compared with an official or otherwise clearly identified source.</p>
           </div>
         </div>
         <div class="pipeline-step">
           <div class="pipeline-num">3</div>
           <div>
-            <p class="pipeline-title">It goes live</p>
-            <p class="pipeline-desc">Once approved, the submission appears on the live site. Reviews show up on the relevant building's detail panel; group content appears in the Handbook section. We notify you if you provided an email.</p>
+            <p class="pipeline-title">The guide is updated</p>
+            <p class="pipeline-desc">Approved material is added to the relevant page. Housing reviews remain student-reported. Community information is published only when the submitter is authorized to share it.</p>
           </div>
         </div>
       </div>
@@ -6359,40 +6397,52 @@
         <span class="eyebrow-text">Submit</span>
       </div>
       <h2>What would you like to contribute?</h2>
-      <p>Pick a submission type. The form adjusts to ask the right questions.</p>
+      <p>Choose the closest option. The questions below will change with your selection.</p>
     </div>
 
     <div class="submission-type-grid">
-      <button type="button" class="submission-type active" data-type="housing-review" onclick="setSubmissionType('housing-review')">
+      <button type="button" class="submission-type active" data-type="content-correction" onclick="setSubmissionType('content-correction')">
+        <p class="submission-type-title">Fix information</p>
+        <p class="submission-type-desc">Flag something incorrect, unclear or out of date.</p>
+      </button>
+      <button type="button" class="submission-type" data-type="housing-review" onclick="setSubmissionType('housing-review')">
         <p class="submission-type-title">Housing review</p>
-        <p class="submission-type-desc">Review a building or neighborhood you've lived in.</p>
+        <p class="submission-type-desc">Share your experience with a building or neighbourhood.</p>
       </button>
       <button type="button" class="submission-type" data-type="community-content" onclick="setSubmissionType('community-content')">
-        <p class="submission-type-title">Community group content</p>
-        <p class="submission-type-desc">Update the Handbook section for a group you represent.</p>
-      </button>
-      <button type="button" class="submission-type" data-type="content-correction" onclick="setSubmissionType('content-correction')">
-        <p class="submission-type-title">Content correction</p>
-        <p class="submission-type-desc">Spotted something out of date or wrong? Flag it here.</p>
-      </button>
-      <button type="button" class="submission-type" data-type="general-feedback" onclick="setSubmissionType('general-feedback')">
-        <p class="submission-type-title">General feedback</p>
-        <p class="submission-type-desc">Anything else. suggestions, requests, ideas.</p>
+        <p class="submission-type-title">Community information</p>
+        <p class="submission-type-desc">Add or update information for a group you represent.</p>
       </button>
       <button type="button" class="submission-type" data-type="mentor-signup" onclick="setSubmissionType('mentor-signup')">
-        <p class="submission-type-title">Mentor sign-up</p>
-        <p class="submission-type-desc">Offer to be listed on the Mentorship page.</p>
+        <p class="submission-type-title">Join the mentor directory</p>
+        <p class="submission-type-desc">Offer to be contacted by incoming students.</p>
       </button>
       <button type="button" class="submission-type" data-type="testimonial" onclick="setSubmissionType('testimonial')">
-        <p class="submission-type-title">Testimonial</p>
-        <p class="submission-type-desc">Share a study tip, commuter experience, or reflection.</p>
+        <p class="submission-type-title">Share an experience</p>
+        <p class="submission-type-desc">Contribute practical advice for a guide section.</p>
+      </button>
+      <button type="button" class="submission-type" data-type="privacy-removal" onclick="setSubmissionType('privacy-removal')">
+        <p class="submission-type-title">Update or remove a listing</p>
+        <p class="submission-type-desc">Request a change to personal or group information.</p>
+      </button>
+      <button type="button" class="submission-type" data-type="general-feedback" onclick="setSubmissionType('general-feedback')">
+        <p class="submission-type-title">Something else</p>
+        <p class="submission-type-desc">Send a suggestion, request or general comment.</p>
       </button>
     </div>
 
+    <div class="feedback-note">
+      <div class="feedback-note-icon" aria-hidden="true">i</div>
+      <div>
+        <strong>Keep private information out of the form</strong>
+        <p>Do not submit patient information, passwords, financial documents, confidential course materials or identifying information about someone else without their permission. Contact details entered as “public” may appear on the site.</p>
+      </div>
+    </div>
+
     <!-- HOUSING REVIEW FORM -->
-    <div class="form-shell" id="form-housing-review">
+    <div class="form-shell" id="form-housing-review" style="display: none;">
       <h3>Submit a housing review</h3>
-      <p class="form-shell-desc">Reviews appear on the building's detail panel in the Housing section. Be specific. vague reviews don't help anyone.</p>
+      <p class="form-shell-desc">Reviews appear with the relevant building in the Housing section. Details about commute, management, noise and what you wish you knew are especially useful.</p>
 
       <div class="form-grid-2">
         <div class="form-row">
@@ -6425,13 +6475,13 @@
 
       <div class="form-row">
         <label class="form-label" for="hr-review">Your review</label>
-        <p class="form-help">What was good? What sucked? What would you tell your past self before signing? 2–4 sentences is the sweet spot.</p>
+        <p class="form-help">What worked well? What did not? What would you tell your past self before signing? Two to four sentences is a useful starting point.</p>
         <textarea class="form-textarea" id="hr-review" placeholder="Lived here in 2T7. Pros: ... Cons: ..."></textarea>
       </div>
 
       <div class="form-row">
         <label class="form-label" for="hr-rent">Rent paid (optional)</label>
-        <p class="form-help">Helps future students calibrate. We'll combine with other reviews; we won't show your specific number.</p>
+        <p class="form-help">Include the year, unit type and whether utilities were included. This may be published as part of your review, so leave it blank if you would rather not share it.</p>
         <input class="form-input" type="text" id="hr-rent" placeholder="e.g., $2,300/mo for 1-bed in 2024" />
       </div>
 
@@ -6450,7 +6500,7 @@
     <!-- COMMUNITY CONTENT FORM -->
     <div class="form-shell" id="form-community-content" style="display: none;">
       <h3>Community group content</h3>
-      <p class="form-shell-desc">Help populate the Handbook section for your community group. We'll review and publish content alongside the existing group cards.</p>
+      <p class="form-shell-desc">Add or update information for a community group in the Field Guide. Please submit only on behalf of a group you represent.</p>
 
       <div class="form-grid-2">
         <div class="form-row">
@@ -6482,19 +6532,19 @@
 
       <div class="form-row">
         <label class="form-label" for="cc-role">Your role in the group</label>
-        <p class="form-help">Co-president? Member? Past exec? We use this to verify, not publish.</p>
+        <p class="form-help">For example, co-president, member or past executive. This is used for verification and is not published.</p>
         <input class="form-input" type="text" id="cc-role" placeholder="e.g., Co-president, 2T7" />
       </div>
 
       <div class="form-row">
         <label class="form-label" for="cc-content">Group description</label>
-        <p class="form-help">2–4 paragraphs. What does the group do? What's the contact path for incoming students? What programming exists?</p>
+        <p class="form-help">What does the group do? How can incoming students connect? What programs or supports should they know about?</p>
         <textarea class="form-textarea" id="cc-content" style="min-height: 220px;" placeholder="The [group name] is..."></textarea>
       </div>
 
       <div class="form-row">
         <label class="form-label" for="cc-contact">Public contact info (optional)</label>
-        <p class="form-help">Group email, Instagram handle, or whatever works. Will be displayed publicly.</p>
+        <p class="form-help">A group email, website or social account. This will be displayed publicly.</p>
         <input class="form-input" type="text" id="cc-contact" placeholder="e.g., bmsa.uoft@example.com or @bmsa.uoft" />
       </div>
 
@@ -6511,9 +6561,9 @@
     </div>
 
     <!-- CONTENT CORRECTION FORM -->
-    <div class="form-shell" id="form-content-correction" style="display: none;">
+    <div class="form-shell" id="form-content-correction">
       <h3>Spotted something wrong?</h3>
-      <p class="form-shell-desc">Tell us what's out of date, factually wrong, or just unclear. We fix things fast when they're flagged specifically.</p>
+      <p class="form-shell-desc">Tell us what is out of date, factually incorrect or unclear. Specific details and a source help us check the issue properly.</p>
 
       <div class="form-row">
         <label class="form-label" for="cor-page">Which page or section?</label>
@@ -6526,8 +6576,8 @@
       </div>
 
       <div class="form-row">
-        <label class="form-label" for="cor-source">Source (if applicable)</label>
-        <p class="form-help">If you have a link or document that supports the correction, drop it here.</p>
+        <label class="form-label" for="cor-source">Source</label>
+        <p class="form-help">Include an official webpage, document or clearly identified student source when possible. If the source is not public, describe where it can be found.</p>
         <input class="form-input" type="text" id="cor-source" placeholder="https://... or 'cohort Q&A with X bank, March 2026'" />
       </div>
 
@@ -6537,7 +6587,7 @@
       </div>
 
       <div class="form-submit-row">
-        <p class="form-submit-note">Quick fixes are usually pushed within a few days.</p>
+        <p class="form-submit-note">The change will be reviewed against the source before the page is updated.</p>
         <button class="btn btn-primary" type="button" onclick="handleSubmit('content-correction')">Submit correction →</button>
       </div>
     </div>
@@ -6545,7 +6595,7 @@
     <!-- GENERAL FEEDBACK FORM -->
     <div class="form-shell" id="form-general-feedback" style="display: none;">
       <h3>General feedback</h3>
-      <p class="form-shell-desc">Suggestions, requests, ideas, complaints. anything that doesn't fit the other categories.</p>
+      <p class="form-shell-desc">Use this for a suggestion, request or comment that does not fit the other options.</p>
 
       <div class="form-row">
         <label class="form-label" for="gf-message">Your message</label>
@@ -6559,7 +6609,7 @@
       </div>
 
       <div class="form-submit-row">
-        <p class="form-submit-note">All feedback is read. Not all of it gets a response, but it does get considered.</p>
+        <p class="form-submit-note">Include an email if you would like a reply or if the maintainer may need more detail.</p>
         <button class="btn btn-primary" type="button" onclick="handleSubmit('general-feedback')">Send →</button>
       </div>
     </div>
@@ -6567,7 +6617,7 @@
     <!-- MENTOR SIGN-UP FORM -->
     <div class="form-shell" id="form-mentor-signup" style="display: none;">
       <h3>Sign up as a mentor</h3>
-      <p class="form-shell-desc">You'll be listed on the Mentorship page with your name, blurb, and contact method. We review before publishing.</p>
+      <p class="form-shell-desc">Your approved profile will appear in the mentor directory with your name, short introduction and chosen contact method.</p>
 
       <div class="form-grid-2">
         <div class="form-row">
@@ -6587,7 +6637,7 @@
 
       <div class="form-row">
         <label class="form-label" for="ms-tags">Topics you can speak to</label>
-        <p class="form-help">Comma-separated. e.g., mature student, commuter life, LGBTQ+, finances, accommodations, international student</p>
+        <p class="form-help">For example, mature student, commuter life, LGBTQ+, finances, accommodations or international student.</p>
         <input class="form-input" type="text" id="ms-tags" placeholder="e.g., career change, finances, study strategies" />
       </div>
 
@@ -6605,18 +6655,18 @@
 
       <div class="form-row">
         <label class="form-label" for="ms-photo">Link to a photo of you (optional)</label>
-        <p class="form-help">Paste a Google Drive, Instagram, or LinkedIn photo link. We'll crop it for the card.</p>
+        <p class="form-help">Share a link only if you have permission for the photo to be cropped and displayed publicly on your mentor profile.</p>
         <input class="form-input" type="url" id="ms-photo" placeholder="https://..." />
       </div>
 
       <div class="form-row">
         <label class="form-label" for="ms-email">Your email</label>
-        <p class="form-help">For follow-up only. Not displayed on the site.</p>
+        <p class="form-help">Used for follow-up only. If this is also your chosen public contact, it will appear because you entered it above.</p>
         <input class="form-input" type="email" id="ms-email" placeholder="you@mail.utoronto.ca" />
       </div>
 
       <div class="form-submit-row">
-        <p class="form-submit-note">By submitting, you agree to be listed publicly on the Mentorship page and contacted by incoming students.</p>
+        <p class="form-submit-note">By submitting, you agree to the public display of your profile and chosen contact method. You can request an update or removal at any time.</p>
         <button class="btn btn-primary" type="button" onclick="handleSubmit('mentor-signup')">Submit for review →</button>
       </div>
     </div>
@@ -6639,14 +6689,18 @@
             <option value="commuter">Housing: commuter experience</option>
             <option value="study">Academics: study approach</option>
             <option value="finances">Finances: LOC or budgeting</option>
-            <option value="general">General reflection</option>
+            <option value="academies">Academy experience</option>
+            <option value="courses">Courses and assessments</option>
+            <option value="oweek">O-Week and starting medical school</option>
+            <option value="mentorship">Mentorship</option>
+            <option value="general">Another section</option>
           </select>
         </div>
       </div>
 
       <div class="form-row">
         <label class="form-label" for="ts-quote">Your testimonial</label>
-        <p class="form-help">2-4 sentences. Specific beats generic. "I took the GO train from Oakville, 65 min door to door" is more useful than "commuting was fine."</p>
+        <p class="form-help">Two to four sentences is a useful starting point. Specific details, such as a door-to-door commute time or a study approach that changed, are most helpful.</p>
         <textarea class="form-textarea" id="ts-quote" rows="4" placeholder="Write in first person."></textarea>
       </div>
 
@@ -6656,8 +6710,42 @@
       </div>
 
       <div class="form-submit-row">
-        <p class="form-submit-note">Testimonials may be lightly edited for length or clarity before publishing.</p>
+        <p class="form-submit-note">Student perspectives are labelled as student-reported and may be lightly edited for length or clarity.</p>
         <button class="btn btn-primary" type="button" onclick="handleSubmit('testimonial')">Submit →</button>
+      </div>
+    </div>
+
+    <!-- PRIVACY / REMOVAL FORM -->
+    <div class="form-shell" id="form-privacy-removal" style="display: none;">
+      <h3>Update or remove a listing</h3>
+      <p class="form-shell-desc">Use this for a mentor profile, community listing, testimonial or other information connected to you or a group you represent.</p>
+
+      <div class="form-row">
+        <label class="form-label" for="pr-location">Where does it appear?</label>
+        <p class="form-help">Name the page and section. Include a link if you have one.</p>
+        <input class="form-input" type="text" id="pr-location" placeholder="e.g., Mentorship → mentor profile for..." />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pr-request">What should be changed or removed?</label>
+        <textarea class="form-textarea" id="pr-request" placeholder="Describe the exact update or removal you are requesting."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pr-role">Your connection to the listing</label>
+        <p class="form-help">This helps confirm that you can request the change.</p>
+        <input class="form-input" type="text" id="pr-role" placeholder="e.g., This is my mentor profile, or I am the current group lead" />
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pr-email">Your email</label>
+        <p class="form-help">Used to verify the request and confirm any needed details. It will not be published.</p>
+        <input class="form-input" type="email" id="pr-email" placeholder="you@mail.utoronto.ca" />
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-submit-note">Only share the information needed to locate the listing and verify your request.</p>
+        <button class="btn btn-primary" type="button" onclick="handleSubmit('privacy-removal')">Send request →</button>
       </div>
     </div>
 
@@ -6667,11 +6755,14 @@
 <script>
   function setSubmissionType(type) {
     // Toggle button active state
-    document.querySelectorAll('.submission-type').forEach(b => b.classList.remove('active'));
-    document.querySelector(`[data-type="${type}"]`).classList.add('active');
+    document.querySelectorAll('.submission-type').forEach(function(button) {
+      const isActive = button.dataset.type === type;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
 
     // Show the right form
-    ['housing-review', 'community-content', 'content-correction', 'general-feedback', 'mentor-signup', 'testimonial'].forEach(t => {
+    ['housing-review', 'community-content', 'content-correction', 'general-feedback', 'mentor-signup', 'testimonial', 'privacy-removal'].forEach(t => {
       const el = document.getElementById(`form-${t}`);
       if (el) el.style.display = t === type ? '' : 'none';
     });
@@ -6683,6 +6774,15 @@
   }
   // ── Google Sheets submission ──
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz8kKw_rMHbRmkGDf0vh1DhlBhSVO17cGbjZhCA1ROJK0IKlvyJlC2tPLMKYEngKLnrKw/exec';
+  const REQUIRED_FIELDS = {
+    'housing-review': ['cohort', 'display', 'building', 'review'],
+    'community-content': ['name', 'cohort', 'group', 'role', 'content', 'email'],
+    'content-correction': ['page', 'issue'],
+    'general-feedback': ['message'],
+    'mentor-signup': ['name', 'cohort', 'tags', 'blurb', 'contact', 'email'],
+    'testimonial': ['display', 'page', 'quote'],
+    'privacy-removal': ['location', 'request', 'role', 'email']
+  };
 
   function collectFields(type) {
     const prefixes = {
@@ -6691,7 +6791,8 @@
       'content-correction': 'cor',
       'general-feedback': 'gf',
       'mentor-signup': 'ms',
-      'testimonial': 'ts'
+      'testimonial': 'ts',
+      'privacy-removal': 'pr'
     };
     const prefix = prefixes[type];
     if (!prefix) return {};
@@ -6704,20 +6805,36 @@
         fields[key] = el.type === 'radio' ? (el.checked ? el.value : undefined) : el.value;
       }
     });
-    // Rating stars (if present)
-    const activeStars = shell.querySelectorAll('.rating-star.active');
-    if (activeStars.length) fields.rating = activeStars.length;
+    // Rating control (if present)
+    const selectedRating = shell.querySelector('.form-rating-btn.selected');
+    if (selectedRating) fields.rating = selectedRating.textContent.trim();
     // Clean undefined values
     Object.keys(fields).forEach(function(k) { if (fields[k] === undefined) delete fields[k]; });
     return fields;
   }
 
   function handleSubmit(type) {
-    if (false) {
-      alert('Form not yet connected. The site maintainer needs to add the Google Apps Script URL.');
+    const fields = collectFields(type);
+    const missing = (REQUIRED_FIELDS[type] || []).find(function(key) {
+      return !String(fields[key] || '').trim();
+    });
+    if (missing) {
+      const field = document.getElementById(({
+        'housing-review': 'hr',
+        'community-content': 'cc',
+        'content-correction': 'cor',
+        'general-feedback': 'gf',
+        'mentor-signup': 'ms',
+        'testimonial': 'ts',
+        'privacy-removal': 'pr'
+      })[type] + '-' + missing);
+      if (field) {
+        field.focus();
+        field.setAttribute('aria-invalid', 'true');
+      }
+      alert('Please complete the required fields before sending.');
       return;
     }
-    const fields = collectFields(type);
     const email = fields.email || '';
     var btns = document.querySelectorAll('#form-' + type + ' .btn-primary');
     var btn = btns[btns.length - 1];
@@ -6732,7 +6849,7 @@
       body: JSON.stringify({ type: type, fields: fields, email: email })
     })
     .then(function() {
-      btn.textContent = '\u2713 Submitted';
+      btn.textContent = '\u2713 Sent';
       btn.style.background = 'var(--uoft-teal)';
       var shell = document.getElementById('form-' + type);
       if (shell) {
@@ -6747,7 +6864,7 @@
       }, 3000);
     })
     .catch(function() {
-      btn.textContent = 'Error. try again';
+      btn.textContent = 'Could not send. Try again';
       btn.style.background = '#c0392b';
       btn.disabled = false;
       setTimeout(function() {
@@ -6756,6 +6873,10 @@
       }, 3000);
     });
   }
+
+  const requestedForm = window.location.hash.replace('#form-', '');
+  const availableForms = ['housing-review', 'community-content', 'content-correction', 'general-feedback', 'mentor-signup', 'testimonial', 'privacy-removal'];
+  setSubmissionType(availableForms.includes(requestedForm) ? requestedForm : 'content-correction');
 </script>
 </main>
 <footer class="footer">
@@ -6771,7 +6892,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -6787,7 +6908,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -6810,11 +6931,10 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){

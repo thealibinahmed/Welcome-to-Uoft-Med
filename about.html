@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About · UofT MD Guide</title>
+<title>About the Guide · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -658,6 +658,40 @@
     font-style: italic;
     color: var(--ink-soft);
     margin-top: 6px;
+  }
+  .independence-box {
+    padding: 24px; border: 1px solid var(--hairline);
+    border-top: 3px solid var(--uoft-teal); background: #fff;
+  }
+  .independence-box strong {
+    display: block; margin-bottom: 8px; color: var(--uoft-navy);
+    font-family: 'Roboto Slab', serif; font-size: 20px;
+  }
+  .independence-box p { color: var(--ink-soft); font-size: 14px; line-height: 1.65; }
+  .independence-box p + p { margin-top: 10px; }
+  .source-standard {
+    display: grid; grid-template-columns: 1fr;
+    border: 1px solid var(--hairline); background: #fff;
+  }
+  @media (min-width: 800px) { .source-standard { grid-template-columns: repeat(3, 1fr); } }
+  .source-standard-item {
+    padding: 26px; border-bottom: 1px solid var(--hairline);
+  }
+  @media (min-width: 800px) {
+    .source-standard-item { border-bottom: 0; border-right: 1px solid var(--hairline); }
+    .source-standard-item:last-child { border-right: 0; }
+  }
+  .source-standard-label {
+    display: inline-flex; margin-bottom: 16px; padding: 4px 8px;
+    border: 1px solid var(--hairline); color: var(--uoft-teal);
+    font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  }
+  .source-standard-item h3 {
+    color: var(--uoft-navy); font-family: 'Roboto Slab', serif;
+    font-size: 20px; line-height: 1.2;
+  }
+  .source-standard-item p {
+    margin-top: 10px; color: var(--ink-soft); font-size: 14px; line-height: 1.65;
   }
 
   /* ── Cohort section ── */
@@ -6204,6 +6238,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -6225,7 +6262,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6390,7 +6427,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6401,7 +6438,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6456,24 +6493,28 @@
 <main id="main-content">
 
 <!-- ============ Hero (compact) ============ -->
-<section class="page-hero" style="padding: 48px 0 32px;">
+<section class="page-hero">
   <div class="container">
-    <div class="page-hero-grid" style="grid-template-columns: 1fr; max-width: 56rem; margin: 0 auto;">
+    <div class="page-hero-grid">
       <div>
         <div class="eyebrow">
           <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">About</span>
+          <span class="eyebrow-text">About the Guide</span>
         </div>
-        <h1>A guide for the parts no one writes down.</h1>
-        <p class="page-hero-lede">Timelines, housing decisions, money questions, student vocabulary, and the small pieces of context that usually travel by group chat.</p>
+        <h1>A guide for the details that are easy to miss.</h1>
+        <p class="page-hero-lede">Timelines, housing decisions, money questions, student vocabulary, and the pieces of context that usually travel through group chats.</p>
       </div>
+      <aside class="independence-box" aria-label="Guide authorship and affiliation">
+        <strong>Student-made and independent.</strong>
+        <p>This guide is maintained by U of T medical students. It is not an official University of Toronto or Temerty Faculty of Medicine website.</p>
+        <p>Official Faculty and University pages remain the authority for academic, financial, administrative, and policy information.</p>
+      </aside>
     </div>
   </div>
 </section>
 
 <!-- ============ Mission + Principles ============ -->
 <section class="section section-soft" style="position: relative; padding: 48px 0;">
-  <img class="cg-egg-peek cg-egg-peek-tr" src="assets/cg/cg-balloon.png" alt="" aria-hidden="true" loading="lazy" />
   <div class="container">
     <div class="mission-block">
       <div class="eyebrow">
@@ -6502,9 +6543,40 @@
         <div class="principle-card">
           <div class="principle-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <p class="principle-card-title">Open to feedback</p>
-          <p class="principle-card-body">If something's missing, <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">tell us</a> and we'll add it. If your question is too specific for a public page, use the Feedback form to reach a current student, academy contact, or another support.</p>
+          <p class="principle-card-body">If something is missing or incorrect, <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">tell us</a>. Corrections, source updates, and student perspectives all help the guide improve.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Source standard ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">How information is handled</span>
+      </div>
+      <h2>Not every kind of information should read the same way.</h2>
+      <p>The guide separates confirmed requirements from student experience and makes time-sensitive information visible.</p>
+    </div>
+    <div class="source-standard">
+      <article class="source-standard-item">
+        <span class="source-standard-label">Official</span>
+        <h3>Requirements and policies</h3>
+        <p>Faculty, University, government, regulatory, or program sources are linked directly. The guide summarizes what to expect without replacing the original instructions.</p>
+      </article>
+      <article class="source-standard-item">
+        <span class="source-standard-label">Student-reported</span>
+        <h3>Experience and practical advice</h3>
+        <p>Commutes, study approaches, neighbourhood impressions, and personal recommendations are labelled as student experience rather than universal fact.</p>
+      </article>
+      <article class="source-standard-item">
+        <span class="source-standard-label">Changes yearly</span>
+        <h3>Dates, fees, offers, and forms</h3>
+        <p>Year-specific information includes a date checked or a prior-year label. If the current source is unavailable, the guide says so instead of guessing.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -6545,18 +6617,23 @@
         <span class="eyebrow-text">What's Changed</span>
       </div>
       <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: clamp(1.25rem, 2vw, 1.5rem); color: var(--uoft-navy); line-height: 1.2; margin-bottom: 6px;">Recent updates.</h2>
-      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: May 3, 2026</p>
+      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: July 24, 2026</p>
 
       <div class="changelog-timeline">
         <div class="changelog-timeline-entry">
+          <p class="changelog-timeline-date">July 24, 2026</p>
+          <p class="changelog-timeline-title">Full content and architecture review</p>
+          <p class="changelog-timeline-body">Rechecked major claims against current sources, corrected outdated details, clarified student-reported information and reorganized Post-Acceptance, Housing, Finances, Academics, the Field Guide and Mentorship.</p>
+        </div>
+        <div class="changelog-timeline-entry">
           <p class="changelog-timeline-date">May 3, 2026</p>
           <p class="changelog-timeline-title">Initial public version</p>
-          <p class="changelog-timeline-body">First version of the guide goes live for the Class of 3T0. Covers Post-Acceptance, O-Week, Housing (with interactive map), Finances, Academics, Handbook, Mentorship, About, and Feedback. Includes verified Scotia LOC details, current 2026 fee figures from the Faculty, and the academy decision date from the previous cycle (June 26 last year).</p>
+          <p class="changelog-timeline-body">First version of the guide goes live for the Class of 3T0. Covers Post-Acceptance, O-Week, Housing, Finances, Academics, the Field Guide, Mentorship, About and Feedback.</p>
         </div>
         <!-- Add new entries above this line, newest first -->
       </div>
 
-      <p style="font-size: 13px; color: var(--ink-muted); margin-top: 24px;">Spotted something out of date? <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Submit a correction via Feedback</a>. Corrections are usually applied within a week.</p>
+      <p style="font-size: 13px; color: var(--ink-muted); margin-top: 24px;">Spotted something out of date? <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Submit a correction via Feedback</a>. Include the source when possible.</p>
     </div>
   </div>
 </section>
@@ -6575,7 +6652,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -6591,7 +6668,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -6614,11 +6691,10 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 (function(){

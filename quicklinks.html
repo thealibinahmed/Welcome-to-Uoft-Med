@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quick Links · UofT MD Guide</title>
+<title>Quick Links · Student MD Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
@@ -2606,13 +2606,58 @@
     border-bottom-color: var(--uoft-teal);
   }
   .quick-links-list .ql-ext {
-    font-size: 10px;
-    color: var(--ink-muted);
-    margin-left: 4px;
-    letter-spacing: 0.04em;
+    display: inline-block;
+    margin-left: 7px;
+    color: var(--uoft-teal);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    transform: translateY(-1px);
   }
   .quick-links-list a:hover .ql-ext {
+    color: var(--uoft-navy);
+  }
+  .quick-links-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--uoft-navy);
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .quick-links-toggle:hover { color: var(--uoft-teal); }
+  .quick-links-toggle-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    color: var(--ink-muted);
+    font-family: 'Public Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .quick-links-toggle-icon {
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--hairline);
     color: var(--uoft-teal);
+    font-size: 14px;
+    transition: transform 180ms, border-color 180ms;
+  }
+  .quick-links-toggle[aria-expanded="true"] .quick-links-toggle-icon {
+    transform: rotate(45deg);
+    border-color: var(--uoft-teal);
   }
 
   /* Inline legend on the Quick Links hero (replaces the old page-hero-meta cards) */
@@ -2632,6 +2677,132 @@
   }
   .quicklinks-key-sep {
     color: var(--hairline);
+  }
+  .quicklinks-priority {
+    padding: 28px 0;
+    background: white;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .quicklinks-priority-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--hairline);
+  }
+  @media (min-width: 640px) {
+    .quicklinks-priority-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .quicklinks-priority-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .quicklinks-priority-link {
+    min-height: 94px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--hairline);
+    transition: background 180ms;
+  }
+  @media (min-width: 640px) {
+    .quicklinks-priority-link { border-right: 1px solid var(--hairline); }
+  }
+  @media (min-width: 1024px) {
+    .quicklinks-priority-link { border-bottom: 0; }
+    .quicklinks-priority-link:last-child { border-right: 0; }
+  }
+  .quicklinks-priority-link:hover { background: var(--paper-soft); }
+  .quicklinks-priority-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--uoft-teal);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .quicklinks-priority-title {
+    display: block;
+    color: var(--uoft-navy);
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .quicklinks-tools {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 42px;
+    padding: 22px;
+    background: white;
+    border: 1px solid var(--hairline);
+  }
+  @media (min-width: 768px) {
+    .quicklinks-tools {
+      grid-template-columns: minmax(260px, 1fr) auto;
+      align-items: end;
+    }
+  }
+  .quicklinks-filter-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--uoft-navy);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .quicklinks-filter {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 14px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+  }
+  .quicklinks-filter:focus {
+    outline: 2px solid var(--uoft-teal);
+    outline-offset: 2px;
+  }
+  .quicklinks-filter-status {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .quicklinks-tools-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 18px;
+  }
+  .quicklinks-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .quicklinks-action {
+    padding: 7px 10px;
+    border: 1px solid var(--hairline);
+    background: white;
+    color: var(--uoft-navy);
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .quicklinks-action:hover {
+    border-color: var(--uoft-teal);
+    color: var(--uoft-teal);
+  }
+  .quick-links-group[hidden],
+  .quick-links-list[hidden],
+  .quick-links-list li[hidden] { display: none; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* ── Council roles (Handbook) ── */
@@ -6405,7 +6576,6 @@
     { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
     { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
     { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
     { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
     { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
 
@@ -6424,12 +6594,12 @@
     { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
     { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
     { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
+    { page: "academics", title: "What a typical week looks like", anchor: "#curriculum-start", keywords: "weekly schedule CBL clinical skills anatomy ME portfolio", snippet: "Compare a typical week with ME and Portfolio weeks. Exact schedules vary and remain in MedSIS." },
     { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
     { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
     { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
 
-    // Handbook
+    // Field Guide
     { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
     { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
     { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
@@ -6460,6 +6630,9 @@
     { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
   ];
 
+  </script>
+  <script src="site-search-index.js"></script>
+  <script>
   // Map page key → URL
   const PAGE_URLS = {
     homepage: 'index.html',
@@ -6481,7 +6654,7 @@
     housing: 'Housing',
     finances: 'Finances',
     academics: 'Academics',
-    handbook: 'Handbook',
+    handbook: 'Field Guide',
     mentorship: 'Mentorship',
     about: 'About',
     feedback: 'Feedback',
@@ -6646,7 +6819,7 @@
       <span class="logo-text">
         <span class="logo-eyebrow">University of Toronto</span>
         <span class="logo-mark-row">
-          <span class="logo-mark">MD Guide</span>
+          <span class="logo-mark">Student MD Guide</span>
           <span class="logo-edition">Class of 3T0</span>
         </span>
       </span>
@@ -6657,7 +6830,7 @@
       <a href="housing.html" data-page="housing">Housing</a>
       <a href="finances.html" data-page="finances">Finances</a>
       <a href="academics.html" data-page="academics">Academics</a>
-      <a href="handbook.html" data-page="handbook">Handbook</a>
+      <a href="handbook.html" data-page="handbook">Field Guide</a>
       <div class="nav-dropdown" data-nav-dropdown>
         <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" data-nav-dropdown-trigger>
           About <span class="nav-dropdown-caret" aria-hidden="true">▾</span>
@@ -6715,15 +6888,41 @@
     <div>
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Navigate the Guide</span>
+        <span class="eyebrow-text">Student-created and independent · Directory</span>
       </div>
       <h1>Quick links.</h1>
-      <p class="page-hero-lede">Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic. Useful when you remember <em>what</em> you needed but not <em>where</em> on the site it lives.</p>
+      <p class="page-hero-lede">The main pages, official sources and student-shared resources referenced across the guide. Use the shortcuts for common destinations or filter the full directory below.</p>
       <p class="quicklinks-key">
         <span><span class="quicklinks-key-mark">↗</span> opens an external site</span>
         <span class="quicklinks-key-sep">·</span>
         <span>no marker = a page or section within this guide</span>
+        <span class="quicklinks-key-sep">·</span>
+        <span>Links reviewed July 2026</span>
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="quicklinks-priority" aria-labelledby="priority-links-title">
+  <div class="container">
+    <h2 id="priority-links-title" class="sr-only">Frequently used official links</h2>
+    <div class="quicklinks-priority-grid">
+      <a class="quicklinks-priority-link" href="https://applymd.utoronto.ca/incoming-students" target="_blank" rel="noopener">
+        <span class="quicklinks-priority-label">Starting MD</span>
+        <span class="quicklinks-priority-title">Incoming Students Hub ↗</span>
+      </a>
+      <a class="quicklinks-priority-link" href="https://md.utoronto.ca/registration-requirements-requests" target="_blank" rel="noopener">
+        <span class="quicklinks-priority-label">Before classes</span>
+        <span class="quicklinks-priority-title">Registration Requirements ↗</span>
+      </a>
+      <a class="quicklinks-priority-link" href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">
+        <span class="quicklinks-priority-label">During the year</span>
+        <span class="quicklinks-priority-title">Student Tools and eResources ↗</span>
+      </a>
+      <a class="quicklinks-priority-link" href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">
+        <span class="quicklinks-priority-label">Support</span>
+        <span class="quicklinks-priority-title">Office of Learner Affairs ↗</span>
+      </a>
     </div>
   </div>
 </section>
@@ -6731,6 +6930,20 @@
 <!-- ============ Quick Links ============ -->
 <section class="section section-soft" id="quick-links">
   <div class="container">
+
+    <div class="quicklinks-tools">
+      <div>
+        <label class="quicklinks-filter-label" for="quicklinks-filter">Filter this directory</label>
+        <input class="quicklinks-filter" id="quicklinks-filter" type="search" placeholder="Try OSAP, housing, Elentra, mentorship…" autocomplete="off" />
+      </div>
+      <div class="quicklinks-tools-meta">
+        <p class="quicklinks-filter-status" id="quicklinks-filter-status" aria-live="polite">Showing the full directory</p>
+        <div class="quicklinks-actions" aria-label="Directory display controls">
+          <button class="quicklinks-action" id="quicklinks-expand-all" type="button">Expand all</button>
+          <button class="quicklinks-action" id="quicklinks-collapse-all" type="button">Collapse all</button>
+        </div>
+      </div>
+    </div>
 
     <div class="quick-links-grid">
 
@@ -6743,7 +6956,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -6754,7 +6967,7 @@
         <p class="quick-links-eyebrow">Just accepted</p>
         <ul class="quick-links-list">
           <li><a href="index.html#homepage-faqs">Homepage FAQs</a></li>
-          <li><a href="index.html#waitlist-r">Waitlist &amp; refused note</a></li>
+          <li><a href="index.html#homepage-faqs">Waitlist &amp; refused guidance</a></li>
           <li><a href="post-acceptance.html">Post-Acceptance phased timeline</a></li>
           <li><a href="https://applymd.utoronto.ca/" target="_blank" rel="noopener">UofT MD admissions site<span class="ql-ext">↗</span></a></li>
           <li><a href="https://applymd.utoronto.ca/incoming-students" target="_blank" rel="noopener">Incoming Students Hub<span class="ql-ext">↗</span></a></li>
@@ -6792,7 +7005,7 @@
           <li><a href="finances.html#costs">Year-1 fee table</a></li>
           <li><a href="finances.html#osap">OSAP guidance</a></li>
           <li><a href="finances.html#tuition-deferral">Tuition deferral</a></li>
-          <li><a href="finances.html#monthly-budget">Monthly budget worksheet</a></li>
+          <li><a href="finances.html#loc-calculator">Funding and interest calculator</a></li>
           <li><a href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">Faculty Current Fees<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/finances-awards" target="_blank" rel="noopener">Finances &amp; Awards<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">MD Program Financial Aid (Temerty Grant)<span class="ql-ext">↗</span></a></li>
@@ -6810,9 +7023,8 @@
         <p class="quick-links-eyebrow">Money — lines of credit</p>
         <ul class="quick-links-list">
           <li><a href="finances.html#loc">LOC overview</a></li>
-          <li><a href="finances.html#bank-questions">Bank comparison table</a></li>
-          <li><a href="finances.html#bank-compare">Side-by-side bank comparison tool</a></li>
-          <li><a href="finances.html#bank-comparison">Questions to ask the bank</a></li>
+          <li><a href="finances.html#bank-tool">Questions to ask each bank</a></li>
+          <li><a href="finances.html#bank-comparison">Side-by-side bank comparison</a></li>
           <li><a href="finances.html#verify">How to verify the rate at the appointment</a></li>
           <li><a href="https://www.scotiabank.com/ca/en/healthcare-plus/physician-banking/medical-students.html" target="_blank" rel="noopener">Scotiabank — apply<span class="ql-ext">↗</span></a></li>
           <li><a href="https://www.rbcroyalbank.com/student/medical-students.html" target="_blank" rel="noopener">RBC — apply<span class="ql-ext">↗</span></a></li>
@@ -6830,7 +7042,6 @@
           <li><a href="housing.html#housing-map">Interactive neighbourhood map</a></li>
           <li><a href="housing.html#building-list-items">Full building database</a></li>
           <li><a href="housing.html#housing-compare">Side-by-side building comparison tool</a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1bL-3Fm9UtOUQtX77br0Bw6VBWw3eaFckHUrJLXYNJlU/edit?gid=2128080834" target="_blank" rel="noopener">3T0 Roommate Finder spreadsheet<span class="ql-ext">↗</span></a></li>
           <li><a href="https://applymd.utoronto.ca/housing-residence" target="_blank" rel="noopener">UofT MD official housing page<span class="ql-ext">↗</span></a></li>
           <li><a href="https://studenthousing.utoronto.ca/" target="_blank" rel="noopener">UofT Student Housing<span class="ql-ext">↗</span></a></li>
           <li><a href="https://www.knox.utoronto.ca/residence/" target="_blank" rel="noopener">Knox College Residence<span class="ql-ext">↗</span></a></li>
@@ -6849,15 +7060,15 @@
       <div class="quick-links-group">
         <p class="quick-links-eyebrow">Academics &amp; study resources</p>
         <ul class="quick-links-list">
-          <li><a href="academics.html#study-styles">Study styles</a></li>
-          <li><a href="academics.html#weekly-schedule">A typical week</a></li>
+          <li><a href="academics.html#curriculum-start">Course structure and a typical week</a></li>
           <li><a href="academics.html#calendar">Year-1 calendar</a></li>
           <li><a href="academics.html#anki">Anki guide</a></li>
           <li><a href="academics.html#study-notes">Upper-year study notes</a></li>
           <li><a href="academics.html#study-guides">Course guides</a></li>
           <li><a href="academics.html#osce-resources">OSCE resources</a></li>
           <li><a href="academics.html#shadowing">Shadowing — the 5 Ws</a></li>
-          <li><a href="academics.html#testimonials">Testimonials</a></li>
+          <li><a href="academics.html#md-plus">MD+ and early opportunities</a></li>
+          <li><a href="academics.html#testimonials">Student perspectives</a></li>
           <li><a href="https://docs.google.com/document/d/1o5SYDGSpNdz2NhE4ExZD5m40hfWWZE0ff-8Wc7pa6DQ/edit?usp=sharing" target="_blank" rel="noopener">ICE Guide<span class="ql-ext">↗</span></a></li>
           <li><a href="https://sites.google.com/view/lau-ice/home" target="_blank" rel="noopener">Lau's ICE site<span class="ql-ext">↗</span></a></li>
           <li><a href="https://seriously-quiet-med-student.notion.site/OSCE-Prep-9a199edc2dba4252acda32812f8e7708" target="_blank" rel="noopener">OSCE Prep (Notion)<span class="ql-ext">↗</span></a></li>
@@ -6892,7 +7103,7 @@
         <p class="quick-links-eyebrow">Faculty platforms &amp; program info</p>
         <ul class="quick-links-list">
           <li><a href="handbook.html#getting-set-up">Getting set up — JOINid, UTORid, TCard</a></li>
-          <li><a href="handbook.html#vocabulary">Curriculum vocabulary glossary</a></li>
+          <li><a href="handbook.html#vocabulary">Curriculum glossary</a></li>
           <li><a href="handbook.html#program-structure">Program structure</a></li>
           <li><a href="handbook.html#academies">The four academies</a></li>
           <li><a href="handbook.html#academy-transfers">Academy transfers</a></li>
@@ -6904,7 +7115,7 @@
           <li><a href="https://md.utoronto.ca/academic-calendar" target="_blank" rel="noopener">Academic Calendar (Faculty page)<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">OASES (course platform)<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">OASES (Portfolio submissions)<span class="ql-ext">↗</span></a></li>
           <li><a href="https://medit.med.utoronto.ca/learner-chart" target="_blank" rel="noopener">Learner Chart<span class="ql-ext">↗</span></a></li>
           <li><a href="https://ei.examsoft.com/GKWeb/login/utorontomed" target="_blank" rel="noopener">ExamSoft (UofT Med)<span class="ql-ext">↗</span></a></li>
           <li><a href="https://meded.temertymedicine.utoronto.ca/transfers" target="_blank" rel="noopener">Transfer process &amp; eligibility<span class="ql-ext">↗</span></a></li>
@@ -6916,7 +7127,7 @@
       <div class="quick-links-group">
         <p class="quick-links-eyebrow">Wellness &amp; support</p>
         <ul class="quick-links-list">
-          <li><a href="handbook.html#wellness">Wellness section in handbook</a></li>
+          <li><a href="handbook.html#wellness">Wellness and support in the Field Guide</a></li>
           <li><a href="handbook.html#prayer-spaces">Prayer &amp; quiet spaces on campus</a></li>
           <li><a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs (OLA)<span class="ql-ext">↗</span></a></li>
           <li><a href="https://meded.temertymedicine.utoronto.ca/personal-supports" target="_blank" rel="noopener">Personal Supports Directory<span class="ql-ext">↗</span></a></li>
@@ -6936,6 +7147,8 @@
           <li><a href="feedback.html#form-content-correction">Submit a content correction</a></li>
           <li><a href="feedback.html#form-housing-review">Submit a housing review</a></li>
           <li><a href="feedback.html#form-community-content">Submit community content</a></li>
+          <li><a href="feedback.html#form-mentor-signup">Join the mentor directory</a></li>
+          <li><a href="feedback.html#form-privacy-removal">Update or remove a listing</a></li>
           <li><a href="feedback.html#form-general-feedback">Submit general feedback</a></li>
         </ul>
       </div>
@@ -6957,7 +7170,7 @@
           <span class="eyebrow-text">University of Toronto</span>
         </div>
         <p class="footer-brand-mark">
-          <span>MD Guide</span>
+          <span>Student MD Guide</span>
           <span class="footer-brand-edition">Class of 3T0</span>
         </p>
         <p>A practical, student-maintained guide for incoming UofT Medicine students.</p>
@@ -6973,7 +7186,7 @@
           <li><a href="housing.html">Housing</a></li>
           <li><a href="finances.html">Finances</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="handbook.html">Handbook</a></li>
+          <li><a href="handbook.html">Field Guide</a></li>
           <li><a href="mentorship.html">Mentorship</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="feedback.html">Feedback</a></li>
@@ -6996,13 +7209,97 @@
       <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
-    <img class="cg-easter-egg cg-easter-egg-footer" src="assets/cg/cg-banana.png" alt="" aria-hidden="true" loading="lazy" />
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
+(function(){
+  var input = document.getElementById('quicklinks-filter');
+  var status = document.getElementById('quicklinks-filter-status');
+  var expandAll = document.getElementById('quicklinks-expand-all');
+  var collapseAll = document.getElementById('quicklinks-collapse-all');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.quick-links-group'));
+  if (!input || !status || !groups.length) return;
+
+  function setGroupState(group, expanded) {
+    var button = group.querySelector('.quick-links-toggle');
+    var list = group.querySelector('.quick-links-list');
+    if (!button || !list) return;
+    button.setAttribute('aria-expanded', String(expanded));
+    list.hidden = !expanded;
+  }
+
+  groups.forEach(function(group, index) {
+    var heading = group.querySelector('.quick-links-eyebrow');
+    var list = group.querySelector('.quick-links-list');
+    if (!heading || !list) return;
+
+    var listId = 'quick-links-list-' + (index + 1);
+    var count = list.querySelectorAll('li').length;
+    var button = document.createElement('button');
+    button.className = 'quick-links-toggle';
+    button.type = 'button';
+    button.setAttribute('aria-controls', listId);
+    button.innerHTML =
+      '<span>' + heading.textContent + '</span>' +
+      '<span class="quick-links-toggle-meta">' +
+        '<span>' + count + '</span>' +
+        '<span class="quick-links-toggle-icon" aria-hidden="true">+</span>' +
+      '</span>';
+    list.id = listId;
+    heading.replaceWith(button);
+    setGroupState(group, window.matchMedia('(min-width: 768px)').matches);
+
+    button.addEventListener('click', function() {
+      setGroupState(group, button.getAttribute('aria-expanded') !== 'true');
+    });
+  });
+
+  document.querySelectorAll('.quick-links-list a[target="_blank"]').forEach(function(link) {
+    var marker = link.querySelector('.ql-ext');
+    if (marker) marker.setAttribute('aria-hidden', 'true');
+    var accessibleNote = document.createElement('span');
+    accessibleNote.className = 'sr-only';
+    accessibleNote.textContent = ' (opens an external site)';
+    link.appendChild(accessibleNote);
+  });
+
+  if (expandAll) {
+    expandAll.addEventListener('click', function() {
+      groups.forEach(function(group) { setGroupState(group, true); });
+    });
+  }
+  if (collapseAll) {
+    collapseAll.addEventListener('click', function() {
+      groups.forEach(function(group) { setGroupState(group, false); });
+    });
+  }
+
+  input.addEventListener('input', function() {
+    var query = input.value.trim().toLowerCase();
+    var matches = 0;
+
+    groups.forEach(function(group) {
+      var items = Array.prototype.slice.call(group.querySelectorAll('li'));
+      var groupMatches = 0;
+      items.forEach(function(item) {
+        var isMatch = !query || item.textContent.toLowerCase().includes(query);
+        item.hidden = !isMatch;
+        if (isMatch) groupMatches += 1;
+      });
+      group.hidden = groupMatches === 0;
+      if (query && groupMatches > 0) setGroupState(group, true);
+      matches += groupMatches;
+    });
+
+    status.textContent = query
+      ? (matches === 1 ? '1 matching link' : matches + ' matching links')
+      : 'Showing the full directory';
+  });
+})();
+
 (function(){
   var btn = document.querySelector('.back-to-top');
   if (!btn) return;
