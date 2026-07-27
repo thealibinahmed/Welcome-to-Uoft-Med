@@ -6555,83 +6555,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
-    { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic cost St George MAM", snippet: "Use the 2026–27 selector for St. George or MAM and your domestic fee category. Fees change each year." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC CIBC TD BMO", snippet: "Compare five published medical-student offers. Limits, rates, approvals and promotions vary." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "#loc", keywords: "scotia bank LOC healthcare plus", snippet: "Officially advertised up to $400,000 at Prime − 0.25%. Students report $375,000 is often approved at opening." },
-    { page: "finances", title: "Questions for an LOC appointment", anchor: "#bank-tool", keywords: "compare negotiate LOC bank rate terms", snippet: "Eighteen questions covering loan structure, repayment, eligibility, residency, insurance and incentives." },
-    { page: "finances", title: "Medical-school funding calculator", anchor: "#calculator", keywords: "budget calculator rent groceries transit interest borrowing", snippet: "Estimate the funding gap before interest, a projected LOC balance and a higher-rate stress test." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Faculty bursaries, grants and awards", anchor: "#osap", keywords: "temerty grant financial aid bursary need-based", snippet: "Check current MD Program and academy messages for eligibility, applications and deadlines." },
-
-    // Academics
-    { page: "academics", title: "Study notes (JLim, ITM, Histology)", anchor: "#study-notes", keywords: "study notes JLim ITM histology WFQ shared resources", snippet: "Cohort-shared study materials, organized by block." },
-    { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
-    { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
-    { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
-
-    // Handbook
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists — the hidden curriculum, decoded." },
-    { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -6906,7 +6829,7 @@
         </div>
         <div class="page-hero-meta">
           <strong>Last verified</strong>
-          Faculty Year 1 fee schedule · July 2026. Public bank terms rechecked July 24, 2026. Representative-reported details are labelled separately. Prime rate shown: 4.45%.
+          Faculty Year 1 fee schedule · July 2026. Public bank terms rechecked July 27, 2026. Advisor-reported details are labelled separately. Prime rate shown: 4.45%.
         </div>
       </div>
     </div>
@@ -7105,8 +7028,8 @@
 
     <div style="margin-top:32px;padding:28px;border:1px solid var(--hairline);background:white;">
       <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;margin-bottom:12px;">Four-year total estimate</p>
-      <p style="font-family:'Roboto Slab',serif;font-weight:800;font-size:36px;color:var(--uoft-navy);line-height:1;font-feature-settings:'tnum';">$200–250K</p>
-      <p style="font-size:13px;color:var(--ink-soft);margin-top:12px;line-height:1.5;">Tuition + living + electives + exam fees, with annual increases. Most domestic students borrow $250K–350K to cover the gap.</p>
+      <p style="font-family:'Roboto Slab',serif;font-weight:800;font-size:30px;color:var(--uoft-navy);line-height:1.15;">Use your calculator result</p>
+      <p style="font-size:13px;color:var(--ink-soft);margin-top:12px;line-height:1.5;">There is no single verified amount that students borrow. Your result should reflect current tuition, your own living costs, funding and the interest assumptions selected above.</p>
     </div>
   </div>
 </section>
@@ -7119,15 +7042,15 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">The Line of Credit</span>
       </div>
-     <h2>The Professional Student LOC, decoded.</h2>
-      <p style="margin-bottom: 0;">A Professional Student Line of Credit is one possible part of a medical-school funding plan. The five banks compared here publish different limits, rates and repayment terms. Compare the written agreement, not only the headline offer.</p>
+     <h2>How medical student lines of credit work.</h2>
+      <p style="margin-bottom: 0;">The five banks below publish different limits, rates and repayment terms for medical students. Compare the written agreements carefully, not just the advertised limit or sign-up offer.</p>
     </div>
 
     <div class="prime-callout">
       <div class="prime-callout-main">
         <div class="prime-callout-eyebrow">Bank prime rate shown</div>
         <div class="prime-callout-rate">4.45%</div>
-        <div class="prime-callout-note">Prime rates are set by individual banks and may change during training. Figure last checked June 10, 2026.</div>
+        <div class="prime-callout-note">Prime rates are set by individual banks and may change during training. Figure checked July 27, 2026 against the linked lender pages.</div>
       </div>
       <div class="prime-callout-effective">
         <div class="prime-callout-eyebrow">Common published medical rate</div>
@@ -7136,7 +7059,7 @@
       </div>
     </div>
     <div style="margin-top: 16px; padding: 14px 18px; background: #fff8e6; border-left: 4px solid #e6a817; border-radius: 4px; font-size: 14px; color: var(--ink-soft); line-height: 1.55;">
-      <strong style="color: var(--ink);">These rates are variable.</strong> Your rate is tied to the lender's prime rate and may change during training. Confirm the current rate, payment treatment and post-graduation terms in writing before signing. <span style="display: inline-block; margin-top: 6px; color: var(--ink-muted); font-size: 13px;">Rate figure last checked June 10, 2026.</span>
+      <strong style="color: var(--ink);">These rates are variable.</strong> Your rate is tied to the lender's prime rate and may change during training. Confirm the current rate, payment treatment and post-graduation terms in writing before signing. <span style="display: inline-block; margin-top: 6px; color: var(--ink-muted); font-size: 13px;">Rate figure checked July 27, 2026 against the linked lender pages.</span>
     </div>
 
     <div class="bank-row">
@@ -7156,7 +7079,7 @@
           <span class="bank-card-stat-label">Grace</span>
           <span class="bank-card-stat-value" style="font-size: 12px;">Residency + 24 mo</span>
         </div>
-        <p class="bank-card-verified">Official page · checked Jul 2026<br><small>Student-reported: $375K commonly opened initially</small></p>
+        <p class="bank-card-verified">Official page · checked Jul 2026<br><small>2026 Scotia advisor: $375K opening limit described</small></p>
         <a class="bank-card-link" href="https://www.scotiabank.com/ca/en/healthcare-plus/physician-banking/medical-students.html" target="_blank" rel="noopener">Apply with Scotiabank <span class="bank-card-link-arrow">↗</span></a>
       </div>
 
@@ -7174,10 +7097,10 @@
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Grace</span>
-          <span class="bank-card-stat-value" style="font-size: 12px;">2 yrs after graduation</span>
+          <span class="bank-card-stat-value" style="font-size: 12px;">Confirm agreement</span>
         </div>
         <p class="bank-card-verified">Official page · checked Jul 2026</p>
-        <a class="bank-card-link" href="https://www.rbcroyalbank.com/loans-lines-of-credit/offers.html" target="_blank" rel="noopener">View RBC medical offer <span class="bank-card-link-arrow">↗</span></a>
+        <a class="bank-card-link" href="https://www.rbcroyalbank.com/healthcare-financial-solutions/royal-credit-line/index.html" target="_blank" rel="noopener">View RBC medical offer <span class="bank-card-link-arrow">↗</span></a>
       </div>
 
       <!-- CIBC -->
@@ -7186,7 +7109,7 @@
         <p class="bank-card-tagline">Professional Edge Student</p>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Limit</span>
-          <span class="bank-card-stat-value">Confirm current limit</span>
+          <span class="bank-card-stat-value">Up to $400K</span>
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Rate</span>
@@ -7194,9 +7117,9 @@
         </div>
         <div class="bank-card-stat">
           <span class="bank-card-stat-label">Grace</span>
-          <span class="bank-card-stat-value" style="font-size: 12px;">Up to 24 mo after MD</span>
+          <span class="bank-card-stat-value" style="font-size: 12px;">Up to 24 mo interest-only</span>
         </div>
-        <p class="bank-card-verified">Official CIBC pages conflict on limit · checked Jul 2026</p>
+        <p class="bank-card-verified">Medicine-specific CIBC table · checked Jul 2026</p>
         <a class="bank-card-link" href="https://www.cibc.com/en/student/student-lines-of-credit/professional-students.html" target="_blank" rel="noopener">View CIBC terms <span class="bank-card-link-arrow">↗</span></a>
       </div>
 
@@ -7369,9 +7292,9 @@
         <div class="ct">Interest treatment</div>
         <div class="seg">
           <button type="button" class="active" id="lc-btn-simple" aria-pressed="true" onclick="lcSetMethod('simple')">Deferred simple-interest illustration</button>
-          <button type="button" id="lc-btn-compound" aria-pressed="false" onclick="lcSetMethod('compound')">Compounding stress test</button>
+          <button type="button" id="lc-btn-compound" aria-pressed="false" onclick="lcSetMethod('compound')">Compounding scenario</button>
         </div>
-        <div class="rf" id="lc-method-desc">Illustrates interest calculated on cumulative borrowing without charging interest on previously added interest. Scotia representatives have described the medical LOC this way; confirm the treatment in your written agreement.</div>
+        <div class="rf" id="lc-method-desc">Illustrates interest calculated on cumulative borrowing without charging interest on previously added interest. This reflects a 2026 Scotia advisor's explanation, not a term stated on Scotia's public page; confirm it in your written agreement.</div>
       </div>
       <div class="cs">
         <div class="ct">Years to estimate</div>
@@ -7439,7 +7362,7 @@
         <details class="cw-breakdown">
           <summary>How this is calculated</summary>
           <table class="bt" id="lc-breakdown-table"></table>
-          <div class="in" style="margin-top:14px;"><strong>How the numbers work:</strong> Each year's funding gap equals living costs plus program costs minus the non-loan funding you entered. The deferred simple-interest illustration calculates interest on cumulative borrowing without adding earlier interest to the next interest calculation. The compounding option is a conservative stress test, not a claim about a particular bank. <strong>These are planning estimates.</strong> Confirm current tuition and the interest treatment in your signed agreement.</div>
+          <div class="in" style="margin-top:14px;"><strong>How the numbers work:</strong> Each year's funding gap equals living costs plus program costs minus the non-loan funding you entered. The deferred simple-interest illustration calculates interest on cumulative borrowing without adding earlier interest to the next interest calculation. The compounding scenario includes previously added interest in later calculations. It is not assigned to a particular bank. <strong>These are planning estimates.</strong> Confirm current tuition and the interest treatment in your signed agreement.</div>
         </details>
       </div>
     </aside>
@@ -7580,7 +7503,7 @@ window.lcStepYears=function(d){
 }
 window.lcToggleRes=function(){showRes=!showRes;document.getElementById('lc-res-section').classList.toggle('hidden',!showRes);document.getElementById('lc-toggle-res').textContent=showRes?'− Remove residency':'+ Continue into residency';document.getElementById('lc-toggle-res').setAttribute('aria-expanded',showRes?'true':'false');document.getElementById('lc-metric-monthly').classList.toggle('hidden',!showRes);lcCalc();}
 window.lcStepRes=function(d){resYears=Math.max(2,Math.min(7,resYears+d));document.getElementById('lc-res-val').textContent=resYears+' year'+(resYears!==1?'s':'');lcCalc();}
-window.lcSetMethod=function(m){interestMethod=m;['simple','compound'].forEach(function(name){const active=m===name;const btn=document.getElementById('lc-btn-'+name);btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active?'true':'false');});document.getElementById('lc-method-desc').textContent=m==='simple'?'Illustrates interest calculated on cumulative borrowing without charging interest on previously added interest. Scotia representatives have described the medical LOC this way; confirm the treatment in your written agreement.':'A conservative stress test in which previously added interest is included in later interest calculations. This is not assigned to a specific bank.';lcCalc();}
+window.lcSetMethod=function(m){interestMethod=m;['simple','compound'].forEach(function(name){const active=m===name;const btn=document.getElementById('lc-btn-'+name);btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active?'true':'false');});document.getElementById('lc-method-desc').textContent=m==='simple'?'Illustrates interest calculated on cumulative borrowing without charging interest on previously added interest. This reflects an explanation from a 2026 Scotia advisor, not a term stated on the public page; confirm it in your written agreement.':'This scenario includes previously added interest in later interest calculations. It is not assigned to a specific bank.';lcCalc();}
 function lcRunScenario(r){
   let balance=0,totalInterest=0,totalDraw=0,cumulativeDraws=0;const yearRows=[];
   for(let y=1;y<=estYears;y++){
@@ -7682,14 +7605,14 @@ lcCalc();
         <span class="eyebrow-text">Compare LOCs</span>
       </div>
       <h2>Eighteen useful questions, organized into six shorter comparisons.</h2>
-      <p>Select the banks you are considering, then move through one category at a time. Published terms are marked separately from representative-reported information. Promotions and individual approvals can change.</p>
+      <p>Select the banks you are considering, then move through one category at a time. Published terms are marked separately from advisor-reported information. Promotions and individual approvals can change.</p>
     </div>
 
     <div class="verified-qa-badge">
       <div class="verified-qa-badge-mark" aria-hidden="true">✓</div>
       <div>
-        <p class="verified-qa-badge-eyebrow">Verification status, by bank</p>
-        <p class="verified-qa-badge-text">Limits, advertised rates and broad repayment language were checked against official bank pages on July 24, 2026. Details from 2026 representative conversations are student-reported and should be confirmed in the agreement you receive.</p>
+        <p class="verified-qa-badge-eyebrow">How this comparison was prepared</p>
+        <p class="verified-qa-badge-text">Ali met individually with an advisor from each bank in 2026 and asked the questions below. Their answers were compared with the banks' official webpages, which were rechecked July 27, 2026. Anything available only from an advisor conversation is labelled. Bank offers, approvals and agreements vary, so verify every term directly with the bank and in your own written agreement before signing.</p>
       </div>
     </div>
 
@@ -7750,11 +7673,11 @@ lcCalc();
         <tbody>
           <tr>
             <th>Total limit &amp; annual release</th>
-            <td><span class="compare-cell-strong">Up to $400,000</span> officially. Students report that $375,000 is commonly approved at opening, with the possibility of an increase. Confirm annual access and the approved limit in writing.</td>
-            <td><span class="compare-cell-strong">Up to $400K</span> ($100K/year). Additional funding available on request.</td>
-            <td><span class="compare-cell-strong">Confirm the current maximum.</span> CIBC's public pages showed conflicting $350,000 and $400,000 figures when checked. Access and approval are individualized.</td>
+            <td><span class="compare-cell-strong">Up to $400,000</span> officially. A 2026 Scotia advisor described an opening limit of $375,000, staged as $100K in Year 1, $200K cumulative in Year 2, $300K in Year 3 and $375K in Year 4. This is advisor-reported; confirm your approved limit and route to the published maximum in writing.</td>
+            <td><span class="compare-cell-strong">Up to $400K</span>, with up to $100K available in Year 1. RBC's public page says students apply once; confirm later-year access and any increase at residency entry.</td>
+            <td><span class="compare-cell-strong">Up to $400K</span> in CIBC's medicine-specific table. Annual access and approval remain subject to enrolment, credit history and CIBC's lending criteria.</td>
             <td><span class="compare-cell-strong">Up to $400K</span><br/>Up to $100K available in Y1; total limit depends on program of study.</td>
-            <td><span class="compare-cell-strong">Up to $400K</span><br/>Released incrementally: $115K (Y1), $95K/yr (Y2-4). Continues through residency for up to 7 years total. Outside student loans may reduce the limit.</td>
+            <td><span class="compare-cell-strong">Up to $400K</span> officially, with up to $115K in Year 1 and continued access during residency for up to seven years. A 2026 BMO advisor described $95K annual increments in Years 2–4; confirm that release schedule in writing.</td>
           </tr>
           <tr>
             <th>Rate structure</th>
@@ -7766,19 +7689,19 @@ lcCalc();
           </tr>
           <tr>
             <th>When interest accrues</th>
-            <td>Representatives have described interest as calculated on the borrowed principal without interest on previously added interest while room remains. <strong>This is representative-reported:</strong> confirm the calculation and payment treatment in writing.</td>
+            <td>A 2026 Scotia advisor described interest as calculated on borrowed principal without interest on previously added interest while room remains. <strong>This is advisor-reported:</strong> confirm the calculation and payment treatment in writing.</td>
             <td>Begins immediately. Calculated daily, charged monthly.</td>
-            <td>Interest accrues when money is borrowed. CIBC publishes interest-only payments during school and for up to 24 months after MD graduation.</td>
+            <td>Interest accrues when money is borrowed. CIBC publishes interest-only payments while in school and for up to 24 months after graduation or residency.</td>
             <td>Interest accrues on borrowed amount. <strong>No principal payments until 24 months after leaving school or residency.</strong></td>
             <td>BMO publishes interest-only payments while in school. Confirm how interest is calculated and charged in the agreement.</td>
           </tr>
           <tr>
             <th>In-school payments</th>
-            <td><span class="compare-cell-strong">No payments required</span> as long as you have room under your annual limit, interest is auto-added to the balance. <strong>Once you hit your limit, you'll need to make interest payments</strong> in cash to keep accruing.</td>
-            <td>Monthly interest is mandatory and auto-debited. Compounds onto principal if not paid in cash.</td>
-            <td>CIBC publishes interest-only payments while in school and for up to 24 months after MD graduation. Confirm residency treatment and later repayment dates.</td>
+            <td>Scotia officially publishes no required payments while the balance remains below the credit limit, although interest accrues. A 2026 Scotia advisor said accrued interest is added to available credit and must be paid directly if there is no room left. Confirm that treatment in writing.</td>
+            <td>A 2026 RBC advisor described accrued interest as being taken automatically from available credit, increasing the balance. This payment treatment is not stated on the public medical-student page reviewed; confirm it in your agreement.</td>
+            <td>CIBC publishes interest-only payments while in school and for up to 24 months after graduation or residency. Confirm how that wording applies to your training path and agreement.</td>
             <td><strong>Interest-only payments during school and residency.</strong> No principal payments required during this period.</td>
-            <td><strong>Interest-only payments required</strong> while in med school. Cannot defer or roll into principal; must be paid in cash each month.</td>
+            <td>BMO publishes interest-only payments while in school. Its page does not establish where those payments must come from, so confirm the payment method and whether interest can be drawn from available credit.</td>
           </tr>
         </tbody>
       </table>
@@ -7806,34 +7729,34 @@ lcCalc();
           <tr>
             <th>Grace period</th>
             <td>Scotia publishes no payments until residency is completed plus two years. Confirm fellowship treatment and what happens to the product afterward.</td>
-            <td>RBC publishes no principal payments while studying and for two years after graduation. Confirm how residency affects the timeline.</td>
-            <td><span class="compare-cell-strong">Up to 24 months after MD graduation</span> of interest-only payments, according to CIBC's public page. Confirm residency treatment.</td>
+            <td>RBC's public page confirms continued access after graduation but does not publish a universal principal-repayment trigger. A 2026 RBC advisor described no mandatory principal-payment timeline; confirm the binding trigger in your agreement.</td>
+            <td><span class="compare-cell-strong">Up to 24 months after graduation or residency</span> of interest-only payments, according to CIBC's public page. Confirm how the timing is applied in your agreement.</td>
             <td><span class="compare-cell-strong">24 months after leaving school or residency</span> before principal payments are due.</td>
-            <td><strong>Years 1–2 post-grad: interest-only continues.</strong> Year 3: minimum payment becomes 1% of outstanding balance, then escalates each year (see official BMO repayment schedule).</td>
+            <td><strong>Interest-only payments continue for two years after graduation.</strong> BMO's public page says principal repayment begins afterward; confirm the repayment amount and schedule in the agreement.</td>
           </tr>
           <tr>
             <th>Residency / fellowship terms</th>
-            <td>Same as in school: interest auto-adds to balance if you have room under your limit. If at limit, interest payments required in cash.</td>
-            <td>Confirm the treatment during residency and fellowship in writing.</td>
-            <td>Residency treatment is not stated clearly enough on the public page used for this review. Confirm it in writing.</td>
+            <td>Scotia publishes no required payments through residency and for 24 months afterward while the balance remains below the limit. Interest continues to accrue. Confirm fellowship treatment and how accrued interest is charged.</td>
+            <td>A 2026 RBC advisor said the LOC remains open through residency and can remain interest-only. RBC's public page confirms continued access after graduation and a resident limit of up to $425K; confirm payment treatment in writing.</td>
+            <td>CIBC publishes interest-only payments during school and for up to 24 months after graduation or residency. Confirm how CIBC applies that period to your training path.</td>
             <td>TD publishes interest-only payments during residency, with principal deferred until 24 months after leaving school or residency.</td>
             <td>LOC continues through residency. <strong>Interest-only payments throughout</strong> the full financing period (up to 7 years total, including school + residency).</td>
           </tr>
           <tr>
             <th>After conversion to Personal LOC</th>
             <td>Confirm the post-residency product, rate, limit and minimum payment in writing.</td>
-            <td>Confirm whether the product converts and when principal payments begin.</td>
+            <td>A 2026 RBC advisor described an ongoing personal LOC option with interest-only minimum payments; otherwise a ten-year repayment schedule may apply. This is advisor-reported and must be confirmed in the signed agreement.</td>
             <td>Confirm the post-residency product, rate and repayment schedule in writing.</td>
             <td>To be confirmed at appointment.</td>
-            <td>Principal repayment terms change after the interest-only period. Use the current BMO repayment schedule in your agreement.</td>
+            <td>BMO says principal repayment begins after the two-year post-graduation interest-only period. Confirm the resulting product, payment and amortization schedule in writing.</td>
           </tr>
           <tr>
             <th>If you don't convert in time</th>
             <td>Confirm the amortization period and conversion deadline in writing.</td>
-            <td>Confirm the conversion and repayment trigger in writing.</td>
+            <td>A 2026 RBC advisor described a ten-year repayment schedule if the ongoing personal LOC option is not used. Confirm the conversion window and trigger in writing.</td>
             <td>Confirm the conversion and repayment trigger in writing.</td>
             <td>Principal payments begin 24 months after leaving school or residency, regardless.</td>
-            <td>n/a — repayment schedule auto-applies after Year 2 post-grad.</td>
+            <td>Principal repayment begins after the two-year post-graduation interest-only period. Confirm whether any conversion options or deadlines apply.</td>
           </tr>
           <tr>
             <th>Early repayment penalties</th>
@@ -7868,17 +7791,17 @@ lcCalc();
         <tbody>
           <tr>
             <th>Co-signer required?</th>
-            <td><span class="compare-cell-strong">No co-signer required.</span> Approval can be reduced if you carry &gt;$60K in government student loans, or if outside revolving credit limits you want to keep open exceed $25K.</td>
-            <td>Not for Canadian medical students.</td>
-            <td>A co-signer or guarantor may be required depending on the application. Confirm residency-status eligibility and credit requirements directly with CIBC.</td>
+            <td>A 2026 Scotia advisor said no co-signer is normally required and described possible limit reductions above $60K in government loans or $25K in outside revolving credit retained. These thresholds are advisor-reported; approval remains subject to Scotia's lending criteria.</td>
+            <td>RBC publishes no co-signer for most applicants. Limited credit history or study outside Canada may still result in one being required.</td>
+            <td>CIBC says qualified applicants studying at a Canadian school do not require a guarantor, although limited credit history may result in one being required.</td>
             <td><strong>No co-signer needed</strong> for Canadian medical/dental/veterinary students at Canadian schools.</td>
             <td>Approval and any co-signer requirement depend on BMO's lending criteria. Confirm for your application.</td>
           </tr>
           <tr>
             <th>Documents needed</th>
-            <td>Enrollment letter (with program, length, full name, school) + standard ID.</td>
-            <td>Signed enrollment letter confirming program, length, full name, and school.</td>
-            <td><strong>Proof of enrolment</strong> and <strong>tuition deposit</strong> required.</td>
+            <td>A 2026 Scotia advisor requested an enrolment letter showing the program, program length, full name and school, plus standard identification. Confirm the current checklist.</td>
+            <td>RBC publicly accepts proof such as an enrolment letter, tuition receipt or an acceptance letter showing the tuition deposit. Confirm the current document list before the appointment.</td>
+            <td>A 2026 CIBC advisor requested proof of enrolment and the tuition deposit. Confirm the current document checklist before the appointment.</td>
             <td>Standard proof of enrolment and ID. Confirm exact list at appointment.</td>
             <td>Proof of enrolment + standard ID. Confirm full list at appointment.</td>
           </tr>
@@ -7892,8 +7815,8 @@ lcCalc();
           </tr>
           <tr>
             <th>Mid-program adjustments</th>
-            <td>Students report staged access by year. Confirm the schedule, review requirements and route to the published $400,000 maximum.</td>
-            <td>Confirm whether the limit or product changes at residency entry.</td>
+            <td>A 2026 Scotia advisor described staged annual access. Confirm the schedule, review requirements and route to the published $400,000 maximum.</td>
+            <td>RBC officially publishes up to $400K for eligible students, up to $425K for residents and no need to reapply after residency. Annual access remains subject to qualification and proof of progression.</td>
             <td>Confirm annual access and whether another review is required.</td>
             <td><strong>Apply just once</strong> for credit and have it for as long as you're in school. Limit scales with program of study up to $400K.</td>
             <td>BMO publishes up to $115,000 in first year and up to $400,000 total. Confirm later-year access and review requirements.</td>
@@ -7924,18 +7847,18 @@ lcCalc();
           <tr>
             <th>Residency conversion</th>
             <td>Scotia's public page describes no payments until residency is completed plus two years. Confirm fellowship treatment, access and rate.</td>
-            <td>Confirm how the product, access and payment obligations change during residency.</td>
-            <td>Confirm residency treatment in writing; the public page reviewed describes the period through MD graduation.</td>
+            <td>RBC publishes continued access after graduation and up to $425K for residents. A 2026 RBC advisor described the LOC as remaining open with interest-only minimums; confirm the binding payment terms in writing.</td>
+            <td>CIBC publishes interest-only payments during school and for up to 24 months after graduation or residency. Confirm how the timing applies to your program.</td>
             <td>LOC continues through residency. Interest-only payments throughout; principal deferred 24 months past residency end.</td>
             <td>BMO publishes continued access during residency within its stated financing window. Confirm the exact period and payment treatment.</td>
           </tr>
           <tr>
             <th>Post-residency conversion</th>
             <td>Scotia describes repayment beginning after residency plus two years. Ask which product follows and whether its rate, limit or payment calculation changes.</td>
-            <td>Confirm the post-graduation product and repayment schedule in writing.</td>
+            <td>A 2026 RBC advisor described an ongoing personal LOC option with the same rate and limit, or a ten-year repayment schedule if it is not used. Confirm the available conversion, deadline and terms in writing.</td>
             <td>Confirm the post-residency product, rate and repayment schedule in writing.</td>
             <td>Principal repayment begins 24 months after leaving school or residency. Conversion to physician credit product to be confirmed at appointment.</td>
-            <td>Per the BMO Medical Student repayment schedule, principal repayment begins Year 3 post-grad and escalates annually.</td>
+            <td>BMO's public page says principal repayment begins after two post-graduation years of interest-only payments. Confirm the amount, frequency and amortization schedule in the agreement.</td>
           </tr>
           <tr>
             <th>Physician transition</th>
@@ -8158,11 +8081,11 @@ lcCalc();
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Tuition Payment</span>
       </div>
-      <h2>Choose the pathway that applies to you.</h2>
+      <h2>How are you paying tuition?</h2>
       <p>Student Accounts publishes the official registration and payment deadlines each year. The steps differ depending on whether you are waiting for government aid or paying another way.</p>
     </div>
 
-    <div class="tuition-path-toggle" role="group" aria-label="Choose tuition payment pathway">
+    <div class="tuition-path-toggle" role="group" aria-label="Choose how you are paying tuition">
       <button type="button" class="tpt active" data-path="osap" aria-pressed="true">OSAP or government aid</button>
       <button type="button" class="tpt" data-path="other" aria-pressed="false">LOC, savings, or other funds</button>
     </div>
@@ -8416,7 +8339,7 @@ lcCalc();
           <div class="resource-arrow">→</div>
           <div>
             <h3 class="resource-title">Temerty Faculty of Medicine Grant</h3>
-            <p class="resource-note">The main need-based grant for in-program MD students, separate from entrance bursaries. Application typically opens in mid-August (Aug 13 last year). Watch your <code>@mail.utoronto.ca</code> inbox.</p>
+            <p class="resource-note">A need-based program for eligible MD students, separate from entrance bursaries. The 2025–26 program-wide email set a September 30, 2025 deadline and listed specific eligibility criteria; Admissions Bursary recipients were reviewed automatically. Watch your <code>@mail.utoronto.ca</code> inbox for the current cycle.</p>
           </div>
         </a>
         <a class="resource-link" href="https://www.ontario.ca/page/osap-ontario-student-assistance-program" target="_blank" rel="noopener">

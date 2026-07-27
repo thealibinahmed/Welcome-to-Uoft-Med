@@ -6494,86 +6494,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
-    { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic international cost MSB MAM", snippet: "Year 1: $25,417 Ontario domestic / $29,837 non-Ontario / $100,433 international (St. George). MAM +$580." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC", snippet: "$375K maximum at major banks. Med-student rate: Prime − 0.25% (currently 4.20%)." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "", keywords: "scotia bank LOC healthcare plus ultimate package amex passport", snippet: "Most-used LOC at UofT. Includes Ultimate Package, Passport Visa Infinite, Gold Amex with annual fees waived." },
-    { page: "finances", title: "Negotiating your LOC", anchor: "", keywords: "negotiate LOC bank rate", snippet: "Tips for negotiating with bank reps — the 'starting offer' usually isn't the best they'll do." },
-    { page: "finances", title: "Toronto budget breakdown", anchor: "", keywords: "budget rent groceries transit toronto monthly cost living", snippet: "Realistic monthly costs for groceries, rent, transit, utilities in Toronto." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Temerty Faculty of Medicine Grant", anchor: "", keywords: "temerty grant financial aid bursary need-based august", snippet: "The main need-based grant after entrance bursaries. Application opens mid-August." },
-
-    // Academics
-    { page: "academics", title: "Study notes (JLim, ITM, Histology)", anchor: "#study-notes", keywords: "study notes JLim ITM histology WFQ shared resources", snippet: "Cohort-shared study materials, organized by block." },
-    { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
-    { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
-    { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
-
-    // Handbook
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "MAM field guide — buildings at UTM", anchor: "#mam-field-guide", keywords: "MAM mississauga UTM TDHSC Davis CCT Queensway buildings", snippet: "Where MAM students learn, study, and eat at UTM — TDHSC, Davis, CCT, and the Trillium sites." },
-    { page: "handbook", title: "MAM field guide — parking & MiWay", anchor: "#mam-field-guide", keywords: "MAM parking P4 P8 P9 MiWay shuttle clinical skills mississauga transit", snippet: "The MAM parking pass, MiWay free with tuition, and the inter-site clinical skills shuttle." },
-    { page: "handbook", title: "MAM field guide — getting to St. George", anchor: "#mam-field-guide", keywords: "MAM UTM shuttle GO Train Lakeshore Milton Kipling TTC presto downtown oweek commute", snippet: "UTM Shuttle, GO Train, and TTC options for getting downtown from MAM." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "What OMSA represents, current OMA student membership, and where to review insurance separately." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists — the hidden curriculum, decoded." },
-    { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -7298,14 +7218,14 @@
           <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Section 05 · Field Guide</span>
         </div>
-        <h1>The vocabulary,<br/>decoded.</h1>
-        <p class="page-hero-lede">The names, systems and student-life details that make UofT Medicine easier to navigate. Start with the glossary, then come back whenever an unfamiliar acronym appears.</p>
+        <h1>The terms people<br/>use every day.</h1>
+        <p class="page-hero-lede">A reference for the names, systems and student-life details you will encounter at UofT Medicine. Start with the glossary, then return whenever an unfamiliar acronym appears.</p>
       </div>
       <div>
         <div class="page-hero-meta">
           <strong>Maintained by</strong>
           Current and recent UofT MD students. Student-reported details are labelled and official sources are linked wherever information may change. <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline;">Submit an update</a>.
-          <span class="source-status">Last verified June 2026</span>
+          <span class="source-status">Last verified July 2026</span>
         </div>
       </div>
     </div>
@@ -7338,7 +7258,7 @@
       <li><a href="#community-groups">Student life</a></li>
       <li><a href="#omsa-oma">OMSA &amp; OMA</a></li>
       <li><a href="#wellness">Wellness &amp; support</a></li>
-      <li><a href="#quick-links">Official links</a></li>
+      <li><a href="quicklinks.html">Official links</a></li>
     </ul>
   </div>
 </aside>
@@ -7418,9 +7338,9 @@
         <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 28px; color: var(--uoft-navy); line-height: 1.15;">Clerkship</h3>
         <dl style="margin-top: 24px;">
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Focus</dt>
-          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Full-time clinical rotations across core specialties, plus electives that shape your CaRMS application.</dd>
+          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Full-time clinical rotations across core specialties, followed by selectives and electives that support career exploration and residency planning.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Typical week</dt>
-          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Hospital hours: variable, sometimes long. Call shifts. Less classroom, more team-based learning.</dd>
+          <dd style="margin-bottom: 16px; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Schedules vary by rotation and can include early starts, evenings, weekends and call. Use the current rotation material for attendance and scheduling expectations.</dd>
           <dt style="font-weight: 700; font-size: 13px; color: var(--uoft-navy); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px;">Evaluation</dt>
           <dd style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">Assessment varies by rotation and program requirement. The official curriculum and clerkship materials should be used for the current assessment structure.</dd>
         </dl>
@@ -7429,7 +7349,7 @@
     <style>@media (min-width: 768px) { .phase-grid { grid-template-columns: 1fr 1fr !important; } .phase-grid > div:first-child { border-bottom: none !important; border-right: 1px solid var(--hairline); } }</style>
 
     <div class="callout-soft" style="margin-top: 32px;">
-      <strong>Use the official calendar for current requirements.</strong> The <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT MD Academic Calendar</a> is the source of truth for program structure, policies and published dates. The <a href="academics.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page</a> explains what the first year commonly feels like in practice.
+      <strong>Use the official calendar for current requirements.</strong> The <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">UofT MD Academic Calendar</a> publishes the program structure, policies and calendar requirements. The <a href="academics.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page</a> adds a clearly labelled student view of first year.
     </div>
   </div>
 </section>
@@ -7610,7 +7530,7 @@
         </div>
         <div>
           <p class="glossary-def">Full-time clinical rotations across core specialties.</p>
-          <p class="glossary-detail">Core rotations: Internal Medicine, Surgery, Pediatrics, OB-GYN, Psychiatry, Family Medicine, Anesthesia, Emergency. Year 4 is mostly electives plus selectives.</p>
+          <p class="glossary-detail">The sequence includes core rotations, selectives and electives. Rotation structure and requirements belong in the <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">current MD Academic Calendar</a> and clerkship materials rather than a student summary.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7620,7 +7540,7 @@
         </div>
         <div>
           <p class="glossary-def">Small-group sessions structured around clinical cases.</p>
-          <p class="glossary-detail">Groups of 8–10 students. Two sessions per week. The first is student-led (you work through the case together without a tutor), the second is led by a faculty tutor a few days later. Cases unfold across the two sessions, integrating that week's basic-science and clinical content. Attendance and preparation matter more than lecture attendance.</p>
+          <p class="glossary-detail">CBL structure, group size, preparation and attendance expectations can vary by course and cohort. Use the current instructions in Elentra rather than an earlier cohort's routine.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7636,7 +7556,7 @@
       <div class="glossary-row">
         <div>
           <p class="glossary-term">ICE: Clinical Skills</p>
-          <p class="glossary-expansion">History &amp; Physical Exam</p>
+          <p class="glossary-expansion">Clinical Skills stream</p>
         </div>
         <div>
           <p class="glossary-def">A recurring morning focused on history-taking, physical examination and clinical encounters.</p>
@@ -7656,7 +7576,7 @@
       <div class="glossary-row">
         <div>
           <p class="glossary-term">ICE: CAP</p>
-          <p class="glossary-expansion">Career Advising & Prep</p>
+          <p class="glossary-expansion">Career Advising and Preparation</p>
         </div>
         <div>
           <p class="glossary-def">Longitudinal mentorship + career advising thread.</p>
@@ -7696,7 +7616,7 @@
       <div class="glossary-row">
         <div>
           <p class="glossary-term">EEE</p>
-          <p class="glossary-expansion">Enriching Educational Experience</p>
+          <p class="glossary-expansion">Enriching Educational Experiences</p>
         </div>
         <div>
           <p class="glossary-def">Self-initiated shadowing. Short observerships you arrange yourself.</p>
@@ -7710,7 +7630,7 @@
         </div>
         <div>
           <p class="glossary-def">Practical exam where you rotate through stations performing clinical tasks.</p>
-          <p class="glossary-detail">OSCE formats, station lengths and timing vary. The Faculty's assessment instructions for your year are the source of truth. Practising histories, examinations and communication with classmates can help you prepare.</p>
+          <p class="glossary-detail">OSCE formats, station lengths and timing vary. Use the Faculty's assessment instructions for your year. Practising histories, examinations and communication with classmates can help you prepare.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7719,8 +7639,8 @@
           <p class="glossary-expansion">Clinical Home Base</p>
         </div>
         <div>
-          <p class="glossary-def">Your home base for clinical learning. UofT MD has four.</p>
-          <p class="glossary-detail">The four academies are FitzGerald, Peters-Boyd, Wightman-Berris and the Mississauga Academy of Medicine. Your academy helps organize clinical learning, Portfolio and community. Assignments are made by the program; students with significant circumstances can ask the appropriate Faculty office about the current transfer process.</p>
+          <p class="glossary-def">Your home base for clinical learning. For 3T0, U of T MD has four academies across St. George and Mississauga.</p>
+          <p class="glossary-detail">For the 3T0 entering class, the four academies are FitzGerald, Peters-Boyd, Wightman-Berris and the Mississauga Academy of Medicine. Scarborough Academy of Medicine opens for the following entering cycle, 3T1. Your academy helps organize clinical learning, Portfolio and community.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7730,7 +7650,7 @@
         </div>
         <div>
           <p class="glossary-def">The organization that administers residency matches in Canada.</p>
-          <p class="glossary-detail">CaRMS is most relevant later in medical school. Career advising, electives and application requirements should be followed through current Faculty and CaRMS guidance.</p>
+          <p class="glossary-detail">CaRMS is most relevant later in medical school. Follow current Faculty advising and the <a href="https://www.carms.ca/the-match/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">official CaRMS guidance</a> for application and match requirements.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7746,11 +7666,11 @@
       <div class="glossary-row">
         <div>
           <p class="glossary-term">ISAL</p>
-          <p class="glossary-expansion">Integrated and Application Lectures</p>
+          <p class="glossary-expansion">Integrated Summary and Application Lecture</p>
         </div>
         <div>
-          <p class="glossary-def">Sessions near the end of a course subsection that bring together key concepts and challenging material.</p>
-          <p class="glossary-detail">ISAL sessions may use clinical cases, sample questions or student questions to reinforce learning. Attendance is mandatory when patients are present. Check the learning event for the session's specific expectations.</p>
+          <p class="glossary-def">A selective overview of important concepts identified by week leads and lecturers for the upcoming ME.</p>
+          <p class="glossary-detail">An ISAL is not a complete list of testable content. The format may be teaching, cases, questions or a mixture of these. Check the learning event for the session's specific expectations.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7760,17 +7680,17 @@
         </div>
         <div>
           <p class="glossary-def">The AAMC application service used by applicants to participating U.S. residency programs.</p>
-          <p class="glossary-detail">ERAS is an application system, not a matching service. Students considering U.S. residency should seek current advising early and verify requirements directly with the AAMC and the relevant match organization.</p>
+          <p class="glossary-detail">ERAS is an application system, not a matching service. Students considering U.S. residency should seek current advising early and verify requirements through the <a href="https://students-residents.aamc.org/applying-residencies-eras/apply-residencies-eras-system" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">AAMC ERAS page</a> and the relevant match organization.</p>
         </div>
       </div>
       <div class="glossary-row">
         <div>
           <p class="glossary-term">MD+</p>
-          <p class="glossary-expansion">Optional Enrichment Pathways</p>
+          <p class="glossary-expansion">Additional educational opportunities</p>
         </div>
         <div>
-          <p class="glossary-def">An umbrella term used in this guide for optional programs and structured opportunities completed alongside the MD curriculum.</p>
-          <p class="glossary-detail">Programs differ in topic, workload, eligibility and deadline. Some recruit early in first year. See the <a href="academics.html#md-plus" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page's MD+ opportunity guide</a>, then verify the current application details with the program itself.</p>
+          <p class="glossary-def">The Faculty's collection of combined degrees, graduate credentials and other educational opportunities available alongside or integrated with the MD.</p>
+          <p class="glossary-detail">Programs differ in topic, workload, eligibility and deadline. Some recruit early in first year. See the <a href="academics.html#md-plus" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Academics page's opportunity guide</a>, then confirm details through the <a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">official MD Plus overview</a>.</p>
         </div>
       </div>
       <div class="glossary-row">
@@ -7780,7 +7700,7 @@
         </div>
         <div>
           <p class="glossary-def">A national examination assessing knowledge and clinical decision-making at the level expected of a student completing a Canadian medical degree.</p>
-          <p class="glossary-detail">Students may apply when they meet the MCC's eligibility requirements, including being expected to complete all graduation requirements from an eligible school. Use the MCC website for current eligibility, sessions and application instructions.</p>
+          <p class="glossary-detail">Eligible students can apply up to 15 months before their expected graduation date, with the eligibility window beginning 12 months before expected graduation. Use the <a href="https://mcc.ca/examinations-assessments/mccqe/eligibility-and-application/" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">MCC eligibility page</a> for current rules, sessions and application instructions.</p>
         </div>
       </div>
     </div>
@@ -7795,32 +7715,32 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">The Academies</span>
       </div>
-      <h2>Four academies, four hospital networks.</h2>
-      <p>Your academy assignment is given, not chosen. It anchors most of your clinical learning for four years. The 3T0 cohort is <strong>306 students</strong> across the four academies.</p>
+      <h2>Four academies for 3T0.</h2>
+      <p>Your academy assignment is provided by the MD Program and anchors much of your clinical learning. <strong>Student-reported for 3T0:</strong> the incoming cohort was described as approximately 306 students across the four academies. Cohort and academy sizes vary by year.</p>
     </div>
 
     <div class="callout-soft" style="margin-bottom: 28px; border-left: 3px solid var(--uoft-navy);">
-      <strong>When does the assignment arrive?</strong> Late June. Last year's class received their academy email on <strong>June 26 around 10 AM</strong>. The exact date shifts year to year, but the late-June window has been consistent. There's no announced timeline beforehand. Just an email that lands one morning. Worth knowing before you commit to housing: if you ranked downtown and got MAM (or vice versa), your location changes.
+      <strong>Student-reported timing:</strong> 2T9 received its academy email on <strong>June 26, 2025, around 10 AM</strong>. This is not a published annual deadline and should not be used to predict the 3T0 release date. Consider waiting for your confirmed campus and academy before making location-sensitive housing decisions.
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 16px;" class="academy-grid">
 
       <div class="academy-card">
         <h3 class="academy-card-name">FitzGerald Academy</h3>
-        <p class="academy-card-meta">~55 students/year · Walking from MSB</p>
+        <p class="academy-card-meta">Cohort size varies · Walking from MSB</p>
         <p class="academy-card-vibe">Downtown core. Compact footprint. Both teaching hospitals are walking distance from each other and from MSB.</p>
         <p class="academy-card-list-eyebrow">Primary hospitals</p>
         <ul class="academy-card-list">
           <li>St. Michael's Hospital</li>
           <li>St. Joseph's Health Centre</li>
         </ul>
-        <p class="academy-card-insider"><strong>Insider:</strong> CBL sessions and most ICE groups are held in the Li Ka Shing Knowledge Institute at St. Mike's. A few ICE groups meet at St. Joe's.</p>
+        <p class="academy-card-insider"><strong>Student-reported:</strong> recent FitzGerald students describe many CBL and ICE sessions at the Li Ka Shing Knowledge Institute, with some groups at St. Joseph’s. Confirm every assigned location in MedSIS.</p>
       </div>
 
       <div class="academy-card">
         <h3 class="academy-card-name">Peters-Boyd Academy</h3>
-        <p class="academy-card-meta">~55 students/year · 30–45 min by transit</p>
-        <p class="academy-card-vibe">North Toronto, anchored at Sunnybrook. The longest commute of the four academies. Most students take subway + bus.</p>
+        <p class="academy-card-meta">Cohort size varies · Conservative transit estimate</p>
+        <p class="academy-card-vibe">North Toronto, anchored at Sunnybrook. From MSB, the listed transit time is a conservative student planning estimate and varies by site, route and time of day.</p>
         <p class="academy-card-list-eyebrow">Primary hospitals</p>
         <ul class="academy-card-list">
           <li>Sunnybrook Health Sciences Centre</li>
@@ -7831,7 +7751,7 @@
 
       <div class="academy-card">
         <h3 class="academy-card-name">Wightman-Berris</h3>
-        <p class="academy-card-meta">~55 students/year · 10–20 min from MSB</p>
+        <p class="academy-card-meta">Cohort size varies · Conservative commute estimate</p>
         <p class="academy-card-vibe">The biggest hospital network of the four. UHN-anchored, with sites stretching from downtown to the east and west ends.</p>
         <p class="academy-card-list-eyebrow">Primary hospitals (Y1–Y2)</p>
         <ul class="academy-card-list">
@@ -7848,13 +7768,13 @@
           <li>Toronto Rehabilitation Institute</li>
           <li>West Park Healthcare Centre</li>
         </ul>
-        <p class="academy-card-insider"><strong>Insider:</strong> WB students get a dedicated lounge at Toronto General.</p>
+        <p class="academy-card-insider"><strong>Student-reported:</strong> Wightman-Berris students have used a dedicated lounge at Toronto General. Access and location should be confirmed with the academy.</p>
       </div>
 
       <div class="academy-card academy-card-mam">
         <h3 class="academy-card-name">MAM <span class="academy-card-name-sub">Mississauga Academy of Medicine</span></h3>
-        <p class="academy-card-meta">~59 students/year · Based at UTM</p>
-        <p class="academy-card-vibe">Located at the UTM campus. Different city, different commute math. Most students live in Mississauga.</p>
+        <p class="academy-card-meta">2T9 student-reported: 59 students · Based at UTM</p>
+        <p class="academy-card-vibe">Located at the UTM campus. Housing and commuting decisions differ substantially depending on whether a student chooses Mississauga, Toronto or another GTA location.</p>
         <p class="academy-card-list-eyebrow">Primary hospitals</p>
         <ul class="academy-card-list">
           <li>Mississauga Hospital <span class="academy-card-list-note">(Trillium Health Partners)</span></li>
@@ -7864,6 +7784,7 @@
 
     </div>
     <style>@media (min-width: 768px) { .academy-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; } } @media (min-width: 1280px) { .academy-grid { grid-template-columns: repeat(4, 1fr) !important; } }</style>
+    <p class="platform-footer-note"><strong>Official source for 3T0:</strong> the <a href="https://md.calendar.utoronto.ca/academies-and-training-sites" target="_blank" rel="noopener">2025–26 MD Academic Calendar: Academies and Training Sites <span class="footer-ext">↗</span></a> lists the four academies in place for this cohort. Scarborough opens for 3T1, the next entering cycle; newer Faculty admissions pages describing three campuses and five academies therefore do not apply to 3T0. Commute descriptions, lounge access, session-location patterns and cohort counts above are labelled as student-reported or planning estimates.</p>
 
     <div class="academy-transfers" id="academy-transfers">
       <div class="academy-transfers-header">
@@ -7910,7 +7831,7 @@
 
       <div class="academy-card">
         <h3 class="academy-card-name">TDHSC <span class="academy-card-name-sub">Terrence Donnelly Health Sciences Complex</span></h3>
-        <p class="academy-card-meta">3359 Mississauga Rd · 24/7 T-Card access</p>
+        <p class="academy-card-meta">3359 Mississauga Rd · confirm current access hours</p>
         <p class="academy-card-vibe">Your home building. The big lecture room on the first floor is where your class meets; small-group rooms on the second floor are reserved for MD and OT students. The cadaver lab is on the fourth floor.</p>
         <p class="academy-card-list-eyebrow">The second-floor lounge</p>
         <ul class="academy-card-list">
@@ -7953,41 +7874,42 @@
         <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">The MAM-specific pass.</h4>
         <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 12px;">Parking options, eligible lots, prices and permit dates can change each year. Watch for the MAM or UTM parking instructions sent to your cohort before purchasing a permit.</p>
         <div class="callout-soft" style="margin-top: 16px; border-left: 3px solid #c0392b; padding: 14px 18px;">
-          <strong>Don't park in P9.</strong> P9 is the lot right in front of TDHSC. Every cohort tries to finesse it; every cohort gets ticketed. They check. Use P4 or P8.
+          <strong>Use the permit you actually purchased.</strong> UTM's current parking page lists P4, P8 and P9 among student options, with different prices and access rules. A permit is valid only for its designated lot or lots.
         </div>
-        <p style="font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin-top: 14px;">Parking at the hospitals (MH, CVH) works differently. Ask Phoebe or a MAM upper-year for the current rates.</p>
+        <p style="font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin-top: 14px;">Check <a href="https://www.utm.utoronto.ca/parking/parking-permit-options/parking-permits-commuting-students" target="_blank" rel="noopener" style="color:var(--uoft-teal);border-bottom:1px solid currentColor;">UTM's current student-permit page <span class="footer-ext">↗</span></a> before buying. Parking at the hospitals works differently; follow the current hospital or academy instructions.</p>
       </div>
 
       <div style="padding: 32px; border-bottom: 1px solid var(--hairline);">
         <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--uoft-teal); font-weight: 700; margin-bottom: 8px;">MiWay</p>
         <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Included transit access.</h4>
-        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);">Mississauga's transit system (MiWay) is included in your incidental fees. Worth using when you don't want to drive and don't need to be downtown. Routes 110 and 109 connect Square One to UTM directly, a key factor in where many MAMers choose to live.</p>
+        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);">Eligible MAM students paying the U-Pass fee receive a MiWay U-Pass. Eligibility is tied to current registration and the fee on your ACORN invoice. Confirm current routes in MiWay rather than relying on an older route number.</p>
+        <p style="font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin-top: 14px;"><a href="https://utmsu.ca/service/digital-u-pass/" target="_blank" rel="noopener" style="color:var(--uoft-teal);border-bottom:1px solid currentColor;">UTMSU Digital U-Pass eligibility <span class="footer-ext">↗</span></a></p>
       </div>
 
       <div style="padding: 32px;">
         <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--uoft-teal); font-weight: 700; margin-bottom: 8px;">Inter-site shuttle</p>
         <h4 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">For clinical skills mornings.</h4>
-        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);">There's a dedicated shuttle from UTM to <strong>Mississauga Hospital</strong> or <strong>Credit Valley Hospital</strong> on clinical skills mornings, returning to UTM after. A second shuttle runs between MH and CVH directly. You don't need to figure out parking at the hospital sites for these sessions.</p>
+        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-soft);"><strong>Student-reported from the recent MAMer's Guide:</strong> dedicated transportation was arranged between UTM, Mississauga Hospital and Credit Valley Hospital for Clinical Skills mornings. Confirm the current route, pickup time and whether personal transportation is needed through your MAM or Clinical Skills instructions.</p>
       </div>
 
     </div>
 
     <!-- Getting to St George -->
     <h3 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 22px; color: var(--uoft-navy); margin-bottom: 4px;">Getting to St. George.</h3>
-    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px;">You'll need to get downtown for O-Week and occasionally during the year. Four options, ranked by how MAM students actually use them.</p>
+    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 20px;">You may need to travel downtown for O-Week and occasional events during the year. These are four commonly used options.</p>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px;" class="mam-transit-grid">
 
       <div class="academy-card">
-        <h3 class="academy-card-name">UTM Shuttle Bus <span class="academy-card-name-sub">The default for O-Week</span></h3>
+        <h3 class="academy-card-name">UTM Shuttle Bus <span class="academy-card-name-sub">Campus-to-campus option</span></h3>
         <p class="academy-card-meta">Included for eligible UTM students · Travel time is traffic-dependent</p>
         <p class="academy-card-vibe">The UTM–St. George shuttle is often the simplest downtown option. Bring your TCard and check the official schedule before every trip because routes, stops and service hours can change by term.</p>
         <p class="academy-card-list-eyebrow">Two things to know</p>
         <ul class="academy-card-list">
-          <li>Access only activates once the school year starts. T-Card won't scan beforehand</li>
+          <li>The recent MAMer’s Guide reports that student access activates around the start of the school year. Confirm current activation timing before relying on the shuttle</li>
           <li>Download the <strong>First View</strong> app for live arrivals and cancellations</li>
         </ul>
-        <p class="academy-card-insider"><strong>Schedule:</strong> Always check <a href="https://www.utm.utoronto.ca/shuttle/#Schedules" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">utm.utoronto.ca/shuttle</a>. it changes between summer, term, and exam season.</p>
+        <p class="academy-card-insider"><strong>Schedule:</strong> Always check <a href="https://www.utm.utoronto.ca/shuttle/#Schedules" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">utm.utoronto.ca/shuttle</a>. Service changes between summer, term and exam periods.</p>
       </div>
 
       <div class="academy-card">
@@ -7998,20 +7920,20 @@
         <ul class="academy-card-list">
           <li>Check the current GO schedule and service alerts</li>
           <li>Compare the final local-transit connection, not only train time</li>
-          <li>Apply the <a href="https://www.gotransit.com/en/student-savings/post-secondary-discount" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">Presto post-secondary discount</a> — you qualify</li>
+          <li>Check your eligibility and apply for the <a href="https://www.gotransit.com/en/student-savings/post-secondary-discount" target="_blank" rel="noopener" style="color: var(--uoft-teal); text-decoration: underline;">PRESTO post-secondary discount</a></li>
         </ul>
       </div>
 
       <div class="academy-card">
-        <h3 class="academy-card-name">TTC via Kipling Station <span class="academy-card-name-sub">Late-night fallback</span></h3>
-        <p class="academy-card-meta">For when you've missed the shuttle and the last GO Train</p>
-        <p class="academy-card-vibe">Kipling is the westernmost Line 2 station, ~20–35 min drive from UTM. From St. George, take Line 1 north to St. George or Spadina, transfer to Line 2 west to Kipling. Subway runs until ~2 AM. Once at Kipling, you'll need an Uber or a friend with a car to get the rest of the way home.</p>
+        <h3 class="academy-card-name">TTC via Kipling Station <span class="academy-card-name-sub">Line 2 connection</span></h3>
+        <p class="academy-card-meta">Paid fare · Requires a connection between Kipling and UTM</p>
+        <p class="academy-card-vibe">From downtown, travel west on Line 2 to Kipling, then connect to UTM using the current MiWay route or another ride. Check the full trip in a live transit planner because subway and bus service change by time and day.</p>
       </div>
 
       <div class="academy-card">
         <h3 class="academy-card-name">Uber</h3>
-        <p class="academy-card-meta">Fast, expensive, door-to-door</p>
-        <p class="academy-card-vibe">Self-explanatory. Coordinate with classmates after late events, split the cost, skip the transit gymnastics. Most useful after Friday Boat Formal or any night that runs past the last GO Train.</p>
+        <p class="academy-card-meta">Paid ride · Cost and travel time vary</p>
+        <p class="academy-card-vibe">A direct ride can be useful when transit service is limited. If travelling with classmates, coordinate the pickup point and confirm the fare before booking.</p>
       </div>
 
     </div>
@@ -8041,7 +7963,7 @@
 </style>
 
     <div class="callout-soft" style="margin-top: 32px; border-left: 3px solid var(--uoft-navy);">
-      <strong>One more thing.</strong> If you want to talk to MAM faculty about anything (academic, social, logistical), your MAM Student Affairs contact is the connector. Don't sit on questions; the MAM cohort is small, and people are reachable.
+      <strong>Questions about MAM logistics?</strong> Start with your current MAM Student Affairs contact for campus, academic or logistical questions.
     </div>
 
   </div>
@@ -8055,8 +7977,8 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Student Life</span>
       </div>
-      <h2>Councils, communities, and interests. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
-      <p>Most of student life at UofT MD runs through councils, identity-based and faith communities, arts groups, and dozens of interest groups for specialty exploration. Each group is run by current students. content is filled in by the group's reps. <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline; font-weight: 600;">Submit updates via Feedback</a>.</p>
+      <h2>Councils, communities and interests. <a href="feedback.html"><span class="important-tag">Upper years — submit</span></a></h2>
+      <p>This student-compiled directory introduces councils, identity and faith communities, arts groups and specialty interest groups. Activities and contacts change with each student leadership team. Group representatives can <a href="feedback.html" style="color: var(--uoft-teal); text-decoration: underline; font-weight: 600;">submit or correct a description through Feedback</a>.</p>
     </div>
 
     <!-- Combined groups grid -->
@@ -8066,7 +7988,7 @@
       <div class="group-card group-card-emphasis">
         <p class="group-card-eyebrow">Council · Per cohort</p>
         <h3 class="group-card-title">Class Council</h3>
-        <p class="group-card-body">Your cohort's elected leadership. Runs class-specific events, the social fund, formal, charity initiatives, and acts as a bridge between your year and the MD Program. Elections happen each fall in M1, with new elections in M2 and M3. Full role breakdown below.</p>
+        <p class="group-card-body">Your cohort's elected leadership. Positions cover class events, finances, formal, charity initiatives, educational representation and communication with the MD Program. The cohort holds three council elections: at the start of M1, near the end of M1 for M2 and near the end of M2 for the combined M3–M4 term. Full role breakdown below.</p>
       </div>
       <div class="group-card group-card-emphasis">
         <p class="group-card-eyebrow">Council · School-wide</p>
@@ -8079,7 +8001,7 @@
       <div class="group-card">
         <p class="group-card-eyebrow">Faith</p>
         <h3 class="group-card-title">Muslim Medical Association (MMAC)</h3>
-        <p class="group-card-body">Prayer space coordination, Jummah on campus, Ramadan support, and community events. Resources for hijabi students in clinical environments. See the <a href="#prayer-spaces" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor; font-weight: 600;">Prayer spaces directory</a> below. compiled and maintained by MMAC.</p>
+        <p class="group-card-body">Prayer space coordination, Jummah on campus, Ramadan support and community events. See the <a href="#prayer-spaces" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor; font-weight: 600;">prayer-space directory</a> compiled by MMAC.</p>
         <p class="group-card-detail-note needs-content" style="position:relative;">Detailed content pending. Reps to fill in.</p>
       </div>
       <div class="group-card">
@@ -8154,7 +8076,7 @@
     <!-- Class Council role breakdown -->
     <div class="council-roles">
       <p class="council-roles-eyebrow">Class Council · Role Map</p>
-      <p class="council-roles-lede">General leadership, hospital and academy reps, and educational portfolios mapped to specific parts of the curriculum. Most positions are filled by election in the fall of M1.</p>
+      <p class="council-roles-lede">General leadership, hospital and academy representatives and educational portfolios mapped to specific parts of the curriculum. Council positions are filled through the cohort election for the applicable term.</p>
 
       <div class="council-roles-grid">
         <div class="council-roles-group">
@@ -8292,7 +8214,7 @@
     <p class="student-life-subhead-note">Specialty-specific clubs run by upper-year students, with talks, panels, shadowing leads, and research connections.</p>
 
     <div class="interest-groups-block">
-      <p class="interest-groups-lede">UofT MD has <strong>dozens of specialty interest groups</strong>, covering nearly every major medical and surgical specialty, plus several cross-cutting interests. They're a low-commitment way to explore a specialty before clerkship: most run a couple of events per year, some host shadowing matchmaking, and many maintain mentor lists with residents and staff.</p>
+      <p class="interest-groups-lede">Specialty interest groups offer talks, panels and other student-organized ways to explore fields before clerkship. Programming, activity level and available groups change each year.</p>
 
       <p class="interest-groups-eyebrow">Examples of groups that have been active in recent years</p>
       <div class="interest-groups-pills">
@@ -8328,7 +8250,7 @@
         <span class="interest-pill">Medical Humanities</span>
         <span class="interest-pill">+ many more</span>
       </div>
-      <p class="interest-groups-note">Active groups vary by year. Some go quiet when their leads graduate; new ones spin up whenever there's demand. Watch class-wide emails and Discord channels in September for the year's roster, and go ahead and start one if a specialty you care about isn't represented.</p>
+      <p class="interest-groups-note">The list above reflects groups active in recent years, not a guaranteed current roster. Check class-wide announcements and the current MedSoc or student-group directory for this year's contacts.</p>
     </div>
 
   </div>
@@ -8368,19 +8290,20 @@
           <span class="eyebrow-text">OMA</span>
         </div>
         <h3>Ontario Medical Association</h3>
-        <p>The provincial association representing physicians, residents and medical students. Student membership currently costs <strong>$10 per year</strong>.</p>
+        <p>The provincial association representing physicians, residents and medical students. Its medical-student membership page listed membership at <strong>$10 per year</strong> when checked in July 2026.</p>
         <ul class="data-bullets">
           <li>Access to member programs, services and discounts</li>
           <li>Student participation in OMA advocacy and professional activities</li>
           <li>Eligibility for the separate OMA Insurance Essentials for Students offering, which currently includes discounted disability and complimentary life insurance</li>
         </ul>
-        <a class="resource-link-mini" href="https://www.oma.org/membership/medical-students/" target="_blank" rel="noopener">Join as a student <span class="footer-ext">↗</span></a>
+        <a class="resource-link-mini" href="https://www.oma.org/about-the-oma/membership/student-orientation/" target="_blank" rel="noopener">Join as a student <span class="footer-ext">↗</span></a>
       </article>
     </div>
 
     <div class="callout-soft">
       <strong>Membership and insurance are separate decisions.</strong> Review the current OMA membership fee and insurance terms directly before enrolling. Insurance needs are personal; this student guide does not recommend a particular product.
     </div>
+    <p class="platform-footer-note"><strong>Organization sources:</strong> descriptions and current opportunities are summarized from <a href="https://omsa.ca" target="_blank" rel="noopener">OMSA’s official website <span class="footer-ext">↗</span></a> and the <a href="https://www.oma.org/about-the-oma/membership/student-orientation/" target="_blank" rel="noopener">OMA medical-student membership page <span class="footer-ext">↗</span></a>. Fees, benefits and insurance terms can change and must be confirmed on those pages.</p>
   </div>
 </section>
 
@@ -8481,7 +8404,7 @@
           <li>Complete assigned registration or orientation modules</li>
           <li>Follow current placement and experience instructions</li>
         </ul>
-        <a class="platform-card-link" href="http://medsis.utoronto.ca/" target="_blank" rel="noopener">medsis.utoronto.ca <span class="footer-ext">↗</span></a>
+        <a class="platform-card-link" href="https://medsis.utoronto.ca/" target="_blank" rel="noopener">medsis.utoronto.ca <span class="footer-ext">↗</span></a>
       </article>
 
       <article class="platform-card">
@@ -8557,7 +8480,7 @@
       <a class="platform-callout-link" href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources <span class="footer-ext">↗</span></a>
     </div>
 
-    <p class="platform-footer-note">Other links worth bookmarking: <a href="https://md.utoronto.ca/academic-calendar" target="_blank" rel="noopener">Academic Calendar</a> (curriculum overview + program-wide dates), <a href="https://md.utoronto.ca/research-opportunities" target="_blank" rel="noopener">Research Opportunities</a> (CREMS and Faculty-listed pathways), <a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences</a> (policy + Absence Request Form. read before you need it), and <a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs</a> (academic, personal, and wellbeing support).</p>
+    <p class="platform-footer-note">Other links worth bookmarking: <a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener">MD Academic Calendar</a> (program requirements and policies), <a href="https://md.utoronto.ca/research-opportunities" target="_blank" rel="noopener">Research Opportunities</a> (CREMS and Faculty-listed pathways), <a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences</a> (policy and Absence Request Form; read it before you need it) and <a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs</a> (academic, personal and wellbeing support).</p>
 
   </div>
 </section>
@@ -8974,6 +8897,7 @@
   if (prayerHeading && prayerGrid && prayerGrid.classList.contains('prayer-spaces-grid')) {
     var prayerLaunch = document.createElement('div');
     prayerLaunch.className = 'prayer-launch';
+    prayerLaunch.id = 'prayer-spaces';
     prayerLaunch.innerHTML = '<div><h3>Prayer spaces</h3><p>Search the student-compiled directory by hospital or campus. Access details can change.</p></div>';
     var openPrayer = makeButton('Open directory');
     prayerLaunch.appendChild(openPrayer);

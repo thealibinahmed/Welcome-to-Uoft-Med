@@ -6169,82 +6169,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
-    { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic international cost MSB MAM", snippet: "Year 1: $25,417 Ontario domestic / $29,837 non-Ontario / $100,433 international (St. George). MAM +$580." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC", snippet: "$375K maximum at major banks. Med-student rate: Prime − 0.25% (currently 4.20%)." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "", keywords: "scotia bank LOC healthcare plus ultimate package amex passport", snippet: "Most-used LOC at UofT. Includes Ultimate Package, Passport Visa Infinite, Gold Amex with annual fees waived." },
-    { page: "finances", title: "Negotiating your LOC", anchor: "", keywords: "negotiate LOC bank rate", snippet: "Tips for negotiating with bank reps — the 'starting offer' usually isn't the best they'll do." },
-    { page: "finances", title: "Toronto budget breakdown", anchor: "", keywords: "budget rent groceries transit toronto monthly cost living", snippet: "Realistic monthly costs for groceries, rent, transit, utilities in Toronto." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Temerty Faculty of Medicine Grant", anchor: "", keywords: "temerty grant financial aid bursary need-based august", snippet: "The main need-based grant after entrance bursaries. Application opens mid-August." },
-
-    // Academics
-    { page: "academics", title: "Study notes (JLim, ITM, Histology)", anchor: "#study-notes", keywords: "study notes JLim ITM histology WFQ shared resources", snippet: "Cohort-shared study materials, organized by block." },
-    { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
-    { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
-    { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
-
-    // Handbook
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists, who it is for, and how student knowledge keeps it useful." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "Students, alumni, and mentors who shared knowledge and reviewed parts of the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -6535,7 +6459,7 @@
       </div>
       <div class="mission-body">
         <p>Medicine has a hidden curriculum. The acceptance letter tells you you got in. It doesn't tell you when to set up a line of credit, what a CEE is, which neighbourhood to live in if you're at MAM, why a tuition deferral form might matter, or where to ask a question that feels too small for an official email.</p>
-        <p>This guide gathers the practical, student-to-student knowledge that helps the first few months feel less confusing. Official Faculty pages are still the source of truth for academic, financial, and administrative requirements. This is the companion beside them, written plainly and updated when students notice a gap.</p>
+        <p>This guide gathers the practical, student-to-student knowledge that helps the first few months feel less confusing. Use the linked Faculty and University pages to confirm academic, financial and administrative requirements. This guide sits beside them, written plainly and updated when students notice a gap.</p>
       </div>
 
       <div class="principle-grid">
@@ -6626,9 +6550,14 @@
         <span class="eyebrow-text">What's Changed</span>
       </div>
       <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: clamp(1.25rem, 2vw, 1.5rem); color: var(--uoft-navy); line-height: 1.2; margin-bottom: 6px;">Recent updates.</h2>
-      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: July 24, 2026</p>
+      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: July 27, 2026</p>
 
       <div class="changelog-timeline">
+        <div class="changelog-timeline-entry">
+          <p class="changelog-timeline-date">July 27, 2026</p>
+          <p class="changelog-timeline-title">Sources, links and page structure reviewed</p>
+          <p class="changelog-timeline-body">Added or clarified source labels, refreshed official links, removed unsupported descriptions and checked navigation, search and page-level disclaimers across the guide.</p>
+        </div>
         <div class="changelog-timeline-entry">
           <p class="changelog-timeline-date">July 24, 2026</p>
           <p class="changelog-timeline-title">Full content and architecture review</p>

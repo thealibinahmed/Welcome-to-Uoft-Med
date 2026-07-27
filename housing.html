@@ -1993,6 +1993,14 @@
     color: var(--ink) !important;
     font-size: 13px !important;
   }
+  .law-card-source {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--uoft-teal);
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 1px solid currentColor;
+  }
   .law-resources {
     display: flex;
     flex-wrap: wrap;
@@ -6434,83 +6442,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
-    { page: "housing", title: "Know the rental documents and Ontario rules", anchor: "#tenant-rights", keywords: "realtor representation agreement standard lease RTA LTB forms deposit", snippet: "A student-oriented overview of the standard lease, realtor representation agreements, common rental documents, and official Ontario resources." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic international cost MSB MAM", snippet: "Year 1: $25,417 Ontario domestic / $29,837 non-Ontario / $100,433 international (St. George). MAM +$580." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC", snippet: "$375K maximum at major banks. Med-student rate: Prime − 0.25% (currently 4.20%)." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "", keywords: "scotia bank LOC healthcare plus ultimate package amex passport", snippet: "Most-used LOC at UofT. Includes Ultimate Package, Passport Visa Infinite, Gold Amex with annual fees waived." },
-    { page: "finances", title: "Negotiating your LOC", anchor: "", keywords: "negotiate LOC bank rate", snippet: "Tips for negotiating with bank reps — the 'starting offer' usually isn't the best they'll do." },
-    { page: "finances", title: "Toronto budget breakdown", anchor: "", keywords: "budget rent groceries transit toronto monthly cost living", snippet: "Realistic monthly costs for groceries, rent, transit, utilities in Toronto." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Temerty Faculty of Medicine Grant", anchor: "", keywords: "temerty grant financial aid bursary need-based august", snippet: "The main need-based grant after entrance bursaries. Application opens mid-August." },
-
-    // Academics
-    { page: "academics", title: "Study notes (JLim, ITM, Histology)", anchor: "#study-notes", keywords: "study notes JLim ITM histology WFQ shared resources", snippet: "Cohort-shared study materials, organized by block." },
-    { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#weekly-schedule", keywords: "weekly schedule monday tuesday CBL clinical skills anatomy", snippet: "Mon = block, Tue = anatomy, Wed = off, Thu = CBL, Fri = clinical skills." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
-    { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
-    { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
-
-    // Handbook
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists — the hidden curriculum, decoded." },
-    { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -7241,7 +7172,7 @@
         <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
           <p style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: 32px; color: var(--uoft-navy); margin-bottom: 12px; line-height: 1;">01</p>
           <h3 style="font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px; color: var(--uoft-navy); margin-bottom: 12px;">Which academy?</h3>
-          <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">St. George academies are based downtown; MAM is based at UTM. Confirm your academy placement before committing to a location.</p>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft);">For 3T0, the St. George academies are based downtown and MAM is based at UTM. Confirm your placement before committing to a location.</p>
           <p class="decision-answer"><strong>Start here:</strong> downtown map for St. George, UTM housing and transit for MAM.</p>
         </div>
         <div style="padding: 32px 28px; border-bottom: 1px solid var(--hairline);">
@@ -7406,7 +7337,7 @@
       <p>Use the map to compare location, neighbourhood, and nearby essentials. Click a pin or list item for a fuller snapshot. The gold pin is MSB, the downtown reference point.</p>
     </div>
 
-    <div class="map-method-note"><strong>How to use the numbers:</strong> commute and rent ranges are conservative orientation estimates, not live guarantees. Building routes vary by entrance, weather, construction, and time of day. Confirm the exact address in <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Medical+Sciences+Building%2C+1+King%27s+College+Circle%2C+Toronto%2C+ON&amp;travelmode=walking" target="_blank" rel="noopener">Google Maps</a>, and confirm current rent in the live listing before deciding. <strong>Last reviewed: July 2026.</strong></div>
+    <div class="map-method-note"><strong>How to use the map:</strong> commute figures are conservative planning estimates reviewed in Google Maps in July 2026, not live guarantees. Routes vary by entrance, weather, construction and time of day. Official residence details include a direct source link. Other buildings remain candidate addresses only until a reliable management source is attached; their legacy rent, amenity and neighbourhood commentary has been removed. Confirm the exact address and route in <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Medical+Sciences+Building%2C+1+King%27s+College+Circle%2C+Toronto%2C+ON&amp;travelmode=walking" target="_blank" rel="noopener">Google Maps</a>, then verify the current unit listing before deciding.</div>
 
     <div class="map-toggles">
       <span class="map-toggles-label">Show on map</span>
@@ -7554,7 +7485,7 @@
         <div class="search-site-rank">02</div>
         <div>
           <h3 class="search-site-name">Condos.ca</h3>
-          <p class="search-site-note">Best for newer condo stock in Yorkville, Bay Corridor, and King West. Shows building details and historical rent ranges. Strong signal that the listing is from a licensed realtor.</p>
+          <p class="search-site-note">Useful for browsing condo buildings and historical listing information in areas such as Yorkville, Bay Corridor and King West. Verify the brokerage and representative independently before signing or paying anything.</p>
         </div>
         <div class="search-site-arrow">↗</div>
       </a>
@@ -7628,21 +7559,26 @@
         <h3>Rent increases are capped</h3>
         <p>For most covered tenancies, rent can generally increase only once every 12 months and requires at least 90 days' written notice. Some units first occupied for residential purposes after November 15, 2018 are exempt from the provincial guideline.</p>
         <p class="law-card-flag">Check the current Ontario guideline and exemptions rather than assuming every unit is capped.</p>
+        <a class="law-card-source" href="https://www.ontario.ca/page/residential-rent-increases" target="_blank" rel="noopener">Ontario: residential rent increases <span aria-hidden="true">↗</span></a>
       </div>
       <div class="law-card">
         <h3>Deposits have specific rules</h3>
         <p>A landlord may require a rent deposit no greater than one rent period or one month, whichever is less. It must be used for the last rent period—not damage. A refundable key deposit may be allowed if it is no more than the expected replacement cost.</p>
         <p class="law-card-flag">Do not confuse the rent deposit with first month's rent, which becomes due under the tenancy agreement.</p>
+        <a class="law-card-source" href="https://www.ontario.ca/laws/statute/06r17#BK162" target="_blank" rel="noopener">Residential Tenancies Act, ss. 105–107 <span aria-hidden="true">↗</span></a><br/>
+        <a class="law-card-source" href="https://www.ontario.ca/laws/regulation/r06516#BK18" target="_blank" rel="noopener">O. Reg. 516/06, s. 17: refundable key deposits <span aria-hidden="true">↗</span></a>
       </div>
       <div class="law-card">
         <h3>A notice is not an eviction order</h3>
         <p>A landlord must use the applicable notice and, if the tenant does not leave, apply to the Landlord and Tenant Board. Only the Sheriff can enforce an LTB eviction order.</p>
         <p class="law-card-flag">Do not ignore a notice. Read the form, note every deadline, and get advice promptly.</p>
+        <a class="law-card-source" href="https://tribunalsontario.ca/documents/ltb/Brochures/How%20a%20Landlord%20Can%20End%20a%20Tenancy.html" target="_blank" rel="noopener">LTB: how a landlord can end a tenancy <span aria-hidden="true">↗</span></a>
       </div>
       <div class="law-card">
         <h3>Roommate, occupant, sublet, and assignment differ</h3>
         <p>Your rights and obligations depend on the agreement and who is named as tenant. A sublet and an assignment are not interchangeable, and both normally require the landlord's consent under the Act.</p>
         <p class="law-card-flag">Put the arrangement in writing and use official guidance before money changes hands.</p>
+        <a class="law-card-source" href="https://tribunalsontario.ca/documents/ltb/Brochures/How%20a%20Tenant%20Can%20End%20Their%20Tenancy%20%28EN%29.html" target="_blank" rel="noopener">LTB: assignment and subletting guidance <span aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -7841,9 +7777,9 @@
       neighborhood: "Harbord Village & The Annex",
       rent: { studio: "$1,950–2,200", oneBed: "$2,400–2,800" },
       features: ["Purpose-built student", "All-inclusive", "Fitness centre", "Furnished available"],
-      desc: "Purpose-built student housing on College Street, owned by Knightstone. Lease cycles align with the academic year. Popular with first-year MD students for the proximity and built-in community.",
-      notes: "Pricey for what you get, but the convenience is real. Has a study lounge, gym, and rooftop patio.",
-      amenities: ["In-building gym + study lounge", "Rooftop patio", "24/7 front desk"],
+      desc: "Purpose-built student housing on College Street, owned by Knightstone. Confirm the current lease term, pricing and included services directly with the building.",
+      notes: "The building advertises student-oriented common and recreation spaces. Verify current access and any associated fees before signing.",
+      amenities: ["In-building gym + study lounge", "Rooftop patio", "Front desk"],
       grocery: ["Sobeys (10 min walk, College & Spadina)", "T&T Supermarket (15 min, Cherry St beats this)", "Farm Boy at Bay & College"],
       activities: ["Hart House gym (5 min)", "Robarts Library", "Kensington Market (12 min)"],
       health: ["MSB Student Health (8 min)", "Walk-in at Bay/College", "Shoppers at Bay & College"],
@@ -7918,7 +7854,7 @@
       rent: { oneBed: "$1,800–2,300", twoBed: "$2,800–3,500" },
       features: ["Older buildings", "Often shared", "Character"],
       desc: "Three- and four-bedroom shared Victorian houses scattered throughout the Annex. Common find via Facebook groups or Kijiji.",
-      notes: "Great for splitting rent with roommates. Quality varies wildly by landlord — tour in person.",
+      notes: "Unit condition, inclusions and landlord arrangements vary. Tour the exact unit and review the lease before signing.",
       amenities: ["Backyards (sometimes)", "Old appliances — verify before signing", "Street parking permits"],
       grocery: ["Loblaws Bathurst & Bloor", "Hot Bread Kitchen + Annex bakeries", "Rabba 24/7"],
       activities: ["Bata Shoe Museum + ROM", "Bloor cinemas", "Christie Pits"],
@@ -7977,7 +7913,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
       features: ["Closest to MSB", "Atrium / Eaton Centre side", "Older but central"],
-      desc: "South end of the Bay corridor near Dundas. The shortest walk to MSB on this list. Older building but the location is unbeatable for med students.",
+      desc: "South end of the Bay corridor near Dundas. Use the map route for an estimated walk to MSB and verify the exact unit and amenities in the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym", "Pool"],
       grocery: ["Atrium Loblaws (4 min)", "Eaton Centre (5 min)"],
@@ -7996,7 +7932,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,300–4,100" },
       features: ["Three-tower complex", "Direct walk to MSB", "Heavy med/law presence"],
-      desc: "Three-tower complex straddling Bay & Gerrard. Very popular with UofT grad and professional students. Easy walk north to MSB.",
+      desc: "Three-tower complex around Bay and Gerrard. Use the map route for an estimated walk to MSB and verify the exact unit in the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym + indoor pool", "Party room"],
       grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
@@ -8034,8 +7970,8 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$2,100–2,450", oneBed: "$2,650–3,200", twoBed: "$3,600–4,500" },
       features: ["Newer purpose-built rental", "Premium amenities", "Direct MSB walk"],
-      desc: "Newer purpose-built rental at Bay & Gerrard — no condo board, professional management. One of the more amenity-heavy buildings on the corridor (rooftop pool, co-working space). Premium pricing reflects the build quality.",
-      notes: "Purpose-built rentals like this don't have the unit-quality variance you get with investor-owned condos.",
+      desc: "Purpose-built rental at Bay and Gerrard. The building advertises shared amenities; verify current availability, fees and access directly.",
+      notes: "Compare the lease, management contact, exact unit condition and included services before signing.",
       amenities: ["Concierge", "Rooftop pool", "Gym + sauna", "Co-working lounge"],
       grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
       activities: ["Queen's Park (5 min)", "Eaton Centre (8 min)"],
@@ -8054,7 +7990,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
       features: ["Bay & Gerrard area", "Older mid-rise", "Direct MSB walk"],
-      desc: "Older but well-maintained condo on Bay just north of Gerrard. One of the longer-tenured cohort buildings on the corridor.",
+      desc: "Condo building on Bay north of Gerrard. Verify the exact unit, management rules and amenities in the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym + pool"],
       grocery: ["Rabba on Bay", "Atrium Loblaws (5 min)"],
@@ -8073,7 +8009,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–3,000", twoBed: "$3,300–4,100" },
       features: ["Above College subway", "College Park retail concourse", "Massive complex"],
-      desc: "Two towers (North and South) above College subway and the College Park retail mall (Metro grocery, food court, GoodLife). One of the most convenient buildings on the corridor — subway, groceries, gym, all in the building.",
+      desc: "Two towers above College subway and the College Park retail complex. Verify current retail access, building amenities and the exact unit in the listing.",
       notes: null,
       amenities: ["Concierge", "Pool + gym", "Retail concourse"],
       grocery: ["Metro in building", "Rabba on Bay"],
@@ -8092,7 +8028,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$2,000–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
       features: ["Bay & College", "Newer build", "College subway"],
-      desc: "Newer Menkes condo at Bay & College, directly across from College Park. Modern finishes; popular with cohort members who want newer construction.",
+      desc: "Condo at Bay and College, across from College Park. Verify the exact unit, finishes and amenities in the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym", "Indoor pool"],
       grocery: ["Metro at College Park (1 min)", "Rabba on Bay"],
@@ -8110,7 +8046,7 @@
       bike: "4–5",
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,950", twoBed: "$3,200–4,000" },
-      features: ["Bay & College", "Established condo", "Heavy student presence"],
+      features: ["Bay & College", "Established condo", "Near College subway"],
       desc: "Established condo at Bay & College, just north of College subway. Long history of housing UofT students.",
       notes: null,
       amenities: ["Concierge", "Gym + pool"],
@@ -8149,7 +8085,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$1,900–2,200", oneBed: "$2,400–2,900", twoBed: "$3,200–4,000" },
       features: ["Older mid-rise", "Bay near Wellesley", "Subway nearby"],
-      desc: "Older condo on Bay between College and Wellesley. Mature building with established maintenance — good track record with med students.",
+      desc: "Condo on Bay between College and Wellesley. Verify the exact unit, maintenance history and amenities before signing.",
       notes: null,
       amenities: ["Concierge", "Gym"],
       grocery: ["Rabba on Bay", "Metro at College Park (3 min)"],
@@ -8206,7 +8142,7 @@
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,200", twoBed: "$3,400–4,400" },
       features: ["Bay & St Joseph", "Building gym", "Cohort hub"],
-      desc: "Established mid-rise condo on Bay between Wellesley and St Joseph. One of the most popular cohort buildings — direct walk south to MSB.",
+      desc: "Mid-rise condo on Bay between Wellesley and St Joseph. Use the map route for an estimated walk to MSB and verify the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym", "Indoor pool"],
       grocery: ["Rabba on Bay", "Whole Foods Yorkville (7 min)"],
@@ -8243,8 +8179,8 @@
       bike: "6–8",
       neighborhood: "Bay St Corridor",
       rent: { bachelor: "$2,000–2,400", oneBed: "$2,500–3,100" },
-      features: ["Walk to campus", "Walk to Yorkville", "Popular with med + law"],
-      desc: "Two-tower condo at Bay & Bloor area, popular with UofT graduate and professional students.",
+      features: ["Walk to campus", "Walk to Yorkville", "Bay–Bloor area"],
+      desc: "Two-tower condo in the Bay and Bloor area. Verify the exact unit, lease and amenities in the current listing.",
       notes: null,
       amenities: ["Concierge", "Gym + pool", "Co-working lounge"],
       grocery: ["Whole Foods Yorkville (5 min)", "Rabba on Bay"],
@@ -8341,7 +8277,7 @@
       neighborhood: "Yonge Corridor",
       rent: { oneBed: "$2,200–2,500", onePlusDen: "$2,400–2,700", twoBed: "$2,900–3,400" },
       features: ["Newer build", "Grenville & Bay", "College subway 4 min"],
-      desc: "50-storey Lanterra tower at Grenville & Bay. Same block as YC Condos — strong student presence and direct MSB walk.",
+      desc: "Condo tower at Grenville and Bay on the same block as YC Condos. Use the map for the estimated walking route to MSB.",
       notes: null,
       amenities: ["Concierge", "Gym + pool", "Party room"],
       grocery: ["Rabba on Bay", "Metro at College Park (3 min)"],
@@ -8398,7 +8334,7 @@
       neighborhood: "Yonge Corridor",
       rent: { bachelor: "$1,950–2,300", oneBed: "$2,500–3,100", twoBed: "$3,400–4,300" },
       features: ["Twin-tower Lanterra build", "Direct walk to MSB", "Subway 2 min"],
-      desc: "Twin-tower Lanterra development at Grenville & Bay. One of the most popular cohort buildings on the corridor — direct walk south to MSB and Wellesley subway is right there.",
+      desc: "Twin-tower development at Grenville and Bay. Use the map for current walking routes to MSB and nearby transit.",
       notes: null,
       amenities: ["Concierge", "Gym + indoor pool", "Party room"],
       grocery: ["Rabba on Bay", "Metro at College Park (5 min)"],
@@ -8740,7 +8676,7 @@
       neighborhood: "Yonge Corridor",
       rent: { bachelor: "$1,800–2,000", oneBed: "$2,100–2,400", twoBed: "$2,800–3,100" },
       features: ["Mid-rise rental", "Mature building", "Walk to MSB"],
-      desc: "Mid-rise rental on Elm closer to Bay. Established cohort presence — many med students over the years.",
+      desc: "Mid-rise rental on Elm closer to Bay. Verify availability, inclusions and the exact unit directly with the listing.",
       notes: null,
       amenities: ["Concierge", "Laundry on-site"],
       grocery: ["Loblaws Maple Leaf Gardens (5 min)", "Rabba on Bay"],
@@ -8835,8 +8771,8 @@
       neighborhood: "Yonge Corridor",
       rent: { bachelor: "$1,900–2,300", oneBed: "$2,400–3,000", twoBed: "$3,200–4,200" },
       features: ["Tallest residential in Toronto", "Above College subway", "Retail in building"],
-      desc: "Massive Canderel tower at Yonge & College — sits directly above College subway, with the College Park retail concourse below. Walking distance west to MSB. High investor-owner ratio means lots of rental stock.",
-      notes: "Building has had elevator and maintenance complaints historically — read recent reviews before signing.",
+      desc: "Condo tower at Yonge and College above College subway and the College Park retail concourse. Use the map route for an estimated walk to MSB.",
+      notes: "Review recent building and unit-specific information, then confirm maintenance contacts and elevator notices before signing.",
       amenities: ["Concierge", "Massive gym + pool", "Retail in building"],
       grocery: ["Metro at College Park (in building)", "Rabba on Yonge"],
       activities: ["College subway (1 min)", "Eaton Centre (8 min walk)"],
@@ -9143,7 +9079,7 @@
       neighborhood: "St. George Campus",
       rent: { bachelor: "$1,950–2,250", oneBed: "$2,400–2,950", twoBed: "$3,200–4,100" },
       features: ["Hard loft conversion", "Brick + beam", "OCAD adjacent"],
-      desc: "Hard loft conversion of an old bakery on McCaul. Limited stock, character finishes; popular with creative-leaning students.",
+      desc: "Loft conversion of a former bakery on McCaul. Unit layouts and finishes vary; verify the exact listing.",
       notes: null,
       amenities: ["Older infrastructure", "Some units have original beams"],
       grocery: ["Atrium Loblaws (8 min)"],
@@ -9220,8 +9156,8 @@
       bike: "3–4",
       neighborhood: "Harbord Village & The Annex",
       rent: { bachelor: "$1,850–2,150", oneBed: "$2,300–2,800", twoBed: "$3,100–3,900" },
-      features: ["Multiple newer mid-rises", "Streetcar to MSB", "Student-heavy"],
-      desc: "Cluster of newer mid-rise condos and student-heavy buildings around Spadina and College. Direct streetcar to MSB; Kensington Market and Chinatown right there.",
+      features: ["Multiple mid-rises", "Streetcar route", "Spadina and College"],
+      desc: "Cluster of mid-rise buildings around Spadina and College. Confirm the current streetcar route and full trip to MSB in a live transit planner.",
       notes: "Walk through the area before signing — quality varies block to block.",
       amenities: ["Varies"],
       grocery: ["Sobeys Spadina (3 min)", "Kensington Market"],
@@ -9287,6 +9223,102 @@
       reviews: [],
     },
   ];
+
+  /*
+   * Evidence rule:
+   * - Official residences keep details verified on the linked residence/management page.
+   * - Other legacy map entries retain only their candidate name, address, type and
+   *   previously reviewed commute estimate. Rents, amenities and neighbourhood
+   *   opinions are suppressed until an official management source is added.
+   * - Upper-year reviews remain a separate, moderated field below the factual panel.
+   */
+  const verifiedBuildingInfo = {
+    "campus-one": {
+      type: "U of T-affiliated student residence",
+      sourceUrl: "https://live-campusone.ca/",
+      sourceLabel: "CampusOne official site",
+      desc: "U of T-affiliated student residence at 253 College Street. Its official site lists furnished units, Wi-Fi, dining, study and recreation spaces, bike storage, laundry and on-site management.",
+      features: ["Student residence", "Furnished units", "Dining program", "Wi-Fi included"],
+      amenities: ["Study spaces", "Fitness centre", "Bike storage", "Laundry"],
+      rent: { studio: "See current CampusOne rates" }
+    },
+    "graduate-house": {
+      type: "U of T residence",
+      sourceUrl: "https://gradhouse.utoronto.ca/prospective-students/",
+      sourceLabel: "Graduate House official site",
+      desc: "U of T residence for eligible graduate and second-entry students at 60 Harbord Street. The official site lists furnished room types and the current application process.",
+      features: ["U of T residence", "Furnished room types", "StarRez application"],
+      amenities: ["Residence service desk", "Laundry", "Bike storage", "Common spaces"],
+      rent: { studio: "See current Graduate House fee schedule" }
+    },
+    "massey-college": {
+      type: "Graduate residential college",
+      sourceUrl: "https://www.masseycollege.ca/",
+      sourceLabel: "Massey College official site",
+      desc: "Graduate residential college at 4 Devonshire Place. Residence is connected to the Junior Fellowship application, which has its own annual process and timeline.",
+      features: ["Graduate college", "Junior Fellowship", "Separate application"],
+      amenities: ["Dining hall", "Library", "Chapel", "Common rooms"],
+      rent: { studio: "See current Massey College information" }
+    },
+    "knox-college": {
+      type: "U of T residence",
+      sourceUrl: "https://studentlife.utoronto.ca/task/compare-u-of-t-residences/",
+      sourceLabel: "U of T residence directory",
+      desc: "U of T residence at 59 St. George Street. Check the current U of T residence directory and StarRez process for eligibility, room types and availability.",
+      features: ["U of T residence", "St. George campus", "Current availability varies"],
+      amenities: [],
+      rent: { studio: "See current residence information" }
+    },
+    "schreiberwood": {
+      type: "UTM graduate and medical residence",
+      sourceUrl: "https://www.utm.utoronto.ca/housing/family-graduate-and-medical-housing/graduate-and-medical-housing",
+      sourceLabel: "UTM Graduate and Medical Housing",
+      desc: "UTM graduate and medical residence for eligible MAM, BMC and MScOT students. UTM publishes the current room types, eligibility, application fee, rates, utilities and payment dates.",
+      features: ["UTM residence", "Eligible MAM students", "Utilities and internet included"],
+      amenities: ["Laundry", "Internet", "Utilities", "Parking available separately"],
+      rent: { bachelor: "$12,856–$13,512 total (medical, 2026–27)" }
+    }
+  };
+
+  /*
+   * Remove legacy candidates that are duplicated or do not represent a
+   * currently verified residential building at the address shown.
+   * - IMMIX was listed twice with an incorrect 7 Grosvenor address.
+   * - 33 Gerrard Street West is the Chelsea Hotel / future redevelopment,
+   *   not a current apartment building represented by these two entries.
+   * - 38 Elm Street duplicated the correctly named Minto Plaza entry.
+   */
+  const excludedLegacyBuildingIds = new Set([
+    "immix",
+    "7-grosvenor",
+    "chelsea-green",
+    "33-gerrard",
+    "38-elm"
+  ]);
+  for (let index = buildings.length - 1; index >= 0; index -= 1) {
+    if (excludedLegacyBuildingIds.has(buildings[index].id)) {
+      buildings.splice(index, 1);
+    }
+  }
+
+  buildings.forEach(function (building) {
+    const verified = verifiedBuildingInfo[building.id];
+    if (verified) {
+      Object.assign(building, verified);
+      building.notes = "Verified from the linked official source; rates, availability and application dates can still change.";
+    } else {
+      building.rent = { studio: "Check current live listing" };
+      building.features = [building.type, building.neighborhood];
+      building.desc = "Legacy map candidate. Confirm the exact building name, address, property manager and current listing before relying on it.";
+      building.notes = null;
+      building.amenities = [];
+      building.grocery = [];
+      building.activities = [];
+      building.health = [];
+      building.sourceUrl = "";
+      building.sourceLabel = "";
+    }
+  });
 
   // Expose buildings to other scripts (used by the housing comparison tool below)
   window.HOUSING_BUILDINGS = buildings;
@@ -9390,6 +9422,24 @@
       ? 'Published cost information'
       : 'Rent estimate (CAD/mo)';
     const approvedReviews = Array.isArray(b.reviews) ? b.reviews : [];
+    const sourceHTML = b.sourceUrl
+      ? `<a class="popup-link" href="${b.sourceUrl}" target="_blank" rel="noopener">${b.sourceLabel || 'Official building source'} ↗</a>`
+      : `<p class="building-notes">No official building or management source has been attached yet. Verify this candidate directly before acting.</p>`;
+    const nearbySections = [
+      ['Building amenities', b.amenities],
+      ['Groceries nearby', b.grocery],
+      ['Activities nearby', b.activities],
+      ['Health services', b.health]
+    ].filter(function (section) {
+      return Array.isArray(section[1]) && section[1].length;
+    });
+    const nearbyHTML = nearbySections.length
+      ? `<div class="nearby-grid">${nearbySections.map(function (section) {
+          return `<div class="nearby-block"><p class="nearby-eyebrow">${section[0]}</p><ul class="nearby-list">${section[1].map(function (item) {
+            return `<li>${item}</li>`;
+          }).join('')}</ul></div>`;
+        }).join('')}</div>`
+      : '';
     const reviewsHTML = approvedReviews.length
       ? approvedReviews.map(function (review) {
           const meta = [review.cohort || review.author, review.date].filter(Boolean).join(' · ');
@@ -9430,27 +9480,11 @@
       <p class="building-desc">${b.desc}</p>
 
       ${b.notes ? `<p class="building-notes">${b.notes}</p>` : ''}
+      ${sourceHTML}
 
       <button class="add-to-compare" type="button" data-add-building="${b.id}">＋ Add to comparison</button>
 
-      <div class="nearby-grid">
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Building amenities</p>
-          <ul class="nearby-list">${(b.amenities || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Groceries nearby</p>
-          <ul class="nearby-list">${(b.grocery || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Activities nearby</p>
-          <ul class="nearby-list">${(b.activities || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div class="nearby-block">
-          <p class="nearby-eyebrow">Health services</p>
-          <ul class="nearby-list">${(b.health || []).map(x => `<li>${x}</li>`).join('')}</ul>
-        </div>
-      </div>
+      ${nearbyHTML}
 
       <details class="building-reviews">
         <summary>Upper-year reviews · ${approvedReviews.length}</summary>
@@ -9488,12 +9522,12 @@
     {
       name: "MSB Student Lounge",
       coords: [43.6606, -79.3941],
-      note: "Ruth Kurdyak Medical Alumni Lounge · Room 2171B · Fob access, any time · Med students only"
+      note: "Ruth Kurdyak Medical Alumni Lounge · Room 2171B · confirm current student access and hours"
     },
     {
       name: "McCaul Study Space",
       coords: [43.6589, -79.3964],
-      note: "263 McCaul St, 5th floor · Fob access, 24/7 · Study carrels, group rooms, clinical skills rooms · Cross College St from MSB through Health Sciences Building (155 College) via 2nd floor walkway"
+      note: "263 McCaul St, 5th floor · confirm current fob access and hours · study carrels, group rooms and clinical-skills rooms"
     },
     {
       name: "Gerstein Science Library",
@@ -9503,7 +9537,7 @@
     {
       name: "TDHSC (MAM)",
       coords: [43.5489, -79.6625],
-      note: "Terrence Donnelly Health Science Complex, UTM · MAM students only · Fob access, 24/7 · Small-group and clinical skills rooms on first-come basis; additional classrooms available on request"
+      note: "Terrence Donnelly Health Sciences Complex, UTM · confirm current MAM access hours and room-booking instructions"
     },
   ];
 
@@ -9767,11 +9801,11 @@
         { label: 'Address',      get: b => b.address, diff: false },
         { label: 'Walk / campus context', get: b => b.walk ? b.walk + ' min to MSB' : 'On or near UTM', diff: true },
         { label: 'Bike', get: b => b.bike ? b.bike + ' min' : 'Check route', diff: true },
-        { label: 'Studio rent',  get: b => (b.rent && b.rent.studio) ? b.rent.studio + ' / mo' : '—', diff: true },
-        { label: 'One-bed rent', get: b => (b.rent && b.rent.oneBed) ? b.rent.oneBed + ' / mo' : '—', diff: true },
-        { label: 'Top features', get: b => Array.isArray(b.features) ? b.features.slice(0, 3).join(' · ') : '—', diff: true },
-        { label: 'In-building amenities', get: b => Array.isArray(b.amenities) ? b.amenities.slice(0, 3).join(' · ') : '—', diff: true },
-        { label: 'The vibe',     get: b => b.notes || b.desc || '—', diff: false },
+        { label: 'Studio rent',  get: b => (b.rent && b.rent.studio) ? b.rent.studio + (/^\\$/.test(b.rent.studio) ? ' / mo' : '') : '—', diff: true },
+        { label: 'One-bed rent', get: b => (b.rent && b.rent.oneBed) ? b.rent.oneBed + (/^\\$/.test(b.rent.oneBed) ? ' / mo' : '') : '—', diff: true },
+        { label: 'Verified features', get: b => Array.isArray(b.features) ? b.features.slice(0, 3).join(' · ') : '—', diff: true },
+        { label: 'Verified amenities', get: b => Array.isArray(b.amenities) && b.amenities.length ? b.amenities.slice(0, 3).join(' · ') : 'Not yet sourced', diff: true },
+        { label: 'Verification note', get: b => b.notes || b.desc || '—', diff: false },
       ];
 
       function render() {

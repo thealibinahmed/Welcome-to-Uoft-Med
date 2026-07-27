@@ -6561,82 +6561,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic international cost MSB MAM", snippet: "Year 1: $25,417 Ontario domestic / $29,837 non-Ontario / $100,433 international (St. George). MAM +$580." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC", snippet: "$375K maximum at major banks. Med-student rate: Prime − 0.25% (currently 4.20%)." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "", keywords: "scotia bank LOC healthcare plus ultimate package amex passport", snippet: "Most-used LOC at UofT. Includes Ultimate Package, Passport Visa Infinite, Gold Amex with annual fees waived." },
-    { page: "finances", title: "Negotiating your LOC", anchor: "", keywords: "negotiate LOC bank rate", snippet: "Tips for negotiating with bank reps — the 'starting offer' usually isn't the best they'll do." },
-    { page: "finances", title: "Toronto budget breakdown", anchor: "", keywords: "budget rent groceries transit toronto monthly cost living", snippet: "Realistic monthly costs for groceries, rent, transit, utilities in Toronto." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Temerty Faculty of Medicine Grant", anchor: "", keywords: "temerty grant financial aid bursary need-based august", snippet: "The main need-based grant after entrance bursaries. Application opens mid-August." },
-
-    // Academics
-    { page: "academics", title: "Study notes (JLim, ITM, Histology)", anchor: "#study-notes", keywords: "study notes JLim ITM histology WFQ shared resources", snippet: "Cohort-shared study materials, organized by block." },
-    { page: "academics", title: "Anki decks (Bhadra, Plus Ultra)", anchor: "#anki", keywords: "anki bhadra plus ultra anatomy spaced repetition", snippet: "Anki decks for anatomy, ITM, CPC blocks, and Year 2." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "Year-one calendar (ITM, CPC-1, CPC-2)", anchor: "#calendar", keywords: "year one calendar ITM CPC blocks topics curriculum", snippet: "Three blocks across M1: ITM (foundations), CPC-1 (cardio/resp/blood/peds/derm), CPC-2 (endo/GI/kidney)." },
-    { page: "academics", title: "What a typical week looks like", anchor: "#curriculum-start", keywords: "weekly schedule CBL clinical skills anatomy ME portfolio", snippet: "Compare a typical week with ME and Portfolio weeks. Exact schedules vary and remain in MedSIS." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "", keywords: "ME mastery exercise exam every two weeks ISAL", snippet: "MEs roughly every 2 weeks. ISAL sessions on the Friday before an ME week." },
-    { page: "academics", title: "Concurrent programs (MD/PhD, MD/MSc)", anchor: "", keywords: "concurrent programs MD PhD MSc MEd dual degree", snippet: "Combined-degree pathways at UofT MD." },
-    { page: "academics", title: "Shadowing — the 5 Ws", anchor: "#shadowing", keywords: "shadowing observership specialty exploration who what when where why", snippet: "How to start shadowing in M1 — who to ask, what to wear, when, where, and why." },
-
-    // Field Guide
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists — the hidden curriculum, decoded." },
-    { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -7004,7 +6928,7 @@
           <li><a href="https://www.youtube.com/watch?v=-dqFftJtdpg" target="_blank" rel="noopener">Class of 2T8 O-Week recap<span class="ql-ext">↗</span></a></li>
           <li><a href="https://www.youtube.com/watch?v=fAa-PzlURMY" target="_blank" rel="noopener">Faculty welcome video<span class="ql-ext">↗</span></a></li>
           <li><a href="https://omsa.ca" target="_blank" rel="noopener">Ontario Medical Students Association (OMSA)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.oma.org/membership/medical-students/" target="_blank" rel="noopener">Ontario Medical Association (OMA) student membership<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.oma.org/about-the-oma/membership/student-orientation/" target="_blank" rel="noopener">Ontario Medical Association (OMA) student membership<span class="ql-ext">↗</span></a></li>
         </ul>
       </div>
 
@@ -7036,12 +6960,10 @@
           <li><a href="finances.html#bank-comparison">Side-by-side bank comparison</a></li>
           <li><a href="finances.html#verify">How to verify the rate at the appointment</a></li>
           <li><a href="https://www.scotiabank.com/ca/en/healthcare-plus/physician-banking/medical-students.html" target="_blank" rel="noopener">Scotiabank — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.rbcroyalbank.com/student/medical-students.html" target="_blank" rel="noopener">RBC — apply<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.rbcroyalbank.com/healthcare-financial-solutions/medical-dental-students.html" target="_blank" rel="noopener">RBC — medical and dental student banking<span class="ql-ext">↗</span></a></li>
           <li><a href="https://www.cibc.com/en/personal-banking/borrowing/lines-of-credit/professional-edge-program.html" target="_blank" rel="noopener">CIBC Professional Edge — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.td.com/ca/en/personal-banking/products/borrowing/lines-of-credit/medical-dental-veterinary-student-line-of-credit" target="_blank" rel="noopener">TD — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://www.bmo.com/main/personal/loans/lines-of-credit/professional-student-line-of-credit/" target="_blank" rel="noopener">BMO — apply<span class="ql-ext">↗</span></a></li>
-          <li><a href="mailto:rod.mcfadden@scotiabank.com">Email Scotia rep (Rod McFadden)</a></li>
-          <li><a href="mailto:Lynne.Owen@scotiabank.com">Email Scotia rep (Lynne Owen)</a></li>
+          <li><a href="https://www.td.com/ca/en/personal-banking/products/loans-and-lines-of-credit/student-borrowing/healthcare-student-line-of-credit" target="_blank" rel="noopener">TD — healthcare student line of credit<span class="ql-ext">↗</span></a></li>
+          <li><a href="https://www.bmo.com/en-ca/main/personal/loans-line-of-credit/student-borrowing/medical-dental-student-line-of-credit/" target="_blank" rel="noopener">BMO — medical and dental student line of credit<span class="ql-ext">↗</span></a></li>
         </ul>
       </div>
 
@@ -7075,21 +6997,10 @@
           <li><a href="academics.html#study-notes">Upper-year study notes</a></li>
           <li><a href="academics.html#study-guides">Course guides</a></li>
           <li><a href="academics.html#osce-resources">OSCE resources</a></li>
-          <li><a href="academics.html#shadowing">Shadowing — the 5 Ws</a></li>
+          <li><a href="academics.html#shadowing">Shadowing and EEE</a></li>
           <li><a href="academics.html#md-plus">MD+ and early opportunities</a></li>
           <li><a href="academics.html#testimonials">Student perspectives</a></li>
-          <li><a href="https://docs.google.com/document/d/1o5SYDGSpNdz2NhE4ExZD5m40hfWWZE0ff-8Wc7pa6DQ/edit?usp=sharing" target="_blank" rel="noopener">ICE Guide<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://sites.google.com/view/lau-ice/home" target="_blank" rel="noopener">Lau's ICE site<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://seriously-quiet-med-student.notion.site/OSCE-Prep-9a199edc2dba4252acda32812f8e7708" target="_blank" rel="noopener">OSCE Prep (Notion)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://docs.google.com/document/d/1HYCXAM1eANXvuInuyt6IPhU1AFFmX0-cP8YQrB6mz3g/edit" target="_blank" rel="noopener">Study guide (Google Doc)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1rCouV2Ic3WZZWTVJ22M9RUHOSXIXUa2l/view" target="_blank" rel="noopener">Study PDF<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1APNLUCTrNj5GQLHhiUGGDx5UoPSYaOYn" target="_blank" rel="noopener">Drive folder — study materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1vl5EFV8YGTO827YGXkNFusaV3qfSvJAy" target="_blank" rel="noopener">Drive folder — additional notes<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/14EOEb6fhpFtkJasGdKSDedGaCA3_7sVB" target="_blank" rel="noopener">Drive folder — course materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1T3V4tYF-mNL5MWayr9zKDOKMs5UK-Zgv" target="_blank" rel="noopener">Drive folder — OSCE materials<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1k2PeZi-Mz0DkIaporLTVFJjh7Q1s35Ti" target="_blank" rel="noopener">Drive folder — Anki decks<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1kGyIWe-k820z6W_D1nIyKw6qDCEJk-mm/view" target="_blank" rel="noopener">Anki .apkg download<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/101XiXkusHjrfg1WpJ3E2LJ0TZawPispSXbNfIT-PI6Q/edit" target="_blank" rel="noopener">Resources spreadsheet<span class="ql-ext">↗</span></a></li>
+          <li><a href="academics.html#study-notes">Open the attributed student-resource library</a></li>
         </ul>
       </div>
 
@@ -7114,14 +7025,13 @@
           <li><a href="handbook.html#getting-set-up">Getting set up — JOINid, UTORid, TCard</a></li>
           <li><a href="handbook.html#vocabulary">Curriculum glossary</a></li>
           <li><a href="handbook.html#program-structure">Program structure</a></li>
-          <li><a href="handbook.html#academies">The four academies</a></li>
+          <li><a href="handbook.html#academies">The four 3T0 academies</a></li>
           <li><a href="handbook.html#academy-transfers">Academy transfers</a></li>
           <li><a href="handbook.html#platforms">Faculty platforms</a></li>
           <li><a href="handbook.html#omsa-oma">OMSA &amp; OMA</a></li>
           <li><a href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener">Official TCard / UTORid walkthrough<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/" target="_blank" rel="noopener">MD Program Home<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.calendar.utoronto.ca/" target="_blank" rel="noopener">Academic Calendar (full)<span class="ql-ext">↗</span></a></li>
-          <li><a href="https://md.utoronto.ca/academic-calendar" target="_blank" rel="noopener">Academic Calendar (Faculty page)<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/student-tools-eresources" target="_blank" rel="noopener">Student Tools &amp; eResources<span class="ql-ext">↗</span></a></li>
           <li><a href="https://md.utoronto.ca/school-absences" target="_blank" rel="noopener">School Absences<span class="ql-ext">↗</span></a></li>
           <li><a href="https://medit.med.utoronto.ca/OASES" target="_blank" rel="noopener">OASES (Portfolio submissions)<span class="ql-ext">↗</span></a></li>

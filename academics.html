@@ -6440,6 +6440,25 @@
     border: 1px solid var(--hairline);
     background: var(--paper-soft);
   }
+  .resource-attribution {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+    color: var(--ink-muted) !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+  }
+  .claim-source {
+    margin-top: 16px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .claim-source strong { color: var(--ink-soft); }
+  .claim-source a {
+    color: var(--uoft-teal);
+    border-bottom: 1px solid currentColor;
+  }
   .study-resource-tools label {
     align-self: center;
     color: var(--uoft-navy);
@@ -7126,84 +7145,6 @@
 
   // ── Search modal ──────────────────────────────────────────────────
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
-  window.SEARCH_INDEX = [
-    // Homepage
-    { page: "homepage", title: "Why UofT — life on St. George and at MAM", anchor: "", keywords: "choose toronto mississauga campus academy why pick", snippet: "Compare St. George (downtown) and MAM (Mississauga) campuses, plus the Faculty's pitch for choosing UofT." },
-    { page: "homepage", title: "For waitlisted and refused applicants", anchor: "#waitlist-r", keywords: "waitlist refused R reapply rejected", snippet: "If you didn't get the email you wanted — practical guidance for waitlisted and reapplying students." },
-
-    // Post-Acceptance
-    { page: "post-acceptance", title: "Official Faculty resources", anchor: "", keywords: "incoming students hub accepting your offer registration", snippet: "Three URLs that do most of the work: Incoming Students Hub, Accepting Your Offer, Registration Requirements." },
-    { page: "post-acceptance", title: "Pay your tuition deposit", anchor: "", keywords: "deposit bank transfer service now", snippet: "How to pay the tuition deposit, including the bank-transfer notification form." },
-    { page: "post-acceptance", title: "Submit your final transcripts", anchor: "", keywords: "transcript june 30 deadline", snippet: "Final official transcripts are due June 30 — a hard deadline." },
-    { page: "post-acceptance", title: "Confirmation email arrives", anchor: "", keywords: "confirmation may 29 OMSAS deposit consent forms", snippet: "Late May — Faculty confirms receipt of OMSAS acceptance, deposit, and consent forms. Last year: May 29." },
-    { page: "post-acceptance", title: "Join Discord and Facebook groups", anchor: "", keywords: "discord facebook fb groups community 3T0 opportunities", snippet: "Cohort Discord plus the relevant FB groups (UofT Med 3T0 Congrats, Opportunities Common, etc.)." },
-    { page: "post-acceptance", title: "Temerty Faculty Grant Application", anchor: "", keywords: "temerty grant august 13 financial aid bursary need-based", snippet: "Mid-August — the main need-based grant for in-program MD students. Last year opened August 13." },
-    { page: "post-acceptance", title: "Academy Selection form", anchor: "", keywords: "academy fitzgerald peters-boyd wightman-berris MAM ranking", snippet: "Rank your academy preferences. Hard deadline in mid-to-late June." },
-    { page: "post-acceptance", title: "Academy decision arrives", anchor: "", keywords: "academy decision june 26 assignment", snippet: "Late June — academy assignment by email. Last year's date: June 26 around 10 AM." },
-    { page: "post-acceptance", title: "OSAP — recommended by June 30", anchor: "", keywords: "OSAP loan financial aid ontario", snippet: "Apply by June 30 so funding is ready by tuition deadline." },
-    { page: "post-acceptance", title: "Letter of Confirmation", anchor: "", keywords: "letter confirmation qualtrics scotia LOC", snippet: "Required for the bank LOC application — submit early via Qualtrics." },
-    { page: "post-acceptance", title: "TPS / police record check", anchor: "", keywords: "TPS police record check toronto agency code", snippet: "Toronto Police Service vulnerable sector check. Agency code 202309TPSON46C88." },
-
-    // Housing
-    { page: "housing", title: "Solo or roommates?", anchor: "", keywords: "solo roommate decision framework", snippet: "Decision framework for whether to live alone or with roommates." },
-    { page: "housing", title: "UofT residences (Graduate House, Knox, Massey)", anchor: "", keywords: "residence graduate house knox college massey college student", snippet: "On-campus residence options for medical students." },
-    { page: "housing", title: "Interactive housing map", anchor: "#housing-map", keywords: "map building neighborhood filter campus hospital", snippet: "Filter by housing, study spaces, hospitals, amenities, groceries, or by neighborhood." },
-    { page: "housing", title: "Listing sites that work in Toronto", anchor: "", keywords: "padmapper realtor condos kijiji facebook listings rental search", snippet: "PadMapper, Realtor.ca, Condos.ca, FB Marketplace, Kijiji — what each is best for." },
-    { page: "housing", title: "Roommate finder spreadsheet", anchor: "", keywords: "roommate finder spreadsheet match", snippet: "Cohort-shared spreadsheet for finding roommates." },
-    { page: "housing", title: "Don't let realtors push you to break the law", anchor: "", keywords: "realtor RTA bidding war months upfront illegal", snippet: "Multiple months upfront and bidding above listed rent are illegal under the RTA. Walk away." },
-    { page: "housing", title: "Tenant insurance", anchor: "", keywords: "tenant insurance contents liability", snippet: "Around $20/month — many landlords now require it. Don't skip." },
-
-    // Finances
-    { page: "finances", title: "First-year cost breakdown", anchor: "#costs", keywords: "tuition fees ontario domestic international cost MSB MAM", snippet: "Year 1: $25,417 Ontario domestic / $29,837 non-Ontario / $100,433 international (St. George). MAM +$580." },
-    { page: "finances", title: "Line of Credit (LOC) overview", anchor: "#loc", keywords: "LOC line of credit prime rate scotia RBC", snippet: "$375K maximum at major banks. Med-student rate: Prime − 0.25% (currently 4.20%)." },
-    { page: "finances", title: "Scotia Healthcare+ medical student LOC", anchor: "", keywords: "scotia bank LOC healthcare plus ultimate package amex passport", snippet: "Most-used LOC at UofT. Includes Ultimate Package, Passport Visa Infinite, Gold Amex with annual fees waived." },
-    { page: "finances", title: "Negotiating your LOC", anchor: "", keywords: "negotiate LOC bank rate", snippet: "Tips for negotiating with bank reps — the 'starting offer' usually isn't the best they'll do." },
-    { page: "finances", title: "Toronto budget breakdown", anchor: "", keywords: "budget rent groceries transit toronto monthly cost living", snippet: "Realistic monthly costs for groceries, rent, transit, utilities in Toronto." },
-    { page: "finances", title: "OSAP for medical students", anchor: "#osap", keywords: "OSAP loan ontario financial assistance medical student", snippet: "How OSAP differs for medical students, plus UofT's Student Financial Support Policy." },
-    { page: "finances", title: "Tuition payment & deferral", anchor: "#tuition-deferral", keywords: "tuition deferral OSAP ACORN payment deadline", snippet: "Standard payment via ACORN, plus deferral process for OSAP students." },
-    { page: "finances", title: "Temerty Faculty of Medicine Grant", anchor: "", keywords: "temerty grant financial aid bursary need-based august", snippet: "The main need-based grant after entrance bursaries. Application opens mid-August." },
-
-    // Academics
-    { page: "academics", title: "Year 1 course structure", anchor: "#curriculum-start", keywords: "ITM CPC1 CPC2 course weeks foundations", snippet: "ITM runs in weeks 1–8, CPC 1 in weeks 9–25 and CPC 2 in weeks 26–36." },
-    { page: "academics", title: "Study notes and WFQ resources", anchor: "#study-notes", keywords: "study notes JLim ITM WFQ shared resources", snippet: "Student-shared materials that should be checked against current Faculty learning objectives." },
-    { page: "academics", title: "Anki decks", anchor: "#anki", keywords: "anki bhadra anatomy spaced repetition", snippet: "Student-shared anatomy, ITM and CPC decks. Check for outdated content before committing." },
-    { page: "academics", title: "OSCE prep resources", anchor: "#osce-resources", keywords: "OSCE FitzGerald MAM Lau ICE notion", snippet: "Notion guides, FitzGerald and MAM clinical skills docs, Lau ICE site, OSCE prep folder, OSCEr app." },
-    { page: "academics", title: "2026–27 Year 1 calendar", anchor: "#calendar", keywords: "year one calendar ITM CPC dates topics curriculum", snippet: "Confirmed course start and end dates from the Faculty Foundations key-dates sheet." },
-    { page: "academics", title: "What a typical week can look like", anchor: "#calendar", keywords: "weekly schedule CBL clinical skills anatomy MedSIS ME ISAL", snippet: "Recent-cohort examples. MEs are Monday 8–9 AM, Year 1 Clinical Skills is Friday 8 AM–12 PM and ISAL is usually the Friday before an ME." },
-    { page: "academics", title: "Mastery Exercises (MEs)", anchor: "#calendar", keywords: "ME mastery exercise assessment cadence", snippet: "Generally about every two weeks, with some shorter or longer intervals. Confirm exact dates and times in MedSIS." },
-    { page: "academics", title: "MD Plus and early opportunities", anchor: "#md-plus", keywords: "MD Plus GDipHR CREMS GHEP global health MIT QuEST MD PhD MBA MEng", snippet: "Programs and research opportunities that may require planning or applications during Year 1." },
-    { page: "academics", title: "Shadowing and EEE", anchor: "#shadowing", keywords: "shadowing EEE enriching educational experiences 36 hours CAP MedSIS career advising preparation", snippet: "The 2025–26 manual required 36 hours by June 15 of Year 2. Log every clinical EEE in MedSIS in advance." },
-
-    // Handbook
-    { page: "handbook", title: "Program structure (M1–M4)", anchor: "#program-structure", keywords: "program structure foundations clerkship preclerkship years", snippet: "Overview of the four-year MD curriculum." },
-    { page: "handbook", title: "Vocabulary (CBL, CEE, ICE, EEE)", anchor: "#vocabulary", keywords: "CBL CEE ICE EEE OSCE vocabulary terms acronyms", snippet: "What CBL, CEE, ICE, OSCE, EEE, and the rest actually mean." },
-    { page: "handbook", title: "The four academies", anchor: "#academies", keywords: "academy fitzgerald peters-boyd wightman-berris MAM hospitals", snippet: "FitzGerald, Peters-Boyd, Wightman-Berris, MAM — what each is and which hospitals they're at." },
-    { page: "handbook", title: "Class Council and Medical Society (MedSoc)", anchor: "#community-groups", keywords: "class council medsoc medical society governance", snippet: "The two main councils every UofT MD student is automatically a member of." },
-    { page: "handbook", title: "Religious & cultural groups", anchor: "#community-groups", keywords: "religious cultural MMAC jewish christian sikh BMSA filipino south asian", snippet: "Faith-based and cultural communities active in the cohort." },
-    { page: "handbook", title: "Prayer spaces directory", anchor: "#prayer-spaces", keywords: "prayer spaces room hospital MMAC mosque chapel meditation", snippet: "Designated prayer rooms across hospitals and on campus, compiled by MMAC." },
-    { page: "handbook", title: "Affinity groups", anchor: "#community-groups", keywords: "queer 2SLGBTQ disabled affinity", snippet: "Identity-based community groups." },
-    { page: "handbook", title: "Interest groups (specialties)", anchor: "#community-groups", keywords: "interest groups specialty internal surgery family peds emergency", snippet: "Dozens of specialty interest groups for exploring careers in medicine." },
-    { page: "handbook", title: "OMSA & OMA membership", anchor: "#omsa-oma", keywords: "OMSA OMA membership insurance professional association", snippet: "Automatic OMSA membership; free OMA student membership with insurance benefits." },
-    { page: "handbook", title: "Wellness & Support — OLA", anchor: "#wellness", keywords: "wellness mental health OLA office learner affairs counselling support 988", snippet: "Office of Learner Affairs and the Faculty's personal supports directory." },
-    { page: "handbook", title: "Platforms (Elentra, ACORN, MedSIS, Quercus)", anchor: "#platforms", keywords: "elentra acorn medsis OASES learner chart examsoft examplify quercus platforms tools", snippet: "All eight platforms you'll live in: Elentra, ACORN, MedSIS, OASES, Learner Chart, ExamSoft, Examplify, Quercus." },
-
-    // Mentorship
-    { page: "mentorship", title: "Mentorship — browse mentors", anchor: "", keywords: "mentor mentorship reach out connect contact upper year", snippet: "Upper-year students who've offered to be reached out to, organized by background, identity, and circumstance." },
-    { page: "mentorship", title: "How to browse mentor tags", anchor: "", keywords: "tags first-gen traditional non-traditional mature OOP BIPOC queer disabled", snippet: "Tag legend explaining the background, identity, and circumstance categories." },
-    { page: "mentorship", title: "Become a mentor", anchor: "", keywords: "become mentor pay forward submit", snippet: "Want to be listed as a mentor? Submit a card via Feedback." },
-
-    // O-Week
-
-    // About
-    { page: "about", title: "Mission of the guide", anchor: "", keywords: "mission about why exists hidden curriculum", snippet: "Why this guide exists — the hidden curriculum, decoded." },
-    { page: "about", title: "Photo carousel", anchor: "", keywords: "photos cohort carousel about", snippet: "Photos from the cohort." },
-    { page: "about", title: "What's changed (changelog)", anchor: "#changelog", keywords: "changelog updates changes recent edits version", snippet: "Recent updates to the guide, dated." },
-    { page: "about", title: "Credits", anchor: "", keywords: "credits contributors thanks acknowledgments", snippet: "People who helped build and maintain the guide." },
-
-    // Feedback
-    { page: "feedback", title: "Feedback form", anchor: "", keywords: "feedback contact suggest update fix", snippet: "Submit corrections, additions, or new content for the guide." },
-    { page: "quicklinks", title: "Quick Links — full directory", anchor: "", keywords: "quick links directory index urls all links sitemap external resources banks fb facebook groups drive notion forms applications", snippet: "Every link on the guide — internal pages, official UofT resources, banks, government portals, community groups, and study materials — collected and grouped by topic." },
-  ];
 
   </script>
   <script src="site-search-index.js"></script>
@@ -7469,7 +7410,7 @@
         </div>
         <h1>There's more than<br/>one way to study.</h1>
         <p class="page-hero-lede">Understand the shape of first year, find student-shared study resources, prepare for clinical skills and plan early for shadowing and optional programs.</p>
-        <div class="student-status"><strong>Student-created and independent.</strong> Official Faculty pages, MedSIS and Elentra remain the source of truth for curriculum, assessment, scheduling and program requirements.</div>
+        <div class="student-status"><strong>Student-created and independent.</strong> Use official Faculty pages, MedSIS and Elentra for current curriculum, assessment, scheduling and program requirements.</div>
       </div>
       <div>
         <div class="page-hero-meta">
@@ -7514,6 +7455,31 @@
 
 <div class="has-toc">
 
+<!-- ============ Before O-Week ============ -->
+<section class="before-oweek" id="before-oweek">
+  <div class="container">
+    <div class="before-oweek-inner">
+      <div>
+        <span class="eyebrow-text">Before O-Week</span>
+        <h2>You do not need to study before medical school.</h2>
+      </div>
+      <div>
+        <p><strong>Seriously.</strong> Enjoy your summer, spend time with people you care about and arrive rested. Nothing on this page is required preparation for your first day.</p>
+        <p>If you are curious, skim the <a href="#curriculum-start">course map</a> and <a href="#md-plus">early-opportunities section</a>. The rest will make more sense after O-Week, and this page will be refreshed then.</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    .before-oweek{padding:54px 0 18px;background:var(--paper);}
+    .before-oweek-inner{display:grid;grid-template-columns:minmax(280px,.85fr) 1.15fr;gap:48px;padding:30px 34px;border:1px solid var(--hairline);border-left:4px solid var(--student-warm);background:var(--student-warm-soft);}
+    .before-oweek h2{margin-top:10px;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.12;}
+    .before-oweek p{color:var(--ink-soft);font-size:15px;line-height:1.7;}
+    .before-oweek p+p{margin-top:12px;}
+    .before-oweek a{color:var(--uoft-teal);border-bottom:1px solid currentColor;}
+    @media(max-width:760px){.before-oweek{padding-top:36px}.before-oweek-inner{grid-template-columns:1fr;gap:18px;padding:26px 24px}}
+  </style>
+</section>
+
 <!-- ============ Start with the curriculum ============ -->
 <section class="curriculum-start" id="curriculum-start">
   <div class="container">
@@ -7531,12 +7497,12 @@
         <button class="course-sequence-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="course-panel-itm" id="course-tab-itm">
           <span class="course-sequence-node">01</span>
           <span class="course-sequence-name">ITM</span>
-          <span class="course-sequence-date">Weeks 1–8<br/>Aug 24–Oct 16, 2026</span>
+          <span class="course-sequence-date">Weeks 1–8<br/>Begins Aug 24, 2026</span>
         </button>
         <button class="course-sequence-tab" type="button" role="tab" aria-selected="false" aria-controls="course-panel-cpc1" id="course-tab-cpc1" tabindex="-1">
           <span class="course-sequence-node">02</span>
           <span class="course-sequence-name">CPC 1</span>
-          <span class="course-sequence-date">Weeks 9–25<br/>Oct 26, 2026–Feb 26, 2027</span>
+          <span class="course-sequence-date">Weeks 9–25<br/>Begins Oct 26, 2026</span>
         </button>
         <button class="course-sequence-tab" type="button" role="tab" aria-selected="false" aria-controls="course-panel-cpc2" id="course-tab-cpc2" tabindex="-1">
           <span class="course-sequence-node">03</span>
@@ -7581,6 +7547,7 @@
         </div>
       </article>
     </div>
+    <p class="claim-source"><strong>Official Faculty sources:</strong> 2026–27 dates come from the Temerty MD Program’s <a href="https://md.utoronto.ca/sites/default/files/inline-files/DRAFT_Foundations%20Yr1%20Yr2%20Important%20Dates%202026-2027.pdf" target="_blank" rel="noopener"><em>Foundations Year 1 and Year 2 Important Dates 2026–2027</em> <span class="footer-ext">↗</span></a>. The Faculty-issued document is marked “DRAFT” and “subject to change”; it remains the source distributed for these dates. Week ranges and descriptions come from the 2025–26 Faculty course descriptions in Elentra for <a href="https://meded.utoronto.ca/medicine/community/med100h_62_65_96_101_107_114_121_125" target="_blank" rel="noopener">ITM <span class="footer-ext">↗</span></a>, <a href="https://meded.utoronto.ca/medicine/community/med120h_65_96_101_107_114_121_125" target="_blank" rel="noopener">CPC 1 <span class="footer-ext">↗</span></a> and <a href="https://meded.utoronto.ca/medicine/community/med130h_65_96_101_107_114_121_125" target="_blank" rel="noopener">CPC 2 <span class="footer-ext">↗</span></a> (UTORid sign-in may be required). Incoming students should follow later Faculty updates if the calendar changes.</p>
 
     <div class="longitudinal-intro">
       <div>
@@ -7593,7 +7560,7 @@
     <div class="longitudinal-list">
       <details>
         <summary><span>ICE: Clinical Skills</span><small>Friday mornings in Year 1</small></summary>
-        <p>Year 1 Clinical Skills runs Friday from 8:00 AM–12:00 PM. Year 2 sessions are usually Thursday. Use MedSIS for the current location and any communicated exceptions.</p>
+        <p>For 2T9, Year 1 Clinical Skills ran Friday from 8:00 AM–12:00 PM, with Year 2 sessions generally on Thursday. Use MedSIS for your cohort's dates, locations and any communicated exceptions.</p>
       </details>
       <details>
         <summary><span>ICE: Career Advising and Preparation</span><small>Career exploration and EEE</small></summary>
@@ -7616,6 +7583,7 @@
         <p>Longitudinal teaching that appears within the Foundations schedule. The exact learning events and associated assessments are listed in the current Elentra materials.</p>
       </details>
     </div>
+    <p class="claim-source"><strong>Longitudinal-component sources:</strong> current descriptions and requirements are distributed through the Faculty’s Elentra materials, including <a href="https://meded.utoronto.ca/medicine/community/med100h_62_65_96_101_107_114_121_125" target="_blank" rel="noopener">Clinical Skills and ITM materials <span class="footer-ext">↗</span></a>, the <a href="https://md.utoronto.ca/career-advising-and-preparation" target="_blank" rel="noopener">official ICE:CAP overview <span class="footer-ext">↗</span></a> and the cohort-specific ICE:HC, HSR, Portfolio and MAPS materials in Elentra. The summaries above describe their role only; MedSIS and Elentra control dates, attendance and assessment requirements.</p>
 
     <div class="glossary-block">
       <div class="glossary-block-heading">
@@ -7639,88 +7607,6 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- ============ ICE: HC and CEE ============ -->
-<section class="section" id="cee">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">ICE: Health in Community</span>
-      </div>
-      <h2>Community Engaged Experiences, without the guesswork.</h2>
-      <p>A CEE is community-engaged learning within ICE: Health in Community. It is separate from Friday-morning Clinical Skills and is not simply volunteering or clinical shadowing. Students learn with community organizations, connect the experience to health and community and reflect on it through ICE: HC.</p>
-    </div>
-
-    <div class="cee-source-note">
-      <div>
-        <span class="source-kind">Confirmed course source</span>
-        <strong>ICE: HC manual and CEE guide · revised September 2025</strong>
-      </div>
-      <p>The checklist below is the confirmed requirement for <strong>2T9</strong>. Incoming cohorts should use their own current manual for any changed visit counts, dates or forms.</p>
-    </div>
-
-    <div class="cee-requirements" aria-label="2T9 Community Engaged Experience requirements">
-      <article><span>1 visit</span><strong>Long-term care</strong></article>
-      <article><span>1 visit</span><strong>Intellectual and developmental disabilities</strong></article>
-      <article><span>4 visits</span><strong>Flexible CEEs</strong></article>
-      <article><span>5+ visits</span><strong>One longitudinal community placement</strong></article>
-    </div>
-
-    <div class="cee-details">
-      <details open>
-        <summary>Arranging and approving a placement</summary>
-        <div>
-          <p>Students arrange their own CEEs. St. George students complete placements in Toronto or the GTA, excluding Mississauga. MAM students complete placements in Mississauga or the GTA, excluding Toronto. An exception requires advance approval from the ICE: HC Program Director.</p>
-          <p>If an opportunity is not already listed in MedSIS, send the agency and supervisor contact information to the central ICE: HC office so the placement and paperwork can be reviewed. The manual advises allowing at least three weeks.</p>
-        </div>
-      </details>
-      <details>
-        <summary>What students are expected to do</summary>
-        <div>
-          <ul>
-            <li>Contact community supervisors professionally and respect the agency's capacity and requirements.</li>
-            <li>Log every placement in MedSIS.</li>
-            <li>Complete the required preparation and documentation in the current course materials.</li>
-            <li>Present and reflect on CEE learning during tutorials using the sign-up process provided by the course.</li>
-            <li>Track your own progress. Tutors monitor progress but do not arrange placements for students.</li>
-          </ul>
-        </div>
-      </details>
-      <details>
-        <summary>Absences, changes and current-year details</summary>
-        <div>
-          <p>Use the current ICE: HC manual and course announcements for deadlines, absence procedures, placement changes, forms and any make-up expectations. Contact your tutor and the central ICE: HC office early when something changes rather than relying on a previous cohort's process.</p>
-        </div>
-      </details>
-    </div>
-
-    <p class="cee-footnote">Source: <em>ICE: HC manual and CEE guide</em>, revised September 2025, especially the overview and CEE requirements on pp. 4 and 17–18. Course materials in Elentra and MedSIS remain the source for your cohort.</p>
-  </div>
-  <style>
-    .cee-source-note{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:28px;align-items:start;margin:30px 0 20px;padding:22px 24px;border-left:4px solid var(--student-warm);background:var(--student-warm-soft);}
-    .cee-source-note strong{display:block;margin-top:8px;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:18px;line-height:1.3;}
-    .cee-source-note p{color:var(--ink-soft);font-size:14px;line-height:1.6;}
-    .cee-requirements{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--hairline);background:#fff;}
-    .cee-requirements article{min-height:135px;padding:22px;border-right:1px solid var(--hairline);}
-    .cee-requirements article:last-child{border-right:0;}
-    .cee-requirements span{display:block;margin-bottom:12px;color:var(--uoft-teal);font-family:'Roboto Slab',serif;font-size:26px;font-weight:800;}
-    .cee-requirements strong{display:block;color:var(--uoft-navy);font-size:14px;line-height:1.45;}
-    .cee-details{margin-top:22px;border-top:1px solid var(--hairline);}
-    .cee-details details{border-bottom:1px solid var(--hairline);}
-    .cee-details summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 4px;color:var(--uoft-navy);font-weight:800;cursor:pointer;list-style:none;}
-    .cee-details summary::-webkit-details-marker{display:none;}
-    .cee-details summary::after{content:'+';color:var(--uoft-teal);font-size:22px;font-weight:500;}
-    .cee-details details[open] summary::after{content:'−';}
-    .cee-details details>div{max-width:900px;padding:0 4px 22px;color:var(--ink-soft);font-size:14px;line-height:1.65;}
-    .cee-details p+p{margin-top:12px;}
-    .cee-details ul{padding-left:20px;}
-    .cee-details li+li{margin-top:7px;}
-    .cee-footnote{margin-top:18px;color:var(--ink-muted);font-size:12px;line-height:1.6;}
-    @media(max-width:860px){.cee-requirements{grid-template-columns:1fr 1fr}.cee-requirements article:nth-child(2){border-right:0}.cee-requirements article:nth-child(-n+2){border-bottom:1px solid var(--hairline)}.cee-source-note{grid-template-columns:1fr}}
-    @media(max-width:560px){.cee-requirements{grid-template-columns:1fr}.cee-requirements article{min-height:0;border-right:0;border-bottom:1px solid var(--hairline)}.cee-requirements article:nth-child(3){border-bottom:1px solid var(--hairline)}.cee-requirements article:last-child{border-bottom:0}}
-  </style>
 </section>
 
 <!-- ============ Weekly rhythm ============ -->
@@ -7786,11 +7672,142 @@
 
       <div class="timed-week-notes">
         <div><strong>*Tuesday afternoons vary.</strong><span>You may attend only your assigned section, rotate between activities or have a different time from another section.</span></div>
-        <div><strong>MEs are Monday from 8:00–9:00.</strong><span>They are generally about every two weeks. ISAL is usually the preceding Friday from 1:30–4:00.</span></div>
+        <div><strong>In this 2T9 example, MEs were Monday from 8:00–9:00.</strong><span>They were generally about every two weeks. ISAL was usually the preceding Friday from 1:30–4:00.</span></div>
         <div><strong>Do not schedule from this illustration.</strong><span>Use MedSIS for dates, rooms, mandatory status and changes.</span></div>
+      </div>
+      <p class="claim-source"><strong>Schedule provenance:</strong> this is a student-reported illustration based on the site maintainer’s 2T9 schedule, not a published 3T0 timetable. The 2026–27 Faculty key-dates sheet confirms the starts of ITM, CPC 1 and CPC 2, Clinical Skills and Portfolio, but it does not establish this recurring weekly layout. Use <a href="https://medsis.utoronto.ca/" target="_blank" rel="noopener">MedSIS <span class="footer-ext">↗</span></a> for every confirmed session.</p>
+    </div>
+  </div>
+</section>
+
+<section class="early-opportunity-preview" aria-labelledby="early-opportunity-title">
+  <div class="container">
+    <div class="early-opportunity-preview-inner">
+      <div>
+        <span class="eyebrow-text">One thing worth knowing early</span>
+        <h2 id="early-opportunity-title">Some optional programs have early deadlines.</h2>
+      </div>
+      <div>
+        <p>You still do not need to study. If an MD+ or other opportunity interests you, check its official page early because application timing varies.</p>
+        <a href="#md-plus">See the early-opportunities guide →</a>
       </div>
     </div>
   </div>
+  <style>
+    .early-opportunity-preview{padding:42px 0 22px;background:var(--paper);}
+    .early-opportunity-preview-inner{display:grid;grid-template-columns:minmax(280px,.9fr) 1.1fr;gap:42px;padding:28px 0;border-top:1px solid var(--hairline);}
+    .early-opportunity-preview h2{margin:8px 0 0;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:clamp(25px,3vw,36px);line-height:1.16;}
+    .early-opportunity-preview p{max-width:680px;color:var(--ink-soft);font-size:14px;line-height:1.65;}
+    .early-opportunity-preview a{display:inline-block;margin-top:13px;color:var(--uoft-teal);font-size:13px;font-weight:800;border-bottom:1px solid currentColor;}
+    @media(max-width:760px){.early-opportunity-preview-inner{grid-template-columns:1fr;gap:16px}}
+  </style>
+</section>
+
+<details class="full-academics-guide" id="full-academics-guide">
+  <summary>
+    <span>
+      <span class="eyebrow-text">Save this for after O-Week</span>
+      <strong>Explore the full Academics guide</strong>
+      <small>CEEs, study resources, clinical skills, shadowing, MD+ programs, academic support and upper-year advice.</small>
+    </span>
+    <span class="full-guide-action" aria-hidden="true">Open guide</span>
+  </summary>
+  <div class="full-academics-guide-content">
+  <style>
+    .full-academics-guide{margin:0;background:var(--paper);}
+    .full-academics-guide>summary{display:flex;justify-content:space-between;align-items:center;gap:28px;max-width:1200px;margin:16px auto 0;padding:30px 34px;border:1px solid var(--hairline);border-left:4px solid var(--uoft-teal);background:var(--paper-soft);cursor:pointer;list-style:none;}
+    .full-academics-guide>summary::-webkit-details-marker{display:none;}
+    .full-academics-guide>summary strong{display:block;margin:8px 0 7px;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:clamp(25px,3vw,36px);line-height:1.16;}
+    .full-academics-guide>summary small{display:block;max-width:780px;color:var(--ink-soft);font-size:13px;line-height:1.55;}
+    .full-guide-action{flex:0 0 auto;padding:11px 16px;border:1px solid var(--uoft-teal);color:var(--uoft-teal);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+    .full-guide-action::after{content:' +';}
+    .full-academics-guide[open] .full-guide-action::before{content:'Close';font-size:0;}
+    .full-academics-guide[open] .full-guide-action{font-size:0;}
+    .full-academics-guide[open] .full-guide-action::after{content:'Close −';font-size:12px;}
+    .full-academics-guide-content{margin-top:18px;}
+    @media(max-width:760px){.full-academics-guide>summary{margin-left:20px;margin-right:20px;padding:25px 22px;align-items:flex-start}.full-guide-action{padding:9px 11px}}
+  </style>
+
+<!-- ============ ICE: HC and CEE ============ -->
+<section class="section" id="cee">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">ICE: Health in Community</span>
+      </div>
+      <h2>What Community Engaged Experiences involve.</h2>
+      <p>A CEE is community-engaged learning within ICE: Health in Community. It is separate from Friday-morning Clinical Skills and is not simply volunteering or clinical shadowing. Students learn with community organizations, connect the experience to health and community and reflect on it through ICE: HC.</p>
+    </div>
+
+    <div class="cee-source-note">
+      <div>
+        <span class="source-kind">Confirmed course source</span>
+        <strong><em>ICE: HC Manual and CEE Guide – Student</em> · revised September 2025</strong>
+      </div>
+      <p>The checklist below is the confirmed requirement for <strong>2T9</strong>. Incoming cohorts should use their own current manual for any changed visit counts, dates or forms.</p>
+    </div>
+
+    <div class="cee-requirements" aria-label="2T9 Community Engaged Experience requirements">
+      <article><span>1 visit</span><strong>Long-term care</strong></article>
+      <article><span>1 visit</span><strong>Intellectual and developmental disabilities</strong></article>
+      <article><span>4 visits</span><strong>Flexible CEEs</strong></article>
+      <article><span>5+ visits</span><strong>One longitudinal community placement</strong></article>
+    </div>
+
+    <div class="cee-details">
+      <details open>
+        <summary>Arranging and approving a placement</summary>
+        <div>
+          <p>Students arrange their own CEEs. St. George students complete placements in Toronto or the GTA, excluding Mississauga. MAM students complete placements in Mississauga or the GTA, excluding Toronto. An exception requires advance approval from the ICE: HC Program Director.</p>
+          <p>If an opportunity is not already listed in MedSIS, send the agency and supervisor contact information to the central ICE: HC office so the placement and paperwork can be reviewed. The manual advises allowing at least three weeks.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What students are expected to do</summary>
+        <div>
+          <ul>
+            <li>Contact community supervisors professionally and respect the agency's capacity and requirements.</li>
+            <li>Log every placement in MedSIS.</li>
+            <li>Complete the required preparation and documentation in the current course materials.</li>
+            <li>Present and reflect on CEE learning during tutorials using the sign-up process provided by the course.</li>
+            <li>Track your own progress. Tutors monitor progress but do not arrange placements for students.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Absences, changes and current-year details</summary>
+        <div>
+          <p>Use the current ICE: HC manual and course announcements for deadlines, absence procedures, placement changes, forms and any make-up expectations. Contact your tutor and the central ICE: HC office early when something changes rather than relying on a previous cohort's process.</p>
+        </div>
+      </details>
+    </div>
+
+    <p class="cee-footnote">Source: <em>ICE: HC Manual and CEE Guide – Student</em>, revised September 2025, especially the overview and CEE requirements on pp. 4 and 17–18. This cohort document was supplied through Elentra and does not have a public Faculty URL. Open the <a href="https://meded.utoronto.ca/medicine" target="_blank" rel="noopener">current Elentra course materials <span class="footer-ext">↗</span></a> and MedSIS instructions for your cohort.</p>
+  </div>
+  <style>
+    .cee-source-note{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:28px;align-items:start;margin:30px 0 20px;padding:22px 24px;border-left:4px solid var(--student-warm);background:var(--student-warm-soft);}
+    .cee-source-note strong{display:block;margin-top:8px;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:18px;line-height:1.3;}
+    .cee-source-note p{color:var(--ink-soft);font-size:14px;line-height:1.6;}
+    .cee-requirements{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--hairline);background:#fff;}
+    .cee-requirements article{min-height:135px;padding:22px;border-right:1px solid var(--hairline);}
+    .cee-requirements article:last-child{border-right:0;}
+    .cee-requirements span{display:block;margin-bottom:12px;color:var(--uoft-teal);font-family:'Roboto Slab',serif;font-size:26px;font-weight:800;}
+    .cee-requirements strong{display:block;color:var(--uoft-navy);font-size:14px;line-height:1.45;}
+    .cee-details{margin-top:22px;border-top:1px solid var(--hairline);}
+    .cee-details details{border-bottom:1px solid var(--hairline);}
+    .cee-details summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 4px;color:var(--uoft-navy);font-weight:800;cursor:pointer;list-style:none;}
+    .cee-details summary::-webkit-details-marker{display:none;}
+    .cee-details summary::after{content:'+';color:var(--uoft-teal);font-size:22px;font-weight:500;}
+    .cee-details details[open] summary::after{content:'−';}
+    .cee-details details>div{max-width:900px;padding:0 4px 22px;color:var(--ink-soft);font-size:14px;line-height:1.65;}
+    .cee-details p+p{margin-top:12px;}
+    .cee-details ul{padding-left:20px;}
+    .cee-details li+li{margin-top:7px;}
+    .cee-footnote{margin-top:18px;color:var(--ink-muted);font-size:12px;line-height:1.6;}
+    @media(max-width:860px){.cee-requirements{grid-template-columns:1fr 1fr}.cee-requirements article:nth-child(2){border-right:0}.cee-requirements article:nth-child(-n+2){border-bottom:1px solid var(--hairline)}.cee-source-note{grid-template-columns:1fr}}
+    @media(max-width:560px){.cee-requirements{grid-template-columns:1fr}.cee-requirements article{min-height:0;border-right:0;border-bottom:1px solid var(--hairline)}.cee-requirements article:nth-child(3){border-bottom:1px solid var(--hairline)}.cee-requirements article:last-child{border-bottom:0}}
+  </style>
 </section>
 
 <!-- ============ Study Notes ============ -->
@@ -7828,6 +7845,7 @@
         <h3>JLim's Med School Notes</h3>
         <p>Multi-component note set covering pre-clerkship blocks. One of the most widely circulated note collections in recent UofT cohorts.</p>
         <a class="resource-link-mini" href="https://drive.google.com/drive/folders/1APNLUCTrNj5GQLHhiUGGDx5UoPSYaOYn?usp=drive_link" target="_blank" rel="noopener">Open Google Drive folder <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Creator listed as JLim · Cohort not confirmed · Original shared Drive folder · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -7838,6 +7856,7 @@
         <h3>Omar's ITM Notes</h3>
         <p>Notes for the Introduction to Medicine block by Omar Elbardisy (2T5). Often paired with Bhadra's ITM Anki deck below.</p>
         <a class="resource-link-mini" href="https://drive.google.com/drive/u/0/folders/1hX1TyJCn6XKqXhV1P1GL5zD-1NAK3GMH" target="_blank" rel="noopener">Open Google Drive folder <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Created by Omar Elbardisy · 2T5 · Original shared Drive folder · Last checked July 2026</p>
       </article>
 
 
@@ -7853,6 +7872,7 @@
           <li><a href="https://docs.google.com/spreadsheets/d/101XiXkusHjrfg1WpJ3E2LJ0TZawPispSXbNfIT-PI6Q/edit?gid=1535485621#gid=1535485621" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Spreadsheet version <span class="footer-ext">↗</span></a></li>
           <li><a href="https://drive.google.com/drive/folders/1k2PeZi-Mz0DkIaporLTVFJjh7Q1s35Ti" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Google Drive version <span class="footer-ext">↗</span></a></li>
         </ul>
+        <p class="resource-attribution">Cohort-compiled · Individual contributors not confirmed · Original shared spreadsheet and folder · Last checked July 2026</p>
       </article>
     </div>
 
@@ -7877,6 +7897,7 @@
         <h3>Bhadra's Anatomy Deck</h3>
         <p>Full anatomy deck covering pre-clerkship anatomy. Built by Bhadra Pandya (2T5).</p>
         <a class="resource-link-mini" href="https://drive.google.com/file/d/1kGyIWe-k820z6W_D1nIyKw6qDCEJk-mm/view" target="_blank" rel="noopener">Download .apkg <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Created by Bhadra Pandya · 2T5 · Original shared file · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -7887,6 +7908,7 @@
         <h3>Aka's Anatomy Deck</h3>
         <p>Earlier-cohort anatomy deck by Akachukwu Nwakoby (2T4). Some students prefer this style; others prefer Bhadra's. Worth opening both before committing.</p>
         <a class="resource-link-mini" href="https://drive.google.com/drive/u/0/folders/14EOEb6fhpFtkJasGdKSDedGaCA3_7sVB" target="_blank" rel="noopener">Open Google Drive folder <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Created by Akachukwu Nwakoby · 2T4 · Original shared folder · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -7897,6 +7919,7 @@
         <h3>Sara's MAPS / Anatomy Deck</h3>
         <p>Anatomy deck covering MAPS content, shared by Sara. Another option to compare against Bhadra's and Aka's before settling on one.</p>
         <a class="resource-link-mini" href="https://drive.google.com/drive/folders/19kFga3j90RhpsZoW5YrSR5B9P01LT8Xt?usp=sharing" target="_blank" rel="noopener">Open Google Drive folder <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Creator listed as Sara · Full name and cohort not confirmed · Original shared folder · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -7907,6 +7930,7 @@
         <h3>Bhadra's ITM, CPC-1, CPC-2 &amp; Y2 Decks</h3>
         <p>Full pre-clerkship Anki coverage by block. Largest UofT-specific deck collection currently circulating.</p>
         <p class="data-card-note">Link distributed in cohort channels. Search "BP Years 1+2 Anki" or request via Feedback.</p>
+        <p class="resource-attribution">Created by Bhadra Pandya · 2T5 · Circulated in student channels · Original source link pending</p>
       </article>
     </div>
 
@@ -7931,6 +7955,7 @@
         <h3>ICE Guide</h3>
         <p>This student-created guide needs its original author, source cohort and identified typos confirmed before it is republished here. Until then, use the current ICE materials in Elentra and the official Faculty pages.</p>
         <span class="data-card-note">Public link temporarily withheld pending attribution and content review.</span>
+        <p class="resource-attribution">Creator, cohort and original source not yet confirmed · Not currently linked</p>
       </article>
 
       <article class="data-card">
@@ -7961,6 +7986,7 @@
         <h3>OSCE Prep workspace</h3>
         <p>Organized Notion workspace covering the major OSCE stations, common pitfalls, and structured approaches.</p>
         <a class="resource-link-mini" href="https://seriously-quiet-med-student.notion.site/OSCE-Prep-9a199edc2dba4252acda32812f8e7708?pvs=4" target="_blank" rel="noopener">Open Notion <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Creator not yet confirmed · Original Notion workspace · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -7971,6 +7997,7 @@
         <h3>FitzGerald-authored clinical skills notes</h3>
         <p>Long-form Google Doc covering clinical-skills approaches and practice checklists, compiled by FitzGerald Academy students. Confirm that each section still matches current teaching.</p>
         <a class="resource-link-mini" href="https://docs.google.com/document/d/1HYCXAM1eANXvuInuyt6IPhU1AFFmX0-cP8YQrB6mz3g/edit" target="_blank" rel="noopener">Open Google Doc <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Compiled by FitzGerald Academy students · Individual contributors and cohort not confirmed · Original Google Doc</p>
       </article>
 
       <article class="data-card">
@@ -7981,6 +8008,7 @@
         <h3>MAM clinical skills PDF</h3>
         <p>Compiled by 2T6 MAM students. Covers similar territory to the FitzGerald doc with a different organizational style, worth comparing.</p>
         <a class="resource-link-mini" href="https://drive.google.com/file/d/1rCouV2Ic3WZZWTVJ22M9RUHOSXIXUa2l/view" target="_blank" rel="noopener">Open PDF <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Compiled by 2T6 MAM students · Individual contributors not confirmed · Original PDF</p>
       </article>
 
       <article class="data-card">
@@ -7991,6 +8019,7 @@
         <h3>Lau ICE site</h3>
         <p>A standalone site organizing ICE / clinical-skills content: physical exam approaches, history-taking templates, and structured station prep. Good for browsing by station or system rather than scrolling a long doc.</p>
         <a class="resource-link-mini" href="https://sites.google.com/view/lau-ice/home" target="_blank" rel="noopener">Open the site <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Creator and cohort not yet confirmed · Original Google Site · Last checked July 2026</p>
       </article>
 
       <article class="data-card">
@@ -8001,6 +8030,7 @@
         <h3>OSCE prep collection</h3>
         <p>Cohort-shared Google Drive folder with assorted OSCE prep materials: station notes, rubric breakdowns, and practice cases. Use as a supplement to the FitzGerald and MAM clinical-skills documents above.</p>
         <a class="resource-link-mini" href="https://drive.google.com/drive/folders/1T3V4tYF-mNL5MWayr9zKDOKMs5UK-Zgv" target="_blank" rel="noopener">Open Google Drive folder <span class="footer-ext">↗</span></a>
+        <p class="resource-attribution">Cohort-shared collection · Original contributors not fully identified · Original Drive folder</p>
       </article>
 
       <article class="data-card">
@@ -8011,6 +8041,7 @@
         <h3>OSCEr</h3>
         <p>iOS app with rubric-style checklists for physical exams and histories. Useful for self-quizzing or simulating an OSCE rubric while practicing with a partner.</p>
         <p class="data-card-note">Available on the App Store. Search "OSCEr".</p>
+        <p class="resource-attribution">Developer not yet confirmed · Verify the current App Store listing before linking</p>
       </article>
     </div>
     </div>
@@ -8060,7 +8091,7 @@
     </div>
 
     <div class="callout-soft eee-source-note">
-      <strong>These figures come from the 2025–26 ICE:CAP student manual.</strong> Confirm them against the 3T0 manual when it is released. The manual recommends completing the requirement well before the deadline.
+      <strong>These figures come from the <em>ICE: Career Advising and Preparation Student Manual 2025–2026</em>, pp. 9–14.</strong> Confirm them against the 3T0 manual when it is released. The manual recommends completing the requirement well before the deadline. See the Faculty’s <a href="https://md.utoronto.ca/career-advising-and-preparation" target="_blank" rel="noopener" style="color:var(--uoft-teal);border-bottom:1px solid currentColor;">official ICE:CAP page <span class="footer-ext">↗</span></a>; the detailed manual itself is distributed in Elentra.
     </div>
 
     <div class="eee-feature-groups">
@@ -8073,11 +8104,11 @@
         <div class="eee-type-list">
           <article>
             <div><h3>Core EEE</h3><small>Clinical career exploration</small></div>
-            <p>A clinical experience sponsored by a department, division or specialty. FMLE is part of the core curriculum and does not count toward EEE hours.</p>
+            <p>A self-directed clinical observation arranged directly with a physician supervisor in Canada.</p>
           </article>
           <article>
-            <div><h3>Longitudinal Experience</h3><small>Repeated learning over time</small></div>
-            <p>An approved experience completed over multiple encounters rather than as a single half-day placement.</p>
+            <div><h3>Longitudinal Experience</h3><small>Sponsored clinical experience</small></div>
+            <p>A clinical experience sponsored by a department, division or specialty. FMLE is part of the core curriculum and does not count toward EEE hours.</p>
           </article>
           <article>
             <div><h3>Alt-EEE</h3><small>Non-clinical career exploration</small></div>
@@ -8156,6 +8187,7 @@
     <div class="callout-soft eee-approval-note">
       <strong>An agreement is not yet an approved EEE.</strong> Log the experience in MedSIS, allow enough time for review and complete any site-specific requirements before attending.
     </div>
+    <p class="claim-source"><strong>EEE source:</strong> <em>ICE: Career Advising and Preparation Student Manual 2025–2026</em>, especially pp. 9–17 for hours, categories, MedSIS registration, supervision, timing and affiliation agreements. Public overview: <a href="https://md.utoronto.ca/career-advising-and-preparation" target="_blank" rel="noopener">ICE:CAP <span class="footer-ext">↗</span></a>. All examples of clinic, ward, OR and other settings are labelled as practical student examples, not separate Faculty categories.</p>
 
   </div>
 </section>
@@ -8188,8 +8220,8 @@
         </div>
         <div class="opportunity-list">
           <article><div><h3>MD/MBA</h3><small>Combined degree</small></div><p>Medicine and management training through Temerty Medicine and the Rotman School of Management.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MD/PhD</h3><small>Combined degree</small></div><p>Physician-scientist training. Current eligibility and application timing should be confirmed on the official program page.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
-          <article><div><h3>MSc in Health Systems Leadership and Innovation</h3><small>MD Plus graduate degree</small></div><p>Health-system leadership and innovation training designed to remain compatible with medical school.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
+          <article><div><h3>MD/PhD</h3><small>Combined degree entered with MD admission</small></div><p>Integrated clinical and graduate research training for physician-scientists. This is not ordinarily a program added after starting the MD; consult the official admissions information for eligibility.</p><a href="https://applymd.utoronto.ca/mdphd-program-applicants" target="_blank" rel="noopener">Official admissions page <span class="footer-ext">↗</span></a></article>
+          <article><div><h3>MSc in Health Systems Leadership and Innovation</h3><small>MD Plus graduate degree</small></div><p>A non-thesis MSc focused on physician leadership and health-system innovation, available to medical students and other health professionals.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
           <article><div><h3>Graduate Diploma in Health Research</h3><small>First-year application</small></div><p>A 20-month research diploma with a U of T faculty mentor, research-skills course and graduate elective.</p><a href="https://md.utoronto.ca/graduate-diploma-health-research-gdiphr" target="_blank" rel="noopener">Program details <span class="footer-ext">↗</span></a></article>
           <article><div><h3>MD-oriented MEng</h3><small>Biomedical engineering</small></div><p>Professional engineering training focused on biomedical technology, science and commercialization.</p><a href="https://md.utoronto.ca/additional-educational-opportunities" target="_blank" rel="noopener">Official overview <span class="footer-ext">↗</span></a></article>
         </div>
@@ -8224,7 +8256,7 @@
     </div>
 
     <div class="callout-soft">
-      <strong>A practical rule:</strong> if an opportunity matters to you, open its official page in September and add the current information session and application deadline to your calendar. Do not rely on dates from an earlier cohort.
+      <strong>A practical rule:</strong> if an opportunity matters to you, check its official page before or at the start of Year 1 and add the current information session and application deadline to your calendar. Do not rely on dates from an earlier cohort.
     </div>
   </div>
 </section>
@@ -8245,7 +8277,7 @@
       <div>
         <span class="eyebrow-text">You do not have to figure it out alone</span>
         <h3>Learning support is not only for when something is wrong.</h3>
-        <p>The Office of Learner Affairs offers academic, clinical-skills, career, mentorship and personal supports. A Learning Strategist can help you work through study approaches, clinical reasoning, reflective practice and transitions in training.</p>
+        <p>The <a href="https://meded.temertymedicine.utoronto.ca/office-learner-affairs" target="_blank" rel="noopener">Office of Learner Affairs <span class="footer-ext">↗</span></a> offers academic, clinical-skills, career, mentorship and personal supports. Its <a href="https://meded.temertymedicine.utoronto.ca/learning-strategy-clinical-skills-enhancement" target="_blank" rel="noopener">Learning Strategy and Clinical Skills Enhancement service <span class="footer-ext">↗</span></a> supports study approaches, critical reasoning, reflective practice, learning in clinical settings and transitions in training.</p>
         <a class="btn btn-primary" href="https://meded.temertymedicine.utoronto.ca/book-appointment" target="_blank" rel="noopener">Book an OLA appointment <span class="footer-ext">↗</span></a>
       </div>
       <div class="help-routing">
@@ -8275,7 +8307,7 @@
           <p class="resource-note">Official CAP and EEE information, including current Faculty guidance.</p>
         </div>
       </a>
-      <a class="resource-link" href="https://medsis.utoronto.ca/medsis/" target="_blank" rel="noopener">
+      <a class="resource-link" href="https://medsis.utoronto.ca/" target="_blank" rel="noopener">
         <div class="resource-arrow">→</div>
         <div>
           <h3 class="resource-title">MedSIS CAP Module</h3>
@@ -8293,7 +8325,7 @@
         <div class="resource-arrow">→</div>
         <div>
           <h3 class="resource-title">Office of Learner Affairs · Learning Strategy</h3>
-          <p class="resource-note">Free, confidential academic support for study approaches, clinical reasoning and clinical-skills development. You can book early, including before academic difficulty develops.</p>
+          <p class="resource-note">Academic support for study approaches, critical reasoning, reflective practice and learning in clinical settings. You can book directly through the official page.</p>
         </div>
       </a>
       <a class="resource-link" href="https://applymd.utoronto.ca/career-planning" target="_blank" rel="noopener">
@@ -8342,12 +8374,15 @@
         <div class="resource-arrow">→</div>
         <div>
           <h3 class="resource-title">MAM · Student Information</h3>
-          <p class="resource-note">General student information hub for MAM. campus-specific policies, resources, and contacts for students at the Mississauga Academy of Medicine.</p>
+          <p class="resource-note">General student information hub for MAM, including campus-specific policies, resources and contacts for students at the Mississauga Academy of Medicine.</p>
         </div>
       </a>
     </div>
   </div>
 </section>
+
+  </div>
+</details>
 
 </div><!-- /.has-toc -->
 </main>
@@ -8450,7 +8485,7 @@
     CBL: ['Case-based learning', 'Small-group learning organized around a clinical case. Preparation and session structure vary by course, so use the current instructions in Elentra.'],
     ME: ['Mastery Exercise', 'A recurring assessment within Foundations. The cadence is generally about every two weeks, with a smaller number of one- or three-week blocks. Use MedSIS for confirmed dates.'],
     OSCE: ['Objective Structured Clinical Examination', 'A practical clinical-skills assessment. Station format and expectations should come from the current ICE materials rather than an older student guide.'],
-    ISAL: ['Integrated and Application Lectures', 'Sessions near the end of a course subsection that bring together key concepts and challenging material. Check the learning event for the session’s specific expectations.']
+    ISAL: ['Integrated Summary and Application Lecture', 'A selective overview of important concepts identified by week leads and lecturers for the upcoming ME. It is not a complete list of testable content. Sessions may use teaching, cases, questions or a mixture of these.']
   };
   glossary.querySelectorAll('[data-glossary-term]').forEach(function(button) {
     button.addEventListener('click', function() {
@@ -8473,7 +8508,7 @@
   var description = week.querySelector('[data-timed-description]');
   var copy = {
     typical: 'A recent-cohort illustration of a regular teaching week. The exact number and placement of sessions changes across blocks.',
-    me: 'The ME is shown on Monday from 8:00–9:00. Course teaching can continue afterward. The related ISAL is usually the preceding Friday from 1:30–4:00.',
+    me: 'In this 2T9 example, the ME is shown on Monday from 8:00–9:00. Course teaching can continue afterward. The related ISAL was usually the preceding Friday from 1:30–4:00.',
     portfolio: 'This recent-cohort pattern places Portfolio from about 3:30 onward on Monday, after Independent CBL. Confirm the current session in MedSIS.'
   };
   buttons.forEach(function(button) {
@@ -8567,6 +8602,27 @@
   window.addEventListener('scroll', function() {
     btn.classList.toggle('visible', window.scrollY > 600);
   }, { passive: true });
+})();
+
+(function(){
+  var guide = document.getElementById('full-academics-guide');
+  if (!guide) return;
+
+  function revealTarget(hash) {
+    if (!hash || hash === '#full-academics-guide') return;
+    var target;
+    try { target = document.querySelector(hash); } catch (error) { return; }
+    if (target && guide.contains(target)) guide.open = true;
+  }
+
+  revealTarget(window.location.hash);
+  window.addEventListener('hashchange', function() {
+    revealTarget(window.location.hash);
+  });
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href^="#"]');
+    if (link) revealTarget(link.getAttribute('href'));
+  });
 })();
 </script>
 </body>
