@@ -1410,6 +1410,8 @@
     background: white;
     border: 1px solid var(--hairline);
     padding: 4px 24px;
+    display: flex;
+    flex-direction: column;
   }
   @media (min-width: 768px) {
     .qs-card { padding: 4px 28px; }
@@ -1526,6 +1528,75 @@
     left: 0;
     color: var(--uoft-teal);
     font-weight: 700;
+  }
+  .phase-source-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 16px 18px;
+    background: #F4F7FB;
+    border: 1px solid rgba(0, 42, 92, .16);
+    border-left: 4px solid var(--uoft-navy);
+  }
+  .phase-source-panel strong {
+    display: block;
+    color: var(--uoft-navy);
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .phase-source-panel p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .phase-source-panel a {
+    color: var(--uoft-navy);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--uoft-teal);
+  }
+  @media (max-width: 620px) {
+    .phase-source-panel { grid-template-columns: 1fr; }
+    .phase-source-panel a { width: fit-content; white-space: normal; }
+  }
+  .qs-group-do { order: 10; color: var(--uoft-navy); }
+  .qs-row-do { order: 11; }
+  .qs-group-watch { order: 20; color: #8A5A00; }
+  .qs-row-watch { order: 21; }
+  .qs-group-setup { order: 30; color: var(--uoft-teal); }
+  .qs-row-setup { order: 31; }
+  .qs-card .qs-row-milestone { order: 22; }
+  .task-check {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 9px;
+    align-items: start;
+    cursor: pointer;
+  }
+  .task-check input {
+    width: 17px;
+    height: 17px;
+    margin: 2px 0 0;
+    accent-color: var(--uoft-teal);
+  }
+  .task-check input:checked + .qs-row-title {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+  .task-check ~ .qs-row-desc,
+  .task-check ~ .qs-row-link { margin-left: 29px; }
+  .personal-checklist-note {
+    order: 12;
+    margin: 10px 0 16px;
+    color: var(--ink-muted);
+    font-size: 11.5px;
+    line-height: 1.5;
   }
 
   /* ── Phase 01: community spotlight cards ── */
@@ -1646,6 +1717,44 @@
     margin-left: 6px;
     vertical-align: middle;
   }
+  .step-group-heading {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 16px 0 -2px;
+    padding: 0 0 9px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .step-group-heading h4 {
+    margin: 0;
+    color: var(--uoft-navy);
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .step-group-heading span {
+    color: var(--ink-muted);
+    font-size: 11px;
+  }
+  .step-group-events { order: 10; }
+  .category-events { order: 11; border-top-color: #7667A8; background: #FBFAFE; }
+  .step-group-money { order: 20; }
+  .category-money { order: 21; border-top-color: #2C806B; background: #F7FCFA; }
+  .step-group-planning { order: 30; }
+  .category-planning { order: 31; border-top-color: #C56C51; background: #FFF9F6; }
+  .step-card-category {
+    display: inline-block;
+    margin: 0 0 7px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .category-events .step-card-category { color: #5B4C8B; }
+  .category-money .step-card-category { color: #176653; }
+  .category-planning .step-card-category { color: #93462F; }
 
   /* ── Phase 05: final stretch ── */
   .final-stretch {
@@ -6465,6 +6574,13 @@
     border: 1px solid var(--hairline); background: #fff;
   }
   .buy-source-bar p { margin: 0; max-width: 62ch; }
+  .buy-source-meta {
+    display: block;
+    margin-top: 5px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    font-weight: 500;
+  }
   .buy-source-bar a {
     color: var(--uoft-navy); font-size: 12px; font-weight: 700;
     text-decoration: none; border-bottom: 1px solid var(--uoft-teal);
@@ -7031,21 +7147,28 @@
         </div>
       </div>
       <div class="phase-items">
+        <div class="phase-source-panel">
+          <div>
+            <strong>Your offer letter and Faculty instructions come first.</strong>
+            <p>This checklist shows the sequence for the May 12, 2026 offer group. Later offers may have different deadlines or instructions.</p>
+          </div>
+          <a href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Open official instructions ↗</a>
+        </div>
 
         <div class="qs-card">
 
-          <p class="qs-group-eyebrow">Paperwork</p>
+          <p class="qs-group-eyebrow qs-group-do">Do now</p>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-do">
             <div>
-              <p class="qs-row-title">Accept your offer on OMSAS</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="omsas-offer"><span class="qs-row-title">Accept your offer on OMSAS</span></label>
               <p class="qs-row-desc">For the May 12, 2026 offers, the Faculty listed May 26 as the response deadline. Submit through OMSAS and keep the confirmation email. A later offer may have a different deadline, so your offer letter remains the authority.</p>
               <a class="qs-row-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Official: Accepting Your Offer ↗</a>
             </div>
             <span class="qs-pill qs-pill-deadline">May 26</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-watch">
             <div>
               <p class="qs-row-title">Watch for your OMSAS receipt</p>
               <p class="qs-row-desc">OMSAS sends an automated email confirming that your response was received. Keep it with your acceptance records.</p>
@@ -7053,7 +7176,7 @@
             <span class="qs-pill qs-pill-soft">After response</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-watch">
             <div>
               <p class="qs-row-title">Welcome email from the Faculty</p>
               <p class="qs-row-desc">Watch for Faculty emails with registration forms, events, and next steps. Processing time varies, so do not treat an upper-year timeline as a deadline.</p>
@@ -7061,46 +7184,50 @@
             <span class="qs-pill qs-pill-soft">After accept</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-do">
             <div>
-              <p class="qs-row-title">Submit both copies of your Consent Form</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="consent-form"><span class="qs-row-title">Submit both copies of your Consent Form</span></label>
               <p class="qs-row-desc">The same signed Response and Consent Form is submitted twice: an electronic copy through the secure link and a hard copy to UME Enrolment Services by mail or in person. For the May 12 offers, the electronic copy was due May 26 and the hard copy June 5. Follow your offer letter if you received a later offer.</p>
               <a class="qs-row-link" href="https://applymd.utoronto.ca/accepting-your-offer" target="_blank" rel="noopener">Official submission instructions ↗</a>
             </div>
             <span class="qs-pill qs-pill-deadline">May 26 + Jun 5</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-do">
             <div>
-              <p class="qs-row-title">Pay your tuition deposit</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="tuition-deposit"><span class="qs-row-title">Pay your tuition deposit</span></label>
               <p class="qs-row-desc">For the May 12 offers, the tuition deposit was due June 5, 2026. Pay through ACORN using the method specified by the Faculty. Personal cheques, certified cheques or money orders and bank transfers are not accepted.</p>
               <a class="qs-row-link" href="https://www.acorn.utoronto.ca/" target="_blank" rel="noopener">ACORN ↗</a>
             </div>
             <span class="qs-pill qs-pill-deadline">June 5</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-do">
             <div>
-              <p class="qs-row-title">Send your official transcript to OMSAS</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="official-transcript"><span class="qs-row-title">Send your official transcript to OMSAS, if required</span></label>
               <p class="qs-row-desc">Only required if your offer has a degree conferral condition. Sent directly from your home university's registrar to OMSAS. Do not send to the UME office.</p>
             </div>
             <span class="qs-pill qs-pill-deadline">June 30</span>
           </div>
 
-          <p class="qs-group-eyebrow">Setup</p>
+          <p class="personal-checklist-note">These boxes are saved only in this browser. They help you organize the list but do not confirm receipt by OMSAS or the Faculty.</p>
 
-          <div class="qs-row">
+          <p class="qs-group-eyebrow qs-group-watch">Watch for</p>
+
+          <p class="qs-group-eyebrow qs-group-setup">Set up</p>
+
+          <div class="qs-row qs-row-setup">
             <div>
-              <p class="qs-row-title">Activate JoinID, then UTORid</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="utorid-setup"><span class="qs-row-title">Activate JoinID, then UTORid</span></label>
               <p class="qs-row-desc">JOINid gives newly admitted students access to ACORN. Follow the University's activation instructions to convert it to a UTORid and access U of T services.</p>
               <a class="qs-row-link" href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener">UTORid &amp; TCard activation ↗</a>
             </div>
             <span class="qs-pill qs-pill-soft">After accept</span>
           </div>
 
-          <div class="qs-row">
+          <div class="qs-row qs-row-setup">
             <div>
-              <p class="qs-row-title">Submit TCard photo and identity documents</p>
+              <label class="task-check"><input type="checkbox" data-acceptance-task="tcard-documents"><span class="qs-row-title">Submit TCard photo and identity documents</span></label>
               <p class="qs-row-desc">Use the University's documentation tool, submit your photo and identity documents online, then follow the approval email and current home-campus pickup instructions.</p>
               <a class="qs-row-link" href="https://tcard.utoronto.ca/get-your-utorid-tcard/" target="_blank" rel="noopener">Full TCard guide ↗</a>
             </div>
@@ -7196,91 +7323,124 @@
         </div>
       </div>
       <div class="phase-items">
+        <div class="phase-source-panel">
+          <div>
+            <strong>Current Faculty emails and pages control the dates.</strong>
+            <p>Some items below are required, some are optional and others apply only to certain students. The dates shown are confirmed 2026 examples.</p>
+          </div>
+          <a href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Open Faculty events ↗</a>
+        </div>
         <div class="step-grid">
 
-          <div class="step-card">
+          <div class="step-group-heading step-group-events">
+            <h4>Faculty events</h4>
+            <span>Optional unless your Faculty email says otherwise</span>
+          </div>
+          <div class="step-group-heading step-group-money">
+            <h4>Money and funding</h4>
+            <span>What to learn, apply for or arrange</span>
+          </div>
+          <div class="step-group-heading step-group-planning">
+            <h4>Academy and housing</h4>
+            <span>Decisions that shape where you will be</span>
+          </div>
+
+          <div class="step-card category-money">
+            <span class="step-card-category">Money · Recommended first</span>
             <p class="step-card-pill">Anytime · Self-paced</p>
             <h3>Financial Resources e-module</h3>
             <p>The Faculty's official walkthrough of LOCs, OSAP, bursaries, and institutional support. Work through this before any bank appointment.</p>
             <a class="step-card-link" href="https://emodules.med.utoronto.ca/DCemodules/FinancialResourcesExplorer1/story.html" target="_blank" rel="noopener">Financial Resources Explorer ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-events">
+            <span class="step-card-category">Faculty event · Optional</span>
             <p class="step-card-pill">May 13–14, 2026 · Optional</p>
             <h3>Welcome calls from upper-years</h3>
             <p>Optional check-in calls from current MD students to answer questions about student life and the GTA. Not mandatory; just a friendly hello.</p>
             <a class="step-card-link" href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Events &amp; Webinars ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-events">
+            <span class="step-card-category">Faculty event · Optional</span>
             <p class="step-card-pill">May 19, 2026 · 4:30–5:30 PM</p>
             <h3>St. George Academies Webinar</h3>
             <p>Meet the Academy Directors. They share what makes each academy distinct and the clinical learning opportunities at each.</p>
             <a class="step-card-link" href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Official event details ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-events">
+            <span class="step-card-category">Faculty event · MAM</span>
             <p class="step-card-pill">May 20, 2026 · 4:30–5:30 PM</p>
             <h3>Mississauga Academy of Medicine Webinar</h3>
             <p>For MAM-placed students. Faculty leadership and MAM student reps speak to student life and clinical experiences across Trillium Health Partners.</p>
             <a class="step-card-link" href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Official event details ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-events">
+            <span class="step-card-category">Faculty event · Optional</span>
             <p class="step-card-pill">May 21, 2026 · 4:00–5:00 PM</p>
             <h3>Financial Aid &amp; Awards Webinar</h3>
             <p>The Financial Aid team covers tuition, scholarships, and how to access funding. Check the event page or Faculty email for any recording or follow-up materials.</p>
             <a class="step-card-link" href="https://applymd.utoronto.ca/events-tours-academy-selection" target="_blank" rel="noopener">Official event details ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-money">
+            <span class="step-card-category">Money · If requested</span>
             <p class="step-card-pill">May be required by lender</p>
             <h3>Request your Letter of Confirmation</h3>
             <p>A bank may ask for this when setting up a Professional Student LOC. The Faculty processes requests through its current request form; confirm the lender's documentation requirements before applying.</p>
             <a class="step-card-link" href="https://survey.ca1.qualtrics.com/jfe/form/SV_8Dt7x3cB6vMXvtH" target="_blank" rel="noopener">Letter of Confirmation form ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-money">
+            <span class="step-card-category">Money · If applicable</span>
             <p class="step-card-pill">When needed · Processing varies</p>
             <h3>Open a Professional Student LOC <span class="step-card-tag">Time-sensitive</span></h3>
             <p>Compare the lenders' current written offers, including limits, rates, repayment terms and documentation requirements. Ask each lender whether it requires the Faculty's Letter of Confirmation.</p>
             <a class="step-card-link" href="finances.html">See the Finances comparison →</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-money">
+            <span class="step-card-category">Money · Apply early</span>
             <p class="step-card-pill">Apply early</p>
             <h3>Apply for OSAP (or your provincial equivalent)</h3>
             <p>Government aid may include grants as well as loans. Apply early enough for processing before fall fees, and use ACORN's deferral process if eligible.</p>
             <a class="step-card-link" href="finances.html#osap">OSAP &amp; bursary timeline →</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-money">
+            <span class="step-card-category">Funding · If applicable</span>
             <p class="step-card-pill">Per email</p>
             <h3>Admission bursary acceptance (if applicable)</h3>
             <p>Bursary recipients get a separate email with claim instructions. The acceptance steps differ from OSAP. Read the email and complete any forms by the deadline given.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-money">
+            <span class="step-card-category">Funding · Watch your email</span>
             <p class="step-card-pill">Watch Faculty email</p>
             <h3>Watch for the Temerty Grant Application <span class="step-card-tag">Program-wide email</span></h3>
             <p>The Faculty sends the application announcement to MD students, but eligibility is narrower than the email distribution. For 2025–26, eligible applicants generally needed qualifying Canadian status and provincial student-aid circumstances; MD Admissions Bursary recipients were reviewed automatically and did not reapply. Use the current email for the new cycle's criteria and deadline.</p>
             <a class="step-card-link" href="https://md.utoronto.ca/financial-aid" target="_blank" rel="noopener">MD Financial Aid ↗</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-planning">
+            <span class="step-card-category">Academy · Required for St. George</span>
             <p class="step-card-pill">Due June 21, 2026</p>
             <h3>Submit your Academy Selection survey <span class="step-card-tag">St. George only</span></h3>
             <p>For 3T0, St. George students rank FitzGerald, Peters-Boyd and Wightman-Berris. MAM students are assigned through their Mississauga offer. Follow the current survey and timing in your Faculty email.</p>
             <a class="step-card-link" href="handbook.html#academies">Read about the academies →</a>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-planning">
+            <span class="step-card-category">Academy · Watch your email</span>
             <p class="step-card-pill">June 24, 2026</p>
             <h3>Academy assignment arrives <span class="step-card-tag">St. George only</span></h3>
             <p>Your academy assignment is sent by email. Use it to refine your commute and housing search; assignment questions should go to the Faculty.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card category-planning">
+            <span class="step-card-category">Housing · Time-sensitive</span>
             <p class="step-card-pill">May – August</p>
             <h3>Start your housing search <span class="step-card-tag">Time-sensitive</span></h3>
             <p>Some students begin early; others wait for an academy assignment before narrowing the commute. The Housing guide compares neighbourhoods, residences, documents, and search tools.</p>
@@ -7554,11 +7714,10 @@
       </div>
       <h2>What you'll need to buy.</h2>
       <p>You do not need to buy everything in May. Use the current lookbook and bookstore page before placing an order.</p>
-      <p class="student-source-label">Product list checked against the 2026 lookbook</p>
     </div>
 
     <div class="buy-source-bar">
-      <p><strong>For 2026:</strong> review the equipment lookbook first, then use the bookstore order page. The listed closing date is August 3, 2026.</p>
+      <p><strong>For 2026:</strong> review the equipment lookbook first, then use the bookstore order page. The listed closing date is August 3, 2026.<span class="buy-source-meta">Equipment details checked against the 2026 student lookbook.</span></p>
       <div>
         <a href="https://drive.google.com/file/d/1SkpfsM9tdEez7tc9DgJqbuSNYqn0MxTC/view?usp=sharing" target="_blank" rel="noopener">Open lookbook ↗</a>
         &nbsp;&nbsp;
@@ -8010,6 +8169,20 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const boxes = document.querySelectorAll('[data-acceptance-task]');
+    if (!boxes.length) return;
+    boxes.forEach(function (box) {
+      const key = 'welcomeuoftmed.acceptance.' + box.dataset.acceptanceTask;
+      try { box.checked = localStorage.getItem(key) === '1'; } catch (error) {}
+      box.addEventListener('change', function () {
+        try { localStorage.setItem(key, box.checked ? '1' : '0'); } catch (error) {}
+      });
+    });
+  }());
+</script>
 
 </main>
 <footer class="footer">
