@@ -61,6 +61,11 @@
     align-items: center;
     justify-content: space-between;
   }
+  .ribbon-inner > span { font-weight: 700; color: #fff; }
+  @media (max-width: 620px) {
+    .ribbon-inner > a { display: none; }
+    .ribbon-inner { justify-content: center; text-align: center; letter-spacing: .04em; }
+  }
   .ribbon a { opacity: 0.8; transition: opacity 180ms; text-transform: uppercase; font-weight: 500; }
   .ribbon a:hover { opacity: 1; }
 
@@ -5676,8 +5681,8 @@
 
   /* Skip to content */
   .skip-link {
-    position: absolute;
-    top: -100%;
+    position: fixed;
+    top: 0;
     left: 16px;
     z-index: 9999;
     padding: 8px 16px;
@@ -5687,9 +5692,12 @@
     border-radius: 0 0 4px 4px;
     text-decoration: none;
     font-family: inherit;
+    transform: translateY(-140%);
+    transition: transform 160ms ease;
   }
-  .skip-link:focus {
-    top: 0;
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   /* Back to top */
@@ -6870,7 +6878,7 @@
     font-size: 9px;
     line-height: 1.35;
   }
-  .timed-event.is-teaching { border-left-color: var(--uoft-navy); }
+  .timed-event.is-teaching { border-left-color: var(--uoft-navy); background: #e8eefb; }
   .timed-event.is-cbl { border-left-color: var(--uoft-teal); background: #eaf5f7; }
   .timed-event.is-clinical { border-left-color: #557a46; background: #edf3e9; }
   .timed-event.is-longitudinal { border-left-color: #8b6b9c; background: #f2edf4; }
@@ -6881,6 +6889,7 @@
     border-left-style: dashed;
     background: rgba(244, 244, 242, 0.45);
   }
+  .timed-event.is-integration { border-left-color: #b56b22; background: #fff0df; }
   .timed-event[data-week-only] {
     display: none;
   }
@@ -7372,6 +7381,7 @@
 <!-- ============ Utility ribbon ============ -->
 <div class="ribbon">
   <div class="container ribbon-inner">
+    <span>Student-run guide · not an official UofT website</span>
     <a href="https://temertymedicine.utoronto.ca" target="_blank" rel="noopener">Temerty Faculty of Medicine ↗</a>
     <a href="https://md.utoronto.ca" target="_blank" rel="noopener" class="hide-mobile">MD Program ↗</a>
   </div>
@@ -7590,6 +7600,10 @@
         <p>Career exploration, specialty exposure and the EEE requirements described later on this page. The current CAP manual and MedSIS module should lead.</p>
       </details>
       <details>
+        <summary><span>ICE: Health in Community</span><small>Community Engaged Experiences</small></summary>
+        <p>A flexible two-year community-engaged learning thread. Students arrange and document CEEs with community organizations, then reflect on the learning during ICE: HC tutorials. The requirements are explained in the CEE section below.</p>
+      </details>
+      <details>
         <summary><span>Health Systems and Research</span><small>Longitudinal learning</small></summary>
         <p>Community, health-systems and research learning with its own activities and assessment expectations. Use the current student materials for the year-specific requirements.</p>
       </details>
@@ -7625,6 +7639,88 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ============ ICE: HC and CEE ============ -->
+<section class="section" id="cee">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">ICE: Health in Community</span>
+      </div>
+      <h2>Community Engaged Experiences, without the guesswork.</h2>
+      <p>A CEE is community-engaged learning within ICE: Health in Community. It is separate from Friday-morning Clinical Skills and is not simply volunteering or clinical shadowing. Students learn with community organizations, connect the experience to health and community and reflect on it through ICE: HC.</p>
+    </div>
+
+    <div class="cee-source-note">
+      <div>
+        <span class="source-kind">Confirmed course source</span>
+        <strong>ICE: HC manual and CEE guide · revised September 2025</strong>
+      </div>
+      <p>The checklist below is the confirmed requirement for <strong>2T9</strong>. Incoming cohorts should use their own current manual for any changed visit counts, dates or forms.</p>
+    </div>
+
+    <div class="cee-requirements" aria-label="2T9 Community Engaged Experience requirements">
+      <article><span>1 visit</span><strong>Long-term care</strong></article>
+      <article><span>1 visit</span><strong>Intellectual and developmental disabilities</strong></article>
+      <article><span>4 visits</span><strong>Flexible CEEs</strong></article>
+      <article><span>5+ visits</span><strong>One longitudinal community placement</strong></article>
+    </div>
+
+    <div class="cee-details">
+      <details open>
+        <summary>Arranging and approving a placement</summary>
+        <div>
+          <p>Students arrange their own CEEs. St. George students complete placements in Toronto or the GTA, excluding Mississauga. MAM students complete placements in Mississauga or the GTA, excluding Toronto. An exception requires advance approval from the ICE: HC Program Director.</p>
+          <p>If an opportunity is not already listed in MedSIS, send the agency and supervisor contact information to the central ICE: HC office so the placement and paperwork can be reviewed. The manual advises allowing at least three weeks.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What students are expected to do</summary>
+        <div>
+          <ul>
+            <li>Contact community supervisors professionally and respect the agency's capacity and requirements.</li>
+            <li>Log every placement in MedSIS.</li>
+            <li>Complete the required preparation and documentation in the current course materials.</li>
+            <li>Present and reflect on CEE learning during tutorials using the sign-up process provided by the course.</li>
+            <li>Track your own progress. Tutors monitor progress but do not arrange placements for students.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Absences, changes and current-year details</summary>
+        <div>
+          <p>Use the current ICE: HC manual and course announcements for deadlines, absence procedures, placement changes, forms and any make-up expectations. Contact your tutor and the central ICE: HC office early when something changes rather than relying on a previous cohort's process.</p>
+        </div>
+      </details>
+    </div>
+
+    <p class="cee-footnote">Source: <em>ICE: HC manual and CEE guide</em>, revised September 2025, especially the overview and CEE requirements on pp. 4 and 17–18. Course materials in Elentra and MedSIS remain the source for your cohort.</p>
+  </div>
+  <style>
+    .cee-source-note{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:28px;align-items:start;margin:30px 0 20px;padding:22px 24px;border-left:4px solid var(--student-warm);background:var(--student-warm-soft);}
+    .cee-source-note strong{display:block;margin-top:8px;color:var(--uoft-navy);font-family:'Roboto Slab',serif;font-size:18px;line-height:1.3;}
+    .cee-source-note p{color:var(--ink-soft);font-size:14px;line-height:1.6;}
+    .cee-requirements{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--hairline);background:#fff;}
+    .cee-requirements article{min-height:135px;padding:22px;border-right:1px solid var(--hairline);}
+    .cee-requirements article:last-child{border-right:0;}
+    .cee-requirements span{display:block;margin-bottom:12px;color:var(--uoft-teal);font-family:'Roboto Slab',serif;font-size:26px;font-weight:800;}
+    .cee-requirements strong{display:block;color:var(--uoft-navy);font-size:14px;line-height:1.45;}
+    .cee-details{margin-top:22px;border-top:1px solid var(--hairline);}
+    .cee-details details{border-bottom:1px solid var(--hairline);}
+    .cee-details summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 4px;color:var(--uoft-navy);font-weight:800;cursor:pointer;list-style:none;}
+    .cee-details summary::-webkit-details-marker{display:none;}
+    .cee-details summary::after{content:'+';color:var(--uoft-teal);font-size:22px;font-weight:500;}
+    .cee-details details[open] summary::after{content:'−';}
+    .cee-details details>div{max-width:900px;padding:0 4px 22px;color:var(--ink-soft);font-size:14px;line-height:1.65;}
+    .cee-details p+p{margin-top:12px;}
+    .cee-details ul{padding-left:20px;}
+    .cee-details li+li{margin-top:7px;}
+    .cee-footnote{margin-top:18px;color:var(--ink-muted);font-size:12px;line-height:1.6;}
+    @media(max-width:860px){.cee-requirements{grid-template-columns:1fr 1fr}.cee-requirements article:nth-child(2){border-right:0}.cee-requirements article:nth-child(-n+2){border-bottom:1px solid var(--hairline)}.cee-source-note{grid-template-columns:1fr}}
+    @media(max-width:560px){.cee-requirements{grid-template-columns:1fr}.cee-requirements article{min-height:0;border-right:0;border-bottom:1px solid var(--hairline)}.cee-requirements article:nth-child(3){border-bottom:1px solid var(--hairline)}.cee-requirements article:last-child{border-bottom:0}}
+  </style>
 </section>
 
 <!-- ============ Weekly rhythm ============ -->
@@ -7684,7 +7780,7 @@
 
           <div class="timed-event is-assessment" style="grid-column:2;grid-row:2/3" data-week-only="me"><strong>ME</strong><span>Monday · 8:00–9:00</span></div>
           <div class="timed-event is-clinical" style="grid-column:6;grid-row:2/6"><strong>ICE: Clinical Skills</strong><span>Friday · 8:00–12:00</span></div>
-          <div class="timed-event is-open starts-half-hour" style="grid-column:6;grid-row:7/10" data-hide-on="me"><strong>ISAL when scheduled</strong><span>Friday before an ME · 1:30–4:00</span></div>
+          <div class="timed-event is-integration starts-half-hour" style="grid-column:6;grid-row:7/10" data-hide-on="me"><strong>ISAL when scheduled</strong><span>Friday before an ME · 1:30–4:00</span></div>
         </div>
       </div>
 

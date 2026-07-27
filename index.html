@@ -59,6 +59,11 @@
     align-items: center;
     justify-content: space-between;
   }
+  .ribbon-inner > span { font-weight: 700; color: #fff; }
+  @media (max-width: 620px) {
+    .ribbon-inner > a { display: none; }
+    .ribbon-inner { justify-content: center; text-align: center; letter-spacing: .04em; }
+  }
   .ribbon a { opacity: 0.8; transition: opacity 180ms; text-transform: uppercase; font-weight: 500; }
   .ribbon a:hover { opacity: 1; }
 
@@ -5797,8 +5802,8 @@
 
   /* Skip to content */
   .skip-link {
-    position: absolute;
-    top: -100%;
+    position: fixed;
+    top: 0;
     left: 16px;
     z-index: 9999;
     padding: 8px 16px;
@@ -5808,9 +5813,12 @@
     border-radius: 0 0 4px 4px;
     text-decoration: none;
     font-family: inherit;
+    transform: translateY(-140%);
+    transition: transform 160ms ease;
   }
-  .skip-link:focus {
-    top: 0;
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   /* Back to top */
@@ -6274,6 +6282,7 @@
 <!-- ============ Utility ribbon ============ -->
 <div class="ribbon">
   <div class="container ribbon-inner">
+    <span>Student-run guide · not an official UofT website</span>
     <a href="https://temertymedicine.utoronto.ca" target="_blank" rel="noopener">Temerty Faculty of Medicine ↗</a>
     <a href="https://md.utoronto.ca" target="_blank" rel="noopener" class="hide-mobile">MD Program ↗</a>
   </div>

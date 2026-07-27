@@ -6195,8 +6195,8 @@
 
   /* Skip to content */
   .skip-link {
-    position: absolute;
-    top: -100%;
+    position: fixed;
+    top: 0;
     left: 16px;
     z-index: 9999;
     padding: 8px 16px;
@@ -6206,9 +6206,12 @@
     border-radius: 0 0 4px 4px;
     text-decoration: none;
     font-family: inherit;
+    transform: translateY(-140%);
+    transition: transform 160ms ease;
   }
-  .skip-link:focus {
-    top: 0;
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   /* Jump nav */
