@@ -6912,6 +6912,7 @@
   .timed-event[data-week-only] {
     display: none;
   }
+  .timed-board[data-mode="typical"] .timed-event[data-week-only="typical"],
   .timed-board[data-mode="me"] .timed-event[data-week-only="me"],
   .timed-board[data-mode="portfolio"] .timed-event[data-week-only="portfolio"] {
     display: block;
@@ -7402,6 +7403,10 @@
 <main id="main-content">
 <section class="page-hero">
   <div class="container">
+    <div class="hero-disclaimer">
+      <span class="hero-disclaimer-label">Independent student guide · Published May 2026 · Reviewed August 2026</span>
+      <span>I maintain this guide as an unpaid, independent volunteer project. It reflects my experience as a U of T medical student and information reviewed for the Class of 3T0. It is not an official University of Toronto or Temerty Faculty of Medicine website. Details can change, so confirm requirements, dates and policies through the official sources linked on this page.</span>
+    </div>
     <div class="page-hero-grid">
       <div>
         <div class="eyebrow">
@@ -7667,13 +7672,13 @@
 
           <div class="timed-event is-assessment" style="grid-column:2;grid-row:2/3" data-week-only="me"><strong>ME</strong><span>Monday · 8:00–9:00</span></div>
           <div class="timed-event is-clinical" style="grid-column:6;grid-row:2/6"><strong>ICE: Clinical Skills</strong><span>Friday · 8:00–12:00</span></div>
-          <div class="timed-event is-integration starts-half-hour" style="grid-column:6;grid-row:7/10" data-hide-on="me"><strong>ISAL when scheduled</strong><span>Friday before an ME · 1:30–4:00</span></div>
+          <div class="timed-event is-integration starts-half-hour" style="grid-column:6;grid-row:7/10" data-week-only="typical"><strong>ISAL when scheduled</strong><span>Usually the Friday before an ME · 1:30–4:00</span></div>
         </div>
       </div>
 
       <div class="timed-week-notes">
         <div><strong>*Tuesday afternoons vary.</strong><span>You may attend only your assigned section, rotate between activities or have a different time from another section.</span></div>
-        <div><strong>In this 2T9 example, MEs were Monday from 8:00–9:00.</strong><span>They were generally about every two weeks. ISAL was usually the preceding Friday from 1:30–4:00.</span></div>
+        <div><strong>In this 2T9 example, MEs were Monday from 8:00–9:00.</strong><span>They were generally about every two weeks. ISAL was usually held the preceding Friday from 1:30–4:00, not every Friday.</span></div>
         <div><strong>Do not schedule from this illustration.</strong><span>Use MedSIS for dates, rooms, mandatory status and changes.</span></div>
       </div>
       <p class="claim-source"><strong>Schedule provenance:</strong> this is a student-reported illustration based on the site maintainer’s 2T9 schedule, not a published 3T0 timetable. The 2026–27 Faculty key-dates sheet confirms the starts of ITM, CPC 1 and CPC 2, Clinical Skills and Portfolio, but it does not establish this recurring weekly layout. Use <a href="https://medsis.utoronto.ca/" target="_blank" rel="noopener">MedSIS <span class="footer-ext">↗</span></a> for every confirmed session.</p>
@@ -7860,21 +7865,6 @@
         <p class="resource-attribution">Created by Omar Elbardisy · 2T5 · Original shared Drive folder · Last checked July 2026</p>
       </article>
 
-
-
-      <article class="data-card">
-        <div class="eyebrow">
-          <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">WFQ Answers</span>
-        </div>
-        <h3>Weekly Feedback Question answers</h3>
-        <p>Cohort-compiled answer banks for weekly feedback questions, organized by week. These are student-created and may contain mistakes. Use them to compare reasoning after attempting the questions yourself.</p>
-        <ul class="data-bullets">
-          <li><a href="https://docs.google.com/spreadsheets/d/101XiXkusHjrfg1WpJ3E2LJ0TZawPispSXbNfIT-PI6Q/edit?gid=1535485621#gid=1535485621" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Spreadsheet version <span class="footer-ext">↗</span></a></li>
-          <li><a href="https://drive.google.com/drive/folders/1k2PeZi-Mz0DkIaporLTVFJjh7Q1s35Ti" target="_blank" rel="noopener" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Google Drive version <span class="footer-ext">↗</span></a></li>
-        </ul>
-        <p class="resource-attribution">Cohort-compiled · Individual contributors not confirmed · Original shared spreadsheet and folder · Last checked July 2026</p>
-      </article>
     </div>
 
     <div class="callout-soft">
@@ -8391,7 +8381,7 @@
   <div class="container footer-inner">
     <div class="footer-disclaimer">
       <strong>Not affiliated with the University of Toronto or the Temerty Faculty of Medicine.</strong>
-      This is an independent, student-created guide. Always verify academic, assessment, scheduling and administrative information with current Faculty sources.
+      This unpaid, independently maintained student guide reflects one student's experience. Always verify academic, assessment, scheduling and administrative information through official Faculty sources. To report a correction, <a href="feedback.html">contact the webmaster through the Feedback page</a>.
     </div>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -8436,7 +8426,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 · Maintained by upper-year UofT Medicine students</p>
+      <p>© 2026 · Independently maintained by a U of T medical student</p>
       <a href="https://indigenous.utoronto.ca/about/land-acknowledgement" target="_blank" rel="noopener">Traditional Land Acknowledgement</a>
     </div>
   </div>
