@@ -6869,7 +6869,7 @@
 <div class="has-toc">
 
 <!-- ============ Official sources first ============ -->
-<section class="section" id="official-sources" style="padding-bottom:0;">
+<section class="section" id="official-sources" style="padding-bottom:24px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -6906,7 +6906,7 @@
 </section>
 
 <!-- ============ Cost overview ============ -->
-<section class="section" id="costs">
+<section class="section" id="costs" style="padding-top:48px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7039,7 +7039,7 @@
 </section>
 
 <!-- ============ LOC overview ============ -->
-<section class="section section-soft" id="loc">
+<section class="section section-soft" id="loc" style="padding-top:64px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7175,7 +7175,7 @@
 </section>
 
 <!-- ============ LOC Calculator ============ -->
-<section class="section" id="loc-calculator">
+<section class="section" id="loc-calculator" style="padding-top:64px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7601,7 +7601,7 @@ lcCalc();
 </section>
 
 <!-- ============ Detailed comparison table ============ -->
-<section class="section section-soft" id="bank-tool">
+<section class="section section-soft" id="bank-tool" style="padding-top:56px;padding-bottom:40px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -7612,22 +7612,31 @@ lcCalc();
       <p>Select the banks you are considering, then move through one category at a time. Published terms are marked separately from advisor-reported information. Promotions and individual approvals can change.</p>
     </div>
 
-    <div class="verified-qa-badge">
-      <div class="verified-qa-badge-mark" aria-hidden="true">✓</div>
-      <div>
-        <p class="verified-qa-badge-eyebrow">How this comparison was prepared</p>
-        <p class="verified-qa-badge-text">Ali met individually with an advisor from each bank in 2026 and asked the questions below. Their answers were compared with the banks' official webpages, which were rechecked July 27, 2026. Anything available only from an advisor conversation is labelled. Bank offers, approvals and agreements vary, so verify every term directly with the bank and in your own written agreement before signing.</p>
+    <div class="comparison-notes">
+      <div class="verified-qa-badge">
+        <div class="verified-qa-badge-mark" aria-hidden="true">✓</div>
+        <div>
+          <p class="verified-qa-badge-eyebrow">How I prepared this comparison</p>
+          <p class="verified-qa-badge-text">I met with an advisor from each bank in 2026 and asked the questions below. I then compared their answers with the banks' public webpages, which I rechecked on July 27, 2026. Information available only through an advisor is labelled.</p>
+        </div>
+      </div>
+
+      <div class="verified-qa-badge is-advice">
+        <div class="verified-qa-badge-mark" aria-hidden="true">!</div>
+        <div>
+          <p class="verified-qa-badge-eyebrow">Before you sign</p>
+          <p class="verified-qa-badge-title">Get the important terms in writing.</p>
+          <p class="verified-qa-badge-text">If an advisor tells you something different from the public page, ask which term will appear in your agreement.</p>
+        </div>
       </div>
     </div>
 
-    <div class="verified-qa-badge is-advice">
-      <div class="verified-qa-badge-mark" aria-hidden="true">!</div>
-      <div>
-        <p class="verified-qa-badge-eyebrow">Before you sign</p>
-        <p class="verified-qa-badge-title">Ask for the important terms in writing.</p>
-        <p class="verified-qa-badge-text">If a conversation and the bank's public page do not match, ask the specialist to explain the difference and identify which term will appear in your agreement.</p>
-      </div>
-    </div>
+    <style>
+      .comparison-notes{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:16px;margin-bottom:28px;}
+      .comparison-notes .verified-qa-badge{height:100%;margin:0;padding:18px 20px;background:#fff;border:1px solid var(--hairline);border-left:3px solid var(--uoft-navy);}
+      .comparison-notes .verified-qa-badge.is-advice{border-left-color:var(--uoft-teal);}
+      @media(max-width:800px){.comparison-notes{grid-template-columns:1fr;}}
+    </style>
 
     <div class="bank-tool-controls">
       <div class="bank-picker-toggle" role="group" aria-label="Choose which banks to show">
@@ -8025,28 +8034,37 @@ lcCalc();
 </section>
 
 <!-- ============ Negotiation tips ============ -->
-<section class="section section-soft" id="bank-comparison" style="padding-top:72px;">
+<section class="section section-soft" id="bank-comparison" style="padding-top:40px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header" style="margin-bottom: 24px;">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">How to Negotiate</span>
       </div>
-      <h2>Compare the agreement, not only the promotion.</h2>
-      <p>Published offers are a useful starting point. Your approval, credit limit and final terms depend on the lender. Compare written offers and make sure the agreement matches what you were told.</p>
+      <h2>What to compare before choosing a bank.</h2>
+      <p>The promotion may get your attention, but the written agreement determines what you are actually getting. Take the time to compare the details below.</p>
     </div>
-    <ul class="key-dates" style="max-width: 640px;">
-      <li><span class="key-dates-month">Compare</span><span class="key-dates-event">Get written offers from at least two banks before deciding — they match each other more readily once you have one on paper.</span></li>
-      <li><span class="key-dates-month">Ask</span><span class="key-dates-event">Ask how interest is calculated, when payments begin and whether access to the LOC changes during residency.</span></li>
-      <li><span class="key-dates-month">Confirm</span><span class="key-dates-event">Get key terms — bonuses, grace periods, rate adjustments — in writing before signing. Verbal commitments don't count.</span></li>
-      <li><span class="key-dates-month">Review</span><span class="key-dates-event">Check bundled cards and insurance on their own merits, not as a default you accept unread.</span></li>
-      <li><span class="key-dates-month">Decide</span><span class="key-dates-event">Take the time you need to compare the full package. A short-lived promotion should not drive a long-term borrowing decision.</span></li>
-    </ul>
+    <div class="negotiation-grid">
+      <article><span>01</span><h3>Get more than one offer</h3><p>Ask at least two banks for written offers. A bank may be more willing to match a competing offer when you have it on paper.</p></article>
+      <article><span>02</span><h3>Ask how the LOC works over time</h3><p>Confirm how interest is calculated, when payments begin and whether your access changes during residency.</p></article>
+      <article><span>03</span><h3>Write down what you were promised</h3><p>Bonuses, grace periods and rate adjustments should appear in writing. Do not rely on a verbal promise.</p></article>
+      <article><span>04</span><h3>Look at the extras separately</h3><p>Decide whether the bundled credit cards and insurance products are actually useful to you.</p></article>
+      <article><span>05</span><h3>Take your time</h3><p>A promotion that expires soon should not rush you into a borrowing agreement that may follow you for years.</p></article>
+    </div>
+    <style>
+      .negotiation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+      .negotiation-grid article{padding:20px;border:1px solid var(--hairline);border-top:3px solid var(--uoft-teal);background:#fff;}
+      .negotiation-grid article>span{display:block;margin-bottom:9px;color:var(--uoft-teal);font-size:11px;font-weight:800;letter-spacing:.14em;}
+      .negotiation-grid h3{margin:0 0 8px;color:var(--uoft-navy);font:800 17px/1.3 'Roboto Slab',serif;}
+      .negotiation-grid p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.55;}
+      @media(max-width:900px){.negotiation-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+      @media(max-width:600px){.negotiation-grid{grid-template-columns:1fr;}}
+    </style>
   </div>
 </section>
 
 <!-- ============ OSAP + Bursaries ============ -->
-<section class="section" id="osap">
+<section class="section" id="osap" style="padding-top:56px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -8056,12 +8074,20 @@ lcCalc();
       <h2>Check every source of support before drawing from an LOC.</h2>
       <p>Even if you expect to use an LOC, check whether you qualify for government grants, Faculty bursaries or other non-repayable support. Students from outside Ontario should apply through their home province or territory.</p>
     </div>
-    <ul class="key-dates">
-      <li><span class="key-dates-month">Ontario</span><span class="key-dates-event"><strong>OSAP</strong> may include loans and grants. Use the current OSAP application and U of T instructions.</span></li>
-      <li><span class="key-dates-month">Elsewhere</span><span class="key-dates-event"><strong>Provincial or territorial aid</strong> is administered by your home jurisdiction. Processes and timelines differ.</span></li>
-      <li><span class="key-dates-month">Faculty</span><span class="key-dates-event"><strong>Bursaries, grants and awards</strong> may require a separate application. Watch official MD Program and academy messages.</span></li>
-      <li><span class="key-dates-month">External</span><span class="key-dates-event"><strong>Scholarships and awards</strong> can have early or highly specific deadlines. Confirm eligibility with the funder.</span></li>
-    </ul>
+    <div class="aid-grid">
+      <article><span>Ontario students</span><h3>OSAP</h3><p>OSAP may include loans and grants. Use the current OSAP application and U of T instructions.</p></article>
+      <article><span>Students from another province</span><h3>Your provincial or territorial program</h3><p>Apply through your home jurisdiction. The process and deadlines will be different from OSAP.</p></article>
+      <article><span>Temerty Medicine</span><h3>Faculty bursaries, grants and awards</h3><p>Some opportunities require a separate application. Watch official MD Program and academy messages.</p></article>
+      <article><span>Other organizations</span><h3>External scholarships and awards</h3><p>These can have early or very specific deadlines. Confirm eligibility directly with the funder.</p></article>
+    </div>
+    <style>
+      .aid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:24px;}
+      .aid-grid article{padding:20px 22px;border:1px solid var(--hairline);background:var(--paper-soft);}
+      .aid-grid span{display:block;margin-bottom:8px;color:var(--uoft-teal);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;}
+      .aid-grid h3{margin:0 0 8px;color:var(--uoft-navy);font:800 17px/1.3 'Roboto Slab',serif;}
+      .aid-grid p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.55;}
+      @media(max-width:700px){.aid-grid{grid-template-columns:1fr;}}
+    </style>
     <p class="key-dates-note"><strong>Timing varies each year.</strong> Apply early enough for assessment and any required documents to be processed before registration. Use current government, Faculty and Student Accounts pages rather than last year's dates.</p>
 
     <div class="pull-callout" style="margin-top: 32px;">
@@ -8078,7 +8104,7 @@ lcCalc();
 </section>
 
 <!-- ============ Tuition payment + deferral ============ -->
-<section class="section section-soft" id="tuition-deferral">
+<section class="section section-soft" id="tuition-deferral" style="padding-top:56px;padding-bottom:64px;">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -8220,6 +8246,7 @@ lcCalc();
       .tpt{font-size:13px;font-weight:600;padding:9px 18px;border-radius:8px;border:1px solid var(--hairline);background:white;color:var(--ink-soft);cursor:pointer;font-family:inherit;}
       .tpt.active{background:var(--uoft-navy);border-color:var(--uoft-navy);color:#fff;}
       .tuition-path-panel{margin-top:8px;padding:24px 26px 26px;border-top:4px solid var(--student-warm);background:#fff;box-shadow:0 8px 24px rgba(0,26,112,.05);}
+      .tuition-path-panel.hidden{display:none;}
       .tuition-path-panel h3{font-family:'Roboto Slab',serif;font-weight:800;font-size:22px;color:var(--uoft-navy);margin:0 0 10px;}
       .tuition-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:20px 0;}
       @media (max-width:760px){.tuition-steps{grid-template-columns:1fr;}}
@@ -8285,7 +8312,7 @@ lcCalc();
 </section>
 
 <!-- ============ Additional resources ============ -->
-<section class="section" id="verify">
+<section class="section" id="verify" style="padding-top:56px;">
   <div class="container">
     <div class="resources-grid">
       <div class="resources-head">
