@@ -4,9 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Housing · UofT Student MD Guide</title>
+<meta name="description" content="A student guide to housing near U of T Medicine, with neighbourhoods, buildings, commute information and practical advice." />
+<link rel="canonical" href="https://welcomeuoftmed.ca/housing.html" />
+<meta property="og:type" content="website" /><meta property="og:site_name" content="UofT Student MD Guide" /><meta property="og:title" content="Housing · UofT Student MD Guide" /><meta property="og:description" content="Neighbourhoods, buildings, commute information and practical housing advice for U of T medical students." /><meta property="og:url" content="https://welcomeuoftmed.ca/housing.html" /><meta property="og:image" content="https://welcomeuoftmed.ca/social-preview.jpg" /><meta property="og:image:alt" content="University College on the University of Toronto Front Campus" />
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Housing · UofT Student MD Guide" /><meta name="twitter:description" content="Neighbourhoods, buildings, commute information and practical housing advice for U of T medical students." /><meta name="twitter:image" content="https://welcomeuoftmed.ca/social-preview.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="launch-polish.css" />
 <style>
   :root {
     --uoft-navy: #001A70;
@@ -9350,6 +9355,8 @@
     zoom: 13,
     scrollWheelZoom: false,
   });
+  map.getContainer().setAttribute('role', 'region');
+  map.getContainer().setAttribute('aria-label', 'Interactive map of student housing options');
 
   // Add a clean tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
