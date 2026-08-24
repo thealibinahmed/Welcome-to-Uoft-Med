@@ -6618,6 +6618,16 @@
     });
   });
 </script>
+
+<style id="site-collapsible-sections-style">
+/* Open-by-default section controls. Added as a light enhancement without changing section markup. */
+.site-collapsible-header{position:relative;padding-right:52px;}
+.site-collapse-toggle{position:absolute;right:0;top:0;width:38px;height:38px;border:1px solid var(--uoft-navy,#002a5c);background:#fff;color:var(--uoft-navy,#002a5c);font:600 24px/1 Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;}
+.site-collapse-toggle:hover,.site-collapse-toggle:focus-visible{background:var(--paper-soft,#f6f5f3);outline:none;}
+.site-collapse-toggle:focus-visible{box-shadow:0 0 0 3px rgba(0,122,163,.18);}
+@media(max-width:640px){.site-collapsible-header{padding-right:46px}.site-collapse-toggle{width:34px;height:34px;font-size:21px}}
+</style>
+
 </head>
 <body data-page="housing">
 
@@ -7137,7 +7147,7 @@
           <span class="eyebrow-text">Section 02 · Housing</span>
         </div>
         <h1>Find a place that works<br/>for your actual week.</h1>
-        <p class="page-hero-lede">Start with the official residence options, then use the map to understand neighbourhoods, buildings, and conservative commute estimates. Rent ranges and student notes are orientation—not live listings.</p>
+        <p class="page-hero-lede">If you’re figuring out where to live, start with your academy placement and the official residence options available to you. The map can then help you compare neighbourhoods, buildings and realistic commute times. Rent ranges and student notes are there to give you a sense of your options, not to act as live listings.</p>
       </div>
       <div>
         <div class="page-hero-meta">
@@ -7211,10 +7221,10 @@
     <div class="section-header">
       <div class="eyebrow">
         <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">UofT Residences</span>
+        <span class="eyebrow-text">Residence</span>
       </div>
-      <h2>Four options worth checking early.</h2>
-      <p>These are not interchangeable. Graduate House has designated incoming-MD spaces, Schreiberwood serves eligible MAM students, Massey uses a fellowship process, and Knox is selected through the St. George residence waitlist. Treat every deadline and fee as time-sensitive.</p>
+      <h2>Residence options for medical students</h2>
+      <p>U of T has several residence options, but they work differently and not every option is available to every medical student. Graduate House reserves spaces for incoming MD students, Schreiberwood is available to eligible MAM students, Massey has its own fellowship process and Knox is accessed through the St. George residence waitlist. Check the current eligibility, deadlines and fees before applying.</p>
     </div>
 
     <div class="residence-overview" aria-label="Residence options at a glance">
@@ -7548,8 +7558,8 @@
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Tenant Rights &amp; Documents</span>
       </div>
-      <h2>Know what you are signing.</h2>
-      <p>Most private residential rentals in Ontario are covered by the <em>Residential Tenancies Act</em>, but there are exceptions—including many university residences and some arrangements where a tenant shares a kitchen or bathroom with the owner or the owner's immediate family. Use the official resources for your situation.</p>
+      <h2>Renting and tenant rights</h2>
+      <p>If you are renting privately, it is worth knowing which rules apply before you sign a lease. Most rentals in Ontario are covered by the <em>Residential Tenancies Act</em>, but there are important exceptions, including many university residences and some situations where you share a kitchen or bathroom with the owner or their immediate family. Use the official resources below to confirm what applies to your rental.</p>
     </div>
 
     <div class="rights-intro">
@@ -9934,5 +9944,64 @@
   }, { passive: true });
 })();
 </script>
+
+<script id="site-collapsible-sections-script">
+(function(){
+  function setupSection(section){
+    if(section.dataset.collapsibleReady==='true') return;
+    var heading=section.querySelector('h2');
+    if(!heading) return;
+    var header=section.querySelector('.section-header');
+    var host=header||heading.parentElement;
+    if(!host) return;
+    var hideTargets=[];
+    if(header){
+      var container=header.parentElement;
+      var n=header.nextElementSibling;
+      while(n){hideTargets.push(n);n=n.nextElementSibling;}
+      if(container&&container.parentElement===section){
+        var s=container.nextElementSibling;
+        while(s){hideTargets.push(s);s=s.nextElementSibling;}
+      }
+    }else{
+      var n2=heading.nextElementSibling;
+      while(n2){hideTargets.push(n2);n2=n2.nextElementSibling;}
+    }
+    if(!hideTargets.length) return;
+    section.dataset.collapsibleReady='true';
+    host.classList.add('site-collapsible-header');
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='site-collapse-toggle';
+    button.setAttribute('aria-expanded','true');
+    var label=(heading.textContent||'section').trim();
+    button.setAttribute('aria-label','Collapse section: '+label);
+    button.textContent='−';
+    function setOpen(open){
+      hideTargets.forEach(function(el){el.hidden=!open;});
+      button.setAttribute('aria-expanded',String(open));
+      button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
+      button.textContent=open?'−':'+';
+      section.classList.toggle('is-site-collapsed',!open);
+    }
+    button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
+    host.appendChild(button);
+    section._siteSetOpen=setOpen;
+  }
+  function init(){
+    document.querySelectorAll('main section').forEach(setupSection);
+    function openHashTarget(){
+      if(!location.hash) return;
+      var target=document.getElementById(location.hash.slice(1));
+      var section=target&&target.closest('section');
+      if(section&&section._siteSetOpen) section._siteSetOpen(true);
+    }
+    openHashTarget();
+    window.addEventListener('hashchange',openHashTarget);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
 </body>
 </html>

@@ -6345,6 +6345,16 @@
     });
   });
 </script>
+
+<style id="site-collapsible-sections-style">
+/* Open-by-default section controls. Added as a light enhancement without changing section markup. */
+.site-collapsible-header{position:relative;padding-right:52px;}
+.site-collapse-toggle{position:absolute;right:0;top:0;width:38px;height:38px;border:1px solid var(--uoft-navy,#002a5c);background:#fff;color:var(--uoft-navy,#002a5c);font:600 24px/1 Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;}
+.site-collapse-toggle:hover,.site-collapse-toggle:focus-visible{background:var(--paper-soft,#f6f5f3);outline:none;}
+.site-collapse-toggle:focus-visible{box-shadow:0 0 0 3px rgba(0,122,163,.18);}
+@media(max-width:640px){.site-collapsible-header{padding-right:46px}.site-collapse-toggle{width:34px;height:34px;font-size:21px}}
+</style>
+
 </head>
 <body data-page="about">
 
@@ -6559,9 +6569,14 @@
         <span class="eyebrow-text">What's Changed</span>
       </div>
       <h2 style="font-family: 'Roboto Slab', serif; font-weight: 800; font-size: clamp(1.25rem, 2vw, 1.5rem); color: var(--uoft-navy); line-height: 1.2; margin-bottom: 6px;">Recent updates.</h2>
-      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: July 27, 2026</p>
+      <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 0;">Last updated: August 24, 2026</p>
 
       <div class="changelog-timeline">
+        <div class="changelog-timeline-entry">
+          <p class="changelog-timeline-date">August 24, 2026</p>
+          <p class="changelog-timeline-title">Guide content and usability updated</p>
+          <p class="changelog-timeline-body">Updated housing and finance guidance, added a dedicated mentorship-request path, refined the Field Guide filters and added collapsible sections to make longer pages easier to scan.</p>
+        </div>
         <div class="changelog-timeline-entry">
           <p class="changelog-timeline-date">July 27, 2026</p>
           <p class="changelog-timeline-title">Sources, links and page structure reviewed</p>
@@ -6652,5 +6667,64 @@
   }, { passive: true });
 })();
 </script>
+
+<script id="site-collapsible-sections-script">
+(function(){
+  function setupSection(section){
+    if(section.dataset.collapsibleReady==='true') return;
+    var heading=section.querySelector('h2');
+    if(!heading) return;
+    var header=section.querySelector('.section-header');
+    var host=header||heading.parentElement;
+    if(!host) return;
+    var hideTargets=[];
+    if(header){
+      var container=header.parentElement;
+      var n=header.nextElementSibling;
+      while(n){hideTargets.push(n);n=n.nextElementSibling;}
+      if(container&&container.parentElement===section){
+        var s=container.nextElementSibling;
+        while(s){hideTargets.push(s);s=s.nextElementSibling;}
+      }
+    }else{
+      var n2=heading.nextElementSibling;
+      while(n2){hideTargets.push(n2);n2=n2.nextElementSibling;}
+    }
+    if(!hideTargets.length) return;
+    section.dataset.collapsibleReady='true';
+    host.classList.add('site-collapsible-header');
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='site-collapse-toggle';
+    button.setAttribute('aria-expanded','true');
+    var label=(heading.textContent||'section').trim();
+    button.setAttribute('aria-label','Collapse section: '+label);
+    button.textContent='−';
+    function setOpen(open){
+      hideTargets.forEach(function(el){el.hidden=!open;});
+      button.setAttribute('aria-expanded',String(open));
+      button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
+      button.textContent=open?'−':'+';
+      section.classList.toggle('is-site-collapsed',!open);
+    }
+    button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
+    host.appendChild(button);
+    section._siteSetOpen=setOpen;
+  }
+  function init(){
+    document.querySelectorAll('main section').forEach(setupSection);
+    function openHashTarget(){
+      if(!location.hash) return;
+      var target=document.getElementById(location.hash.slice(1));
+      var section=target&&target.closest('section');
+      if(section&&section._siteSetOpen) section._siteSetOpen(true);
+    }
+    openHashTarget();
+    window.addEventListener('hashchange',openHashTarget);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
 </body>
 </html>

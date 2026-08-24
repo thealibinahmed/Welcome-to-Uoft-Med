@@ -7131,6 +7131,16 @@
     .glossary-filter { flex: 1 1 auto; }
   }
 </style>
+
+<style id="site-collapsible-sections-style">
+/* Open-by-default section controls. Added as a light enhancement without changing section markup. */
+.site-collapsible-header{position:relative;padding-right:52px;}
+.site-collapse-toggle{position:absolute;right:0;top:0;width:38px;height:38px;border:1px solid var(--uoft-navy,#002a5c);background:#fff;color:var(--uoft-navy,#002a5c);font:600 24px/1 Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;}
+.site-collapse-toggle:hover,.site-collapse-toggle:focus-visible{background:var(--paper-soft,#f6f5f3);outline:none;}
+.site-collapse-toggle:focus-visible{box-shadow:0 0 0 3px rgba(0,122,163,.18);}
+@media(max-width:640px){.site-collapsible-header{padding-right:46px}.site-collapse-toggle{width:34px;height:34px;font-size:21px}}
+</style>
+
 </head>
 <body data-page="handbook">
 
@@ -8739,32 +8749,77 @@
     }
   }
 
-  /* Student life: filter the directory without hiding the broader context below it */
+  /* Student life: show the directory content that matches the selected group. */
   var groupsGrid = document.querySelector('#community-groups .groups-grid');
+  var councilRoles = document.querySelector('#community-groups .council-roles');
+  var interestBlock = document.querySelector('#community-groups .interest-groups-block');
+  var interestHeading = interestBlock ? interestBlock.previousElementSibling : null;
+  var interestNote = interestHeading ? interestHeading.previousElementSibling : null;
+
   if (groupsGrid) {
     var groupCards = Array.prototype.slice.call(groupsGrid.querySelectorAll(':scope > .group-card'));
+    var classCouncilCard = groupCards.find(function(card){ return ((card.querySelector('.group-card-title')||{}).textContent||'').trim()==='Class Council'; });
+    var medsocCard = groupCards.find(function(card){ return ((card.querySelector('.group-card-title')||{}).textContent||'').indexOf('Medical Society')!==-1; });
+
+    /* Give Interest Groups the same visual weight as the other directory categories. */
+    var interestCard = document.createElement('div');
+    interestCard.className = 'group-card';
+    interestCard.innerHTML = '<p class="group-card-eyebrow">Interest groups</p><h3 class="group-card-title">Specialty interest groups</h3><p class="group-card-body">Student-run groups for exploring specialties through talks, panels, mentorship and other programming. The active roster changes from year to year.</p>';
+    groupsGrid.appendChild(interestCard);
+    groupCards.push(interestCard);
+
+    if (interestBlock) interestBlock.hidden = true;
+    if (interestHeading && interestHeading.classList.contains('student-life-subhead-note')) interestHeading.remove();
+    if (interestNote && interestNote.classList.contains('student-life-subhead')) interestNote.remove();
+
+    /* MedSoc roles use the same role-map styling as Class Council, but remain separate. */
+    var medsocRoles = document.createElement('div');
+    medsocRoles.className = 'council-roles medsoc-roles';
+    medsocRoles.hidden = true;
+    medsocRoles.innerHTML = '<p class="council-roles-eyebrow">Medical Society · Role Map</p>'+
+      '<p class="council-roles-lede">The Medical Society executive represents students across all four years. Portfolios are generally held in senior and junior pairs where applicable; check the current MedSoc elections and executive pages for the active structure.</p>'+
+      '<div class="council-roles-grid">'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Leadership & administration</p><ul class="council-roles-list"><li>President</li><li>Speaker</li><li>Executive Administrator</li></ul></div>'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Education & student experience</p><ul class="council-roles-list"><li>VP Education</li><li>VP Student Engagement, St. George</li><li>VP MAM</li><li>VP International Students</li></ul></div>'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Operations & outreach</p><ul class="council-roles-list"><li>VP Finance</li><li>VP Communications</li><li>VP External Affairs</li><li>VP Equity, Diversity &amp; Inclusion</li><li>VP Global Health</li></ul></div>'+
+      '</div><p class="interest-groups-note"><a href="https://www.uoftmedsoc.com/exec" target="_blank" rel="noopener">Current MedSoc executive and portfolios ↗</a></p>';
+    if (councilRoles) councilRoles.insertAdjacentElement('afterend', medsocRoles);
+
     if (groupCards.length) {
       var groupFilters = document.createElement('div');
       groupFilters.className = 'group-filters';
       var groupOptions = [
         ['all', 'All groups'],
-        ['council', 'Councils'],
+        ['class-council', 'Class Council'],
+        ['medsoc', 'Medical Society'],
         ['faith', 'Faith'],
         ['cultural', 'Cultural'],
         ['affinity', 'Affinity'],
-        ['arts', 'Arts & activities']
+        ['arts', 'Arts & activities'],
+        ['interest', 'Interest groups']
       ];
-      groupOptions.forEach(function (option, optionIndex) {
+      function cardCategory(card){
+        if(card===classCouncilCard) return 'class-council';
+        if(card===medsocCard) return 'medsoc';
+        if(card===interestCard) return 'interest';
+        var label=((card.querySelector('.group-card-eyebrow')||{}).textContent||'').toLowerCase();
+        if(label.indexOf('faith')!==-1) return 'faith';
+        if(label.indexOf('cultural')!==-1) return 'cultural';
+        if(label.indexOf('affinity')!==-1) return 'affinity';
+        if(label.indexOf('arts')!==-1 || label.indexOf('extracurricular')!==-1) return 'arts';
+        return 'other';
+      }
+      groupOptions.forEach(function(option){
         var button = makeButton(option[1]);
-        button.addEventListener('click', function () {
-          groupCards.forEach(function (card) {
-            var label = (card.querySelector('.group-card-eyebrow') || {}).textContent || '';
-            card.hidden = option[0] !== 'all' && label.toLowerCase().indexOf(option[0]) === -1;
+        button.addEventListener('click', function(){
+          groupCards.forEach(function(card){
+            card.hidden = option[0] !== 'all' && cardCategory(card) !== option[0];
           });
-          Array.prototype.forEach.call(groupFilters.children, function (item) {
-            item.classList.toggle('is-active', item === button);
-          });
-          groupsGrid.classList.add('is-filtered');
+          if(councilRoles) councilRoles.hidden = option[0] !== 'class-council';
+          medsocRoles.hidden = option[0] !== 'medsoc';
+          if(interestBlock) interestBlock.hidden = option[0] !== 'interest';
+          Array.prototype.forEach.call(groupFilters.children,function(item){item.classList.toggle('is-active',item===button);});
+          groupsGrid.classList.toggle('is-filtered',option[0] !== 'all');
         });
         groupFilters.appendChild(button);
       });
@@ -8836,7 +8891,7 @@
       quickLinks.id = 'quick-links';
       var quickContainer = document.createElement('div');
       quickContainer.className = 'container';
-      quickContainer.innerHTML = '<div class="section-header"><div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Official sources</span></div><h2>Links worth bookmarking.</h2><p>Use these pages when a policy, deadline or platform detail needs to be current.</p></div>';
+      quickContainer.innerHTML = '<div class="section-header"><div class="eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-text">Official sources</span></div><h2>Official U of T links</h2><p>For policies, deadlines or platform details that may change, check the official pages below.</p></div>';
       quickLinks.appendChild(quickContainer);
       if (oldBookmarkLabel) oldBookmarkLabel.remove();
       if (officialCallout) quickContainer.appendChild(officialCallout);
@@ -8846,8 +8901,7 @@
     }
   }
 
-  /* Council roles: leadership, academy representation and working portfolios */
-  var councilRoles = document.querySelector('#community-groups .council-roles');
+  /* Class Council role filters */
   if (councilRoles) {
     var councilGrid = councilRoles.querySelector('.council-roles-grid');
     var councilGroups = councilGrid ? Array.prototype.slice.call(councilGrid.children) : [];
@@ -8884,20 +8938,6 @@
     }
   }
 
-  /* Interest groups belong with the council and student-opportunity map */
-  var interestBlock = document.querySelector('#community-groups .interest-groups-block');
-  var interestHeading = interestBlock ? interestBlock.previousElementSibling : null;
-  var interestNote = interestHeading ? interestHeading.previousElementSibling : null;
-  if (councilRoles && interestBlock) {
-    var interestTitle = document.createElement('h3');
-    interestTitle.className = 'interest-groups-title';
-    interestTitle.textContent = 'Interest groups';
-    interestBlock.prepend(interestTitle);
-    councilRoles.appendChild(interestBlock);
-    if (interestHeading && interestHeading.classList.contains('student-life-subhead-note')) interestHeading.remove();
-    if (interestNote && interestNote.classList.contains('student-life-subhead')) interestNote.remove();
-  }
-
   /* Prayer-space directory as an accessible modal instead of another full wall */
   var prayerHeading = document.getElementById('prayer-spaces');
   var prayerNote = prayerHeading ? prayerHeading.nextElementSibling : null;
@@ -8927,5 +8967,64 @@
   }
 })();
 </script>
+
+<script id="site-collapsible-sections-script">
+(function(){
+  function setupSection(section){
+    if(section.dataset.collapsibleReady==='true') return;
+    var heading=section.querySelector('h2');
+    if(!heading) return;
+    var header=section.querySelector('.section-header');
+    var host=header||heading.parentElement;
+    if(!host) return;
+    var hideTargets=[];
+    if(header){
+      var container=header.parentElement;
+      var n=header.nextElementSibling;
+      while(n){hideTargets.push(n);n=n.nextElementSibling;}
+      if(container&&container.parentElement===section){
+        var s=container.nextElementSibling;
+        while(s){hideTargets.push(s);s=s.nextElementSibling;}
+      }
+    }else{
+      var n2=heading.nextElementSibling;
+      while(n2){hideTargets.push(n2);n2=n2.nextElementSibling;}
+    }
+    if(!hideTargets.length) return;
+    section.dataset.collapsibleReady='true';
+    host.classList.add('site-collapsible-header');
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='site-collapse-toggle';
+    button.setAttribute('aria-expanded','true');
+    var label=(heading.textContent||'section').trim();
+    button.setAttribute('aria-label','Collapse section: '+label);
+    button.textContent='−';
+    function setOpen(open){
+      hideTargets.forEach(function(el){el.hidden=!open;});
+      button.setAttribute('aria-expanded',String(open));
+      button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
+      button.textContent=open?'−':'+';
+      section.classList.toggle('is-site-collapsed',!open);
+    }
+    button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
+    host.appendChild(button);
+    section._siteSetOpen=setOpen;
+  }
+  function init(){
+    document.querySelectorAll('main section').forEach(setupSection);
+    function openHashTarget(){
+      if(!location.hash) return;
+      var target=document.getElementById(location.hash.slice(1));
+      var section=target&&target.closest('section');
+      if(section&&section._siteSetOpen) section._siteSetOpen(true);
+    }
+    openHashTarget();
+    window.addEventListener('hashchange',openHashTarget);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
 </body>
 </html>

@@ -2748,24 +2748,26 @@
   /* ── Rep contact callout (Finances) ── */
   .rep-contact-callout {
     margin-top: 48px;
-    padding: 28px 32px;
-    background: var(--paper-soft);
-    border-left: 3px solid var(--uoft-teal);
+    padding: 24px 0 22px;
+    background: transparent;
+    border-top: 4px solid var(--uoft-navy);
+    border-bottom: 1px solid var(--hairline);
   }
   .rep-contact-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--uoft-teal);
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 800;
+    color: var(--uoft-navy);
     margin-bottom: 8px;
   }
   .rep-contact-lede {
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 15px;
+    line-height: 1.65;
     color: var(--ink-soft);
-    max-width: 680px;
-    margin-bottom: 20px;
+    max-width: 760px;
+    margin-bottom: 0;
   }
   .rep-contact-grid {
     display: grid;
@@ -6733,6 +6735,16 @@
     });
   });
 </script>
+
+<style id="site-collapsible-sections-style">
+/* Open-by-default section controls. Added as a light enhancement without changing section markup. */
+.site-collapsible-header{position:relative;padding-right:52px;}
+.site-collapse-toggle{position:absolute;right:0;top:0;width:38px;height:38px;border:1px solid var(--uoft-navy,#002a5c);background:#fff;color:var(--uoft-navy,#002a5c);font:600 24px/1 Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;}
+.site-collapse-toggle:hover,.site-collapse-toggle:focus-visible{background:var(--paper-soft,#f6f5f3);outline:none;}
+.site-collapse-toggle:focus-visible{box-shadow:0 0 0 3px rgba(0,122,163,.18);}
+@media(max-width:640px){.site-collapsible-header{padding-right:46px}.site-collapse-toggle{width:34px;height:34px;font-size:21px}}
+</style>
+
 </head>
 <body data-page="finances">
 
@@ -6946,7 +6958,7 @@
       <div class="cost-selector-result">
         <div class="cost-selector-row"><span>Tuition</span><strong id="cs-tuition">$23,550.00</strong></div>
         <div class="cost-selector-row"><span>Incidental + ancillary fees</span><strong id="cs-inc">$2,535.05</strong></div>
-        <div class="cost-selector-row"><span>Faculty planning estimate: books and equipment</span><strong>$1,000.00</strong></div>
+        
         <div class="cost-housing-control">
           <label class="cost-housing-toggle" for="cs-include-housing">
             <input type="checkbox" id="cs-include-housing">
@@ -6964,11 +6976,12 @@
           </div>
         </div>
         <div class="cost-selector-total">
-          <span id="cs-year-total">$27,085.05</span>
-          <p id="cs-total-label">School-related Year 1 baseline for the campus and category selected above.</p>
+          <span id="cs-year-total">$26,085.05</span>
+          <p id="cs-total-label">2026–27 tuition and compulsory fees for the campus and category selected above.</p>
         </div>
       </div>
-      <p class="cost-verify-note" style="margin-top:14px;"><span class="source-kind">Official Faculty source</span><br>Tuition, compulsory fees and the books/equipment planning estimate are from the <a href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">Faculty Current Fees page <span class="footer-ext">↗</span></a> for 2026–27 and were verified in July 2026. Housing is excluded by default because it is not a universal program cost. Fees and planning estimates are updated annually.</p>
+      <p class="cost-verify-note" style="margin-top:14px;"><span class="source-kind">Official Faculty source</span><br>Tuition and compulsory fees are from the <a href="https://md.utoronto.ca/current-fees" target="_blank" rel="noopener">Faculty Current Fees page <span class="footer-ext">↗</span></a> for 2026–27 and were verified in July 2026. The total above is the published school cost for the selected campus and domestic fee category. Housing is separate.</p>
+      <p class="cost-verify-note" style="margin-top:10px;"><strong>Books and equipment are separate from tuition.</strong> The Faculty lists $1,000 as a planning estimate for 2026–27. Add it to your personal budget if it is useful, but it is not included in the tuition-and-fees total above.</p>
     </div>
     <style>
       .cost-selector{border:1px solid var(--hairline);background:white;padding:28px;margin-top:8px;}
@@ -7021,7 +7034,7 @@
         var housing=housingToggle.checked?(Number(monthlyHousing.value)||0)*(Number(housingMonths.value)||0):0;
         tuitionEl.textContent=money(d.tuition);
         incEl.textContent=money(d.inc);
-        yearTotalEl.textContent=money(d.tuition+d.inc+1000+housing);
+        yearTotalEl.textContent=money(d.tuition+d.inc+housing);
         totalLabelEl.textContent=housingToggle.checked?'School-related costs plus your housing estimate.':'School-related Year 1 baseline for the campus and category selected above.';
       }
       document.querySelectorAll('[data-cost-selector] button').forEach(function(btn){
@@ -7206,6 +7219,8 @@
   .cw .ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;}
   .cw .ir{display:flex;flex-direction:column;gap:4px;}
   .cw .ir label{font-size:13px;color:var(--ink-soft);}
+  .cw #lc-funding-inputs .ig > div > label{min-height:2.8em;display:flex;align-items:flex-end;}
+
   .cw .ir input[type=number]{width:100%;padding:7px 10px;border:1px solid var(--hairline);border-radius:4px;font-size:14px;background:var(--paper-soft);color:var(--ink);font-family:inherit;}
   .cw .ih{font-size:11px;color:var(--ink-muted);margin-top:2px;}
   .cw .seg{display:inline-flex;border:1px solid var(--hairline);border-radius:4px;overflow:hidden;margin-bottom:1rem;}
@@ -7349,7 +7364,7 @@
         <div id="lc-living-inputs"></div>
       </details>
       <details class="cs cw-collapse">
-        <summary class="ct">Annual program costs <span class="cw-collapse-hint">(tuition, books — defaults preset)</span></summary>
+        <summary class="ct">Annual program costs <span class="cw-collapse-hint">(tuition + optional add-ons)</span></summary>
         <div id="lc-program-inputs"></div>
       </details>
       <details class="cs cw-collapse">
@@ -7398,7 +7413,7 @@ const LIVING_FIELDS=[
 ];
 const PROGRAM_FIELDS=[
  {id:'lc-tuition',label:'Tuition and compulsory fees / year ($)',default:26085.05,hint:'UofT MD $26,085.05, Ontario domestic, St. George (2026–27); confirm each year as fees increase'},
-  {id:'lc-books',label:'Books & equipment / year ($)',default:1000,hint:'Faculty planning estimate for 2026–27; replace with your own expected costs'},
+  {id:'lc-books',label:'Books & equipment add-on / year ($)',default:0,hint:'optional: Faculty planning estimate is $1,000 for 2026–27; replace with your own expected costs'},
 ];
 const FUNDING_FIELDS=[
  {id:'lc-osap',label:'Government aid / year ($)',default:0,hint:'enter only the non-repayable or usable amount you intend to apply against costs'},
@@ -7622,8 +7637,8 @@ lcCalc();
         <span class="eyebrow-rule"></span>
         <span class="eyebrow-text">Compare LOCs</span>
       </div>
-      <h2>Eighteen useful questions, organized into six shorter comparisons.</h2>
-      <p>Select the banks you are considering, then move through one category at a time. Published terms are marked separately from advisor-reported information. Promotions and individual approvals can change.</p>
+      <h2>Compare professional student lines of credit</h2>
+      <p>Choose the banks you are considering and compare the same questions across each one. Publicly available terms are separated from information I was given by advisors, since promotions and individual approvals can change.</p>
     </div>
 
     <div class="comparison-notes">
@@ -8493,5 +8508,64 @@ lcCalc();
   }, { passive: true });
 })();
 </script>
+
+<script id="site-collapsible-sections-script">
+(function(){
+  function setupSection(section){
+    if(section.dataset.collapsibleReady==='true') return;
+    var heading=section.querySelector('h2');
+    if(!heading) return;
+    var header=section.querySelector('.section-header');
+    var host=header||heading.parentElement;
+    if(!host) return;
+    var hideTargets=[];
+    if(header){
+      var container=header.parentElement;
+      var n=header.nextElementSibling;
+      while(n){hideTargets.push(n);n=n.nextElementSibling;}
+      if(container&&container.parentElement===section){
+        var s=container.nextElementSibling;
+        while(s){hideTargets.push(s);s=s.nextElementSibling;}
+      }
+    }else{
+      var n2=heading.nextElementSibling;
+      while(n2){hideTargets.push(n2);n2=n2.nextElementSibling;}
+    }
+    if(!hideTargets.length) return;
+    section.dataset.collapsibleReady='true';
+    host.classList.add('site-collapsible-header');
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='site-collapse-toggle';
+    button.setAttribute('aria-expanded','true');
+    var label=(heading.textContent||'section').trim();
+    button.setAttribute('aria-label','Collapse section: '+label);
+    button.textContent='−';
+    function setOpen(open){
+      hideTargets.forEach(function(el){el.hidden=!open;});
+      button.setAttribute('aria-expanded',String(open));
+      button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
+      button.textContent=open?'−':'+';
+      section.classList.toggle('is-site-collapsed',!open);
+    }
+    button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
+    host.appendChild(button);
+    section._siteSetOpen=setOpen;
+  }
+  function init(){
+    document.querySelectorAll('main section').forEach(setupSection);
+    function openHashTarget(){
+      if(!location.hash) return;
+      var target=document.getElementById(location.hash.slice(1));
+      var section=target&&target.closest('section');
+      if(section&&section._siteSetOpen) section._siteSetOpen(true);
+    }
+    openHashTarget();
+    window.addEventListener('hashchange',openHashTarget);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
 </body>
 </html>
