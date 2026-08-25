@@ -7009,19 +7009,47 @@
       return document.getElementById(id);
     }).filter(Boolean);
 
+    var offsets = [];
+    var activeIdx = -1;
+    var ticking = false;
+
+    function refreshOffsets() {
+      offsets = sections.map(function(section) { return section.offsetTop; });
+      scheduleUpdate();
+    }
+
     function update() {
       var scrollY = window.scrollY + 140;
-      var activeIdx = 0;
-      for (var i = 0; i < sections.length; i++) {
-        if (sections[i].offsetTop <= scrollY) activeIdx = i;
+      var nextIdx = 0;
+      for (var i = 0; i < offsets.length; i++) {
+        if (offsets[i] <= scrollY) nextIdx = i;
+        else break;
       }
-      links.forEach(function(a, i) {
-        a.classList.toggle('is-active', i === activeIdx);
-      });
+      if (nextIdx !== activeIdx) {
+        activeIdx = nextIdx;
+        links.forEach(function(a, i) {
+          a.classList.toggle('is-active', i === activeIdx);
+        });
+      }
+      ticking = false;
     }
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+
+    function scheduleUpdate() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    refreshOffsets();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', refreshOffsets);
+    window.addEventListener('load', refreshOffsets, { once: true });
+    document.addEventListener('click', function(event) {
+      if (event.target.closest && event.target.closest('.site-collapse-toggle')) {
+        setTimeout(refreshOffsets, 0);
+      }
+    });
   });
 
   // Photo carousel
@@ -7097,7 +7125,13 @@
         track.scrollBy({ left: getStep(), behavior: 'smooth' });
       });
 
-      track.addEventListener('scroll', updateButtons);
+      var carouselTicking = false;
+      track.addEventListener('scroll', function() {
+        if (!carouselTicking) {
+          carouselTicking = true;
+          requestAnimationFrame(function() { updateButtons(); carouselTicking = false; });
+        }
+      }, { passive: true });
       window.addEventListener('resize', updateButtons);
       updateButtons();
     });
@@ -7358,8 +7392,6 @@
 .site-collapse-toggle .site-collapse-chevron{font-size:13px;line-height:1;}
 .section-header>.site-collapse-control{width:100%;}
 .is-site-collapsed>.container>.section-header,.is-site-collapsed>.section-header{margin-bottom:0!important;}
-/* Let the browser skip layout/paint for long sections until they near the viewport. */
-main > section:not(.hero), main .section:not(.hero){content-visibility:auto;contain-intrinsic-size:auto 900px;}
 @media(prefers-reduced-motion:reduce){.site-collapse-toggle *{transition:none!important;}}
 
 .site-collapse-control{display:flex;justify-content:flex-start;align-items:center;margin-top:18px;}
@@ -7562,6 +7594,12 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
   background:#fff7e6 !important;
 }
 </style>
+
+<style id="site-hidden-state-fix-20260824">
+/* Ensure native hidden state always wins over component display rules. */
+[hidden]{display:none !important;}
+</style>
+
 </head>
 <body data-page="academics">
 
