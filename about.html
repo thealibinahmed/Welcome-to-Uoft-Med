@@ -6176,7 +6176,7 @@
   // Static index of searchable content. Each entry: {page, title, anchor, keywords, snippet}
 
   </script>
-  <script src="site-search-index.js"></script>
+  <script src="site-search-index.js" defer></script>
   <script>
   // Map page key → URL
   const PAGE_URLS = {
@@ -6577,6 +6577,78 @@
 @media(max-width:760px){
   .before-oweek-inner{padding:26px 24px !important;}
   .council-roles-group{padding:20px 22px !important;}
+}
+</style>
+
+
+<style id="uoft-final-surface-fixes-20260824">
+/* Final surface cleanup based on U of T reference pages. */
+.skip-link{
+  top:-100px !important;
+  transform:none !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+.skip-link:focus,.skip-link:focus-visible{
+  top:0 !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
+/* Homepage CTA: keep the hierarchy, lose the oversized navy promo block. */
+.cta-solid{
+  background:#f5f5f5 !important;
+  color:var(--ink,#222) !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+.cta-solid h2{color:var(--uoft-navy,#002a5c) !important;}
+.cta-solid p{color:var(--ink-soft,#444) !important;}
+.cta-solid .eyebrow-text{color:var(--uoft-teal,#007fa3) !important;}
+.cta-solid .eyebrow-rule{background:var(--uoft-teal,#007fa3) !important;opacity:.45 !important;}
+.cta-solid .btn-outline-light{
+  color:var(--uoft-navy,#002a5c) !important;
+  border-color:var(--uoft-navy,#002a5c) !important;
+  background:transparent !important;
+}
+.cta-solid .btn-outline-light:hover{
+  background:var(--uoft-navy,#002a5c) !important;
+  color:#fff !important;
+}
+
+/* Housing notes and legal guidance: soft U of T content modules, no alert bars. */
+.housing-source-note,.map-method-note,.student-note{
+  background:#f6f6f6 !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+  padding:20px 22px !important;
+}
+.housing-source-note{display:block !important;}
+
+/* Bank comparison should read like resource tiles, not bordered pricing cards. */
+.bank-card{
+  background:#f7f7f7 !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+.bank-card:hover{background:#f1f1f1 !important;transform:none !important;}
+
+/* About-page pull quote follows the same soft module language. */
+.mission-pullquote{
+  background:#f6f6f6 !important;
+  border:0 !important;
+  border-radius:18px !important;
+  padding:24px 28px !important;
+}
+
+/* Warm notices retain meaning without an alert stripe. */
+.uoft-warm-notice{
+  border:0 !important;
+  border-radius:18px !important;
+  background:#fff7e6 !important;
 }
 </style>
 
