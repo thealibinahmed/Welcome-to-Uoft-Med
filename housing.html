@@ -6619,7 +6619,29 @@
   });
 </script>
 
-<style id="site-collapsible-sections-style">
+
+
+
+
+
+
+
+
+
+<style id="site-performance-style">
+/* Performance + collapsible section controls */
+.site-collapse-control{display:flex;justify-content:flex-start;align-items:center;margin-top:18px;}
+.site-collapse-toggle{appearance:none;border:0;background:transparent;color:var(--uoft-teal,#007fa3);font:700 13px/1.4 Arial,sans-serif;padding:2px 0;display:inline-flex;align-items:center;gap:7px;cursor:pointer;text-align:left;}
+.site-collapse-toggle:hover{color:var(--uoft-navy,#002a5c);}
+.site-collapse-toggle:focus-visible{outline:3px solid rgba(0,127,163,.18);outline-offset:4px;}
+.site-collapse-toggle .site-collapse-label{border-bottom:1px solid currentColor;padding-bottom:1px;}
+.site-collapse-toggle .site-collapse-chevron{font-size:13px;line-height:1;}
+.section-header>.site-collapse-control{width:100%;}
+.is-site-collapsed>.container>.section-header,.is-site-collapsed>.section-header{margin-bottom:0!important;}
+/* Let the browser skip layout/paint for long sections until they near the viewport. */
+main > section:not(.hero), main .section:not(.hero){content-visibility:auto;contain-intrinsic-size:auto 900px;}
+@media(prefers-reduced-motion:reduce){.site-collapse-toggle *{transition:none!important;}}
+
 .site-collapse-control{display:flex;justify-content:flex-start;align-items:center;margin-top:18px;}
 .site-collapse-toggle{appearance:none;border:0;background:transparent;color:var(--uoft-teal,#007fa3);font:700 13px/1.4 Arial,sans-serif;padding:2px 0;display:inline-flex;align-items:center;gap:7px;cursor:pointer;text-align:left;}
 .site-collapse-toggle:hover{color:var(--uoft-navy,#002a5c);}
@@ -6629,9 +6651,6 @@
 .section-header>.site-collapse-control{width:100%;}
 .is-site-collapsed>.container>.section-header,.is-site-collapsed>.section-header{margin-bottom:0!important;}
 @media(prefers-reduced-motion:reduce){.site-collapse-toggle *{transition:none!important;}}
-</style>
-
-<style id="uoft-flat-card-style">
 /* U of T-inspired content blocks: square corners, white field, light keyline and a restrained top rule. */
 .step-card,.data-card,.group-card,.academy-card,.platform-card,.residence-card,.testimonial-card,.law-card,.principle-card,.wellness-card,.choose-uoft-card,.mentor-card,.bank-card,.recap-card,.council-roles-group{
   border-radius:0 !important;
@@ -6655,9 +6674,6 @@
     background:var(--paper-soft,#f7f7f5) !important;
   }
 }
-</style>
-
-<style id="uoft-surface-completion-20260824">
 /* Complete the U of T-inspired surface system across legacy component families. */
 :where(
   .student-status,
@@ -6757,10 +6773,6 @@
   .before-oweek-inner{padding:26px 24px !important;}
   .council-roles-group{padding:20px 22px !important;}
 }
-</style>
-
-
-<style id="uoft-final-surface-fixes-20260824">
 /* Final surface cleanup based on U of T reference pages. */
 .skip-link{
   top:-100px !important;
@@ -6830,7 +6842,6 @@
   background:#fff7e6 !important;
 }
 </style>
-
 </head>
 <body data-page="housing">
 
@@ -10234,90 +10245,77 @@
 
 <script>
 (function(){
-  var btn = document.querySelector('.back-to-top');
-  if (!btn) return;
-  window.addEventListener('scroll', function() {
-    btn.classList.toggle('visible', window.scrollY > 600);
-  }, { passive: true });
+  var btn=document.querySelector('.back-to-top');
+  if(!btn) return;
+  var ticking=false;
+  function update(){btn.classList.toggle('visible',window.scrollY>600);ticking=false;}
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  update();
 })();
 </script>
 
 <script id="site-collapsible-sections-script">
 (function(){
-  function visibleCandidate(el){
-    return el && !el.matches('style,script,template');
-  }
-  function topChildWithin(container, node){
+  function visibleCandidate(el){return el && !el.matches('style,script,template');}
+  function topChildWithin(container,node){
     var current=node;
     while(current && current.parentElement!==container) current=current.parentElement;
     return current;
   }
-  function contentFor(section, header){
+  function contentFor(section,header){
     var targets=[];
     var container=header.closest('.container') || header.parentElement;
     var anchor=topChildWithin(container,header) || header;
     var node=anchor.nextElementSibling;
-    while(node){ if(visibleCandidate(node)) targets.push(node); node=node.nextElementSibling; }
-    if(container && container!==section){
-      node=container.nextElementSibling;
-      while(node){ if(visibleCandidate(node)) targets.push(node); node=node.nextElementSibling; }
+    while(node){if(visibleCandidate(node)) targets.push(node);node=node.nextElementSibling;}
+    if(!targets.length && container!==section){
+      var outer=topChildWithin(section,container) || container;
+      node=outer.nextElementSibling;
+      while(node){if(visibleCandidate(node)) targets.push(node);node=node.nextElementSibling;}
     }
-    return Array.from(new Set(targets));
+    return targets;
   }
-  function meaningful(targets){
-    if(!targets.length) return false;
-    var text=targets.map(function(el){return (el.innerText||'').trim();}).join(' ').replace(/\s+/g,' ');
-    var height=targets.reduce(function(sum,el){return sum+(el.scrollHeight||0);},0);
-    var structural=targets.some(function(el){
-      return el.matches('article,table,form,details,ul,ol') || !!el.querySelector('article,table,form,details,.grid,[class*="grid"],[class*="cards"],[class*="card"],[class*="sequence"],[class*="timeline"],[class*="table"],[class*="list"],[role="tablist"]');
-    });
-    var substantialBlocks=targets.filter(function(el){return (el.scrollHeight||0)>180;}).length;
-    return (structural && height>360) || substantialBlocks>=2 || text.length>1100 || height>820;
+  function worthwhile(section,targets){
+    if(!targets || targets.length<2) return false;
+    var structural=section.querySelectorAll('table,details,ul,ol,[class*="grid"],[class*="cards"],[class*="timeline"],[class*="map"],[class*="comparison"],[class*="directory"],[class*="sequence"]').length;
+    var paragraphs=section.querySelectorAll('p').length;
+    return structural>=2 || targets.length>=4 || paragraphs>=5;
   }
-  function setupSection(section){
+  function setup(section){
     if(section.dataset.collapsibleReady==='true' || section.dataset.noCollapse==='true') return;
     var header=section.querySelector(':scope > .container > .section-header, :scope > .section-header');
     if(!header) return;
-    var heading=header.querySelector('h2');
-    if(!heading) return;
-    var hideTargets=contentFor(section,header);
-    if(!meaningful(hideTargets)) return;
+    var targets=contentFor(section,header);
+    if(!worthwhile(section,targets)) return;
     section.dataset.collapsibleReady='true';
     var control=document.createElement('div');
     control.className='site-collapse-control';
     var button=document.createElement('button');
-    button.type='button';
-    button.className='site-collapse-toggle';
-    button.setAttribute('aria-expanded','true');
-    var label=(heading.textContent||'section').replace(/\s+/g,' ').trim();
+    button.type='button';button.className='site-collapse-toggle';button.setAttribute('aria-expanded','true');
+    var heading=header.querySelector('h1,h2,h3');
+    var label=heading ? heading.textContent.trim() : 'section';
     button.setAttribute('aria-label','Collapse section: '+label);
     button.innerHTML='<span class="site-collapse-label">Collapse section</span><span class="site-collapse-chevron" aria-hidden="true">↑</span>';
+    control.appendChild(button);header.appendChild(control);
     function setOpen(open){
-      hideTargets.forEach(function(el){el.hidden=!open;});
-      button.setAttribute('aria-expanded',String(open));
+      targets.forEach(function(el){el.hidden=!open;});
+      button.setAttribute('aria-expanded',open?'true':'false');
       button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
       button.querySelector('.site-collapse-label').textContent=open?'Collapse section':'Expand section';
       button.querySelector('.site-collapse-chevron').textContent=open?'↑':'↓';
       section.classList.toggle('is-site-collapsed',!open);
     }
     button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
-    control.appendChild(button);
-    var intro=header.querySelector(':scope > p:last-of-type');
-    if(intro) intro.insertAdjacentElement('afterend',control); else header.appendChild(control);
-    section._siteSetOpen=setOpen;
   }
   function init(){
-    document.querySelectorAll('main section').forEach(setupSection);
-    function openHashTarget(){
-      if(!location.hash) return;
-      var target=document.getElementById(location.hash.slice(1));
-      var section=target&&target.closest('section');
-      if(section&&section._siteSetOpen) section._siteSetOpen(true);
-    }
-    openHashTarget();
-    window.addEventListener('hashchange',openHashTarget);
+    document.querySelectorAll('main > section, main .section').forEach(setup);
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+  function schedule(){
+    if('requestIdleCallback' in window) requestIdleCallback(init,{timeout:700});
+    else setTimeout(init,32);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',schedule,{once:true});
+  else schedule();
 })();
 </script>
 
