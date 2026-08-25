@@ -6347,14 +6347,42 @@
 </script>
 
 <style id="site-collapsible-sections-style">
-/* Open-by-default section controls. Added as a light enhancement without changing section markup. */
-.site-collapsible-header{position:relative;padding-right:52px;}
-.site-collapse-toggle{position:absolute;right:0;top:0;width:38px;height:38px;border:1px solid var(--uoft-navy,#002a5c);background:#fff;color:var(--uoft-navy,#002a5c);font:600 24px/1 Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;}
-.site-collapse-toggle:hover,.site-collapse-toggle:focus-visible{background:var(--paper-soft,#f6f5f3);outline:none;}
-.site-collapse-toggle:focus-visible{box-shadow:0 0 0 3px rgba(0,122,163,.18);}
-@media(max-width:640px){.site-collapsible-header{padding-right:46px}.site-collapse-toggle{width:34px;height:34px;font-size:21px}}
+.site-collapse-control{display:flex;justify-content:flex-start;align-items:center;margin-top:18px;}
+.site-collapse-toggle{appearance:none;border:0;background:transparent;color:var(--uoft-teal,#007fa3);font:700 13px/1.4 Arial,sans-serif;padding:2px 0;display:inline-flex;align-items:center;gap:7px;cursor:pointer;text-align:left;}
+.site-collapse-toggle:hover{color:var(--uoft-navy,#002a5c);}
+.site-collapse-toggle:focus-visible{outline:3px solid rgba(0,127,163,.18);outline-offset:4px;}
+.site-collapse-toggle .site-collapse-label{border-bottom:1px solid currentColor;padding-bottom:1px;}
+.site-collapse-toggle .site-collapse-chevron{font-size:13px;line-height:1;}
+.section-header>.site-collapse-control{width:100%;}
+.is-site-collapsed>.container>.section-header,.is-site-collapsed>.section-header{margin-bottom:0!important;}
+@media(prefers-reduced-motion:reduce){.site-collapse-toggle *{transition:none!important;}}
 </style>
 
+<style id="uoft-flat-card-style">
+/* U of T-inspired content blocks: square corners, white field, light keyline and a restrained top rule. */
+.step-card,.data-card,.group-card,.academy-card,.platform-card,.residence-card,.testimonial-card,.law-card,.principle-card,.wellness-card,.choose-uoft-card,.mentor-card,.bank-card,.recap-card,.council-roles-group{
+  border-radius:0 !important;
+  box-shadow:none !important;
+  border:1px solid var(--hairline,#d8d5cf) !important;
+  border-top:3px solid var(--uoft-teal,#007fa3) !important;
+  background:var(--paper,#fff) !important;
+}
+.group-card-emphasis,.bank-card,.principle-card{border-top-color:var(--uoft-navy,#002a5c) !important;}
+.phase-grid{border:0 !important;background:transparent !important;gap:18px !important;}
+.phase-grid>div{
+  border:1px solid var(--hairline,#d8d5cf) !important;
+  border-top:3px solid var(--uoft-teal,#007fa3) !important;
+  background:var(--paper,#fff) !important;
+  padding:32px !important;
+}
+@media(min-width:768px){.phase-grid>div:first-child{border-right:1px solid var(--hairline,#d8d5cf) !important;border-bottom:1px solid var(--hairline,#d8d5cf) !important;}}
+@media(hover:hover){
+  a.step-card:hover,a.data-card:hover,a.group-card:hover,a.academy-card:hover,a.platform-card:hover,a.residence-card:hover,a.mentor-card:hover{
+    border-top-color:var(--uoft-navy,#002a5c) !important;
+    background:var(--paper-soft,#f7f7f5) !important;
+  }
+}
+</style>
 </head>
 <body data-page="about">
 
@@ -6670,45 +6698,66 @@
 
 <script id="site-collapsible-sections-script">
 (function(){
-  function setupSection(section){
-    if(section.dataset.collapsibleReady==='true') return;
-    var heading=section.querySelector('h2');
-    if(!heading) return;
-    var header=section.querySelector('.section-header');
-    var host=header||heading.parentElement;
-    if(!host) return;
-    var hideTargets=[];
-    if(header){
-      var container=header.parentElement;
-      var n=header.nextElementSibling;
-      while(n){hideTargets.push(n);n=n.nextElementSibling;}
-      if(container&&container.parentElement===section){
-        var s=container.nextElementSibling;
-        while(s){hideTargets.push(s);s=s.nextElementSibling;}
-      }
-    }else{
-      var n2=heading.nextElementSibling;
-      while(n2){hideTargets.push(n2);n2=n2.nextElementSibling;}
+  function visibleCandidate(el){
+    return el && !el.matches('style,script,template');
+  }
+  function topChildWithin(container, node){
+    var current=node;
+    while(current && current.parentElement!==container) current=current.parentElement;
+    return current;
+  }
+  function contentFor(section, header){
+    var targets=[];
+    var container=header.closest('.container') || header.parentElement;
+    var anchor=topChildWithin(container,header) || header;
+    var node=anchor.nextElementSibling;
+    while(node){ if(visibleCandidate(node)) targets.push(node); node=node.nextElementSibling; }
+    if(container && container!==section){
+      node=container.nextElementSibling;
+      while(node){ if(visibleCandidate(node)) targets.push(node); node=node.nextElementSibling; }
     }
-    if(!hideTargets.length) return;
+    return Array.from(new Set(targets));
+  }
+  function meaningful(targets){
+    if(!targets.length) return false;
+    var text=targets.map(function(el){return (el.innerText||'').trim();}).join(' ').replace(/\s+/g,' ');
+    var height=targets.reduce(function(sum,el){return sum+(el.scrollHeight||0);},0);
+    var structural=targets.some(function(el){
+      return el.matches('article,table,form,details,ul,ol') || !!el.querySelector('article,table,form,details,.grid,[class*="grid"],[class*="cards"],[class*="card"],[class*="sequence"],[class*="timeline"],[class*="table"],[class*="list"],[role="tablist"]');
+    });
+    var substantialBlocks=targets.filter(function(el){return (el.scrollHeight||0)>180;}).length;
+    return (structural && height>360) || substantialBlocks>=2 || text.length>1100 || height>820;
+  }
+  function setupSection(section){
+    if(section.dataset.collapsibleReady==='true' || section.dataset.noCollapse==='true') return;
+    var header=section.querySelector(':scope > .container > .section-header, :scope > .section-header');
+    if(!header) return;
+    var heading=header.querySelector('h2');
+    if(!heading) return;
+    var hideTargets=contentFor(section,header);
+    if(!meaningful(hideTargets)) return;
     section.dataset.collapsibleReady='true';
-    host.classList.add('site-collapsible-header');
+    var control=document.createElement('div');
+    control.className='site-collapse-control';
     var button=document.createElement('button');
     button.type='button';
     button.className='site-collapse-toggle';
     button.setAttribute('aria-expanded','true');
-    var label=(heading.textContent||'section').trim();
+    var label=(heading.textContent||'section').replace(/\s+/g,' ').trim();
     button.setAttribute('aria-label','Collapse section: '+label);
-    button.textContent='−';
+    button.innerHTML='<span class="site-collapse-label">Collapse section</span><span class="site-collapse-chevron" aria-hidden="true">↑</span>';
     function setOpen(open){
       hideTargets.forEach(function(el){el.hidden=!open;});
       button.setAttribute('aria-expanded',String(open));
       button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
-      button.textContent=open?'−':'+';
+      button.querySelector('.site-collapse-label').textContent=open?'Collapse section':'Expand section';
+      button.querySelector('.site-collapse-chevron').textContent=open?'↑':'↓';
       section.classList.toggle('is-site-collapsed',!open);
     }
     button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
-    host.appendChild(button);
+    control.appendChild(button);
+    var intro=header.querySelector(':scope > p:last-of-type');
+    if(intro) intro.insertAdjacentElement('afterend',control); else header.appendChild(control);
     section._siteSetOpen=setOpen;
   }
   function init(){
