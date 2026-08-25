@@ -35,7 +35,7 @@
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    text-rendering: auto;
   }
   .font-display {
     font-family: 'Roboto Slab', Georgia, serif;
@@ -6341,58 +6341,41 @@
   }
 </style>
 <script>
-  // TOC scroll observer — highlights active section in sidebar
+  // TOC section tracking: event-driven, no work on every scroll frame.
   document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.querySelector('.toc-sidebar');
-    if (!sidebar) return;
+    if (!sidebar || !('IntersectionObserver' in window)) return;
     var links = Array.from(sidebar.querySelectorAll('a[href^="#"]'));
     if (!links.length) return;
-    var sections = links.map(function(a) {
-      var id = a.getAttribute('href').slice(1);
-      return document.getElementById(id);
-    }).filter(Boolean);
-
-    var offsets = [];
-    var activeIdx = -1;
-    var ticking = false;
-
-    function refreshOffsets() {
-      offsets = sections.map(function(section) { return section.offsetTop; });
-      scheduleUpdate();
-    }
-
-    function update() {
-      var scrollY = window.scrollY + 140;
-      var nextIdx = 0;
-      for (var i = 0; i < offsets.length; i++) {
-        if (offsets[i] <= scrollY) nextIdx = i;
-        else break;
-      }
-      if (nextIdx !== activeIdx) {
-        activeIdx = nextIdx;
-        links.forEach(function(a, i) {
-          a.classList.toggle('is-active', i === activeIdx);
-        });
-      }
-      ticking = false;
-    }
-
-    function scheduleUpdate() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }
-
-    refreshOffsets();
-    window.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', refreshOffsets);
-    window.addEventListener('load', refreshOffsets, { once: true });
-    document.addEventListener('click', function(event) {
-      if (event.target.closest && event.target.closest('.site-collapse-toggle')) {
-        setTimeout(refreshOffsets, 0);
-      }
+    var byId = new Map();
+    links.forEach(function(link) {
+      var id = link.getAttribute('href').slice(1);
+      var section = document.getElementById(id);
+      if (section) byId.set(section, link);
     });
+    if (!byId.size) return;
+    var visible = new Set();
+    var activeLink = null;
+    function setActive(link) {
+      if (link === activeLink) return;
+      if (activeLink) activeLink.classList.remove('is-active');
+      activeLink = link;
+      if (activeLink) activeLink.classList.add('is-active');
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      });
+      var candidate = null;
+      var best = Infinity;
+      visible.forEach(function(section) {
+        var distance = Math.abs(section.getBoundingClientRect().top - 128);
+        if (distance < best) { best = distance; candidate = section; }
+      });
+      if (candidate) setActive(byId.get(candidate));
+    }, { rootMargin: '-110px 0px -68% 0px', threshold: 0 });
+    byId.forEach(function(link, section) { observer.observe(section); });
   });
 
   // Photo carousel
@@ -8856,10 +8839,16 @@
 (function(){
   var btn=document.querySelector('.back-to-top');
   if(!btn) return;
-  var ticking=false;
-  function update(){btn.classList.toggle('visible',window.scrollY>600);ticking=false;}
-  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-  update();
+  if(!('IntersectionObserver' in window)) return;
+  var marker=document.createElement('span');
+  marker.setAttribute('aria-hidden','true');
+  marker.style.cssText='position:absolute;top:620px;left:0;width:1px;height:1px;pointer-events:none;';
+  document.body.appendChild(marker);
+  var observer=new IntersectionObserver(function(entries){
+    var entry=entries[0];
+    btn.classList.toggle('visible',!entry.isIntersecting && entry.boundingClientRect.top < 0);
+  });
+  observer.observe(marker);
 })();
 </script>
 <script>
@@ -9260,66 +9249,60 @@
 
 <script id="site-collapsible-sections-script">
 (function(){
-  function visibleCandidate(el){return el && !el.matches('style,script,template');}
-  function topChildWithin(container,node){
-    var current=node;
-    while(current && current.parentElement!==container) current=current.parentElement;
-    return current;
+  function topChild(container,node){
+    while(node && node.parentElement!==container) node=node.parentElement;
+    return node;
   }
-  function contentFor(section,header){
-    var targets=[];
+  function collectTargets(section,header){
     var container=header.closest('.container') || header.parentElement;
-    var anchor=topChildWithin(container,header) || header;
-    var node=anchor.nextElementSibling;
-    while(node){if(visibleCandidate(node)) targets.push(node);node=node.nextElementSibling;}
+    var anchor=topChild(container,header) || header;
+    var targets=[];
+    for(var node=anchor.nextElementSibling; node; node=node.nextElementSibling){
+      if(!node.matches('style,script,template')) targets.push(node);
+    }
     if(!targets.length && container!==section){
-      var outer=topChildWithin(section,container) || container;
-      node=outer.nextElementSibling;
-      while(node){if(visibleCandidate(node)) targets.push(node);node=node.nextElementSibling;}
+      var outer=topChild(section,container) || container;
+      for(node=outer.nextElementSibling; node; node=node.nextElementSibling){
+        if(!node.matches('style,script,template')) targets.push(node);
+      }
     }
     return targets;
-  }
-  function worthwhile(section,targets){
-    if(!targets || targets.length<2) return false;
-    var structural=section.querySelectorAll('table,details,ul,ol,[class*="grid"],[class*="cards"],[class*="timeline"],[class*="map"],[class*="comparison"],[class*="directory"],[class*="sequence"]').length;
-    var paragraphs=section.querySelectorAll('p').length;
-    return structural>=2 || targets.length>=4 || paragraphs>=5;
   }
   function setup(section){
     if(section.dataset.collapsibleReady==='true' || section.dataset.noCollapse==='true') return;
     var header=section.querySelector(':scope > .container > .section-header, :scope > .section-header');
     if(!header) return;
-    var targets=contentFor(section,header);
-    if(!worthwhile(section,targets)) return;
+    var targets=collectTargets(section,header);
+    var forced=section.dataset.forceCollapse==='true';
+    if(!targets.length || (!forced && targets.length<3)) return;
     section.dataset.collapsibleReady='true';
+    var heading=header.querySelector('h1,h2,h3');
+    var label=heading ? heading.textContent.trim() : 'section';
     var control=document.createElement('div');
     control.className='site-collapse-control';
     var button=document.createElement('button');
-    button.type='button';button.className='site-collapse-toggle';button.setAttribute('aria-expanded','true');
-    var heading=header.querySelector('h1,h2,h3');
-    var label=heading ? heading.textContent.trim() : 'section';
+    button.type='button';
+    button.className='site-collapse-toggle';
+    button.setAttribute('aria-expanded','true');
     button.setAttribute('aria-label','Collapse section: '+label);
     button.innerHTML='<span class="site-collapse-label">Collapse section</span><span class="site-collapse-chevron" aria-hidden="true">↑</span>';
-    control.appendChild(button);header.appendChild(control);
-    function setOpen(open){
+    control.appendChild(button);
+    header.appendChild(control);
+    button.addEventListener('click',function(){
+      var open=button.getAttribute('aria-expanded')!=='true';
       targets.forEach(function(el){el.hidden=!open;});
       button.setAttribute('aria-expanded',open?'true':'false');
       button.setAttribute('aria-label',(open?'Collapse':'Expand')+' section: '+label);
       button.querySelector('.site-collapse-label').textContent=open?'Collapse section':'Expand section';
       button.querySelector('.site-collapse-chevron').textContent=open?'↑':'↓';
       section.classList.toggle('is-site-collapsed',!open);
-    }
-    button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true');});
+    });
   }
   function init(){
     document.querySelectorAll('main > section, main .section').forEach(setup);
   }
-  function schedule(){
-    if('requestIdleCallback' in window) requestIdleCallback(init,{timeout:700});
-    else setTimeout(init,32);
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',schedule,{once:true});
-  else schedule();
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
 })();
 </script>
 
