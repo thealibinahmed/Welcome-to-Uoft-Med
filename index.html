@@ -6624,6 +6624,18 @@
 }
 </style>
 
+
+<style id="homepage-guide-merge-fix">
+.tiles-section{padding-top:64px !important;}
+.tiles-header{margin-bottom:26px !important;}
+.guide-start{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;margin:0 0 32px;padding:26px 30px;background:#f7f7f7;border-radius:18px;}
+.guide-start-kicker{margin:0 0 5px !important;color:var(--uoft-teal,#007fa3) !important;font-size:12px !important;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+.guide-start h3{margin:0 0 7px;color:var(--uoft-navy,#002a5c);font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.2;}
+.guide-start p:last-child{margin:0;max-width:760px;line-height:1.55;color:var(--ink-soft,#444);}
+.guide-start-link{white-space:nowrap;color:var(--uoft-navy,#002a5c);font-weight:700;text-decoration:none;border-bottom:2px solid var(--uoft-teal,#007fa3);padding:5px 0;}
+.guide-start-link:hover{color:var(--uoft-teal,#007fa3);}
+@media(max-width:720px){.guide-start{grid-template-columns:1fr;gap:16px;padding:22px}.guide-start-link{justify-self:start}}
+</style>
 </head>
 <body data-page="homepage">
 
@@ -6910,28 +6922,21 @@
   </div>
 </section>
 
-<!-- ============ 4. ACCEPT YOUR OFFER — primary conversion moment ============ -->
-<section class="cta-section" data-home-section="checklist" style="padding-top: 32px;">
-  <div class="container">
-    <div class="cta-solid">
-      <div class="eyebrow" style="justify-content: center;">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-text">Ready to Start</span>
-        <span class="eyebrow-rule"></span>
-      </div>
-      <h2>Accepted? Start with the checklist.</h2>
-      <p>Begin with the confirmed Faculty pages, then work through registration, finances, housing, equipment and O-Week.</p>
-      <a href="post-acceptance.html" class="btn-outline-light">Open the checklist →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 5. SECTION TILES — what's in the guide ============ -->
+<!-- ============ 4. EXPLORE THE GUIDE ============ -->
 <section class="tiles-section" data-home-section="guide-paths">
   <div class="container">
     <div class="tiles-header">
       <h2>Explore the Guide</h2>
       <p>Start with the section that is most useful to you right now.</p>
+    </div>
+
+    <div class="guide-start">
+      <div>
+        <p class="guide-start-kicker">Already accepted?</p>
+        <h3>Start with the post-acceptance checklist.</h3>
+        <p>Work through registration, finances, housing, equipment and O-Week, with official Faculty links included where they matter.</p>
+      </div>
+      <a href="post-acceptance.html" class="guide-start-link">Open the checklist <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="tiles-grid">
