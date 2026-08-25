@@ -6382,6 +6382,100 @@
     background:var(--paper-soft,#f7f7f5) !important;
   }
 }
+
+/* === UofT-inspired surface system: 2026-08-24 === */
+:where(
+  .hero-disclaimer,
+  .independence-box,
+  .callout,
+  .oweek-site-callout,
+  .oweek-submit-callout,
+  .platform-callout,
+  .prime-callout,
+  .pull-callout,
+  .reg-ribbon-callout,
+  .rep-contact-callout,
+  .wellness-callout,
+  .phase-source-panel,
+  .tuition-path-panel,
+  .course-sequence-panel,
+  .document-panel,
+  .cta-text-panel
+){
+  background:#f6f6f6 !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+
+:where(
+  .academy-card,
+  .ack-card,
+  .choose-uoft-card,
+  .cohort-card,
+  .curriculum-start-card,
+  .data-card,
+  .group-card,
+  .law-card,
+  .mentor-card,
+  .oweek-day-card,
+  .platform-card,
+  .principle-card,
+  .program-card,
+  .recap-card,
+  .rep-contact-card,
+  .residence-card,
+  .step-card,
+  .team-card,
+  .testimonial-card,
+  .wellness-card
+){
+  background:#f7f7f7 !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+
+:where(
+  .academy-card,
+  .ack-card,
+  .choose-uoft-card,
+  .cohort-card,
+  .data-card,
+  .group-card,
+  .law-card,
+  .mentor-card,
+  .oweek-day-card,
+  .platform-card,
+  .program-card,
+  .recap-card,
+  .rep-contact-card,
+  .residence-card,
+  .step-card,
+  .team-card,
+  .testimonial-card,
+  .wellness-card
+):hover{
+  background:#f1f1f1 !important;
+  border-color:transparent !important;
+  transform:none !important;
+}
+
+/* Callouts should read as content, not decorative alert components. */
+.hero-disclaimer{
+  display:block !important;
+  padding:24px 28px !important;
+  max-width:none !important;
+}
+.hero-disclaimer-label{
+  display:block !important;
+  margin-bottom:10px !important;
+  font-size:12px !important;
+  letter-spacing:.08em !important;
+  text-transform:none !important;
+  color:var(--uoft-navy,#002a5c) !important;
+}
+
 </style>
 </head>
 <body data-page="about">
