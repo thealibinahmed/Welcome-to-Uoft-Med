@@ -7355,6 +7355,12 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
   background:#fff7e6 !important;
 }
 </style>
+
+<style id="site-hidden-state-fix-20260824">
+/* Ensure native hidden state always wins over component display rules. */
+[hidden]{display:none !important;}
+</style>
+
 </head>
 <body data-page="handbook">
 
@@ -8315,13 +8321,12 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
       <div class="group-card group-card-emphasis">
         <p class="group-card-eyebrow">Council · Per cohort</p>
         <h3 class="group-card-title">Class Council</h3>
-        <p class="group-card-body">Your cohort's elected leadership. Positions cover class events, finances, formal, charity initiatives, educational representation and communication with the MD Program. The cohort holds three council elections: at the start of M1, near the end of M1 for M2 and near the end of M2 for the combined M3–M4 term. Full role breakdown below.</p>
+        <p class="group-card-body">Your cohort's elected student representatives. Class Council advocates for year-specific needs with the Faculty, organizes community-building events, keeps students informed and helps connect the class with useful resources. The exact role mix changes as the class moves through the program. Full role breakdown below.</p>
       </div>
       <div class="group-card group-card-emphasis">
         <p class="group-card-eyebrow">Council · School-wide</p>
         <h3 class="group-card-title">Medical Society (MedSoc)</h3>
-        <p class="group-card-body">The school-wide student government. Represents all four classes to the Faculty, the OMA, and OMSA. Runs school-wide initiatives, advocacy, and large events. MedSoc executive is elected school-wide; class reps connect MedSoc back to each cohort. Most issues that affect the whole student body (schedule changes, exam policy, learner-affairs concerns) go through here.</p>
-        <p class="group-card-detail-note needs-content" style="position:relative;">Detailed content pending. MedSoc executive to fill in.</p><div class="needs-content" style="display:none;"></div><p style="display:none;"></p>
+        <p class="group-card-body">The overarching student government for U of T Medicine, connecting students across all years with the Faculty and administration. MedSoc funds student clubs and organizations, supports school-wide wellness initiatives and advocates for students at the Faculty and beyond. Class Presidents also sit on MedSoc so each cohort has a direct voice in school-wide discussions.</p>
       </div>
 
       <!-- Faith & Cultural -->
@@ -8403,83 +8408,61 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
     <!-- Class Council role breakdown -->
     <div class="council-roles">
       <p class="council-roles-eyebrow">Class Council · Role Map</p>
-      <p class="council-roles-lede">General leadership, hospital and academy representatives and educational portfolios mapped to specific parts of the curriculum. Council positions are filled through the cohort election for the applicable term.</p>
+      <p class="council-roles-lede">Roles are elected by the cohort and shift as the class moves through Foundations and into Clerkship. The first-year structure below follows the 2026 O-Week Class Council overview, with later-year additions noted separately.</p>
 
       <div class="council-roles-grid">
         <div class="council-roles-group">
-          <p class="council-roles-group-title">Class Presidents</p>
+          <p class="council-roles-group-title">Leadership</p>
           <ul class="council-roles-list">
-            <li>Co-Presidents (×2)</li>
+            <li>Class Co-Presidents (×2)</li>
           </ul>
         </div>
 
         <div class="council-roles-group">
-          <p class="council-roles-group-title">Mississauga Academy (MAM)</p>
+          <p class="council-roles-group-title">Internal Representatives</p>
           <ul class="council-roles-list">
-            <li>MAM Reps</li>
-            <li>Trillium Health / Mississauga Hospital</li>
-            <li>Credit Valley Hospital</li>
+            <li>Athletic Reps (×2)</li>
+            <li>Charity Reps (×2–3)</li>
+            <li>Social Reps (×3)</li>
+            <li>Communications Rep (×1)</li>
           </ul>
         </div>
 
         <div class="council-roles-group">
-          <p class="council-roles-group-title">Wightman-Berris Academy</p>
+          <p class="council-roles-group-title">Academy Representatives</p>
           <ul class="council-roles-list">
-            <li>Toronto General Hospital</li>
-            <li>Mount Sinai &amp; Bridgepoint</li>
-            <li>Toronto Western Hospital</li>
-            <li>Michael Garron Hospital</li>
-          </ul>
-        </div>
-
-        <div class="council-roles-group">
-          <p class="council-roles-group-title">Peters-Boyd Academy</p>
-          <ul class="council-roles-list">
-            <li>Women's College Hospital</li>
-            <li>Sunnybrook Hospital</li>
-            <li>North York General Hospital</li>
-          </ul>
-        </div>
-
-        <div class="council-roles-group">
-          <p class="council-roles-group-title">FitzGerald Academy</p>
-          <ul class="council-roles-list">
-            <li>FitzGerald Academy Reps</li>
-          </ul>
-        </div>
-
-        <div class="council-roles-group">
-          <p class="council-roles-group-title">Social &amp; Athletic</p>
-          <ul class="council-roles-list">
-            <li>Social Reps: events, formal, social fund</li>
-            <li>Athletic Reps: intramurals, MD games</li>
+            <li>Wightman-Berris Reps (×4)</li>
+            <li>FitzGerald Reps (×2)</li>
+            <li>Peters-Boyd Reps (×3)</li>
+            <li>Mississauga Academy of Medicine Reps (×2)</li>
           </ul>
         </div>
 
         <div class="council-roles-group council-roles-group-wide">
-          <p class="council-roles-group-title">Educational &amp; Academic Portfolios</p>
+          <p class="council-roles-group-title">Academic Representatives · Year 1</p>
           <ul class="council-roles-list">
-            <li><strong>IPE Rep</strong>: interprofessional education curriculum</li>
-            <li><strong>Arts, Humanities &amp; Ethics Rep</strong>: humanities &amp; ethics programming</li>
-            <li><strong>Course Rep</strong>: primary curriculum &amp; exam liaison</li>
-            <li><strong>Health Science Research Rep</strong>: research opportunities</li>
-            <li><strong>EEE Rep</strong>: Enriching Educational Experiences logistics</li>
-            <li><strong>Anatomy / MAPS Rep</strong>: anatomy &amp; physiology society liaison</li>
-            <li><strong>ICE / HC Rep</strong>: Integrated Clinical Experience &amp; Health in Community</li>
-            <li><strong>Portfolio Rep</strong>: Portfolio program support</li>
-            <li><strong>Communications Rep</strong>: newsletters &amp; class comms</li>
+            <li>Anatomy Rep (×1)</li>
+            <li>Course Rep (×1)</li>
+            <li>ICE / HC Reps (×2)</li>
+            <li>IPE Rep (×1)</li>
+            <li>Health Science Research Rep (×1)</li>
+            <li>Portfolio Rep (×1)</li>
+            <li>EEE Reps (×2)</li>
+            <li>Arts, Humanities &amp; Ethics Rep (×1)</li>
+            <li><strong>MD+ Rep</strong></li>
           </ul>
         </div>
 
-        <div class="council-roles-group">
-          <p class="council-roles-group-title">Charity Committee</p>
+        <div class="council-roles-group council-roles-group-wide">
+          <p class="council-roles-group-title">Added in Year 2</p>
           <ul class="council-roles-list">
-            <li>Charity Committee Reps</li>
+            <li><strong>FMLE Rep</strong>: represents the Foundations Medical Longitudinal Experience</li>
+            <li><strong>Clerkship Reps (×2)</strong>: begin representing the class as students prepare for the transition into Clerkship</li>
           </ul>
         </div>
       </div>
 
-      <p class="council-roles-footer">Specific responsibilities shift slightly year to year. The current roster is shared at the start of M1. Watch for the email from your council co-presidents.</p>
+      <p class="council-roles-footer">Role names and responsibilities can shift between election cycles. Use the current Class Council election materials for the final roster for your year.</p>
     </div>
 
     <!-- Prayer spaces -->
@@ -9086,11 +9069,11 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
     medsocRoles.className = 'council-roles medsoc-roles';
     medsocRoles.hidden = true;
     medsocRoles.innerHTML = '<p class="council-roles-eyebrow">Medical Society · Role Map</p>'+
-      '<p class="council-roles-lede">The Medical Society executive represents students across all four years. Portfolios are generally held in senior and junior pairs where applicable; check the current MedSoc elections and executive pages for the active structure.</p>'+
+      '<p class="council-roles-lede">The 2026 O-Week overview presents MedSoc as the school-wide student government, with Class Presidents also sitting on MedSoc to represent their cohorts. The executive portfolios below reflect that presentation; check MedSoc directly for any changes after elections.</p>'+
       '<div class="council-roles-grid">'+
-        '<div class="council-roles-group"><p class="council-roles-group-title">Leadership & administration</p><ul class="council-roles-list"><li>President</li><li>Speaker</li><li>Executive Administrator</li></ul></div>'+
-        '<div class="council-roles-group"><p class="council-roles-group-title">Education & student experience</p><ul class="council-roles-list"><li>VP Education</li><li>VP Student Engagement, St. George</li><li>VP MAM</li><li>VP International Students</li></ul></div>'+
-        '<div class="council-roles-group"><p class="council-roles-group-title">Operations & outreach</p><ul class="council-roles-list"><li>VP Finance</li><li>VP Communications</li><li>VP External Affairs</li><li>VP Equity, Diversity &amp; Inclusion</li><li>VP Global Health</li></ul></div>'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Leadership</p><ul class="council-roles-list"><li>President</li><li>Speaker</li></ul></div>'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Student experience & education</p><ul class="council-roles-list"><li>VP Education</li><li>VP Student Affairs</li><li>VP Student Engagement, St. George</li><li>VP Student Engagement, MAM</li><li>VP MAM</li></ul></div>'+
+        '<div class="council-roles-group"><p class="council-roles-group-title">Advocacy & operations</p><ul class="council-roles-list"><li>VP Finance</li><li>VP Communications</li><li>VP External Affairs</li><li>VP Equity, Diversity &amp; Inclusion</li><li>VP Global Health</li></ul></div>'+
       '</div><p class="interest-groups-note"><a href="https://www.uoftmedsoc.com/exec" target="_blank" rel="noopener">Current MedSoc executive and portfolios ↗</a></p>';
     if (councilRoles) councilRoles.insertAdjacentElement('afterend', medsocRoles);
 

@@ -7253,6 +7253,12 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
   background:#fff7e6 !important;
 }
 </style>
+
+<style id="site-hidden-state-fix-20260824">
+/* Ensure native hidden state always wins over component display rules. */
+[hidden]{display:none !important;}
+</style>
+
 </head>
 <body data-page="post-acceptance">
 
