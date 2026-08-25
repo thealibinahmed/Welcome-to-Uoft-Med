@@ -7959,7 +7959,6 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
 <details class="full-academics-guide" id="full-academics-guide">
   <summary>
     <span>
-      <span class="eyebrow-text">Save this for after O-Week</span>
       <strong>Explore the full Academics guide</strong>
       <small>CEEs, study resources, clinical skills, shadowing, MD+ programs, academic support and upper-year advice.</small>
     </span>
@@ -7978,7 +7977,10 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
     .full-academics-guide[open] .full-guide-action{font-size:0;}
     .full-academics-guide[open] .full-guide-action::after{content:'Close −';font-size:12px;}
     .full-academics-guide-content{margin-top:18px;}
-    @media(max-width:760px){.full-academics-guide>summary{margin-left:20px;margin-right:20px;padding:25px 22px;align-items:flex-start}.full-guide-action{padding:9px 11px}}
+    /* Keep this opener visually connected to the page rather than another boxed callout. */
+    .full-academics-guide>summary{border:0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);border-left:0;background:transparent;padding:30px 4px;}
+    .full-guide-action{border:0;padding:6px 0;border-bottom:1px solid currentColor;}
+    @media(max-width:760px){.full-academics-guide>summary{margin-left:20px;margin-right:20px;padding:25px 0;align-items:flex-start}.full-guide-action{padding:6px 0}}
   </style>
 
 <!-- ============ ICE: HC and CEE ============ -->
@@ -8059,6 +8061,11 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
     .cee-details li+li{margin-top:7px;}
     .cee-footnote{margin-top:18px;color:var(--ink-muted);font-size:12px;line-height:1.6;}
     @media(max-width:860px){.cee-requirements{grid-template-columns:1fr 1fr}.cee-requirements article:nth-child(2){border-right:0}.cee-requirements article:nth-child(-n+2){border-bottom:1px solid var(--hairline)}.cee-source-note{grid-template-columns:1fr}}
+    /* Source context should read as supporting information, not an alert box. */
+    .cee-source-note{padding:22px 0;border:0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:transparent;}
+    .advice-submit-note{margin:26px 0 0;max-width:860px;color:var(--ink-soft);font-size:15px;line-height:1.65;}
+    .advice-submit-note strong{color:var(--ink);}
+    .advice-submit-note a{color:var(--uoft-teal);border-bottom:1px solid currentColor;}
     @media(max-width:560px){.cee-requirements{grid-template-columns:1fr}.cee-requirements article{min-height:0;border-right:0;border-bottom:1px solid var(--hairline)}.cee-requirements article:nth-child(3){border-bottom:1px solid var(--hairline)}.cee-requirements article:last-child{border-bottom:0}}
   
 /* === UofT-inspired surface system: 2026-08-24 === */
@@ -8398,7 +8405,7 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
 </section>
 
 <!-- ============ Testimonials ============ -->
-<section class="section" id="testimonials">
+<section class="section" id="testimonials" data-force-collapse="true">
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">
@@ -8409,15 +8416,7 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
       <p>There is no single correct study method. This section will publish short, source-confirmed reflections from students across courses, academies and study styles.</p>
     </div>
 
-    <div class="testimonial-grid needs-content" style="position:relative;">
-      <article class="testimonial"><p class="testimonial-quote">What did your weekly study routine actually look like during ITM, CPC 1 or CPC 2?</p><p class="testimonial-byline">Submission prompt</p></article>
-      <article class="testimonial"><p class="testimonial-quote">What did you change after your first few Mastery Exercises?</p><p class="testimonial-byline">Submission prompt</p></article>
-      <article class="testimonial"><p class="testimonial-quote">How did you prepare for clinical skills and the OSCE without cramming?</p><p class="testimonial-byline">Submission prompt</p></article>
-    </div>
-
-    <div class="callout-soft">
-      <strong>Want to add yours?</strong> Submit a short reflection through the <a href="feedback.html" style="color: var(--uoft-teal); border-bottom: 1px solid currentColor;">Feedback page</a>. Advice will be reviewed before publication and can remain anonymous.
-    </div>
+    <p class="advice-submit-note"><strong>Want to add yours?</strong> Submit a short reflection through the <a href="feedback.html">Feedback page</a>. Advice will be reviewed before publication and can remain anonymous.</p>
   </div>
 </section>
 
@@ -9001,6 +9000,7 @@ main > section:not(.hero), main .section:not(.hero){content-visibility:auto;cont
     return targets;
   }
   function worthwhile(section,targets){
+    if(section.dataset.forceCollapse==='true') return !!(targets && targets.length);
     if(!targets || targets.length<2) return false;
     var structural=section.querySelectorAll('table,details,ul,ol,[class*="grid"],[class*="cards"],[class*="timeline"],[class*="map"],[class*="comparison"],[class*="directory"],[class*="sequence"]').length;
     var paragraphs=section.querySelectorAll('p').length;
